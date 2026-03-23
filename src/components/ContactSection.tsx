@@ -31,14 +31,14 @@ const ContactSection = () => {
             </h2>
             <p className="font-body text-muted-foreground leading-relaxed mb-12">
               Preencha o formulário e a nossa equipa comercial entrará em contacto
-              consigo para agendar uma visita exclusiva ao empreendimento.
+              consigo para mais informações sobre o Monte Grande Residences.
             </p>
 
             <div className="space-y-6">
               {[
-                { icon: Phone, text: "+351 21 000 0000" },
-                { icon: Mail, text: "info@aurora-residences.pt" },
-                { icon: MapPin, text: "Av. da Liberdade, Lisboa" },
+                { icon: Phone, text: "+351 916 422 521" },
+                { icon: Mail, text: "info@montegrande-residences.pt" },
+                { icon: MapPin, text: "Rua do Fagundo, Monte Grande" },
               ].map((item) => (
                 <div key={item.text} className="flex items-center gap-4">
                   <item.icon className="w-5 h-5 text-gold" />
@@ -82,7 +82,6 @@ const ContactSection = () => {
                 <option value="T1">T1</option>
                 <option value="T2">T2</option>
                 <option value="T3">T3</option>
-                <option value="T4">T4</option>
               </select>
 
               <textarea

@@ -4,8 +4,8 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Sobre", href: "#sobre" },
+  { label: "Galeria", href: "#galeria" },
   { label: "Apartamentos", href: "#apartamentos" },
-  { label: "Amenidades", href: "#amenidades" },
   { label: "Localização", href: "#localizacao" },
   { label: "Contacto", href: "#contacto" },
 ];
@@ -32,11 +32,10 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
-        <a href="#" className="font-heading text-2xl tracking-wider text-primary-foreground">
-          AURORA
+        <a href="#" className="font-heading text-xl tracking-wider text-primary-foreground">
+          MONTE GRANDE <span className="text-gold text-sm">RESIDENCES</span>
         </a>
 
-        {/* Desktop */}
         <div className="hidden md:flex items-center gap-10">
           {navItems.map((item) => (
             <a
@@ -49,7 +48,6 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-primary-foreground"
@@ -58,7 +56,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}

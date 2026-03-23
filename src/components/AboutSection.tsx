@@ -1,5 +1,5 @@
 import AnimatedSection from "./AnimatedSection";
-import interiorImage from "@/assets/interior-living.jpg";
+import renderFront from "@/assets/render-front.jpg";
 
 const AboutSection = () => {
   return (
@@ -11,27 +11,27 @@ const AboutSection = () => {
               O Empreendimento
             </p>
             <h2 className="font-heading text-4xl md:text-5xl text-foreground leading-tight mb-8">
-              Um novo conceito de viver
+              Arquitectura contemporânea em Monte Grande
             </h2>
             <p className="font-body text-muted-foreground leading-relaxed mb-6">
-              O Aurora redefine o conceito de habitação premium na cidade. Com uma
-              arquitectura contemporânea assinada por um atelier de renome
-              internacional, cada detalhe foi pensado para proporcionar o máximo
-              conforto e sofisticação.
+              O Monte Grande Residences é um novo empreendimento residencial localizado
+              na Rua do Fagundo, com um projecto de arquitectura assinado pelo atelier
+              Tiago Frazão Arquitetos. Linhas contemporâneas, varandas generosas e
+              integração paisagística definem este projecto singular.
             </p>
             <p className="font-body text-muted-foreground leading-relaxed mb-8">
-              Situado numa localização privilegiada, o empreendimento oferece 48
-              apartamentos exclusivos de tipologias T1 a T4, com acabamentos de
-              excelência e vistas panorâmicas deslumbrantes.
+              Cada apartamento foi pensado para maximizar a luz natural e o conforto,
+              com acabamentos de qualidade superior e espaços exteriores privativos
+              com vegetação integrada.
             </p>
             <div className="flex gap-12">
               {[
-                { num: "48", label: "Apartamentos" },
-                { num: "4", label: "Tipologias" },
-                { num: "2026", label: "Conclusão" },
+                { num: "T1–T3", label: "Tipologias" },
+                { num: "4", label: "Pisos" },
+                { num: "2027", label: "Conclusão Prevista" },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <p className="font-heading text-3xl text-gold">{stat.num}</p>
+                  <p className="font-heading text-2xl text-gold">{stat.num}</p>
                   <p className="font-body text-xs tracking-widest uppercase text-muted-foreground mt-1">
                     {stat.label}
                   </p>
@@ -43,8 +43,8 @@ const AboutSection = () => {
           <AnimatedSection delay={0.2}>
             <div className="relative">
               <img
-                src={interiorImage}
-                alt="Interior de sala de estar luxuosa"
+                src={renderFront}
+                alt="Vista frontal do Monte Grande Residences"
                 className="w-full h-[500px] object-cover"
                 loading="lazy"
                 width={1024}

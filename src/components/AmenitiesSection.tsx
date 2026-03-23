@@ -1,14 +1,14 @@
-import { Waves, TreePine, Shield, Car, Dumbbell, Wine } from "lucide-react";
+import { TreePine, Shield, Car, Sun, Droplets, Building } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
-import poolImage from "@/assets/amenities-pool.jpg";
+import renderGarden from "@/assets/render-garden.jpg";
 
 const amenities = [
-  { icon: Waves, label: "Piscina Infinita", desc: "Rooftop com vistas panorâmicas" },
-  { icon: Dumbbell, label: "Ginásio Premium", desc: "Equipamento de última geração" },
-  { icon: TreePine, label: "Jardins Privados", desc: "Espaços verdes paisagísticos" },
-  { icon: Shield, label: "Segurança 24h", desc: "Vigilância e controlo de acessos" },
-  { icon: Car, label: "Estacionamento", desc: "Lugares privativos e carregadores EV" },
-  { icon: Wine, label: "Lounge Residentes", desc: "Espaço social exclusivo" },
+  { icon: Sun, label: "Varandas Generosas", desc: "Espaços exteriores amplos com vegetação" },
+  { icon: TreePine, label: "Jardins Comuns", desc: "Áreas verdes paisagísticas cuidadas" },
+  { icon: Shield, label: "Segurança", desc: "Controlo de acessos e vigilância" },
+  { icon: Car, label: "Estacionamento", desc: "Lugares privativos no edifício" },
+  { icon: Droplets, label: "Eficiência Energética", desc: "Classificação energética elevada" },
+  { icon: Building, label: "Arquitectura de Autor", desc: "Projecto por Tiago Frazão Arquitetos" },
 ];
 
 const AmenitiesSection = () => {
@@ -18,8 +18,8 @@ const AmenitiesSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <AnimatedSection>
             <img
-              src={poolImage}
-              alt="Piscina infinita com vista panorâmica ao entardecer"
+              src={renderGarden}
+              alt="Jardim interior do Monte Grande Residences"
               className="w-full h-[500px] object-cover"
               loading="lazy"
               width={1280}
@@ -29,10 +29,10 @@ const AmenitiesSection = () => {
 
           <AnimatedSection delay={0.2}>
             <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-4">
-              Amenidades
+              Características
             </p>
             <h2 className="font-heading text-4xl md:text-5xl leading-tight mb-12">
-              Viver além do extraordinário
+              Qualidade em cada detalhe
             </h2>
 
             <div className="grid grid-cols-2 gap-8">
