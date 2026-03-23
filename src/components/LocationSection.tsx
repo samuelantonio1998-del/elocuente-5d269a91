@@ -2,10 +2,10 @@ import { MapPin, Train, GraduationCap, ShoppingBag } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 const points = [
-  { icon: MapPin, label: "Centro da Cidade", time: "5 min" },
-  { icon: Train, label: "Estação de Metro", time: "3 min" },
-  { icon: GraduationCap, label: "Escolas Internacionais", time: "8 min" },
-  { icon: ShoppingBag, label: "Centro Comercial", time: "4 min" },
+  { icon: MapPin, label: "Centro de Monte Grande", time: "5 min" },
+  { icon: Train, label: "Estação Fertagus", time: "8 min" },
+  { icon: GraduationCap, label: "Escolas e Serviços", time: "5 min" },
+  { icon: ShoppingBag, label: "Comércio e Restauração", time: "3 min" },
 ];
 
 const LocationSection = () => {
@@ -17,11 +17,12 @@ const LocationSection = () => {
             Localização
           </p>
           <h2 className="font-heading text-4xl md:text-5xl text-foreground mb-6">
-            No coração da cidade
+            Rua do Fagundo, Monte Grande
           </h2>
           <p className="font-body text-muted-foreground max-w-2xl mx-auto">
-            Estrategicamente posicionado numa das zonas mais valorizadas, o Aurora
-            oferece acesso privilegiado a tudo o que a cidade tem de melhor.
+            Numa zona residencial consolidada, com excelentes acessibilidades à
+            A2, IC21 e transportes públicos. A poucos minutos de Lisboa pela
+            ponte 25 de Abril.
           </p>
         </AnimatedSection>
 

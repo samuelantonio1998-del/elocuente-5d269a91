@@ -6,7 +6,7 @@ const HeroSection = () => {
     <section className="relative h-screen w-full overflow-hidden">
       <img
         src={heroImage}
-        alt="Empreendimento Aurora - Vista exterior ao pôr do sol"
+        alt="Monte Grande Residences - Vista exterior do empreendimento"
         className="absolute inset-0 w-full h-full object-cover"
         width={1920}
         height={1080}
@@ -27,18 +27,27 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-heading text-5xl md:text-7xl lg:text-8xl text-primary-foreground tracking-wide"
+          className="font-heading text-4xl md:text-6xl lg:text-7xl text-primary-foreground tracking-wide"
         >
-          AURORA
+          MONTE GRANDE
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="font-heading text-lg md:text-xl text-primary-foreground/80 italic mt-4 max-w-xl"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="font-heading text-2xl md:text-3xl text-primary-foreground/90 tracking-[0.2em] uppercase mt-2"
         >
-          Onde a elegância encontra a vida moderna
+          RESIDENCES
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="font-body text-base md:text-lg text-primary-foreground/70 mt-6 max-w-xl tracking-wide"
+        >
+          Rua do Fagundo · Monte Grande
         </motion.p>
 
         <motion.div

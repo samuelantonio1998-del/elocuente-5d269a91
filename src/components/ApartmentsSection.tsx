@@ -1,31 +1,26 @@
 import AnimatedSection from "./AnimatedSection";
-import interiorLiving from "@/assets/interior-living.jpg";
-import interiorBedroom from "@/assets/interior-bedroom.jpg";
+import renderDetail from "@/assets/render-detail.jpg";
+import renderGarden from "@/assets/render-garden.jpg";
+import renderSide from "@/assets/render-side.jpg";
 
 const typologies = [
   {
     type: "T1",
-    area: "55 — 65 m²",
-    desc: "Ideal para jovens profissionais. Espaços abertos e luminosos com varanda privativa.",
-    image: interiorLiving,
+    area: "50 — 65 m²",
+    desc: "Ideal para jovens profissionais. Espaços abertos e luminosos com varanda privativa e vegetação integrada.",
+    image: renderDetail,
   },
   {
     type: "T2",
-    area: "85 — 105 m²",
-    desc: "O equilíbrio perfeito entre conforto e funcionalidade, com duas suites completas.",
-    image: interiorBedroom,
+    area: "80 — 100 m²",
+    desc: "O equilíbrio perfeito entre conforto e funcionalidade, com varandas generosas e vistas desafogadas.",
+    image: renderGarden,
   },
   {
     type: "T3",
-    area: "120 — 145 m²",
-    desc: "Generosos espaços de convívio familiar com cozinha gourmet e terraço.",
-    image: interiorLiving,
-  },
-  {
-    type: "T4",
-    area: "180 — 220 m²",
-    desc: "O penthouse da exclusividade. Vistas panorâmicas 360° e acabamentos únicos.",
-    image: interiorBedroom,
+    area: "110 — 140 m²",
+    desc: "Amplos espaços de convívio familiar com cozinha equipada, terraço e acabamentos de qualidade superior.",
+    image: renderSide,
   },
 ];
 
@@ -42,14 +37,14 @@ const ApartmentsSection = () => {
           </h2>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {typologies.map((t, i) => (
             <AnimatedSection key={t.type} delay={i * 0.1}>
               <div className="group relative overflow-hidden bg-background">
                 <div className="h-64 overflow-hidden">
                   <img
                     src={t.image}
-                    alt={`Apartamento ${t.type}`}
+                    alt={`Apartamento ${t.type} — Monte Grande Residences`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                     width={1024}

@@ -4,14 +4,14 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <p className="font-heading text-2xl tracking-wider">AURORA</p>
-            <p className="font-body text-xs text-primary-foreground/50 mt-2 tracking-wider">
-              RESIDÊNCIAS DE EXCELÊNCIA
+            <p className="font-heading text-2xl tracking-wider">MONTE GRANDE</p>
+            <p className="font-body text-xs text-primary-foreground/50 mt-1 tracking-wider">
+              RESIDENCES
             </p>
           </div>
 
           <div className="flex gap-10">
-            {["Sobre", "Apartamentos", "Amenidades", "Localização", "Contacto"].map(
+            {["Sobre", "Galeria", "Apartamentos", "Localização", "Contacto"].map(
               (item) => (
                 <a
                   key={item}
@@ -25,9 +25,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 mt-12 pt-8 text-center">
+        <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-body text-xs text-primary-foreground/30">
-            © 2026 Aurora Residences. Todos os direitos reservados.
+            © 2026 Monte Grande Residences. Todos os direitos reservados.
+          </p>
+          <p className="font-body text-xs text-primary-foreground/30">
+            Arquitectura: Tiago Frazão Arquitetos
           </p>
         </div>
       </div>
