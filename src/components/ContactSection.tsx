@@ -1,0 +1,112 @@
+import { useState, FormEvent } from "react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
+import { toast } from "sonner";
+
+const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    typology: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    toast.success("Obrigado pelo seu interesse! Entraremos em contacto brevemente.");
+    setFormData({ name: "", email: "", phone: "", typology: "", message: "" });
+  };
+
+  return (
+    <section id="contacto" className="py-24 md:py-32 bg-cream-dark">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-16">
+          <AnimatedSection>
+            <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-4">
+              Contacto
+            </p>
+            <h2 className="font-heading text-4xl md:text-5xl text-foreground leading-tight mb-8">
+              Manifeste o seu interesse
+            </h2>
+            <p className="font-body text-muted-foreground leading-relaxed mb-12">
+              Preencha o formulário e a nossa equipa comercial entrará em contacto
+              consigo para agendar uma visita exclusiva ao empreendimento.
+            </p>
+
+            <div className="space-y-6">
+              {[
+                { icon: Phone, text: "+351 21 000 0000" },
+                { icon: Mail, text: "info@aurora-residences.pt" },
+                { icon: MapPin, text: "Av. da Liberdade, Lisboa" },
+              ].map((item) => (
+                <div key={item.text} className="flex items-center gap-4">
+                  <item.icon className="w-5 h-5 text-gold" />
+                  <span className="font-body text-sm text-foreground">{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.2}>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {[
+                { name: "name" as const, placeholder: "Nome completo", type: "text" },
+                { name: "email" as const, placeholder: "Email", type: "email" },
+                { name: "phone" as const, placeholder: "Telefone", type: "tel" },
+              ].map((field) => (
+                <input
+                  key={field.name}
+                  type={field.type}
+                  placeholder={field.placeholder}
+                  required
+                  value={formData[field.name]}
+                  onChange={(e) =>
+                    setFormData({ ...formData, [field.name]: e.target.value })
+                  }
+                  className="w-full px-0 py-4 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-gold transition-colors duration-300"
+                />
+              ))}
+
+              <select
+                value={formData.typology}
+                onChange={(e) =>
+                  setFormData({ ...formData, typology: e.target.value })
+                }
+                required
+                className="w-full px-0 py-4 bg-transparent border-b border-border font-body text-sm text-foreground focus:outline-none focus:border-gold transition-colors duration-300 appearance-none"
+              >
+                <option value="" disabled>
+                  Tipologia de interesse
+                </option>
+                <option value="T1">T1</option>
+                <option value="T2">T2</option>
+                <option value="T3">T3</option>
+                <option value="T4">T4</option>
+              </select>
+
+              <textarea
+                placeholder="Mensagem (opcional)"
+                rows={3}
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                className="w-full px-0 py-4 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-gold transition-colors duration-300 resize-none"
+              />
+
+              <button
+                type="submit"
+                className="w-full py-4 bg-gold text-charcoal font-body text-sm tracking-[0.3em] uppercase hover:bg-gold-light transition-colors duration-500"
+              >
+                Enviar Pedido
+              </button>
+            </form>
+          </AnimatedSection>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactSection;
