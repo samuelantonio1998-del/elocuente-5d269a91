@@ -16,15 +16,6 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-charcoal/40" />
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="font-body text-[11px] md:text-xs tracking-[0.6em] uppercase text-primary-foreground/70 mb-8"
-        >
-          Bem-vindo
-        </motion.p>
-
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -33,22 +24,6 @@ const HeroSection = () => {
         >
           Bem-vindo
         </motion.h1>
-
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
-          className="w-16 h-px bg-primary-foreground/40 my-6"
-        />
-
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
-          className="font-body text-[11px] md:text-sm tracking-[0.5em] uppercase text-primary-foreground/60"
-        >
-          Residences
-        </motion.p>
 
         {/* Scroll indicator */}
         <motion.div
