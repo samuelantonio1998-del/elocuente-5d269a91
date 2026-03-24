@@ -15,9 +15,9 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-6">
               <p className="font-body text-muted-foreground leading-[1.8] text-sm md:text-base">
-                O Monte Grande Residences é um novo empreendimento residencial localizado
-                na Rua do Fagundo, com um projecto de arquitectura assinado pelo atelier
-                Tiago Frazão Arquitetos.
+                O Monte Grande Residences é um novo empreendimento residencial de 23 fogos,
+                distribuídos por dois edifícios, localizado na Rua do Fagundo, em Albergaria,
+                Marinha Grande. O projecto de arquitectura é assinado pelo atelier Tiago Frazão Arquitetos.
               </p>
               <p className="font-body text-muted-foreground leading-[1.8] text-sm md:text-base">
                 Linhas contemporâneas, varandas generosas e integração paisagística
