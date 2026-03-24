@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Building, MapPin, Home, Trees } from "lucide-react";
-import heroImage from "@/assets/hero-building.jpg";
+import heroImage from "@/assets/render-front.jpg";
 
 const infoItems = [
   { icon: Building, label: "Edifícios", value: "2 Blocos · 3 Pisos" },
@@ -23,7 +23,7 @@ const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-charcoal/40" />
 
-        <div className="relative z-10 flex flex-col items-center justify-start h-full pt-32 md:pt-40 text-center px-6">
+        <div className="relative z-10 flex flex-col items-center justify-start h-full pt-20 md:pt-24 lg:pt-28 text-center px-6">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
