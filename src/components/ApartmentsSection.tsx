@@ -5,14 +5,14 @@ import renderGarden from "@/assets/render-garden.jpg";
 const typologies = [
   {
     type: "T2",
-    area: "22 Fracções",
-    desc: "Distribuídos pelos dois edifícios, os apartamentos T2 dispõem de sala e cozinha open-space, dois quartos e varandas generosas.",
+    area: "Desde 290.000€",
+    desc: "Apartamentos com sala e cozinha open-space, dois quartos, casa de banho completa e varandas generosas com excelente exposição solar.",
     image: renderDetail,
   },
   {
     type: "T3",
-    area: "1 Fracção",
-    desc: "No último piso do Edifício A, o T3 oferece três quartos, amplos espaços de convívio familiar e varanda privativa.",
+    area: "Sob consulta",
+    desc: "Três quartos, amplos espaços de convívio familiar, duas casas de banho e varanda privativa com vista desafogada.",
     image: renderGarden,
   },
 ];
