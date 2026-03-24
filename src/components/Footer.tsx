@@ -26,10 +26,10 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-body text-[10px] text-primary-foreground/25 tracking-wider">
+          <p className="font-body text-[10px] text-primary-foreground/50 tracking-wider">
             © 2026 Monte Grande Residences. Todos os direitos reservados.
           </p>
-          <p className="font-body text-[10px] text-primary-foreground/25 tracking-wider">
+          <p className="font-body text-[10px] text-primary-foreground/50 tracking-wider">
             Arquitectura: Tiago Frazão Arquitetos
           </p>
         </div>
