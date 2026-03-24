@@ -20,7 +20,6 @@ const galleryImages = [
   { src: renderEntrance, alt: "Entrada principal" },
   { src: renderDetail, alt: "Detalhe das varandas" },
   { src: renderBack, alt: "Vista posterior" },
-  { src: renderHero, alt: "Vista geral" },
 ];
 
 const GallerySection = () => {
