@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import heroImage from "@/assets/render-front.jpg";
+import heroImage from "@/assets/render-side.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <img
         src={heroImage}
-        alt="Monte Grande Residences - Vista exterior do empreendimento"
+        alt="Vista exterior do empreendimento"
         className="absolute inset-0 w-full h-full object-cover scale-105"
         width={1920}
         height={1080}
