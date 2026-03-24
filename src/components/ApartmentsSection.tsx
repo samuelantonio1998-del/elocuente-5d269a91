@@ -1,26 +1,19 @@
 import AnimatedSection from "./AnimatedSection";
 import renderDetail from "@/assets/render-detail.jpg";
 import renderGarden from "@/assets/render-garden.jpg";
-import renderSide from "@/assets/render-side.jpg";
 
 const typologies = [
   {
-    type: "T1",
-    area: "50 — 65 m²",
-    desc: "Ideal para jovens profissionais. Espaços abertos e luminosos com varanda privativa.",
+    type: "T2",
+    area: "22 Fracções",
+    desc: "Distribuídos pelos dois edifícios, os apartamentos T2 dispõem de sala e cozinha open-space, dois quartos e varandas generosas.",
     image: renderDetail,
   },
   {
-    type: "T2",
-    area: "80 — 100 m²",
-    desc: "O equilíbrio perfeito entre conforto e funcionalidade, com varandas generosas.",
-    image: renderGarden,
-  },
-  {
     type: "T3",
-    area: "110 — 140 m²",
-    desc: "Amplos espaços de convívio familiar com cozinha equipada e terraço.",
-    image: renderSide,
+    area: "1 Fracção",
+    desc: "No último piso do Edifício A, o T3 oferece três quartos, amplos espaços de convívio familiar e varanda privativa.",
+    image: renderGarden,
   },
 ];
 
@@ -37,7 +30,7 @@ const ApartmentsSection = () => {
           </h2>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {typologies.map((t, i) => (
             <AnimatedSection key={t.type} delay={i * 0.1}>
               <div className="group bg-background overflow-hidden">

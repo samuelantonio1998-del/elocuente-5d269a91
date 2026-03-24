@@ -6,7 +6,7 @@ const amenities = [
   { icon: Sun, label: "Varandas Generosas", desc: "Espaços exteriores amplos com vegetação" },
   { icon: TreePine, label: "Jardins Comuns", desc: "Áreas verdes paisagísticas cuidadas" },
   { icon: Shield, label: "Segurança", desc: "Controlo de acessos e vigilância" },
-  { icon: Car, label: "Estacionamento", desc: "Lugares privativos no edifício" },
+  { icon: Car, label: "Estacionamento", desc: "24 lugares privativos em cave" },
   { icon: Droplets, label: "Eficiência Energética", desc: "Classificação energética elevada" },
   { icon: Building, label: "Arquitectura de Autor", desc: "Projecto por Tiago Frazão Arquitetos" },
 ];

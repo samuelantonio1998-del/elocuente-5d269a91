@@ -15,9 +15,9 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-6">
               <p className="font-body text-muted-foreground leading-[1.8] text-sm md:text-base">
-                O Monte Grande Residences é um novo empreendimento residencial localizado
-                na Rua do Fagundo, com um projecto de arquitectura assinado pelo atelier
-                Tiago Frazão Arquitetos.
+                O Monte Grande Residences é um novo empreendimento residencial de 23 fogos,
+                distribuídos por dois edifícios, localizado na Rua do Fagundo, em Albergaria,
+                Marinha Grande. O projecto de arquitectura é assinado pelo atelier Tiago Frazão Arquitetos.
               </p>
               <p className="font-body text-muted-foreground leading-[1.8] text-sm md:text-base">
                 Linhas contemporâneas, varandas generosas e integração paisagística
@@ -28,9 +28,10 @@ const AboutSection = () => {
 
             <div className="flex gap-16 mt-12 pt-10 border-t border-border">
               {[
-                { num: "T1–T3", label: "Tipologias" },
-                { num: "4", label: "Pisos" },
-                { num: "2027", label: "Conclusão" },
+                { num: "23", label: "Fogos" },
+                { num: "T2–T3", label: "Tipologias" },
+                { num: "2", label: "Edifícios" },
+                { num: "3", label: "Pisos" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p className="font-heading text-3xl text-foreground">{stat.num}</p>
