@@ -3,10 +3,10 @@ import { Building, MapPin, Home, Trees } from "lucide-react";
 import heroImage from "@/assets/hero-building.jpg";
 
 const infoItems = [
-  { icon: Building, label: "Edifício", value: "4 Pisos" },
-  { icon: MapPin, label: "Localização", value: "Monte Grande" },
-  { icon: Home, label: "Habitações", value: "T1 a T3" },
-  { icon: Trees, label: "Espaços Comuns", value: "Jardim, Estacionamento" },
+  { icon: Building, label: "Edifícios", value: "2 Blocos · 3 Pisos" },
+  { icon: MapPin, label: "Localização", value: "Marinha Grande" },
+  { icon: Home, label: "Habitações", value: "23 Fogos · T2 e T3" },
+  { icon: Trees, label: "Estacionamento", value: "24 Lugares + Jardim" },
 ];
 
 const HeroSection = () => {
