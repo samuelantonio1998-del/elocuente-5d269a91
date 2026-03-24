@@ -17,7 +17,7 @@ const AboutSection = () => {
               A Arte de Viver<br className="hidden md:block" /> o Seu Melhor
             </h2>
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-3xl mx-auto">
-              O Monte Grande Residences é um novo empreendimento residencial
+              O Eloquente é um novo empreendimento residencial
               distribuído por dois edifícios, localizado na Rua do Fagundo, em Albergaria,
               Marinha Grande. O projecto de arquitectura é assinado pelo atelier Tiago Frazão Arquitetos.
             </p>
