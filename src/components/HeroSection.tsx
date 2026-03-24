@@ -19,6 +19,7 @@ const HeroSection = () => {
           className="absolute inset-0 w-full h-full object-cover"
           width={1920}
           height={1080}
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-charcoal/40" />
 
