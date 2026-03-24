@@ -16,7 +16,7 @@ const Footer = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace("ã", "a").replace("ç", "c")}`}
-                  className="font-body text-[10px] tracking-[0.2em] uppercase text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300"
+                  className="font-body text-[10px] tracking-[0.2em] uppercase text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300"
                 >
                   {item}
                 </a>
