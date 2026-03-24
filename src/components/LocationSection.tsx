@@ -2,8 +2,8 @@ import { MapPin, Train, GraduationCap, ShoppingBag } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 const points = [
-  { icon: MapPin, label: "Centro de Monte Grande", time: "5 min" },
-  { icon: Train, label: "Estação Fertagus", time: "8 min" },
+  { icon: MapPin, label: "Centro de Marinha Grande", time: "5 min" },
+  { icon: Train, label: "Acessos Rodoviários", time: "3 min" },
   { icon: GraduationCap, label: "Escolas e Serviços", time: "5 min" },
   { icon: ShoppingBag, label: "Comércio e Restauração", time: "3 min" },
 ];
