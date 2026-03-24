@@ -54,12 +54,7 @@ const Navbar = () => {
           <span className={`font-heading text-xl lg:text-2xl tracking-[0.2em] transition-colors duration-500 ${
             scrolled ? "text-foreground" : "text-primary-foreground"
           }`}>
-            MONTE GRANDE
-          </span>
-          <span className={`font-body text-[8px] lg:text-[9px] tracking-[0.5em] uppercase transition-colors duration-500 ${
-            scrolled ? "text-muted-foreground" : "text-primary-foreground/60"
-          }`}>
-            Residences
+            ELOQUENTE
           </span>
         </a>
 

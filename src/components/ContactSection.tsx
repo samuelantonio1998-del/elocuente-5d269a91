@@ -32,7 +32,7 @@ const ContactSection = () => {
             </h2>
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base mb-16 max-w-md">
               Preencha o formulário e a nossa equipa comercial entrará em contacto
-              consigo para mais informações sobre o Monte Grande Residences.
+              consigo para mais informações consigo para mais informações sobre o Eloquente.
             </p>
 
             <div className="space-y-8">

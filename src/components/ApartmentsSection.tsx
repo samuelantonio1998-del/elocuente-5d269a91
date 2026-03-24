@@ -35,7 +35,7 @@ const ApartmentsSection = () => {
               Uma Escolha Natural
             </h2>
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-2xl mx-auto">
-              O Monte Grande Residences oferece tipologias T2 e T3,
+              O Eloquente oferece tipologias T2 e T3, tipologias T2 e T3,
               cada uma um testemunho de conforto e estética natural.
             </p>
           </AnimatedSection>
