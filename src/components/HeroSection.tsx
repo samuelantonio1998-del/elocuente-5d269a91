@@ -22,7 +22,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="font-body text-[11px] md:text-xs tracking-[0.6em] uppercase text-primary-foreground/70 mb-8"
         >
-          Novo Empreendimento
+          Bem-vindo
         </motion.p>
 
         <motion.h1
