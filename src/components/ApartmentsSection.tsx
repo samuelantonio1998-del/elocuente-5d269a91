@@ -1,7 +1,6 @@
 import AnimatedSection from "./AnimatedSection";
 import renderDetail from "@/assets/render-detail.jpg";
 import renderGarden from "@/assets/render-garden.jpg";
-import renderSide from "@/assets/render-side.jpg";
 
 const typologies = [
   {

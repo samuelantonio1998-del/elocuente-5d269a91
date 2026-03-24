@@ -38,7 +38,7 @@ const ContactSection = () => {
               {[
                 { icon: Phone, text: "+351 916 422 521" },
                 { icon: Mail, text: "info@montegrande-residences.pt" },
-                { icon: MapPin, text: "Rua do Fagundo, Monte Grande" },
+                { icon: MapPin, text: "Rua do Fagundo, Albergaria, Marinha Grande" },
               ].map((item) => (
                 <div key={item.text} className="flex items-center gap-4">
                   <item.icon className="w-4 h-4 text-gold stroke-[1.5]" />
