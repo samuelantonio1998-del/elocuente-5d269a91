@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import renderGarden from "@/assets/render-garden.jpg";
 import renderEntrance from "@/assets/render-entrance.jpg";
-import amenitiesPool from "@/assets/amenities-pool.jpg";
+import renderDetail from "@/assets/render-detail.jpg";
 import renderAerial from "@/assets/render-aerial.jpg";
 
 const amenities = [
@@ -20,7 +20,7 @@ const amenities = [
   {
     label: "Varandas",
     desc: "Varandas generosas com vegetação integrada, prolongando o espaço interior e criando áreas de estar ao ar livre.",
-    image: amenitiesPool,
+    image: renderDetail,
   },
   {
     label: "Segurança",
