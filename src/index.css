@@ -6,44 +6,44 @@
 
 @layer base {
   :root {
-    --background: 40 18% 96%;
-    --foreground: 30 10% 15%;
+    --background: 40 20% 97%;
+    --foreground: 30 12% 10%;
 
-    --card: 40 15% 94%;
-    --card-foreground: 30 10% 15%;
+    --card: 40 16% 93%;
+    --card-foreground: 30 12% 10%;
 
-    --popover: 40 18% 96%;
-    --popover-foreground: 30 10% 15%;
+    --popover: 40 20% 97%;
+    --popover-foreground: 30 12% 10%;
 
-    --primary: 30 10% 15%;
-    --primary-foreground: 40 18% 96%;
+    --primary: 30 14% 10%;
+    --primary-foreground: 40 20% 97%;
 
-    --secondary: 36 12% 88%;
-    --secondary-foreground: 30 10% 15%;
+    --secondary: 36 14% 86%;
+    --secondary-foreground: 30 12% 10%;
 
-    --muted: 36 10% 90%;
-    --muted-foreground: 30 8% 45%;
+    --muted: 36 12% 88%;
+    --muted-foreground: 30 10% 38%;
 
-    --accent: 36 30% 58%;
-    --accent-foreground: 40 18% 96%;
+    --accent: 36 38% 50%;
+    --accent-foreground: 40 20% 97%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 36 15% 85%;
-    --input: 36 15% 85%;
-    --ring: 36 30% 58%;
+    --border: 36 18% 80%;
+    --input: 36 18% 80%;
+    --ring: 36 38% 50%;
 
     --radius: 0rem;
 
-    --gold: 36 30% 58%;
-    --gold-light: 36 25% 72%;
-    --charcoal: 30 10% 15%;
-    --charcoal-light: 30 8% 25%;
-    --cream: 40 18% 96%;
-    --cream-dark: 36 14% 91%;
-    --warm-gray: 30 6% 50%;
-    --warm-beige: 36 20% 78%;
+    --gold: 36 42% 48%;
+    --gold-light: 36 28% 68%;
+    --charcoal: 30 14% 10%;
+    --charcoal-light: 30 10% 20%;
+    --cream: 40 20% 97%;
+    --cream-dark: 36 16% 89%;
+    --warm-gray: 30 8% 42%;
+    --warm-beige: 36 22% 72%;
 
     --font-heading: 'Playfair Display', serif;
     --font-body: 'DM Sans', sans-serif;
