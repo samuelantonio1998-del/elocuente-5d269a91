@@ -5,7 +5,7 @@ import heroImage from "@/assets/hero-building.jpg";
 const infoItems = [
   { icon: Building, label: "Edifícios", value: "2 Blocos · 3 Pisos" },
   { icon: MapPin, label: "Localização", value: "Marinha Grande" },
-  { icon: Home, label: "Habitações", value: "23 Fogos · T2 e T3" },
+  { icon: Home, label: "Tipologias", value: "T2 e T3" },
   { icon: Trees, label: "Estacionamento", value: "24 Lugares + Jardim" },
 ];
 
