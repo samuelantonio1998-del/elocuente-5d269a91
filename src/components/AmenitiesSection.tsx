@@ -20,7 +20,7 @@ const amenities = [
   {
     label: "Varandas",
     desc: "Varandas generosas com vegetação integrada, prolongando o espaço interior e criando áreas de estar ao ar livre.",
-    image: amenitiesPool,
+    image: renderDetail,
   },
   {
     label: "Segurança",
