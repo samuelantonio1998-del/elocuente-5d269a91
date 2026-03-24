@@ -31,7 +31,7 @@ const HeroSection = () => {
           transition={{ duration: 1.2, delay: 1 }}
           className="font-heading text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-primary-foreground leading-none tracking-wide"
         >
-          Monte Grande
+          Bem-vindo
         </motion.h1>
 
         <motion.div
