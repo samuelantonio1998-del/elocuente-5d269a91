@@ -47,7 +47,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="font-body text-sm md:text-base tracking-[0.4em] uppercase text-primary-foreground/60 mt-4"
           >
-            Rua do Fagundo · <span className="text-gold">Residences</span>
+            Rua do Fagundo · Albergaria · <span className="text-gold">Residences</span>
           </motion.p>
 
           <motion.div

@@ -17,12 +17,11 @@ const LocationSection = () => {
             Localização
           </p>
           <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-8">
-            Rua do Fagundo, Monte Grande
+            Albergaria, Marinha Grande
           </h2>
           <p className="font-body text-muted-foreground max-w-2xl mx-auto leading-[1.8] text-sm md:text-base">
-            Numa zona residencial consolidada, com excelentes acessibilidades à
-            A2, IC21 e transportes públicos. A poucos minutos de Lisboa pela
-            ponte 25 de Abril.
+            Numa zona residencial em Albergaria, junto à cidade de Marinha Grande,
+            com boas acessibilidades rodoviárias e proximidade a serviços e comércio.
           </p>
         </AnimatedSection>
 

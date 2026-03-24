@@ -31,7 +31,7 @@ const ApartmentsSection = () => {
           </h2>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {typologies.map((t, i) => (
             <AnimatedSection key={t.type} delay={i * 0.1}>
               <div className="group bg-background overflow-hidden">

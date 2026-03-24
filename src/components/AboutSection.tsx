@@ -28,9 +28,10 @@ const AboutSection = () => {
 
             <div className="flex gap-16 mt-12 pt-10 border-t border-border">
               {[
-                { num: "T1–T3", label: "Tipologias" },
-                { num: "4", label: "Pisos" },
-                { num: "2027", label: "Conclusão" },
+                { num: "23", label: "Fogos" },
+                { num: "T2–T3", label: "Tipologias" },
+                { num: "2", label: "Edifícios" },
+                { num: "3", label: "Pisos" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p className="font-heading text-3xl text-foreground">{stat.num}</p>
