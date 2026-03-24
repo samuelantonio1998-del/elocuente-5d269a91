@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "Galeria", href: "#galeria" },
-  { label: "Apartamentos", href: "#apartamentos" },
+  { label: "Conceito", href: "#sobre" },
   { label: "Localização", href: "#localizacao" },
+  { label: "Apartamentos", href: "#apartamentos" },
+  { label: "Amenidades", href: "#amenidades" },
   { label: "Contacto", href: "#contacto" },
 ];
 
@@ -22,35 +22,23 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 0.5 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
-          ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+          ? "bg-background/95 backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
-        <a href="#" className="flex items-baseline gap-2">
-          <span className={`font-heading text-lg tracking-[0.15em] transition-colors duration-500 ${
-            scrolled ? "text-foreground" : "text-primary-foreground"
-          }`}>
-            MONTE GRANDE
-          </span>
-          <span className={`font-body text-[10px] tracking-[0.3em] uppercase transition-colors duration-500 ${
-            scrolled ? "text-gold" : "text-gold"
-          }`}>
-            Residences
-          </span>
-        </a>
-
-        <div className="hidden md:flex items-center gap-10">
-          {navItems.map((item) => (
+      <div className="w-full px-8 lg:px-16 flex items-center justify-between h-20 lg:h-24">
+        {/* Left nav items */}
+        <div className="hidden lg:flex items-center gap-12 flex-1">
+          {navItems.slice(0, 2).map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className={`text-xs font-body tracking-[0.2em] uppercase transition-colors duration-300 ${
+              className={`text-[11px] font-body tracking-[0.25em] uppercase transition-colors duration-300 ${
                 scrolled
                   ? "text-muted-foreground hover:text-foreground"
                   : "text-primary-foreground/70 hover:text-primary-foreground"
@@ -61,34 +49,85 @@ const Navbar = () => {
           ))}
         </div>
 
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className={`md:hidden transition-colors ${
+        {/* Center logo */}
+        <a href="#" className="flex flex-col items-center gap-0.5 flex-shrink-0">
+          <span className={`font-heading text-xl lg:text-2xl tracking-[0.2em] transition-colors duration-500 ${
             scrolled ? "text-foreground" : "text-primary-foreground"
-          }`}
-        >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
+          }`}>
+            MONTE GRANDE
+          </span>
+          <span className={`font-body text-[8px] lg:text-[9px] tracking-[0.5em] uppercase transition-colors duration-500 ${
+            scrolled ? "text-muted-foreground" : "text-primary-foreground/60"
+          }`}>
+            Residences
+          </span>
+        </a>
 
-      {menuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-background border-b border-border px-6 pb-8 pt-4"
-        >
-          {navItems.map((item) => (
+        {/* Right nav items */}
+        <div className="hidden lg:flex items-center gap-12 flex-1 justify-end">
+          {navItems.slice(2, 4).map((item) => (
             <a
               key={item.href}
               href={item.href}
-              onClick={() => setMenuOpen(false)}
-              className="block py-3 text-xs font-body tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+              className={`text-[11px] font-body tracking-[0.25em] uppercase transition-colors duration-300 ${
+                scrolled
+                  ? "text-muted-foreground hover:text-foreground"
+                  : "text-primary-foreground/70 hover:text-primary-foreground"
+              }`}
             >
               {item.label}
             </a>
           ))}
-        </motion.div>
-      )}
+          <a
+            href="#contacto"
+            className={`text-[11px] font-body tracking-[0.25em] uppercase px-6 py-2.5 border transition-all duration-300 ${
+              scrolled
+                ? "border-foreground/20 text-foreground hover:bg-foreground hover:text-background"
+                : "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-charcoal"
+            }`}
+          >
+            Contacto
+          </a>
+        </div>
+
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className={`lg:hidden transition-colors ${
+            scrolled ? "text-foreground" : "text-primary-foreground"
+          }`}
+          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+        >
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-charcoal overflow-hidden"
+          >
+            <div className="px-8 py-10 space-y-1">
+              {navItems.map((item, i) => (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="block py-4 text-sm font-body tracking-[0.25em] uppercase text-primary-foreground/70 hover:text-primary-foreground transition-colors border-b border-primary-foreground/10"
+                >
+                  {item.label}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };

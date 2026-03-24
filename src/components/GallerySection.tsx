@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
@@ -12,102 +12,99 @@ import renderDetail from "@/assets/render-detail.jpg";
 import renderBack from "@/assets/render-back.jpg";
 import renderAerial from "@/assets/render-aerial.jpg";
 
-type GalleryCategory = "exteriores" | "interiores";
-
-const categories: { key: GalleryCategory; label: string }[] = [
-  { key: "exteriores", label: "Espaços Exteriores" },
-  { key: "interiores", label: "Espaços Interiores" },
+const galleryImages = [
+  { src: renderFront, alt: "Fachada principal" },
+  { src: renderSide, alt: "Vista lateral" },
+  { src: renderGarden, alt: "Jardim interior" },
+  { src: renderAerial, alt: "Vista aérea" },
+  { src: renderEntrance, alt: "Entrada principal" },
+  { src: renderDetail, alt: "Detalhe das varandas" },
+  { src: renderBack, alt: "Vista posterior" },
+  { src: renderHero, alt: "Vista geral" },
 ];
 
-const galleryImages: Record<GalleryCategory, { src: string; alt: string; span?: string }[]> = {
-  exteriores: [
-    { src: renderHero, alt: "Vista principal do empreendimento", span: "col-span-2 row-span-2" },
-    { src: renderFront, alt: "Fachada principal" },
-    { src: renderSide, alt: "Vista lateral" },
-    { src: renderAerial, alt: "Vista aérea", span: "col-span-2" },
-    { src: renderBack, alt: "Vista posterior" },
-  ],
-  interiores: [
-    { src: renderDetail, alt: "Detalhe das varandas" },
-    { src: renderGarden, alt: "Jardim interior", span: "col-span-2 row-span-2" },
-    { src: renderEntrance, alt: "Entrada principal" },
-  ],
-};
-
 const GallerySection = () => {
-  const [activeCategory, setActiveCategory] = useState<GalleryCategory>("exteriores");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
-  const currentImages = galleryImages[activeCategory];
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const closeLightbox = () => setLightboxIndex(null);
   const prev = () =>
     setLightboxIndex((i) =>
-      i !== null ? (i - 1 + currentImages.length) % currentImages.length : null
+      i !== null ? (i - 1 + galleryImages.length) % galleryImages.length : null
     );
   const next = () =>
     setLightboxIndex((i) =>
-      i !== null ? (i + 1) % currentImages.length : null
+      i !== null ? (i + 1) % galleryImages.length : null
     );
+
+  const scrollGallery = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const amount = scrollRef.current.clientWidth * 0.6;
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -amount : amount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <section id="galeria" className="py-28 md:py-40 bg-background">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <AnimatedSection className="mb-16">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-            <div>
-              <p className="text-gold font-body text-[10px] md:text-xs tracking-[0.4em] uppercase mb-4">
-                Galeria
-              </p>
-              <h2 className="font-heading text-3xl md:text-5xl text-foreground">
-                Imagens do projecto
-              </h2>
-            </div>
-
-            <div className="flex gap-1">
-              {categories.map((cat) => (
-                <button
-                  key={cat.key}
-                  onClick={() => setActiveCategory(cat.key)}
-                  className={`px-5 py-2.5 font-body text-[10px] md:text-xs tracking-[0.2em] uppercase transition-all duration-300 ${
-                    activeCategory === cat.key
-                      ? "bg-foreground text-background"
-                      : "bg-transparent text-muted-foreground hover:text-foreground border border-border"
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
+      <div className="px-8 lg:px-16 mb-12">
+        <AnimatedSection className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-4">
+              Galeria
+            </p>
+            <h2 className="font-heading text-3xl md:text-5xl text-foreground">
+              Imagens do projecto
+            </h2>
+          </div>
+          <div className="flex gap-3">
+            <button
+              onClick={() => scrollGallery("left")}
+              className="w-12 h-12 border border-border flex items-center justify-center hover:bg-foreground hover:text-background hover:border-foreground transition-all duration-300"
+              aria-label="Anterior"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={() => scrollGallery("right")}
+              className="w-12 h-12 border border-border flex items-center justify-center hover:bg-foreground hover:text-background hover:border-foreground transition-all duration-300"
+              aria-label="Próximo"
+            >
+              <ChevronRight size={18} />
+            </button>
           </div>
         </AnimatedSection>
+      </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeCategory}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 auto-rows-[200px] md:auto-rows-[250px]"
+      {/* Horizontal scroll gallery */}
+      <div
+        ref={scrollRef}
+        className="flex gap-4 px-8 lg:px-16 overflow-x-auto hide-scrollbar"
+      >
+        {galleryImages.map((img, i) => (
+          <button
+            key={i}
+            onClick={() => setLightboxIndex(i)}
+            className="flex-shrink-0 relative overflow-hidden group cursor-pointer h-[350px] md:h-[500px] w-[300px] md:w-[400px]"
           >
-            {currentImages.map((img, i) => (
-              <button
-                key={`${activeCategory}-${i}`}
-                onClick={() => setLightboxIndex(i)}
-                className={`relative overflow-hidden group cursor-pointer ${img.span || ""}`}
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-500" />
-              </button>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+            <img
+              src={img.src}
+              alt={img.alt}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-500" />
+          </button>
+        ))}
+      </div>
+
+      {/* Counter */}
+      <div className="px-8 lg:px-16 mt-8">
+        <p className="font-body text-[10px] tracking-[0.3em] text-muted-foreground">
+          {galleryImages.length} imagens
+        </p>
       </div>
 
       {/* Lightbox */}
@@ -144,13 +141,13 @@ const GallerySection = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              src={currentImages[lightboxIndex].src}
-              alt={currentImages[lightboxIndex].alt}
+              src={galleryImages[lightboxIndex].src}
+              alt={galleryImages[lightboxIndex].alt}
               className="max-w-[90vw] max-h-[85vh] object-contain"
               onClick={(e) => e.stopPropagation()}
             />
             <p className="absolute bottom-6 text-center font-body text-xs text-primary-foreground/40 tracking-[0.2em]">
-              {lightboxIndex + 1} / {currentImages.length}
+              {lightboxIndex + 1} / {galleryImages.length}
             </p>
           </motion.div>
         )}

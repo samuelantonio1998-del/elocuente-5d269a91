@@ -19,37 +19,41 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contacto" className="py-28 md:py-40 bg-cream-dark">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+    <section id="contacto" className="bg-background">
+      <div className="grid lg:grid-cols-2 min-h-[80vh]">
+        {/* Left — info */}
+        <div className="flex items-center px-8 lg:px-20 py-20 lg:py-0 bg-cream-dark">
           <AnimatedSection>
-            <p className="text-gold font-body text-[10px] md:text-xs tracking-[0.4em] uppercase mb-6">
+            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-10">
               Contacto
             </p>
-            <h2 className="font-heading text-3xl md:text-5xl text-foreground leading-[1.1] mb-8">
-              Manifeste o seu interesse
+            <h2 className="font-heading text-3xl md:text-5xl text-foreground leading-[1.15] mb-8">
+              Manifeste o<br />seu Interesse
             </h2>
-            <p className="font-body text-muted-foreground leading-[1.8] text-sm md:text-base mb-14">
+            <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base mb-16 max-w-md">
               Preencha o formulário e a nossa equipa comercial entrará em contacto
               consigo para mais informações sobre o Monte Grande Residences.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               {[
                 { icon: Phone, text: "+351 916 422 521" },
                 { icon: Mail, text: "info@montegrande-residences.pt" },
-                { icon: MapPin, text: "Rua do Fagundo, Albergaria, Marinha Grande" },
+                { icon: MapPin, text: "Rua do Fagundo, Albergaria\nMarinha Grande" },
               ].map((item) => (
-                <div key={item.text} className="flex items-center gap-4">
-                  <item.icon className="w-4 h-4 text-gold stroke-[1.5]" />
-                  <span className="font-body text-sm text-foreground">{item.text}</span>
+                <div key={item.text} className="flex items-start gap-4">
+                  <item.icon className="w-4 h-4 text-gold flex-shrink-0 mt-0.5 stroke-[1.5]" />
+                  <span className="font-body text-sm text-foreground whitespace-pre-line">{item.text}</span>
                 </div>
               ))}
             </div>
           </AnimatedSection>
+        </div>
 
-          <AnimatedSection delay={0.2}>
-            <form onSubmit={handleSubmit} className="space-y-8">
+        {/* Right — form */}
+        <div className="flex items-center px-8 lg:px-20 py-20 lg:py-0">
+          <AnimatedSection delay={0.15} className="w-full max-w-md">
+            <form onSubmit={handleSubmit} className="space-y-0">
               {[
                 { name: "name" as const, placeholder: "Nome completo", type: "text" },
                 { name: "email" as const, placeholder: "Email", type: "email" },
@@ -64,7 +68,7 @@ const ContactSection = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, [field.name]: e.target.value })
                   }
-                  className="w-full px-0 py-4 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-gold transition-colors duration-300"
+                  className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors duration-300"
                 />
               ))}
 
@@ -74,7 +78,7 @@ const ContactSection = () => {
                   setFormData({ ...formData, typology: e.target.value })
                 }
                 required
-                className="w-full px-0 py-4 bg-transparent border-b border-border font-body text-sm text-foreground focus:outline-none focus:border-gold transition-colors duration-300 appearance-none"
+                className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground focus:outline-none focus:border-foreground transition-colors duration-300 appearance-none"
               >
                 <option value="" disabled>
                   Tipologia de interesse
@@ -90,15 +94,17 @@ const ContactSection = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="w-full px-0 py-4 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-gold transition-colors duration-300 resize-none"
+                className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors duration-300 resize-none"
               />
 
-              <button
-                type="submit"
-                className="w-full py-4 bg-foreground text-background font-body text-xs tracking-[0.3em] uppercase hover:bg-gold transition-colors duration-500"
-              >
-                Enviar Pedido
-              </button>
+              <div className="pt-10">
+                <button
+                  type="submit"
+                  className="w-full py-4 bg-foreground text-background font-body text-[10px] tracking-[0.3em] uppercase hover:bg-gold hover:text-background transition-all duration-500"
+                >
+                  Enviar Pedido
+                </button>
+              </div>
             </form>
           </AnimatedSection>
         </div>

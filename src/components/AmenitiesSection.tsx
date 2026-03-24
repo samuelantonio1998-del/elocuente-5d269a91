@@ -1,50 +1,110 @@
-import { TreePine, Shield, Car, Sun, Droplets, Building } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import renderGarden from "@/assets/render-garden.jpg";
+import renderEntrance from "@/assets/render-entrance.jpg";
+import amenitiesPool from "@/assets/amenities-pool.jpg";
+import renderAerial from "@/assets/render-aerial.jpg";
 
 const amenities = [
-  { icon: Sun, label: "Varandas Generosas", desc: "Espaços exteriores amplos com vegetação" },
-  { icon: TreePine, label: "Jardins Comuns", desc: "Áreas verdes paisagísticas cuidadas" },
-  { icon: Shield, label: "Segurança", desc: "Controlo de acessos e vigilância" },
-  { icon: Car, label: "Estacionamento", desc: "24 lugares privativos em cave" },
-  { icon: Droplets, label: "Eficiência Energética", desc: "Classificação energética elevada" },
-  { icon: Building, label: "Arquitectura de Autor", desc: "Projecto por Tiago Frazão Arquitetos" },
+  {
+    label: "Jardins",
+    desc: "Áreas verdes paisagísticas comuns, desenhadas para promover momentos de convívio e relaxamento ao ar livre.",
+    image: renderGarden,
+  },
+  {
+    label: "Estacionamento",
+    desc: "24 lugares de estacionamento privativos em cave, garantindo comodidade e segurança para todos os residentes.",
+    image: renderEntrance,
+  },
+  {
+    label: "Varandas",
+    desc: "Varandas generosas com vegetação integrada, prolongando o espaço interior e criando áreas de estar ao ar livre.",
+    image: amenitiesPool,
+  },
+  {
+    label: "Segurança",
+    desc: "Sistema de controlo de acessos e vigilância, para a tranquilidade de todos os moradores.",
+    image: renderAerial,
+  },
 ];
 
 const AmenitiesSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <section className="py-28 md:py-40 bg-charcoal text-primary-foreground">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <AnimatedSection>
-            <img
-              src={renderGarden}
-              alt="Jardim interior do Monte Grande Residences"
-              className="w-full h-[400px] md:h-[550px] object-cover"
-              loading="lazy"
-              width={1280}
-              height={960}
-            />
+    <section id="amenidades" className="bg-charcoal text-primary-foreground">
+      <div className="py-28 md:py-40 px-8 lg:px-16">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection className="text-center mb-16">
+            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-primary-foreground/50 mb-4">
+              Amenidades
+            </p>
+            <h2 className="font-heading text-3xl md:text-5xl leading-[1.15] mb-6">
+              Conforto & Privacidade
+            </h2>
+            <p className="font-body text-primary-foreground/60 leading-[2] text-sm md:text-base max-w-2xl mx-auto">
+              Cada detalhe foi pensado para oferecer qualidade de vida excepcional,
+              com espaços comuns que complementam a experiência residencial.
+            </p>
           </AnimatedSection>
 
-          <AnimatedSection delay={0.2}>
-            <p className="text-gold font-body text-[10px] md:text-xs tracking-[0.4em] uppercase mb-6">
-              Características
-            </p>
-            <h2 className="font-heading text-3xl md:text-5xl leading-[1.1] mb-14">
-              Qualidade em cada detalhe
-            </h2>
-
-            <div className="grid grid-cols-2 gap-x-10 gap-y-10">
-              {amenities.map((a) => (
-                <div key={a.label} className="flex items-start gap-4">
-                  <a.icon className="w-5 h-5 text-gold flex-shrink-0 mt-0.5 stroke-[1.5]" />
-                  <div>
-                    <p className="font-body text-sm font-medium mb-1">{a.label}</p>
-                    <p className="font-body text-xs text-primary-foreground/50 leading-relaxed">{a.desc}</p>
-                  </div>
+          {/* Image + tabs layout */}
+          <AnimatedSection delay={0.1}>
+            <div className="grid md:grid-cols-5 gap-0">
+              {/* Image area */}
+              <div className="md:col-span-3 h-[350px] md:h-[500px] overflow-hidden relative">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={activeIndex}
+                    src={amenities[activeIndex].image}
+                    alt={amenities[activeIndex].label}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="w-full h-full object-cover absolute inset-0"
+                    loading="lazy"
+                  />
+                </AnimatePresence>
+                {/* Counter overlay */}
+                <div className="absolute bottom-6 left-6 font-body text-[10px] tracking-[0.3em] text-primary-foreground/60">
+                  {activeIndex + 1} / {amenities.length}
                 </div>
-              ))}
+              </div>
+
+              {/* Tabs */}
+              <div className="md:col-span-2 flex flex-col">
+                {amenities.map((a, i) => (
+                  <button
+                    key={a.label}
+                    onClick={() => setActiveIndex(i)}
+                    className={`text-left px-8 py-6 md:py-0 md:flex-1 flex flex-col justify-center border-b border-primary-foreground/10 last:border-b-0 transition-all duration-300 ${
+                      activeIndex === i
+                        ? "bg-primary-foreground/5"
+                        : "hover:bg-primary-foreground/[0.02]"
+                    }`}
+                  >
+                    <p className={`font-body text-xs tracking-[0.2em] uppercase transition-colors duration-300 ${
+                      activeIndex === i ? "text-primary-foreground" : "text-primary-foreground/50"
+                    }`}>
+                      {a.label}
+                    </p>
+                    <AnimatePresence>
+                      {activeIndex === i && (
+                        <motion.p
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="font-body text-xs text-primary-foreground/40 leading-relaxed mt-3 overflow-hidden"
+                        >
+                          {a.desc}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </button>
+                ))}
+              </div>
             </div>
           </AnimatedSection>
         </div>
