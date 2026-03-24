@@ -19,17 +19,17 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contacto" className="py-24 md:py-32 bg-cream-dark">
+    <section id="contacto" className="py-28 md:py-40 bg-cream-dark">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           <AnimatedSection>
-            <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-4">
+            <p className="text-gold font-body text-[10px] md:text-xs tracking-[0.4em] uppercase mb-6">
               Contacto
             </p>
-            <h2 className="font-heading text-4xl md:text-5xl text-foreground leading-tight mb-8">
+            <h2 className="font-heading text-3xl md:text-5xl text-foreground leading-[1.1] mb-8">
               Manifeste o seu interesse
             </h2>
-            <p className="font-body text-muted-foreground leading-relaxed mb-12">
+            <p className="font-body text-muted-foreground leading-[1.8] text-sm md:text-base mb-14">
               Preencha o formulário e a nossa equipa comercial entrará em contacto
               consigo para mais informações sobre o Monte Grande Residences.
             </p>
@@ -41,7 +41,7 @@ const ContactSection = () => {
                 { icon: MapPin, text: "Rua do Fagundo, Monte Grande" },
               ].map((item) => (
                 <div key={item.text} className="flex items-center gap-4">
-                  <item.icon className="w-5 h-5 text-gold" />
+                  <item.icon className="w-4 h-4 text-gold stroke-[1.5]" />
                   <span className="font-body text-sm text-foreground">{item.text}</span>
                 </div>
               ))}
@@ -49,7 +49,7 @@ const ContactSection = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-8">
               {[
                 { name: "name" as const, placeholder: "Nome completo", type: "text" },
                 { name: "email" as const, placeholder: "Email", type: "email" },
@@ -96,7 +96,7 @@ const ContactSection = () => {
 
               <button
                 type="submit"
-                className="w-full py-4 bg-gold text-charcoal font-body text-sm tracking-[0.3em] uppercase hover:bg-gold-light transition-colors duration-500"
+                className="w-full py-4 bg-foreground text-background font-body text-xs tracking-[0.3em] uppercase hover:bg-gold transition-colors duration-500"
               >
                 Enviar Pedido
               </button>

@@ -13,14 +13,14 @@ const amenities = [
 
 const AmenitiesSection = () => {
   return (
-    <section id="amenidades" className="py-24 md:py-32 bg-charcoal text-primary-foreground">
+    <section className="py-28 md:py-40 bg-charcoal text-primary-foreground">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <AnimatedSection>
             <img
               src={renderGarden}
               alt="Jardim interior do Monte Grande Residences"
-              className="w-full h-[500px] object-cover"
+              className="w-full h-[400px] md:h-[550px] object-cover"
               loading="lazy"
               width={1280}
               height={960}
@@ -28,20 +28,20 @@ const AmenitiesSection = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
-            <p className="text-gold font-body text-sm tracking-[0.3em] uppercase mb-4">
+            <p className="text-gold font-body text-[10px] md:text-xs tracking-[0.4em] uppercase mb-6">
               Características
             </p>
-            <h2 className="font-heading text-4xl md:text-5xl leading-tight mb-12">
+            <h2 className="font-heading text-3xl md:text-5xl leading-[1.1] mb-14">
               Qualidade em cada detalhe
             </h2>
 
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-10">
               {amenities.map((a) => (
                 <div key={a.label} className="flex items-start gap-4">
-                  <a.icon className="w-6 h-6 text-gold flex-shrink-0 mt-1" />
+                  <a.icon className="w-5 h-5 text-gold flex-shrink-0 mt-0.5 stroke-[1.5]" />
                   <div>
                     <p className="font-body text-sm font-medium mb-1">{a.label}</p>
-                    <p className="font-body text-xs text-primary-foreground/60">{a.desc}</p>
+                    <p className="font-body text-xs text-primary-foreground/50 leading-relaxed">{a.desc}</p>
                   </div>
                 </div>
               ))}
