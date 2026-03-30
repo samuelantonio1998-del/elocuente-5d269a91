@@ -3,25 +3,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 import renderDetail from "@/assets/render-detail.jpg";
 import renderGarden from "@/assets/render-garden.jpg";
-import interiorLiving from "@/assets/interior-living.jpg";
-
-const typologies = [
-  {
-    type: "T2",
-    price: "Desde 290.000€",
-    desc: "Apartamentos com sala e cozinha open-space, dois quartos, casa de banho completa e varandas generosas com excelente exposição solar.",
-    image: renderDetail,
-  },
-  {
-    type: "T3",
-    price: "Sob consulta",
-    desc: "Três quartos, amplos espaços de convívio familiar, duas casas de banho e varanda privativa com vista desafogada.",
-    image: renderGarden,
-  },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const ApartmentsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { t } = useLanguage();
+
+  const typologies = [
+    {
+      type: "T2",
+      price: t("apartments.t2.price"),
+      desc: t("apartments.t2.desc"),
+      image: renderDetail,
+    },
+    {
+      type: "T3",
+      price: t("apartments.t3.price"),
+      desc: t("apartments.t3.desc"),
+      image: renderGarden,
+    },
+  ];
 
   return (
     <section id="apartamentos" className="bg-cream-dark">
@@ -29,23 +30,21 @@ const ApartmentsSection = () => {
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-16">
             <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-4">
-              Apartamentos
+              {t("apartments.label")}
             </p>
             <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-6">
-              Uma Escolha Natural
+              {t("apartments.title")}
             </h2>
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-2xl mx-auto">
-              O Fagundo Living oferece tipologias T2 e T3, tipologias T2 e T3,
-              cada uma um testemunho de conforto e estética natural.
+              {t("apartments.desc")}
             </p>
           </AnimatedSection>
 
-          {/* Typology tabs */}
           <AnimatedSection delay={0.1}>
             <div className="flex justify-center gap-1 mb-12">
-              {typologies.map((t, i) => (
+              {typologies.map((ty, i) => (
                 <button
-                  key={t.type}
+                  key={ty.type}
                   onClick={() => setActiveIndex(i)}
                   className={`px-10 py-3.5 font-body text-[11px] tracking-[0.25em] uppercase transition-all duration-300 ${
                     activeIndex === i
@@ -53,13 +52,12 @@ const ApartmentsSection = () => {
                       : "bg-transparent text-muted-foreground border border-border hover:border-foreground/30"
                   }`}
                 >
-                  {t.type}
+                  {ty.type}
                 </button>
               ))}
             </div>
           </AnimatedSection>
 
-          {/* Content */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
@@ -92,7 +90,7 @@ const ApartmentsSection = () => {
                     href="#contacto"
                     className="inline-block px-8 py-3.5 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
                   >
-                    Pedir Plantas
+                    {t("apartments.cta")}
                   </a>
                 </div>
               </div>

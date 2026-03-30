@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import heroImage from "@/assets/render-side.jpg";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <img
@@ -22,10 +25,9 @@ const HeroSection = () => {
           transition={{ duration: 1.2, delay: 1 }}
           className="font-heading text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-primary-foreground leading-none tracking-wide"
         >
-          Bem-vindo
+          {t("hero.welcome")}
         </motion.h1>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -33,7 +35,7 @@ const HeroSection = () => {
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
         >
           <span className="font-body text-[9px] tracking-[0.4em] uppercase text-primary-foreground/50">
-            Scroll Down
+            {t("hero.scroll")}
           </span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
