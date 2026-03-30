@@ -6,7 +6,7 @@ const Footer = () => {
           {/* Top */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-10 mb-16">
             <div className="flex flex-col items-center md:items-start gap-1">
-              <p className="font-heading text-xl tracking-[0.2em]">ELOQUENTE</p>
+              <p className="font-heading text-xl tracking-[0.2em]">FAGUNDO LIVING</p>
             </div>
 
             <div className="flex flex-wrap justify-center gap-8 md:gap-12">
