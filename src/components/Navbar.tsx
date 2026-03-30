@@ -54,7 +54,7 @@ const Navbar = () => {
           <span className={`font-heading text-xl lg:text-2xl tracking-[0.2em] transition-colors duration-500 ${
             scrolled ? "text-foreground" : "text-primary-foreground"
           }`}>
-            ELOQUENTE
+            FAGUNDO LIVING
           </span>
         </a>
 

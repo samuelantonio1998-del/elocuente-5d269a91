@@ -55,7 +55,7 @@ const AboutSection = () => {
         <AnimatedSection className="relative h-[50vh] md:h-[80vh]">
           <img
             src={renderFront}
-            alt="Vista frontal do Eloquente"
+            alt="Vista frontal do Fagundo Living"
             className="w-full h-full object-cover"
             loading="lazy"
             width={1024}

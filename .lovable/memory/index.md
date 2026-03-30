@@ -1,7 +1,7 @@
 Project: Eloquente — Rua do Fagundo, Albergaria, Marinha Grande
 Requerente: Quinta do Monte Grande, Lda.
 Architect: Tiago Frazão Arquitetos (OA n.17711)
-Brand name: ELOQUENTE
+Brand name: FAGUNDO LIVING
 Colors: charcoal + gold palette (design tokens in index.css)
 Fonts: Playfair Display (headings) + DM Sans (body)
 Typologies: T2 (22 fracções) + T3 (1 fracção) = 23 fogos total

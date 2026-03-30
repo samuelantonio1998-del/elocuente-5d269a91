@@ -31,7 +31,7 @@ const Footer = () => {
           {/* Bottom */}
           <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="font-body text-[10px] text-primary-foreground/40 tracking-wider">
-              © 2026 Eloquente. Todos os direitos reservados.
+              © 2026 Fagundo Living. Todos os direitos reservados.
             </p>
             <p className="font-body text-[10px] text-primary-foreground/40 tracking-wider">
               Arquitectura: Tiago Frazão Arquitetos
