@@ -1,18 +1,20 @@
 import { MapPin, Train, GraduationCap, ShoppingBag } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import renderAerial from "@/assets/render-aerial.jpg";
-
-const points = [
-  { icon: MapPin, label: "Centro de Marinha Grande", time: "5 min" },
-  { icon: Train, label: "Acessos Rodoviários", time: "3 min" },
-  { icon: GraduationCap, label: "Escolas e Serviços", time: "5 min" },
-  { icon: ShoppingBag, label: "Comércio e Restauração", time: "3 min" },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const LocationSection = () => {
+  const { t } = useLanguage();
+
+  const points = [
+    { icon: MapPin, label: t("location.center"), time: "5 min" },
+    { icon: Train, label: t("location.roads"), time: "3 min" },
+    { icon: GraduationCap, label: t("location.schools"), time: "5 min" },
+    { icon: ShoppingBag, label: t("location.shops"), time: "3 min" },
+  ];
+
   return (
     <section id="localizacao" className="bg-background">
-      {/* Full-width image */}
       <AnimatedSection className="relative h-[40vh] md:h-[60vh]">
         <img
           src={renderAerial}
@@ -24,7 +26,7 @@ const LocationSection = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <p className="font-body text-[10px] tracking-[0.5em] uppercase text-primary-foreground/70 mb-4">
-              Localização
+              {t("location.label")}
             </p>
             <h2 className="font-heading text-3xl md:text-5xl lg:text-6xl text-primary-foreground">
               Albergaria, Marinha Grande
@@ -33,13 +35,11 @@ const LocationSection = () => {
         </div>
       </AnimatedSection>
 
-      {/* Info grid */}
       <div className="px-8 lg:px-16 py-20 md:py-28">
         <div className="max-w-5xl mx-auto">
           <AnimatedSection className="text-center mb-16">
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-2xl mx-auto">
-              Numa zona residencial em Albergaria, junto à cidade de Marinha Grande,
-              com boas acessibilidades rodoviárias e proximidade a serviços e comércio.
+              {t("location.desc")}
             </p>
           </AnimatedSection>
 
@@ -47,7 +47,7 @@ const LocationSection = () => {
             <div className="grid grid-cols-2 md:grid-cols-4">
               {points.map((p, i) => (
                 <div
-                  key={p.label}
+                  key={i}
                   className={`text-center py-12 px-6 ${
                     i < points.length - 1 ? "border-r border-border" : ""
                   }`}
@@ -69,7 +69,7 @@ const LocationSection = () => {
               rel="noopener noreferrer"
               className="inline-block px-8 py-3.5 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
             >
-              Ver no Google Maps
+              {t("location.cta")}
             </a>
           </AnimatedSection>
         </div>
