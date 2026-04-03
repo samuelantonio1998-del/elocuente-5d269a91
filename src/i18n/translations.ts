@@ -173,7 +173,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "about.label": "El Concepto",
     "about.title1": "El Arte de Vivir",
     "about.title2": "lo Mejor",
-    "about.p1": "Elocuente es un nuevo desarrollo residencial distribuido en dos edificios, ubicado en Rua do Fagundo, en Albergaria, Marinha Grande. El proyecto arquitectónico está firmado por Tiago Frazão Arquitetos.",
+    "about.p1": "Elocuente es un nuevo desarrollo residencial distribuido en dos edificios, ubicado en Rua do Fagundo, en Albergaria entre Leiria y Marinha Grande. El proyecto arquitectónico está firmado por Tiago Frazão Arquitetos.",
     "about.p2": "Líneas contemporáneas, balcones generosos e integración paisajística definen este proyecto singular. Cada apartamento fue diseñado para maximizar la luz natural y el confort.",
     "about.cta1": "Solicitar Información",
     "about.cta2": "Ver Apartamentos",
