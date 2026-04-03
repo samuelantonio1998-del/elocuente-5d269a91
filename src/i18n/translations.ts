@@ -55,11 +55,12 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Location
     "location.label": "Localização",
-    "location.desc": "Numa zona residencial em Albergaria, junto à cidade de Marinha Grande, com boas acessibilidades rodoviárias e proximidade a serviços e comércio.",
-    "location.center": "Centro de Marinha Grande",
-    "location.roads": "Acessos Rodoviários",
-    "location.schools": "Escolas e Serviços",
-    "location.shops": "Comércio e Restauração",
+    "location.desc": "Localização estratégica em Albergaria, entre Leiria e Marinha Grande, com acessos privilegiados a praias, cidade e autoestradas.",
+    "location.leiria": "Centro de Leiria",
+    "location.beach": "Praia de São Pedro de Moel",
+    "location.nazare": "Nazaré (Canyon & Surf)",
+    "location.airport": "Aeroporto de Lisboa",
+    "location.highways": "Acessos A8 / A17",
     "location.cta": "Ver no Google Maps",
 
     // Contact
