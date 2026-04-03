@@ -65,7 +65,7 @@ const LocationSection = () => {
 
           <AnimatedSection delay={0.25} className="text-center mt-12">
             <a
-              href="https://www.google.com/maps/search/Rua+do+Fagundo,+Albergaria,+Marinha+Grande,+Portugal"
+              href="https://www.google.com/maps/place/39%C2%B044'43.4%22N+8%C2%B053'22.5%22W/@39.745389,-8.889583,17z"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-3.5 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
