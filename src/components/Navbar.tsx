@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="w-full px-8 lg:px-16 flex items-center justify-between h-20 lg:h-24">
         {/* Left nav items */}
         <div className="hidden lg:flex items-center gap-12 flex-1">
-          {navKeys.slice(0, 2).map((item) => (
+          {navKeys.slice(0, 3).map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -66,7 +66,7 @@ const Navbar = () => {
 
         {/* Right nav items */}
         <div className="hidden lg:flex items-center gap-12 flex-1 justify-end">
-          {navKeys.slice(2, 4).map((item) => (
+          {navKeys.slice(3, 4).map((item) => (
             <a
               key={item.href}
               href={item.href}
