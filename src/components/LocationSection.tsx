@@ -1,4 +1,4 @@
-import { MapPin, Train, GraduationCap, ShoppingBag } from "lucide-react";
+import { MapPin, Waves, Mountain, Plane, Car } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import renderAerial from "@/assets/render-aerial.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -7,10 +7,11 @@ const LocationSection = () => {
   const { t } = useLanguage();
 
   const points = [
-    { icon: MapPin, label: t("location.center"), time: "5 min" },
-    { icon: Train, label: t("location.roads"), time: "3 min" },
-    { icon: GraduationCap, label: t("location.schools"), time: "5 min" },
-    { icon: ShoppingBag, label: t("location.shops"), time: "3 min" },
+    { icon: MapPin, label: t("location.leiria"), time: "10 min" },
+    { icon: Waves, label: t("location.beach"), time: "15 min" },
+    { icon: Mountain, label: t("location.nazare"), time: "25 min" },
+    { icon: Plane, label: t("location.airport"), time: "80 min" },
+    { icon: Car, label: t("location.highways"), time: "5 min" },
   ];
 
   return (
@@ -44,7 +45,7 @@ const LocationSection = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.15}>
-            <div className="grid grid-cols-2 md:grid-cols-4">
+            <div className="grid grid-cols-2 md:grid-cols-5">
               {points.map((p, i) => (
                 <div
                   key={i}

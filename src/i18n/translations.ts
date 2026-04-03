@@ -55,11 +55,12 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Location
     "location.label": "Localização",
-    "location.desc": "Numa zona residencial em Albergaria, junto à cidade de Marinha Grande, com boas acessibilidades rodoviárias e proximidade a serviços e comércio.",
-    "location.center": "Centro de Marinha Grande",
-    "location.roads": "Acessos Rodoviários",
-    "location.schools": "Escolas e Serviços",
-    "location.shops": "Comércio e Restauração",
+    "location.desc": "Localização estratégica em Albergaria, entre Leiria e Marinha Grande, com acessos privilegiados a praias, cidade e autoestradas.",
+    "location.leiria": "Centro de Leiria",
+    "location.beach": "Praia de São Pedro de Moel",
+    "location.nazare": "Nazaré (Canyon & Surf)",
+    "location.airport": "Aeroporto de Lisboa",
+    "location.highways": "Acessos A8 / A17",
     "location.cta": "Ver no Google Maps",
 
     // Contact
@@ -133,11 +134,12 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Location
     "location.label": "Location",
-    "location.desc": "In a residential area in Albergaria, close to Marinha Grande, with excellent road access and proximity to services and commerce.",
-    "location.center": "Marinha Grande Center",
-    "location.roads": "Road Access",
-    "location.schools": "Schools & Services",
-    "location.shops": "Commerce & Dining",
+    "location.desc": "Strategic location in Albergaria, between Leiria and Marinha Grande, with privileged access to beaches, city and highways.",
+    "location.leiria": "Leiria City Center",
+    "location.beach": "São Pedro de Moel Beach",
+    "location.nazare": "Nazaré (Canyon & Surf)",
+    "location.airport": "Lisbon Airport",
+    "location.highways": "A8 / A17 Highways",
     "location.cta": "View on Google Maps",
 
     // Contact
@@ -211,11 +213,12 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Location
     "location.label": "Ubicación",
-    "location.desc": "En una zona residencial en Albergaria, cerca de Marinha Grande, con buenos accesos por carretera y proximidad a servicios y comercio.",
-    "location.center": "Centro de Marinha Grande",
-    "location.roads": "Accesos por Carretera",
-    "location.schools": "Escuelas y Servicios",
-    "location.shops": "Comercio y Restauración",
+    "location.desc": "Ubicación estratégica en Albergaria, entre Leiria y Marinha Grande, con accesos privilegiados a playas, ciudad y autopistas.",
+    "location.leiria": "Centro de Leiria",
+    "location.beach": "Playa de São Pedro de Moel",
+    "location.nazare": "Nazaré (Canyon & Surf)",
+    "location.airport": "Aeropuerto de Lisboa",
+    "location.highways": "Accesos A8 / A17",
     "location.cta": "Ver en Google Maps",
 
     // Contact
