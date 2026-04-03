@@ -95,7 +95,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "about.label": "The Concept",
     "about.title1": "The Art of Living",
     "about.title2": "at Your Best",
-    "about.p1": "Elocuente is a new residential development spread across two buildings, located on Rua do Fagundo, in Albergaria, Marinha Grande. The architectural project is signed by Tiago Frazão Arquitetos.",
+    "about.p1": "Elocuente is a new residential development spread across two buildings, located on Rua do Fagundo, in Albergaria between Leiria and Marinha Grande. The architectural project is signed by Tiago Frazão Arquitetos.",
     "about.p2": "Contemporary lines, generous balconies and landscape integration define this unique project. Each apartment was designed to maximize natural light and comfort.",
     "about.cta1": "Request Information",
     "about.cta2": "View Apartments",
