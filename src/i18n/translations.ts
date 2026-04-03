@@ -134,11 +134,12 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Location
     "location.label": "Location",
-    "location.desc": "In a residential area in Albergaria, close to Marinha Grande, with excellent road access and proximity to services and commerce.",
-    "location.center": "Marinha Grande Center",
-    "location.roads": "Road Access",
-    "location.schools": "Schools & Services",
-    "location.shops": "Commerce & Dining",
+    "location.desc": "Strategic location in Albergaria, between Leiria and Marinha Grande, with privileged access to beaches, city and highways.",
+    "location.leiria": "Leiria City Center",
+    "location.beach": "São Pedro de Moel Beach",
+    "location.nazare": "Nazaré (Canyon & Surf)",
+    "location.airport": "Lisbon Airport",
+    "location.highways": "A8 / A17 Highways",
     "location.cta": "View on Google Maps",
 
     // Contact
