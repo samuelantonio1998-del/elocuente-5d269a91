@@ -45,7 +45,7 @@ const LocationSection = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.15}>
-            <div className="grid grid-cols-2 md:grid-cols-4">
+            <div className="grid grid-cols-2 md:grid-cols-5">
               {points.map((p, i) => (
                 <div
                   key={i}
