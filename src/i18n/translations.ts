@@ -55,7 +55,8 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Location
     "location.label": "Localização",
-    "location.desc": "Localização estratégica em Albergaria, entre Leiria e Marinha Grande, com acessos privilegiados a praias, cidade e autoestradas.",
+    "location.connectivity": "Estar ligado ao mundo nunca foi tão simples. Com acessos imediatos à A8 e A17, o Elocuente oferece a mobilidade ideal para profissionais modernos e cidadãos globais. Apenas a 10 minutos de Leiria e a uma curta viagem de Lisboa, vive-se aqui a tranquilidade de uma vila com a rapidez de uma metrópole.",
+    "location.desc": "Numa zona residencial em Albergaria, junto à cidade de Marinha Grande, com boas acessibilidades rodoviárias e proximidade a serviços e comércio. O equilíbrio perfeito entre tranquilidade e conveniência urbana.",
     "location.leiria": "Centro de Leiria",
     "location.beach": "Praia de São Pedro de Moel",
     "location.nazare": "Nazaré (Canyon & Surf)",
