@@ -39,6 +39,12 @@ const LocationSection = () => {
       <div className="px-8 lg:px-16 py-20 md:py-28">
         <div className="max-w-5xl mx-auto">
           <AnimatedSection className="text-center mb-16">
+            <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-2xl mx-auto mb-8">
+              {t("location.connectivity")}
+            </p>
+            <p className="font-body text-[10px] tracking-[0.5em] uppercase text-gold mb-4">
+              {t("about.locationLabel")}
+            </p>
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-2xl mx-auto">
               {t("location.desc")}
             </p>
