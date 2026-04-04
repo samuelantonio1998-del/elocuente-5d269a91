@@ -22,7 +22,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "about.cta1": "Pedir Informações",
     "about.cta2": "Ver Apartamentos",
     "about.locationLabel": "Localização Privilegiada",
-    "about.locationText": "Numa zona residencial em Albergaria, junto à cidade de Marinha Grande, com boas acessibilidades rodoviárias e proximidade a serviços e comércio. O equilíbrio perfeito entre tranquilidade e conveniência urbana.",
+    "about.locationText": "Estar ligado ao mundo nunca foi tão simples. Com acessos imediatos à A8 e A17, o Elocuente oferece a mobilidade ideal para profissionais modernos e cidadãos globais. A apenas 10 minutos de Leiria e a uma curta viagem de Lisboa, vive-se aqui a tranquilidade de uma vila com a rapidez de uma metrópole.",
     "about.locationLink": "Ver Localização",
 
     // Gallery
