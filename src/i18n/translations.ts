@@ -156,6 +156,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.status.available": "Available",
     "availability.status.reserved": "Reserved",
     "availability.status.sold": "Sold",
+    "availability.status.unknown": "On request",
     "availability.col.id": "Unit",
     "availability.col.building": "Building",
     "availability.col.floor": "Floor",
