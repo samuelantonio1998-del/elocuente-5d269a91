@@ -135,7 +135,8 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Location
     "location.label": "Location",
-    "location.desc": "Strategic location in Albergaria, between Leiria and Marinha Grande, with privileged access to beaches, city and highways.",
+    "location.connectivity": "Being connected to the world has never been easier. With immediate access to the A8 and A17 highways, Elocuente offers ideal mobility for modern professionals and global citizens. Just 10 minutes from Leiria and a short trip from Lisbon, enjoy the tranquility of a village with the speed of a metropolis.",
+    "location.desc": "In a residential area in Albergaria, close to Marinha Grande, with excellent road access and proximity to services and commerce. The perfect balance between tranquility and urban convenience.",
     "location.leiria": "Leiria City Center",
     "location.beach": "São Pedro de Moel Beach",
     "location.nazare": "Nazaré (Canyon & Surf)",
