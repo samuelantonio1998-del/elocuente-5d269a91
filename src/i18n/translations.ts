@@ -52,6 +52,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.status.available": "Disponível",
     "availability.status.reserved": "Reservado",
     "availability.status.sold": "Vendido",
+    "availability.status.unknown": "Sob consulta",
     "availability.col.id": "Fracção",
     "availability.col.building": "Edifício",
     "availability.col.floor": "Piso",
