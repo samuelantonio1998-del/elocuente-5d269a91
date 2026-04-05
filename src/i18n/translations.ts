@@ -265,7 +265,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.col.building": "Edificio",
     "availability.col.floor": "Piso",
     "availability.col.type": "Tipología",
-    "availability.col.area": "Área",
+    "availability.col.area": "ABP",
     "availability.col.balcony": "Balcón",
     "availability.col.parking": "Estac.",
     "availability.col.orientation": "Orientación",
