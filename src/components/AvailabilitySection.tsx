@@ -137,7 +137,7 @@ const AvailabilitySection = () => {
                   ))}
                   {filtered.length === 0 && (
                     <tr>
-                      <td colSpan={8} className="py-12 text-center font-body text-sm text-muted-foreground">
+                      <td colSpan={9} className="py-12 text-center font-body text-sm text-muted-foreground">
                         {t("availability.noResults")}
                       </td>
                     </tr>
