@@ -62,7 +62,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.col.parking": "Estac.",
     "availability.col.orientation": "Orientação",
     "availability.col.status": "Estado",
-    "availability.inquire": "Informações",
+    "availability.col.price": "Valor",
     "availability.noResults": "Nenhuma fracção encontrada com os filtros seleccionados.",
 
     // Amenities
@@ -166,7 +166,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.col.parking": "Parking",
     "availability.col.orientation": "Orientation",
     "availability.col.status": "Status",
-    "availability.inquire": "Inquire",
+    "availability.col.price": "Price",
     "availability.noResults": "No units found with the selected filters.",
 
     // Amenities
@@ -270,7 +270,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.col.parking": "Estac.",
     "availability.col.orientation": "Orientación",
     "availability.col.status": "Estado",
-    "availability.inquire": "Información",
+    "availability.col.price": "Valor",
     "availability.noResults": "No se encontraron fracciones con los filtros seleccionados.",
 
     // Amenities
