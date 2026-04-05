@@ -110,7 +110,9 @@ const AvailabilitySection = () => {
                         {t(`availability.col.${col}`)}
                       </th>
                     ))}
-                    <th className="py-4 px-3"></th>
+                    <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
+                      {t("availability.col.price")}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
