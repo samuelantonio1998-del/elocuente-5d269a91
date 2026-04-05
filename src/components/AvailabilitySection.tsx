@@ -11,6 +11,7 @@ interface Unit {
   type: string;
   area: string;
   parking: number;
+  orientation: string;
   status: UnitStatus;
 }
 
