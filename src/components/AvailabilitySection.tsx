@@ -45,6 +45,7 @@ const units: Unit[] = [
 
 const AvailabilitySection = () => {
   const { t } = useLanguage();
+  const { formatPrice } = useCurrency();
   const [filterBuilding, setFilterBuilding] = useState<string>("all");
   const [filterType, setFilterType] = useState<string>("all");
 
