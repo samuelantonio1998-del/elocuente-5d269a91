@@ -166,7 +166,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.col.parking": "Parking",
     "availability.col.orientation": "Orientation",
     "availability.col.status": "Status",
-    "availability.inquire": "Inquire",
+    "availability.col.price": "Price",
     "availability.noResults": "No units found with the selected filters.",
 
     // Amenities
