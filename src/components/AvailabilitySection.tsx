@@ -118,6 +118,7 @@ const AvailabilitySection = () => {
                       <td className="py-4 px-3 font-body text-sm text-muted-foreground">{floorLabel(unit.floor)}</td>
                       <td className="py-4 px-3 font-body text-sm text-foreground font-medium">{unit.type}</td>
                       <td className="py-4 px-3 font-body text-sm text-muted-foreground">{unit.area}</td>
+                      <td className="py-4 px-3 font-body text-sm text-muted-foreground">{unit.orientation}</td>
                       <td className="py-4 px-3 font-body text-sm text-muted-foreground">{unit.parking}</td>
                       <td className="py-4 px-3">
                         <span className="inline-block px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase bg-secondary text-secondary-foreground">
