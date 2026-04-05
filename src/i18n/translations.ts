@@ -62,7 +62,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.col.parking": "Estac.",
     "availability.col.orientation": "Orientação",
     "availability.col.status": "Estado",
-    "availability.inquire": "Informações",
+    "availability.col.price": "Valor",
     "availability.noResults": "Nenhuma fracção encontrada com os filtros seleccionados.",
 
     // Amenities
