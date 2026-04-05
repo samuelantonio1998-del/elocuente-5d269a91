@@ -11,33 +11,34 @@ interface Unit {
   type: string;
   area: string;
   parking: number;
+  orientation: string;
   status: UnitStatus;
 }
 
 const units: Unit[] = [
-  { id: "A01", building: "A", floor: 0, type: "T2", area: "132 m²", parking: 1, status: "unknown" },
-  { id: "A02", building: "A", floor: 0, type: "T2", area: "130 m²", parking: 1, status: "unknown" },
-  { id: "A03", building: "A", floor: 0, type: "T2", area: "120 m²", parking: 1, status: "unknown" },
-  { id: "A04", building: "A", floor: 0, type: "T2", area: "140 m²", parking: 1, status: "unknown" },
-  { id: "A05", building: "A", floor: 1, type: "T2", area: "133 m²", parking: 1, status: "unknown" },
-  { id: "A06", building: "A", floor: 1, type: "T2", area: "118 m²", parking: 1, status: "unknown" },
-  { id: "A07", building: "A", floor: 1, type: "T2", area: "132 m²", parking: 1, status: "unknown" },
-  { id: "A08", building: "A", floor: 1, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "A09", building: "A", floor: 2, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "A10", building: "A", floor: 2, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "A11", building: "A", floor: 2, type: "T3", area: "—", parking: 2, status: "unknown" },
-  { id: "B01", building: "B", floor: 0, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "B02", building: "B", floor: 0, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "B03", building: "B", floor: 0, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "B04", building: "B", floor: 0, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "B05", building: "B", floor: 1, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "B06", building: "B", floor: 1, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "B07", building: "B", floor: 1, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "B08", building: "B", floor: 1, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "B09", building: "B", floor: 2, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "B10", building: "B", floor: 2, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "B11", building: "B", floor: 2, type: "T2", area: "—", parking: 1, status: "unknown" },
-  { id: "B12", building: "B", floor: 2, type: "T2", area: "—", parking: 1, status: "unknown" },
+  { id: "A01", building: "A", floor: 0, type: "T2", area: "132 m²", parking: 1, orientation: "Sul", status: "unknown" },
+  { id: "A02", building: "A", floor: 0, type: "T2", area: "130 m²", parking: 1, orientation: "Norte", status: "unknown" },
+  { id: "A03", building: "A", floor: 0, type: "T2", area: "120 m²", parking: 1, orientation: "Sul", status: "unknown" },
+  { id: "A04", building: "A", floor: 0, type: "T2", area: "140 m²", parking: 1, orientation: "Norte", status: "unknown" },
+  { id: "A05", building: "A", floor: 1, type: "T2", area: "133 m²", parking: 1, orientation: "Sul", status: "unknown" },
+  { id: "A06", building: "A", floor: 1, type: "T2", area: "118 m²", parking: 1, orientation: "Norte", status: "unknown" },
+  { id: "A07", building: "A", floor: 1, type: "T2", area: "132 m²", parking: 1, orientation: "Sul", status: "unknown" },
+  { id: "A08", building: "A", floor: 1, type: "T2", area: "—", parking: 1, orientation: "Norte", status: "unknown" },
+  { id: "A09", building: "A", floor: 2, type: "T2", area: "—", parking: 1, orientation: "Sul", status: "unknown" },
+  { id: "A10", building: "A", floor: 2, type: "T2", area: "—", parking: 1, orientation: "Norte", status: "unknown" },
+  { id: "A11", building: "A", floor: 2, type: "T3", area: "—", parking: 2, orientation: "Sul / Norte", status: "unknown" },
+  { id: "B01", building: "B", floor: 0, type: "T2", area: "—", parking: 1, orientation: "Sul", status: "unknown" },
+  { id: "B02", building: "B", floor: 0, type: "T2", area: "—", parking: 1, orientation: "Norte", status: "unknown" },
+  { id: "B03", building: "B", floor: 0, type: "T2", area: "—", parking: 1, orientation: "Sul", status: "unknown" },
+  { id: "B04", building: "B", floor: 0, type: "T2", area: "—", parking: 1, orientation: "Norte", status: "unknown" },
+  { id: "B05", building: "B", floor: 1, type: "T2", area: "—", parking: 1, orientation: "Sul", status: "unknown" },
+  { id: "B06", building: "B", floor: 1, type: "T2", area: "—", parking: 1, orientation: "Norte", status: "unknown" },
+  { id: "B07", building: "B", floor: 1, type: "T2", area: "—", parking: 1, orientation: "Sul", status: "unknown" },
+  { id: "B08", building: "B", floor: 1, type: "T2", area: "—", parking: 1, orientation: "Norte", status: "unknown" },
+  { id: "B09", building: "B", floor: 2, type: "T2", area: "—", parking: 1, orientation: "Sul", status: "unknown" },
+  { id: "B10", building: "B", floor: 2, type: "T2", area: "—", parking: 1, orientation: "Norte", status: "unknown" },
+  { id: "B11", building: "B", floor: 2, type: "T2", area: "—", parking: 1, orientation: "Sul", status: "unknown" },
+  { id: "B12", building: "B", floor: 2, type: "T2", area: "—", parking: 1, orientation: "Norte", status: "unknown" },
 ];
 
 const AvailabilitySection = () => {
@@ -98,7 +99,7 @@ const AvailabilitySection = () => {
               <table className="w-full text-left">
                 <thead>
                   <tr className="border-b border-border">
-                    {["id", "building", "floor", "type", "area", "parking", "status"].map((col) => (
+                    {["id", "building", "floor", "type", "area", "orientation", "parking", "status"].map((col) => (
                       <th
                         key={col}
                         className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium"
@@ -117,6 +118,7 @@ const AvailabilitySection = () => {
                       <td className="py-4 px-3 font-body text-sm text-muted-foreground">{floorLabel(unit.floor)}</td>
                       <td className="py-4 px-3 font-body text-sm text-foreground font-medium">{unit.type}</td>
                       <td className="py-4 px-3 font-body text-sm text-muted-foreground">{unit.area}</td>
+                      <td className="py-4 px-3 font-body text-sm text-muted-foreground">{unit.orientation}</td>
                       <td className="py-4 px-3 font-body text-sm text-muted-foreground">{unit.parking}</td>
                       <td className="py-4 px-3">
                         <span className="inline-block px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase bg-secondary text-secondary-foreground">
@@ -135,7 +137,7 @@ const AvailabilitySection = () => {
                   ))}
                   {filtered.length === 0 && (
                     <tr>
-                      <td colSpan={8} className="py-12 text-center font-body text-sm text-muted-foreground">
+                      <td colSpan={9} className="py-12 text-center font-body text-sm text-muted-foreground">
                         {t("availability.noResults")}
                       </td>
                     </tr>
