@@ -26,7 +26,7 @@ const units: Unit[] = [
   { id: "A08", building: "A", floor: 1, type: "T2", area: "138 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
   { id: "A09", building: "A", floor: 2, type: "T2", area: "133 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
   { id: "A10", building: "A", floor: 2, type: "T2", area: "—", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "A11", building: "A", floor: 2, type: "T3", area: "—", parking: 2, orientation: "Sul / Norte", status: "unknown" },
+  { id: "A11", building: "A", floor: 2, type: "T3", area: "—", parking: 2, orientation: "Norte / Poente", status: "unknown" },
   { id: "B01", building: "B", floor: 0, type: "T2", area: "—", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
   { id: "B02", building: "B", floor: 0, type: "T2", area: "—", parking: 2, orientation: "Norte / Poente", status: "unknown" },
   { id: "B03", building: "B", floor: 0, type: "T2", area: "—", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
