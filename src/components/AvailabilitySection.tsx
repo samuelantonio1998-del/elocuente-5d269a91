@@ -131,12 +131,15 @@ const AvailabilitySection = () => {
                         </span>
                       </td>
                       <td className="py-4 px-3">
-                        <a
-                          href="#contacto"
-                          className="font-body text-[10px] tracking-[0.2em] uppercase text-gold hover:text-foreground transition-colors"
-                        >
-                          {t("availability.inquire")}
-                        </a>
+                        {unit.area !== "—" ? (
+                          <span className="font-body text-sm text-gold font-medium">
+                            {formatPrice(parseFloat(unit.area) * PRICE_PER_SQM)}
+                          </span>
+                        ) : (
+                          <span className="font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground">
+                            {t("availability.status.unknown")}
+                          </span>
+                        )}
                       </td>
                     </tr>
                   ))}
