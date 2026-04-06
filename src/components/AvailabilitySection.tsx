@@ -2,6 +2,7 @@ import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useCurrency } from "@/hooks/useCurrency";
+import ReservationDialog from "./ReservationDialog";
 
 type UnitStatus = "unknown";
 const PRICE_PER_SQM = 2250;
@@ -44,11 +45,15 @@ const units: Unit[] = [
   { id: "B12", building: "B", floor: 2, type: "T2", area: "119 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
 ];
 
+const getUnitPrice = (unit: Unit) => Math.max(parseFloat(unit.area) * PRICE_PER_SQM, MIN_PRICE);
+
 const AvailabilitySection = () => {
   const { t } = useLanguage();
   const { formatPrice } = useCurrency();
   const [filterBuilding, setFilterBuilding] = useState<string>("all");
   const [filterType, setFilterType] = useState<string>("all");
+  const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const filtered = units.filter((u) => {
     if (filterBuilding !== "all" && u.building !== filterBuilding) return false;
@@ -57,6 +62,11 @@ const AvailabilitySection = () => {
   });
 
   const floorLabel = (f: number) => (f === 0 ? t("availability.groundFloor") : `${f}º`);
+
+  const handleReserve = (unit: Unit) => {
+    setSelectedUnit(unit);
+    setDialogOpen(true);
+  };
 
   return (
     <section id="disponibilidades" className="bg-background">
@@ -114,6 +124,11 @@ const AvailabilitySection = () => {
                     <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
                       {t("availability.col.price")}
                     </th>
+                    <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
+                      {t("availability.col.floorPlan")}
+                    </th>
+                    <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -132,21 +147,28 @@ const AvailabilitySection = () => {
                         </span>
                       </td>
                       <td className="py-4 px-3">
-                        {unit.area !== "—" ? (
-                          <span className="font-body text-sm text-gold font-medium">
-                            {formatPrice(Math.max(parseFloat(unit.area) * PRICE_PER_SQM, MIN_PRICE))}
-                          </span>
-                        ) : (
-                          <span className="font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground">
-                            {t("availability.status.unknown")}
-                          </span>
-                        )}
+                        <span className="font-body text-sm text-gold font-medium">
+                          {formatPrice(getUnitPrice(unit))}
+                        </span>
+                      </td>
+                      <td className="py-4 px-3">
+                        <span className="inline-block px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground border border-border/50">
+                          {t("availability.floorPlan.soon")}
+                        </span>
+                      </td>
+                      <td className="py-4 px-3">
+                        <button
+                          onClick={() => handleReserve(unit)}
+                          className="px-4 py-2 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors whitespace-nowrap"
+                        >
+                          {t("availability.reserve")}
+                        </button>
                       </td>
                     </tr>
                   ))}
                   {filtered.length === 0 && (
                     <tr>
-                      <td colSpan={9} className="py-12 text-center font-body text-sm text-muted-foreground">
+                      <td colSpan={11} className="py-12 text-center font-body text-sm text-muted-foreground">
                         {t("availability.noResults")}
                       </td>
                     </tr>
@@ -157,6 +179,12 @@ const AvailabilitySection = () => {
           </AnimatedSection>
         </div>
       </div>
+
+      <ReservationDialog
+        unit={selectedUnit ? { ...selectedUnit, price: getUnitPrice(selectedUnit) } : null}
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+      />
     </section>
   );
 };
