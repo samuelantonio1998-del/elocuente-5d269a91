@@ -45,13 +45,13 @@ const LocationSection = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.15}>
-            <div className="grid grid-cols-2 md:grid-cols-5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-0">
               {points.map((p, i) => (
                 <div
                   key={i}
-                  className={`text-center py-12 px-6 ${
-                    i < points.length - 1 ? "border-r border-border" : ""
-                  }`}
+                  className={`text-center py-8 md:py-12 px-4 md:px-6 border-b md:border-b-0 border-border ${
+                    i < points.length - 1 ? "md:border-r" : ""
+                  } ${i % 2 === 0 && i < points.length - 1 ? "border-r sm:border-r-0" : ""} ${i % 3 !== 2 ? "sm:border-r md:border-r-0" : ""} ${i < points.length - 1 ? "md:border-r" : ""}`}
                 >
                   <p.icon className="w-5 h-5 text-gold mx-auto mb-5 stroke-[1.5]" />
                   <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-3">

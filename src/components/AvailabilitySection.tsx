@@ -70,7 +70,7 @@ const AvailabilitySection = () => {
 
   return (
     <section id="disponibilidades" className="bg-background">
-      <div className="py-28 md:py-40 px-8 lg:px-16">
+      <div className="py-28 md:py-40 px-4 md:px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-16">
             <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-4">
@@ -108,7 +108,8 @@ const AvailabilitySection = () => {
             </div>
           </AnimatedSection>
 
-          <AnimatedSection delay={0.2}>
+          {/* Desktop table */}
+          <AnimatedSection delay={0.2} className="hidden md:block">
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
@@ -175,6 +176,83 @@ const AvailabilitySection = () => {
                   )}
                 </tbody>
               </table>
+            </div>
+          </AnimatedSection>
+
+          {/* Mobile card layout */}
+          <AnimatedSection delay={0.2} className="md:hidden">
+            <div className="space-y-4">
+              {filtered.map((unit) => (
+                <div key={unit.id} className="border border-border p-5 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="font-heading text-xl text-foreground">{unit.type}</span>
+                      <span className="font-body text-xs text-muted-foreground">Ref {unit.id}</span>
+                    </div>
+                    <span className="inline-block px-2.5 py-1 font-body text-[9px] tracking-[0.15em] uppercase bg-secondary text-secondary-foreground">
+                      {t("availability.status.unknown")}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <p className="font-body text-[9px] tracking-[0.15em] uppercase text-muted-foreground mb-1">
+                        {t("availability.col.building")}
+                      </p>
+                      <p className="font-body text-sm text-foreground">{t("availability.building")} {unit.building}</p>
+                    </div>
+                    <div>
+                      <p className="font-body text-[9px] tracking-[0.15em] uppercase text-muted-foreground mb-1">
+                        {t("availability.col.floor")}
+                      </p>
+                      <p className="font-body text-sm text-foreground">{floorLabel(unit.floor)}</p>
+                    </div>
+                    <div>
+                      <p className="font-body text-[9px] tracking-[0.15em] uppercase text-muted-foreground mb-1">
+                        {t("availability.col.area")}
+                      </p>
+                      <p className="font-body text-sm text-foreground">{unit.area}</p>
+                    </div>
+                    <div>
+                      <p className="font-body text-[9px] tracking-[0.15em] uppercase text-muted-foreground mb-1">
+                        {t("availability.col.parking")}
+                      </p>
+                      <p className="font-body text-sm text-foreground">{unit.parking}</p>
+                    </div>
+                    <div className="col-span-2">
+                      <p className="font-body text-[9px] tracking-[0.15em] uppercase text-muted-foreground mb-1">
+                        {t("availability.col.orientation")}
+                      </p>
+                      <p className="font-body text-sm text-foreground">{unit.orientation}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-3 border-t border-border/50">
+                    <div>
+                      <p className="font-body text-[9px] tracking-[0.15em] uppercase text-muted-foreground mb-1">
+                        {t("availability.col.price")}
+                      </p>
+                      <p className="font-heading text-lg text-gold">{formatPrice(getUnitPrice(unit))}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="inline-block px-2.5 py-1 font-body text-[9px] tracking-[0.1em] uppercase text-muted-foreground border border-border/50">
+                        {t("availability.floorPlan.soon")}
+                      </span>
+                      <button
+                        onClick={() => handleReserve(unit)}
+                        className="px-4 py-2.5 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors"
+                      >
+                        {t("availability.reserve")}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {filtered.length === 0 && (
+                <p className="py-12 text-center font-body text-sm text-muted-foreground">
+                  {t("availability.noResults")}
+                </p>
+              )}
             </div>
           </AnimatedSection>
         </div>
