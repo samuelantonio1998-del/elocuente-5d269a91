@@ -102,14 +102,43 @@ const ReservationDialog = ({ unit, open, onOpenChange }: ReservationDialogProps)
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0 gap-0 bg-background border-border">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0 gap-0 bg-background border-border w-[95vw] md:w-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3">
+          {/* Summary - shown first on mobile */}
+          <div className="bg-muted/30 p-6 md:p-10 border-b lg:border-b-0 lg:border-l border-border order-first lg:order-last">
+            <div className="lg:sticky lg:top-8">
+              <h3 className="font-heading text-xl text-gold mb-6">
+                {t("reservation.summary")}
+              </h3>
+              <div className="grid grid-cols-2 lg:grid-cols-1 gap-x-6 gap-y-0">
+                <SummaryRow label={t("reservation.summaryProject")} value="Elocuente" />
+                <SummaryRow label={t("reservation.summaryTypology")} value={unit.type} />
+                <SummaryRow label={t("reservation.summaryRef")} value={unit.id} />
+                <SummaryRow label={t("reservation.summaryLocation")} value="Albergaria" />
+                <SummaryRow label={t("reservation.summaryFloor")} value={floorLabel(unit.floor)} />
+                <SummaryRow label={t("reservation.summaryArea")} value={unit.area} />
+                <SummaryRow label={t("reservation.summaryParking")} value={String(unit.parking)} />
+                <SummaryRow label={t("reservation.summaryOrientation")} value={unit.orientation} />
+                <SummaryRow label={t("reservation.summaryPrice")} value={formatPrice(unit.price)} />
+              </div>
+
+              <div className="mt-6 bg-gold text-background p-4 md:p-5 flex items-center justify-between">
+                <span className="font-body text-[10px] md:text-[11px] tracking-[0.15em] uppercase">
+                  {t("reservation.toPay")}
+                </span>
+                <span className="font-heading text-xl md:text-2xl">
+                  {formatPrice(RESERVATION_FEE)}
+                </span>
+              </div>
+            </div>
+          </div>
+
           {/* Form */}
-          <div className="lg:col-span-2 p-8 md:p-12">
+          <div className="lg:col-span-2 p-6 md:p-12 order-last lg:order-first">
             <DialogTitle className="font-heading text-2xl md:text-3xl text-foreground mb-1">
               {t("reservation.title")}
             </DialogTitle>
-            <p className="font-body text-[11px] tracking-[0.15em] uppercase text-muted-foreground mb-8">
+            <p className="font-body text-[10px] md:text-[11px] tracking-[0.15em] uppercase text-muted-foreground mb-8">
               Elocuente | {unit.type} | Ref {unit.id} | {floorLabel(unit.floor)}
             </p>
 
@@ -171,7 +200,7 @@ const ReservationDialog = ({ unit, open, onOpenChange }: ReservationDialogProps)
                     type="checkbox"
                     checked={form.terms_accepted}
                     onChange={(e) => update("terms_accepted", e.target.checked)}
-                    className="mt-1 accent-foreground"
+                    className="mt-1 accent-foreground min-w-[16px]"
                     required
                   />
                   <span className="font-body text-xs text-muted-foreground leading-relaxed">
@@ -184,7 +213,7 @@ const ReservationDialog = ({ unit, open, onOpenChange }: ReservationDialogProps)
                     type="checkbox"
                     checked={form.privacy_accepted}
                     onChange={(e) => update("privacy_accepted", e.target.checked)}
-                    className="mt-1 accent-foreground"
+                    className="mt-1 accent-foreground min-w-[16px]"
                     required
                   />
                   <span className="font-body text-xs text-muted-foreground leading-relaxed">
@@ -194,7 +223,7 @@ const ReservationDialog = ({ unit, open, onOpenChange }: ReservationDialogProps)
               </div>
 
               {/* Actions */}
-              <div className="flex items-center justify-between pt-4 border-t border-border">
+              <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 pt-4 border-t border-border">
                 <button
                   type="button"
                   onClick={() => onOpenChange(false)}
@@ -205,41 +234,12 @@ const ReservationDialog = ({ unit, open, onOpenChange }: ReservationDialogProps)
                 <button
                   type="submit"
                   disabled={submitting || !form.terms_accepted || !form.privacy_accepted}
-                  className="px-8 py-3.5 bg-foreground text-background font-body text-[10px] tracking-[0.3em] uppercase hover:bg-foreground/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto px-8 py-3.5 bg-foreground text-background font-body text-[10px] tracking-[0.3em] uppercase hover:bg-foreground/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {submitting ? "..." : t("reservation.submit")}
                 </button>
               </div>
             </form>
-          </div>
-
-          {/* Summary sidebar */}
-          <div className="bg-muted/30 p-8 md:p-10 border-l border-border">
-            <div className="sticky top-8">
-              <h3 className="font-heading text-xl text-gold mb-6">
-                {t("reservation.summary")}
-              </h3>
-              <div className="space-y-3">
-                <SummaryRow label={t("reservation.summaryProject")} value="Elocuente" />
-                <SummaryRow label={t("reservation.summaryTypology")} value={unit.type} />
-                <SummaryRow label={t("reservation.summaryRef")} value={unit.id} />
-                <SummaryRow label={t("reservation.summaryLocation")} value="Albergaria" />
-                <SummaryRow label={t("reservation.summaryFloor")} value={floorLabel(unit.floor)} />
-                <SummaryRow label={t("reservation.summaryArea")} value={unit.area} />
-                <SummaryRow label={t("reservation.summaryParking")} value={String(unit.parking)} />
-                <SummaryRow label={t("reservation.summaryOrientation")} value={unit.orientation} />
-                <SummaryRow label={t("reservation.summaryPrice")} value={formatPrice(unit.price)} />
-              </div>
-
-              <div className="mt-8 bg-gold text-background p-5 flex items-center justify-between">
-                <span className="font-body text-[11px] tracking-[0.15em] uppercase">
-                  {t("reservation.toPay")}
-                </span>
-                <span className="font-heading text-2xl">
-                  {formatPrice(RESERVATION_FEE)}
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </DialogContent>
