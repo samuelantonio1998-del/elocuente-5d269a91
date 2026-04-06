@@ -37,10 +37,10 @@ const units: Unit[] = [
   { id: "B06", building: "B", floor: 1, type: "T2", area: "118 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
   { id: "B07", building: "B", floor: 1, type: "T2", area: "112 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
   { id: "B08", building: "B", floor: 1, type: "T2", area: "119 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "B09", building: "B", floor: 2, type: "T2", area: "—", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "B10", building: "B", floor: 2, type: "T2", area: "—", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "B11", building: "B", floor: 2, type: "T2", area: "—", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "B12", building: "B", floor: 2, type: "T2", area: "—", parking: 2, orientation: "Norte / Poente", status: "unknown" },
+  { id: "B09", building: "B", floor: 2, type: "T2", area: "128 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
+  { id: "B10", building: "B", floor: 2, type: "T2", area: "117 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
+  { id: "B11", building: "B", floor: 2, type: "T2", area: "122 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
+  { id: "B12", building: "B", floor: 2, type: "T2", area: "119 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
 ];
 
 const AvailabilitySection = () => {
