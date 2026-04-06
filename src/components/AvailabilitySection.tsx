@@ -5,6 +5,7 @@ import { useCurrency } from "@/hooks/useCurrency";
 
 type UnitStatus = "unknown";
 const PRICE_PER_SQM = 2250;
+const MIN_PRICE = 290000;
 
 interface Unit {
   id: string;
@@ -133,7 +134,7 @@ const AvailabilitySection = () => {
                       <td className="py-4 px-3">
                         {unit.area !== "—" ? (
                           <span className="font-body text-sm text-gold font-medium">
-                            {formatPrice(parseFloat(unit.area) * PRICE_PER_SQM)}
+                            {formatPrice(Math.max(parseFloat(unit.area) * PRICE_PER_SQM, MIN_PRICE))}
                           </span>
                         ) : (
                           <span className="font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground">
