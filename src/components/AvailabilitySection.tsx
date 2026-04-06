@@ -5,6 +5,7 @@ import { useCurrency } from "@/hooks/useCurrency";
 
 type UnitStatus = "unknown";
 const PRICE_PER_SQM = 2250;
+const MIN_PRICE = 290000;
 
 interface Unit {
   id: string;
