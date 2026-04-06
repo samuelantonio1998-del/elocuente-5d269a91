@@ -14,7 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      reservations: {
+        Row: {
+          area: string
+          bank_entity: string | null
+          building: string
+          company_name: string | null
+          country: string | null
+          created_at: string
+          email: string
+          first_name: string
+          floor: number
+          iban: string | null
+          id: string
+          last_name: string
+          nif: string | null
+          orientation: string
+          parking: number
+          phone: string
+          price: number
+          privacy_accepted: boolean
+          status: string
+          terms_accepted: boolean
+          typology: string
+          unit_id: string
+          updated_at: string
+        }
+        Insert: {
+          area: string
+          bank_entity?: string | null
+          building: string
+          company_name?: string | null
+          country?: string | null
+          created_at?: string
+          email: string
+          first_name: string
+          floor: number
+          iban?: string | null
+          id?: string
+          last_name: string
+          nif?: string | null
+          orientation: string
+          parking?: number
+          phone: string
+          price: number
+          privacy_accepted?: boolean
+          status?: string
+          terms_accepted?: boolean
+          typology: string
+          unit_id: string
+          updated_at?: string
+        }
+        Update: {
+          area?: string
+          bank_entity?: string | null
+          building?: string
+          company_name?: string | null
+          country?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string
+          floor?: number
+          iban?: string | null
+          id?: string
+          last_name?: string
+          nif?: string | null
+          orientation?: string
+          parking?: number
+          phone?: string
+          price?: number
+          privacy_accepted?: boolean
+          status?: string
+          terms_accepted?: boolean
+          typology?: string
+          unit_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
