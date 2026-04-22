@@ -305,7 +305,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.welcome": "Entre Leiria y el Atlántico.",
-    "hero.subtitle": "Un condominio contemporáneo en una ubicación única — a minutos del centro de Leiria y de la costa atlántica, con la tranquilidad de vivir fuera de la ciudad.",
+    "hero.subtitle": "Un conjunto residencial contemporáneo en una posición única — a minutos del centro de Leiria y de la costa atlántica, con la tranquilidad de vivir fuera de la ciudad.",
     "hero.scroll": "Scroll Down",
 
     // About
