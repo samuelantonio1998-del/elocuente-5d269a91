@@ -127,7 +127,12 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_reserved_unit_ids: {
+        Args: never
+        Returns: {
+          unit_id: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
