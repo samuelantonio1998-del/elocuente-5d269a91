@@ -124,7 +124,12 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      reserved_units: {
+        Row: {
+          unit_id: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
