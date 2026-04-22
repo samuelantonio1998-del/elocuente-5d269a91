@@ -404,7 +404,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Amenities
     "amenities.label": "Amenidades",
     "amenities.title": "Confort y Privacidad",
-    "amenities.desc": "Pensado para el confort del día a día. Acabados modernos, estacionamiento privado y arquitectura diseñada para aprovechar al máximo la luz natural — porque un buen conjunto residencial se siente en cada momento.",
+    "amenities.desc": "Pensado para el confort del día a día. Acabados modernos, aparcamiento privado y arquitectura diseñada para aprovechar al máximo la luz natural — porque un buen hogar se siente en cada momento.",
     "amenities.gardens": "Jardines",
     "amenities.gardens.desc": "Áreas verdes paisajísticas comunes, diseñadas para promover momentos de convivencia y relajación al aire libre.",
     "amenities.parking": "Estacionamiento",
