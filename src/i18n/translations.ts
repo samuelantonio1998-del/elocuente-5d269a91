@@ -313,7 +313,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "about.title1": "El Arte de Vivir",
     "about.title2": "lo Mejor",
     "about.p1": "Elocuente es un conjunto residencial pensado para quienes quieren vivir bien. Dos bloques de arquitectura contemporánea, acabados de calidad y espacios generosos — en una ubicación privilegiada entre Leiria y la Costa Atlántica.",
-    "about.p2": "Un proyecto para quienes valoran la tranquilidad, el confort y una vida a un ritmo diferente.",
+    "about.p2": "Un proyecto para quienes valoran la tranquilidad, el confort y un ritmo de vida diferente.",
     "about.cta1": "Solicitar Información",
     "about.cta2": "Ver Apartamentos",
     "about.locationLabel": "Ubicación Privilegiada",
