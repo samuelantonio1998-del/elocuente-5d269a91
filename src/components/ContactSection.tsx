@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { toast } from "sonner";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -12,12 +13,31 @@ const ContactSection = () => {
     typology: "",
     message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
   const { t } = useLanguage();
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    toast.success(t("contact.success"));
-    setFormData({ name: "", email: "", phone: "", typology: "", message: "" });
+    setSubmitting(true);
+    try {
+      const { error } = await supabase.from("contact_leads").insert({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim() || null,
+        typology: formData.typology || null,
+        message: formData.message.trim() || null,
+      });
+
+      if (error) throw error;
+
+      toast.success(t("contact.success"));
+      setFormData({ name: "", email: "", phone: "", typology: "", message: "" });
+    } catch (err) {
+      console.error("Contact form submission error:", err);
+      toast.error(t("contact.error") || "Erro ao enviar. Tente novamente.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -99,9 +119,10 @@ const ContactSection = () => {
               <div className="pt-10">
                 <button
                   type="submit"
-                  className="w-full py-4 bg-foreground text-background font-body text-[10px] tracking-[0.3em] uppercase hover:bg-gold hover:text-background transition-all duration-500"
+                  disabled={submitting}
+                  className="w-full py-4 bg-foreground text-background font-body text-[10px] tracking-[0.3em] uppercase hover:bg-gold hover:text-background transition-all duration-500 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {t("contact.submit")}
+                  {submitting ? "..." : t("contact.submit")}
                 </button>
               </div>
             </form>
