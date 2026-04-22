@@ -55,6 +55,25 @@ const AvailabilitySection = () => {
   const [filterType, setFilterType] = useState<string>("all");
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [reservedIds, setReservedIds] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await supabase.rpc("get_reserved_unit_ids");
+      if (cancelled) return;
+      if (error) {
+        console.error("Failed to load reserved units", error);
+        return;
+      }
+      setReservedIds(new Set((data ?? []).map((r: { unit_id: string }) => r.unit_id)));
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const getStatus = (unit: Unit): UnitStatus => (reservedIds.has(unit.id) ? "reserved" : unit.status);
 
   const filtered = units.filter((u) => {
     if (filterBuilding !== "all" && u.building !== filterBuilding) return false;
