@@ -213,15 +213,24 @@ const AvailabilitySection = () => {
           {/* Mobile card layout */}
           <AnimatedSection delay={0.2} className="md:hidden">
             <div className="space-y-4">
-              {filtered.map((unit) => (
+              {filtered.map((unit) => {
+                const status = getStatus(unit);
+                const isReserved = status === "reserved";
+                return (
                 <div key={unit.id} className="border border-border p-5 space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <span className="font-heading text-xl text-foreground">{unit.type}</span>
                       <span className="font-body text-xs text-muted-foreground">Ref {unit.id}</span>
                     </div>
-                    <span className="inline-block px-2.5 py-1 font-body text-[9px] tracking-[0.15em] uppercase bg-secondary text-secondary-foreground">
-                      {t("availability.status.unknown")}
+                    <span
+                      className={`inline-block px-2.5 py-1 font-body text-[9px] tracking-[0.15em] uppercase ${
+                        isReserved
+                          ? "bg-muted text-muted-foreground"
+                          : "bg-secondary text-secondary-foreground"
+                      }`}
+                    >
+                      {isReserved ? t("availability.status.reserved") : t("availability.status.unknown")}
                     </span>
                   </div>
 
@@ -271,14 +280,16 @@ const AvailabilitySection = () => {
                       </span>
                       <button
                         onClick={() => handleReserve(unit)}
-                        className="px-4 py-2.5 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors"
+                        disabled={isReserved}
+                        className="px-4 py-2.5 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-gold"
                       >
                         {t("availability.reserve")}
                       </button>
                     </div>
                   </div>
                 </div>
-              ))}
+                );
+              })}
               {filtered.length === 0 && (
                 <p className="py-12 text-center font-body text-sm text-muted-foreground">
                   {t("availability.noResults")}
