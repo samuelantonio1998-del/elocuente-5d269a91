@@ -23,10 +23,19 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 1 }}
-          className="font-heading text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-primary-foreground leading-none tracking-wide"
+          className="font-heading text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-primary-foreground leading-tight tracking-wide max-w-5xl"
         >
           {t("hero.welcome")}
         </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 1.6 }}
+          className="font-body text-base md:text-lg lg:text-xl text-primary-foreground/85 leading-relaxed tracking-wide max-w-2xl mt-6 md:mt-8"
+        >
+          {t("hero.subtitle")}
+        </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }}
