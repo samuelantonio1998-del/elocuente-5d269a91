@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useCurrency } from "@/hooks/useCurrency";
 import ReservationDialog from "./ReservationDialog";
+import { supabase } from "@/integrations/supabase/client";
 
-type UnitStatus = "unknown";
+type UnitStatus = "unknown" | "reserved";
 const PRICE_PER_SQM = 2250;
 const MIN_PRICE = 290000;
 
