@@ -158,7 +158,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "nav.contact": "Contact",
 
     // Hero
-    "hero.welcome": "Welcome",
+    "hero.welcome": "Between Leiria and the Atlantic.",
+    "hero.subtitle": "A contemporary residential development in a unique position — minutes from Leiria city centre and the Atlantic coast, with the peace and quiet of living away from the city.",
     "hero.scroll": "Scroll Down",
 
     // About
@@ -303,7 +304,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "nav.contact": "Contacto",
 
     // Hero
-    "hero.welcome": "Bienvenido",
+    "hero.welcome": "Entre Leiria y el Atlántico.",
+    "hero.subtitle": "Un condominio contemporáneo en una ubicación única — a minutos del centro de Leiria y de la costa atlántica, con la tranquilidad de vivir fuera de la ciudad.",
     "hero.scroll": "Scroll Down",
 
     // About
