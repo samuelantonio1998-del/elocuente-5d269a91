@@ -10,7 +10,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "nav.contact": "Contacto",
 
     // Hero
-    "hero.welcome": "Bem-vindo",
+    "hero.welcome": "Entre Leiria e o Atlântico.",
+    "hero.subtitle": "Um condomínio contemporâneo numa localização única — a minutos do centro de Leiria e da costa atlântica, com a tranquilidade de viver fora da cidade.",
     "hero.scroll": "Scroll Down",
 
     // About
