@@ -112,7 +112,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Amenities
     "amenities.label": "Amenidades",
     "amenities.title": "Conforto & Privacidade",
-    "amenities.desc": "Cada detalhe foi pensado para oferecer qualidade de vida excepcional, com espaços comuns que complementam a experiência residencial.",
+    "amenities.desc": "Pensado para o conforto do dia a dia. Acabamentos modernos, estacionamento privativo e arquitetura desenhada para aproveitar ao máximo a luz natural — porque um bom condomínio sente-se em cada momento.",
     "amenities.gardens": "Jardins",
     "amenities.gardens.desc": "Áreas verdes paisagísticas comuns, desenhadas para promover momentos de convívio e relaxamento ao ar livre.",
     "amenities.parking": "Estacionamento",
@@ -258,7 +258,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Amenities
     "amenities.label": "Amenities",
     "amenities.title": "Comfort & Privacy",
-    "amenities.desc": "Every detail was designed to offer exceptional quality of life, with common spaces that complement the residential experience.",
+    "amenities.desc": "Designed for everyday comfort. Modern finishes, private parking and architecture shaped to make the most of natural light — because a great residence is felt in every moment.",
     "amenities.gardens": "Gardens",
     "amenities.gardens.desc": "Landscaped common green areas, designed to promote moments of socializing and outdoor relaxation.",
     "amenities.parking": "Parking",
@@ -404,7 +404,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Amenities
     "amenities.label": "Amenidades",
     "amenities.title": "Confort y Privacidad",
-    "amenities.desc": "Cada detalle fue pensado para ofrecer una calidad de vida excepcional, con espacios comunes que complementan la experiencia residencial.",
+    "amenities.desc": "Pensado para el confort del día a día. Acabados modernos, estacionamiento privado y arquitectura diseñada para aprovechar al máximo la luz natural — porque un buen conjunto residencial se siente en cada momento.",
     "amenities.gardens": "Jardines",
     "amenities.gardens.desc": "Áreas verdes paisajísticas comunes, diseñadas para promover momentos de convivencia y relajación al aire libre.",
     "amenities.parking": "Estacionamiento",
