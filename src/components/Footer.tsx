@@ -1,4 +1,5 @@
 import { useLanguage } from "@/i18n/LanguageContext";
+import Logo from "./Logo";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -16,8 +17,8 @@ const Footer = () => {
       <div className="px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-10 mb-16">
-            <div className="flex flex-col items-center md:items-start gap-1">
-              <p className="font-heading text-xl tracking-[0.2em]">ELOCUENTE</p>
+            <div className="flex flex-col items-center md:items-start gap-1 text-primary-foreground">
+              <Logo height={22} aria-label="Elocuente" />
             </div>
 
             <div className="flex flex-wrap justify-center gap-8 md:gap-12">
