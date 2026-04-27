@@ -23,7 +23,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 1 }}
-          className="font-heading text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-primary-foreground leading-tight tracking-wide max-w-5xl"
+          className="font-heading text-4xl md:text-6xl xl:text-8xl text-primary-foreground leading-tight tracking-wide max-w-5xl lg:text-6xl"
         >
           {t("hero.welcome")}
         </motion.h1>
