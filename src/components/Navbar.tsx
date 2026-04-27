@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Globe } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Lang } from "@/i18n/translations";
+import Logo from "./Logo";
 
 const navKeys = [
   { key: "nav.concept", href: "#sobre" },
@@ -54,14 +55,14 @@ const Navbar = () => {
         </div>
 
         {/* Center logo */}
-        <a href="#" className="flex flex-col items-center gap-0.5 flex-shrink-0">
-          <span
-            className={`font-heading text-xl lg:text-2xl tracking-[0.2em] transition-colors duration-500 ${
-              scrolled ? "text-foreground" : "text-primary-foreground"
-            }`}
-          >
-            ELOCUENTE
-          </span>
+        <a
+          href="#"
+          aria-label="Elocuente"
+          className={`flex items-center flex-shrink-0 transition-colors duration-500 ${
+            scrolled ? "text-foreground" : "text-primary-foreground"
+          }`}
+        >
+          <Logo height={22} className="lg:h-[26px]" />
         </a>
 
         {/* Right nav items */}
