@@ -332,7 +332,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "apartments.cta": "Solicitar Planos",
     "apartments.t2.price": "",
     "apartments.t2.desc": "Apartamentos con salón y cocina open-space, dos dormitorios, baño completo y balcones generosos con excelente exposición solar.",
-    "apartments.t3.price": "Bajo consulta",
+    "apartments.t3.price": "",
     "apartments.t3.desc": "Tres dormitorios, amplios espacios familiares, dos baños y balcón privado con vistas despejadas.",
 
     // Availability
@@ -347,7 +347,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.status.available": "Disponible",
     "availability.status.reserved": "Reservado",
     "availability.status.sold": "Vendido",
-    "availability.status.unknown": "Bajo consulta",
+    "availability.status.unknown": "",
     "availability.col.id": "Fracción",
     "availability.col.building": "Edificio",
     "availability.col.floor": "Piso",
