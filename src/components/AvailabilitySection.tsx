@@ -58,7 +58,6 @@ const AvailabilitySection = () => {
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [reservedIds, setReservedIds] = useState<Set<string>>(new Set());
-  const [reservedIds, setReservedIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     let cancelled = false;
