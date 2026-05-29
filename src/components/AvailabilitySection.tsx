@@ -190,6 +190,28 @@ const AvailabilitySection = () => {
               </select>
             </div>
           </AnimatedSection>
+
+          {/* Desktop table */}
+          <AnimatedSection delay={0.2} className="hidden md:block">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="border-b border-border">
+                    {["id", "building", "floor", "type", "area", "orientation", "parking", "status"].map((col) => (
+                      <th
+                        key={col}
+                        className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium"
+                      >
+                        {t(`availability.col.${col}`)}
+                      </th>
+                    ))}
+                    <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
+                      {t("availability.col.price")}
+                    </th>
+                    <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
+                      {t("availability.col.floorPlan")}
+                    </th>
+                    <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
                     </th>
                   </tr>
                 </thead>
