@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Playfair Display', 'serif'],
-        body: ['Montserrat', 'sans-serif'],
+      fontFamily: {
+        heading: ['Cormorant Garamond', 'Playfair Display', 'serif'],
+        body: ['Jost', 'Montserrat', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -27,6 +28,21 @@ export default {
           DEFAULT: "hsl(var(--gold))",
           light: "hsl(var(--gold-light))",
         },
+        brass: {
+          DEFAULT: "hsl(var(--brass))",
+          light: "hsl(var(--brass-light))",
+        },
+        petrol: {
+          DEFAULT: "hsl(var(--petrol))",
+          deep: "hsl(var(--petrol-deep))",
+        },
+        bone: {
+          DEFAULT: "hsl(var(--bone))",
+          2: "hsl(var(--bone-2))",
+        },
+        sand: "hsl(var(--sand))",
+        sage: "hsl(var(--sage))",
+        ink: "hsl(var(--ink))",
         charcoal: {
           DEFAULT: "hsl(var(--charcoal))",
           light: "hsl(var(--charcoal-light))",
@@ -35,8 +51,6 @@ export default {
           DEFAULT: "hsl(var(--cream))",
           dark: "hsl(var(--cream-dark))",
         },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
