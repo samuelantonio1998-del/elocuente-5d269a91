@@ -54,8 +54,10 @@ const AvailabilitySection = () => {
   const { formatPrice } = useCurrency();
   const [filterBuilding, setFilterBuilding] = useState<string>("all");
   const [filterType, setFilterType] = useState<string>("all");
+  const [activeBuilding, setActiveBuilding] = useState<"A" | "B">("A");
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [reservedIds, setReservedIds] = useState<Set<string>>(new Set());
   const [reservedIds, setReservedIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -86,10 +88,33 @@ const AvailabilitySection = () => {
 
   const handleReserve = (unit: Unit) => {
     setSelectedUnit(unit);
+  const handleReserve = (unit: Unit) => {
+    setSelectedUnit(unit);
     setDialogOpen(true);
   };
 
-  return (
+  const handleUnitClickById = (unitId: string) => {
+    const u = units.find((x) => x.id === unitId);
+    if (u) handleReserve(u);
+  };
+
+  const selectorUnits: SelectorUnit[] = useMemo(
+    () =>
+      units.map((u) => ({
+        id: u.id,
+        building: u.building,
+        floor: u.floor,
+        type: u.type,
+        area: u.area,
+        status: (reservedIds.has(u.id) ? "reserved" : "soon") as SelectorStatus,
+      })),
+    [reservedIds]
+  );
+
+  const handleBuildingChange = (b: "A" | "B") => {
+    setActiveBuilding(b);
+    setFilterBuilding(b);
+  };
     <section id="disponibilidades" className="bg-background">
       <div className="py-28 md:py-40 px-4 md:px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
@@ -127,29 +152,44 @@ const AvailabilitySection = () => {
                 <option value="T3">T3</option>
               </select>
             </div>
+          {/* Schematic building selector */}
+          <AnimatedSection delay={0.05} className="mb-16">
+            <BuildingSelector
+              units={selectorUnits}
+              activeBuilding={activeBuilding}
+              onBuildingChange={handleBuildingChange}
+              onUnitClick={handleUnitClickById}
+              highlightType={filterType}
+            />
           </AnimatedSection>
 
-          {/* Desktop table */}
-          <AnimatedSection delay={0.2} className="hidden md:block">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="border-b border-border">
-                    {["id", "building", "floor", "type", "area", "orientation", "parking", "status"].map((col) => (
-                      <th
-                        key={col}
-                        className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium"
-                      >
-                        {t(`availability.col.${col}`)}
-                      </th>
-                    ))}
-                    <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
-                      {t("availability.col.price")}
-                    </th>
-                    <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
-                      {t("availability.col.floorPlan")}
-                    </th>
-                    <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
+          <AnimatedSection delay={0.1}>
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
+              <select
+                value={filterBuilding}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  setFilterBuilding(v);
+                  if (v === "A" || v === "B") setActiveBuilding(v);
+                }}
+                className="px-4 py-2.5 bg-transparent border border-border font-body text-[11px] tracking-[0.15em] uppercase text-foreground focus:outline-none focus:border-foreground/40 transition-colors"
+              >
+                <option value="all">{t("availability.allBuildings")}</option>
+                <option value="A">{t("availability.building")} A</option>
+                <option value="B">{t("availability.building")} B</option>
+              </select>
+
+              <select
+                value={filterType}
+                onChange={(e) => setFilterType(e.target.value)}
+                className="px-4 py-2.5 bg-transparent border border-border font-body text-[11px] tracking-[0.15em] uppercase text-foreground focus:outline-none focus:border-foreground/40 transition-colors"
+              >
+                <option value="all">{t("availability.allTypes")}</option>
+                <option value="T2">T2</option>
+                <option value="T3">T3</option>
+              </select>
+            </div>
+          </AnimatedSection>
                     </th>
                   </tr>
                 </thead>
