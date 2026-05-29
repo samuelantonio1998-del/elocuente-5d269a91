@@ -6,55 +6,69 @@
 
 @layer base {
   :root {
-    /* Conceito C palette
-       Marfim     #F7F5F1 → 42 27% 96%
-       Pedra Clara #E7E3DC → 36 21% 88%
-       Cinza Taupe #A69F96 → 30 8% 62%
-       Grafite    #2B2D31 → 220 7% 18%
-       Bronze     #B08A63 → 28 31% 54%
+    /* Elocuente — refined palette
+       Bone     #F4EFE6 → 38 36% 93%
+       Bone-2   #EDE6D8 → 40 32% 89%
+       Ink      #16201C → 158 16% 10%
+       Petrol   #24433E → 170 30% 20%
+       PetrolD  #1A332F → 170 30% 15%
+       Brass    #AC8A55 → 34 35% 51%
+       BrassL   #C5A874 → 34 39% 62%
+       Sand     #DBD0BE → 39 27% 80%
+       Sage     #8A9B93 → 159 8% 57%
     */
-    --background: 42 27% 96%;
-    --foreground: 220 7% 18%;
+    --background: 38 36% 93%;
+    --foreground: 158 16% 10%;
 
-    --card: 36 21% 88%;
-    --card-foreground: 220 7% 18%;
+    --card: 40 32% 89%;
+    --card-foreground: 158 16% 10%;
 
-    --popover: 42 27% 96%;
-    --popover-foreground: 220 7% 18%;
+    --popover: 38 36% 93%;
+    --popover-foreground: 158 16% 10%;
 
-    --primary: 220 7% 18%;
-    --primary-foreground: 42 27% 96%;
+    --primary: 170 30% 20%;
+    --primary-foreground: 38 36% 93%;
 
-    --secondary: 36 21% 88%;
-    --secondary-foreground: 220 7% 18%;
+    --secondary: 40 32% 89%;
+    --secondary-foreground: 158 16% 10%;
 
-    --muted: 36 21% 88%;
-    --muted-foreground: 30 8% 42%;
+    --muted: 40 32% 89%;
+    --muted-foreground: 170 12% 32%;
 
-    --accent: 28 31% 54%;
-    --accent-foreground: 42 27% 96%;
+    --accent: 34 35% 51%;
+    --accent-foreground: 38 36% 93%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 12% 78%;
-    --input: 30 12% 78%;
-    --ring: 28 31% 54%;
+    --border: 39 18% 78%;
+    --input: 39 18% 78%;
+    --ring: 34 35% 51%;
 
     --radius: 0rem;
 
-    /* Brand tokens — kept names for back-compat, mapped to Conceito C */
-    --gold: 28 31% 54%;          /* Bronze */
-    --gold-light: 28 28% 68%;    /* Bronze claro */
-    --charcoal: 220 7% 18%;      /* Grafite */
-    --charcoal-light: 220 6% 26%;
-    --cream: 42 27% 96%;         /* Marfim */
-    --cream-dark: 36 21% 88%;    /* Pedra Clara */
-    --warm-gray: 30 8% 42%;
-    --warm-beige: 30 8% 62%;     /* Cinza Taupe */
+    /* Brand tokens — back-compat + new */
+    --gold: 34 35% 51%;          /* Brass */
+    --gold-light: 34 39% 62%;    /* Brass light */
+    --charcoal: 170 30% 15%;     /* Petrol deep — for dark surfaces */
+    --charcoal-light: 170 30% 20%;
+    --cream: 38 36% 93%;         /* Bone */
+    --cream-dark: 40 32% 89%;    /* Bone-2 */
+    --warm-gray: 170 12% 32%;
+    --warm-beige: 39 27% 80%;    /* Sand */
 
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Montserrat', sans-serif;
+    --bone: 38 36% 93%;
+    --bone-2: 40 32% 89%;
+    --ink: 158 16% 10%;
+    --petrol: 170 30% 20%;
+    --petrol-deep: 170 30% 15%;
+    --brass: 34 35% 51%;
+    --brass-light: 34 39% 62%;
+    --sand: 39 27% 80%;
+    --sage: 159 18% 50%;
+
+    --font-heading: 'Cormorant Garamond', 'Playfair Display', serif;
+    --font-body: 'Jost', 'Montserrat', sans-serif;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -67,33 +81,33 @@
   }
 
   .dark {
-    --background: 220 7% 12%;
-    --foreground: 42 27% 96%;
-    --card: 220 7% 16%;
-    --card-foreground: 42 27% 96%;
-    --popover: 220 7% 12%;
-    --popover-foreground: 42 27% 96%;
-    --primary: 42 27% 96%;
-    --primary-foreground: 220 7% 12%;
-    --secondary: 220 6% 22%;
-    --secondary-foreground: 42 27% 96%;
-    --muted: 220 6% 22%;
-    --muted-foreground: 30 8% 62%;
-    --accent: 28 31% 54%;
-    --accent-foreground: 42 27% 96%;
+    --background: 170 30% 10%;
+    --foreground: 38 36% 93%;
+    --card: 170 30% 14%;
+    --card-foreground: 38 36% 93%;
+    --popover: 170 30% 10%;
+    --popover-foreground: 38 36% 93%;
+    --primary: 38 36% 93%;
+    --primary-foreground: 170 30% 10%;
+    --secondary: 170 20% 18%;
+    --secondary-foreground: 38 36% 93%;
+    --muted: 170 20% 18%;
+    --muted-foreground: 39 27% 80%;
+    --accent: 34 35% 51%;
+    --accent-foreground: 38 36% 93%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 220 6% 24%;
-    --input: 220 6% 24%;
-    --ring: 28 31% 54%;
-    --sidebar-background: 220 7% 12%;
-    --sidebar-foreground: 42 27% 96%;
-    --sidebar-primary: 28 31% 54%;
-    --sidebar-primary-foreground: 42 27% 96%;
-    --sidebar-accent: 220 6% 22%;
-    --sidebar-accent-foreground: 42 27% 96%;
-    --sidebar-border: 220 6% 24%;
-    --sidebar-ring: 28 31% 54%;
+    --border: 170 20% 20%;
+    --input: 170 20% 20%;
+    --ring: 34 35% 51%;
+    --sidebar-background: 170 30% 10%;
+    --sidebar-foreground: 38 36% 93%;
+    --sidebar-primary: 34 35% 51%;
+    --sidebar-primary-foreground: 38 36% 93%;
+    --sidebar-accent: 170 20% 18%;
+    --sidebar-accent-foreground: 38 36% 93%;
+    --sidebar-border: 170 20% 20%;
+    --sidebar-ring: 34 35% 51%;
   }
 }
 
@@ -108,48 +122,36 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    font-weight: 500;
+    letter-spacing: -0.005em;
   }
 }
 
 @layer utilities {
-  .text-gold {
-    color: hsl(var(--gold));
-  }
-  .bg-gold {
-    background-color: hsl(var(--gold));
-  }
-  .border-gold {
-    border-color: hsl(var(--gold));
-  }
-  .bg-charcoal {
-    background-color: hsl(var(--charcoal));
-  }
-  .text-charcoal {
-    color: hsl(var(--charcoal));
-  }
-  .bg-cream {
-    background-color: hsl(var(--cream));
-  }
-  .bg-cream-dark {
-    background-color: hsl(var(--cream-dark));
-  }
-  .text-warm-gray {
-    color: hsl(var(--warm-gray));
-  }
-  .bg-warm-beige {
-    background-color: hsl(var(--warm-beige));
+  .text-gold { color: hsl(var(--gold)); }
+  .bg-gold { background-color: hsl(var(--gold)); }
+  .border-gold { border-color: hsl(var(--gold)); }
+  .bg-charcoal { background-color: hsl(var(--charcoal)); }
+  .text-charcoal { color: hsl(var(--charcoal)); }
+  .bg-cream { background-color: hsl(var(--cream)); }
+  .bg-cream-dark { background-color: hsl(var(--cream-dark)); }
+  .text-warm-gray { color: hsl(var(--warm-gray)); }
+  .bg-warm-beige { background-color: hsl(var(--warm-beige)); }
+  .text-brass { color: hsl(var(--brass)); }
+  .bg-brass { background-color: hsl(var(--brass)); }
+  .border-brass { border-color: hsl(var(--brass)); }
+  .bg-petrol { background-color: hsl(var(--petrol)); }
+  .bg-petrol-deep { background-color: hsl(var(--petrol-deep)); }
+  .text-sage { color: hsl(var(--sage)); }
+  .bg-sage { background-color: hsl(var(--sage)); }
+  .border-sage { border-color: hsl(var(--sage)); }
+
+  .bg-hero-veil {
+    background-image: linear-gradient(180deg, hsl(var(--petrol-deep) / 0.55) 0%, hsl(var(--petrol-deep) / 0.25) 40%, hsl(var(--petrol-deep) / 0.65) 100%);
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
-/* Hide scrollbar for horizontal scroll sections */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
