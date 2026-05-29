@@ -88,8 +88,6 @@ const AvailabilitySection = () => {
 
   const handleReserve = (unit: Unit) => {
     setSelectedUnit(unit);
-  const handleReserve = (unit: Unit) => {
-    setSelectedUnit(unit);
     setDialogOpen(true);
   };
 
@@ -115,6 +113,8 @@ const AvailabilitySection = () => {
     setActiveBuilding(b);
     setFilterBuilding(b);
   };
+
+  return (
     <section id="disponibilidades" className="bg-background">
       <div className="py-28 md:py-40 px-4 md:px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
