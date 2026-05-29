@@ -130,28 +130,6 @@ const AvailabilitySection = () => {
             </p>
           </AnimatedSection>
 
-          <AnimatedSection delay={0.1}>
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
-              <select
-                value={filterBuilding}
-                onChange={(e) => setFilterBuilding(e.target.value)}
-                className="px-4 py-2.5 bg-transparent border border-border font-body text-[11px] tracking-[0.15em] uppercase text-foreground focus:outline-none focus:border-foreground/40 transition-colors"
-              >
-                <option value="all">{t("availability.allBuildings")}</option>
-                <option value="A">{t("availability.building")} A</option>
-                <option value="B">{t("availability.building")} B</option>
-              </select>
-
-              <select
-                value={filterType}
-                onChange={(e) => setFilterType(e.target.value)}
-                className="px-4 py-2.5 bg-transparent border border-border font-body text-[11px] tracking-[0.15em] uppercase text-foreground focus:outline-none focus:border-foreground/40 transition-colors"
-              >
-                <option value="all">{t("availability.allTypes")}</option>
-                <option value="T2">T2</option>
-                <option value="T3">T3</option>
-              </select>
-            </div>
           {/* Schematic building selector */}
           <AnimatedSection delay={0.05} className="mb-16">
             <BuildingSelector
