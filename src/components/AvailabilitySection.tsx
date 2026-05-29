@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useCurrency } from "@/hooks/useCurrency";
 import ReservationDialog from "./ReservationDialog";
+import BuildingSelector, { SelectorStatus, SelectorUnit } from "./BuildingSelector";
 import { supabase } from "@/integrations/supabase/client";
 
 type UnitStatus = "unknown" | "reserved";
