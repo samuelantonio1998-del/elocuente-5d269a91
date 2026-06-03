@@ -1,9 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useCurrency } from "@/hooks/useCurrency";
 import ReservationDialog from "./ReservationDialog";
-import BuildingSelector, { SelectorStatus, SelectorUnit } from "./BuildingSelector";
 import { supabase } from "@/integrations/supabase/client";
 
 type UnitStatus = "unknown" | "reserved";
@@ -54,7 +53,6 @@ const AvailabilitySection = () => {
   const { formatPrice } = useCurrency();
   const [filterBuilding, setFilterBuilding] = useState<string>("all");
   const [filterType, setFilterType] = useState<string>("all");
-  const [activeBuilding, setActiveBuilding] = useState<"A" | "B">("A");
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [reservedIds, setReservedIds] = useState<Set<string>>(new Set());
@@ -90,29 +88,6 @@ const AvailabilitySection = () => {
     setDialogOpen(true);
   };
 
-  const handleUnitClickById = (unitId: string) => {
-    const u = units.find((x) => x.id === unitId);
-    if (u) handleReserve(u);
-  };
-
-  const selectorUnits: SelectorUnit[] = useMemo(
-    () =>
-      units.map((u) => ({
-        id: u.id,
-        building: u.building,
-        floor: u.floor,
-        type: u.type,
-        area: u.area,
-        status: (reservedIds.has(u.id) ? "reserved" : "soon") as SelectorStatus,
-      })),
-    [reservedIds]
-  );
-
-  const handleBuildingChange = (b: "A" | "B") => {
-    setActiveBuilding(b);
-    setFilterBuilding(b);
-  };
-
   return (
     <section id="disponibilidades" className="bg-background">
       <div className="py-28 md:py-40 px-4 md:px-8 lg:px-16">
@@ -129,26 +104,11 @@ const AvailabilitySection = () => {
             </p>
           </AnimatedSection>
 
-          {/* Schematic building selector */}
-          <AnimatedSection delay={0.05} className="mb-16">
-            <BuildingSelector
-              units={selectorUnits}
-              activeBuilding={activeBuilding}
-              onBuildingChange={handleBuildingChange}
-              onUnitClick={handleUnitClickById}
-              highlightType={filterType}
-            />
-          </AnimatedSection>
-
           <AnimatedSection delay={0.1}>
             <div className="flex flex-wrap justify-center gap-3 mb-10">
               <select
                 value={filterBuilding}
-                onChange={(e) => {
-                  const v = e.target.value;
-                  setFilterBuilding(v);
-                  if (v === "A" || v === "B") setActiveBuilding(v);
-                }}
+                onChange={(e) => setFilterBuilding(e.target.value)}
                 className="px-4 py-2.5 bg-transparent border border-border font-body text-[11px] tracking-[0.15em] uppercase text-foreground focus:outline-none focus:border-foreground/40 transition-colors"
               >
                 <option value="all">{t("availability.allBuildings")}</option>

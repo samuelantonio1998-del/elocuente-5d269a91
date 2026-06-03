@@ -16,7 +16,7 @@ const HeroSection = () => {
         height={1080}
         fetchPriority="high"
       />
-      <div className="absolute inset-0 bg-hero-veil" />
+      <div className="absolute inset-0 bg-charcoal/40" />
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
         <motion.h1

@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Cormorant Garamond', 'Playfair Display', 'serif'],
-        body: ['Jost', 'Montserrat', 'sans-serif'],
+        heading: ['Playfair Display', 'serif'],
+        body: ['Montserrat', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -27,21 +27,6 @@ export default {
           DEFAULT: "hsl(var(--gold))",
           light: "hsl(var(--gold-light))",
         },
-        brass: {
-          DEFAULT: "hsl(var(--brass))",
-          light: "hsl(var(--brass-light))",
-        },
-        petrol: {
-          DEFAULT: "hsl(var(--petrol))",
-          deep: "hsl(var(--petrol-deep))",
-        },
-        bone: {
-          DEFAULT: "hsl(var(--bone))",
-          2: "hsl(var(--bone-2))",
-        },
-        sand: "hsl(var(--sand))",
-        sage: "hsl(var(--sage))",
-        ink: "hsl(var(--ink))",
         charcoal: {
           DEFAULT: "hsl(var(--charcoal))",
           light: "hsl(var(--charcoal-light))",
@@ -53,6 +38,14 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -69,10 +62,6 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
