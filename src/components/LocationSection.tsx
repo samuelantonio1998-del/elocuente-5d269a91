@@ -1,4 +1,4 @@
-import { MapPin, Waves, Mountain, Plane, Car } from "lucide-react";
+import { Waves, Building2, MapPin, Car, GraduationCap } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import renderAerial from "@/assets/render-aerial.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -7,30 +7,30 @@ const LocationSection = () => {
   const { t } = useLanguage();
 
   const points = [
-    { icon: MapPin, label: t("location.leiria"), time: "10 min" },
-    { icon: Waves, label: t("location.beach"), time: "15 min" },
-    { icon: Mountain, label: t("location.nazare"), time: "25 min" },
-    { icon: Plane, label: t("location.airport"), time: "80 min" },
-    { icon: Car, label: t("location.highways"), time: "5 min" },
+    { icon: Waves, label: t("location.poi.beaches") },
+    { icon: Building2, label: t("location.poi.center") },
+    { icon: MapPin, label: t("location.poi.leiria") },
+    { icon: Car, label: t("location.poi.highways") },
+    { icon: GraduationCap, label: t("location.poi.schools") },
   ];
 
   return (
     <section id="localizacao" className="bg-background">
-      <AnimatedSection className="relative h-[40vh] md:h-[60vh]">
+      <AnimatedSection className="relative h-[40vh] md:h-[55vh]">
         <img
           src={renderAerial}
           alt="Vista aérea da localização"
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-charcoal/30" />
+        <div className="absolute inset-0 bg-charcoal/40" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <p className="font-body text-[10px] tracking-[0.5em] uppercase text-primary-foreground/70 mb-4">
               {t("location.label")}
             </p>
             <h2 className="font-heading text-3xl md:text-5xl lg:text-6xl text-primary-foreground">
-              Albergaria, Marinha Grande
+              {t("location.title")}
             </h2>
           </div>
         </div>
@@ -38,39 +38,35 @@ const LocationSection = () => {
 
       <div className="px-8 lg:px-16 py-20 md:py-28">
         <div className="max-w-5xl mx-auto">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-14">
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-2xl mx-auto">
               {t("location.desc")}
             </p>
           </AnimatedSection>
 
           <AnimatedSection delay={0.15}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-0">
+            <ul className="grid sm:grid-cols-2 gap-px bg-border border border-border">
               {points.map((p, i) => (
-                <div
+                <li
                   key={i}
-                  className={`text-center py-8 md:py-12 px-4 md:px-6 border-b md:border-b-0 border-border ${
-                    i < points.length - 1 ? "md:border-r" : ""
-                  } ${i % 2 === 0 && i < points.length - 1 ? "border-r sm:border-r-0" : ""} ${i % 3 !== 2 ? "sm:border-r md:border-r-0" : ""} ${i < points.length - 1 ? "md:border-r" : ""}`}
+                  className="bg-background flex items-start gap-4 px-6 py-6"
                 >
-                  <p.icon className="w-5 h-5 text-gold mx-auto mb-5 stroke-[1.5]" />
-                  <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-3">
+                  <p.icon className="w-5 h-5 text-gold flex-shrink-0 mt-0.5 stroke-[1.5]" />
+                  <span className="font-body text-sm text-foreground leading-relaxed">
                     {p.label}
-                  </p>
-                  <p className="font-heading text-2xl md:text-3xl text-foreground">{p.time}</p>
-                </div>
+                  </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </AnimatedSection>
-
         </div>
       </div>
 
-      <AnimatedSection delay={0.25}>
+      <AnimatedSection delay={0.2}>
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="h-[400px] lg:h-[550px]">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3000!2d-8.889583!3d39.745389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDQ0JzQzLjQiTiA4wrA1MycyMi41Ilc!5e0!3m2!1spt-PT!2spt!4v1700000000000"
+              src="https://www.google.com/maps?q=Rua+do+Fagundo,+Albergaria,+Marinha+Grande&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, filter: "grayscale(0.3) contrast(1.05)" }}
@@ -85,13 +81,13 @@ const LocationSection = () => {
               {t("location.label")}
             </p>
             <h3 className="font-heading text-2xl md:text-4xl text-foreground mb-6">
-              {t("location.mapTitle") || "Descubra a localização"}
+              {t("location.title")}
             </h3>
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base mb-8">
               {t("location.desc")}
             </p>
             <a
-              href="https://www.google.com/maps/place/39%C2%B044'43.4%22N+8%C2%B053'22.5%22W/@39.745389,-8.889583,17z"
+              href="https://www.google.com/maps/search/?api=1&query=Rua+do+Fagundo,+Albergaria,+Marinha+Grande"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block self-start px-8 py-3.5 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
