@@ -7,41 +7,79 @@ const HeroSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section id="hero" className="relative h-screen w-full overflow-hidden">
       <img
         src={heroImage}
-        alt="Vista exterior do empreendimento"
+        alt="Vista exterior do empreendimento Elocuente"
         className="absolute inset-0 w-full h-full object-cover scale-105"
         width={1920}
         height={1080}
         fetchPriority="high"
       />
-      <div className="absolute inset-0 bg-charcoal/40" />
+      <div className="absolute inset-0 bg-charcoal/50" />
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="inline-block px-4 py-1.5 border border-gold/60 text-gold font-body text-[10px] tracking-[0.35em] uppercase mb-8"
+        >
+          {t("hero.badge")}
+        </motion.span>
+
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 1 }}
-          className="font-heading text-4xl md:text-6xl xl:text-8xl text-primary-foreground leading-tight tracking-wide max-w-5xl lg:text-6xl"
+          transition={{ duration: 1.2, delay: 0.9 }}
+          className="font-heading text-5xl md:text-7xl xl:text-8xl text-primary-foreground leading-[1.05] tracking-wide"
         >
-          {t("hero.welcome")}
+          {t("hero.name")}
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 1.6 }}
-          className="font-body text-base md:text-lg lg:text-xl text-primary-foreground/85 leading-relaxed tracking-wide max-w-2xl mt-6 md:mt-8"
+          transition={{ duration: 1.2, delay: 1.2 }}
+          className="font-heading italic text-xl md:text-2xl text-primary-foreground/90 mt-6"
+        >
+          {t("hero.tagline")}
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 1.5 }}
+          className="font-body text-sm md:text-base text-primary-foreground/75 tracking-wide max-w-xl mt-5"
         >
           {t("hero.subtitle")}
         </motion.p>
 
         <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.9 }}
+          className="flex flex-col sm:flex-row gap-3 mt-12"
+        >
+          <a
+            href="#contacto"
+            className="px-8 py-3.5 bg-gold text-charcoal font-body text-[10px] tracking-[0.3em] uppercase hover:bg-gold/90 transition-all duration-500"
+          >
+            {t("hero.cta1")}
+          </a>
+          <a
+            href="#disponibilidades"
+            className="px-8 py-3.5 border border-primary-foreground/40 text-primary-foreground font-body text-[10px] tracking-[0.3em] uppercase hover:bg-primary-foreground hover:text-charcoal transition-all duration-500"
+          >
+            {t("hero.cta2")}
+          </a>
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2.2 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+          transition={{ duration: 1, delay: 2.4 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
         >
           <span className="font-body text-[9px] tracking-[0.4em] uppercase text-primary-foreground/50">
             {t("hero.scroll")}

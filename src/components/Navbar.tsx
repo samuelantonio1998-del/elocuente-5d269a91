@@ -6,10 +6,11 @@ import { Lang } from "@/i18n/translations";
 import Logo from "./Logo";
 
 const navKeys = [
-  { key: "nav.concept", href: "#sobre" },
+  { key: "nav.development", href: "#sobre" },
   { key: "nav.location", href: "#localizacao" },
-  { key: "nav.apartments", href: "#apartamentos" },
-  { key: "nav.amenities", href: "#amenidades" },
+  { key: "nav.units", href: "#disponibilidades" },
+  { key: "nav.gallery", href: "#galeria" },
+  { key: "nav.project", href: "#apartamentos" },
   { key: "nav.contact", href: "#contacto" },
 ];
 
@@ -38,7 +39,7 @@ const Navbar = () => {
     >
       <div className="w-full px-8 lg:px-16 flex items-center justify-between h-20 lg:h-24">
         {/* Left nav items */}
-        <div className="hidden lg:flex items-center gap-12 flex-1">
+        <div className="hidden lg:flex items-center gap-10 flex-1">
           {navKeys.slice(0, 3).map((item) => (
             <a
               key={item.href}
@@ -56,7 +57,7 @@ const Navbar = () => {
 
         {/* Center logo */}
         <a
-          href="#"
+          href="#hero"
           aria-label="Elocuente"
           className={`flex items-center flex-shrink-0 transition-colors duration-500 ${
             scrolled ? "text-foreground" : "text-primary-foreground"
@@ -66,8 +67,8 @@ const Navbar = () => {
         </a>
 
         {/* Right nav items */}
-        <div className="hidden lg:flex items-center gap-12 flex-1 justify-end">
-          {navKeys.slice(3, 4).map((item) => (
+        <div className="hidden lg:flex items-center gap-10 flex-1 justify-end">
+          {navKeys.slice(3).map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -82,13 +83,13 @@ const Navbar = () => {
           ))}
           <a
             href="#contacto"
-            className={`text-[11px] font-body tracking-[0.25em] uppercase px-6 py-2.5 border transition-all duration-300 ${
+            className={`text-[11px] font-body tracking-[0.25em] uppercase px-5 py-2.5 transition-all duration-300 ${
               scrolled
-                ? "border-foreground/20 text-foreground hover:bg-foreground hover:text-background"
-                : "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-charcoal"
+                ? "bg-gold text-charcoal hover:bg-gold/90"
+                : "bg-gold text-charcoal hover:bg-gold/90"
             }`}
           >
-            {t("nav.contact")}
+            {t("nav.cta")}
           </a>
 
           {/* Language switcher */}
