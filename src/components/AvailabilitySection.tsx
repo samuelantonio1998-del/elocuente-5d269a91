@@ -1,52 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useCurrency } from "@/hooks/useCurrency";
 import ReservationDialog from "./ReservationDialog";
-import { supabase } from "@/integrations/supabase/client";
-
-type UnitStatus = "unknown" | "reserved";
-const PRICE_PER_SQM = 2250;
-const MIN_PRICE = 290000;
-
-interface Unit {
-  id: string;
-  building: string;
-  floor: number;
-  type: string;
-  area: string;
-  parking: number;
-  orientation: string;
-  status: UnitStatus;
-}
-
-const units: Unit[] = [
-  { id: "A01", building: "A", floor: 0, type: "T2", area: "132 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "A02", building: "A", floor: 0, type: "T2", area: "130 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "A03", building: "A", floor: 0, type: "T2", area: "120 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "A04", building: "A", floor: 0, type: "T2", area: "140 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "A05", building: "A", floor: 1, type: "T2", area: "133 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "A06", building: "A", floor: 1, type: "T2", area: "118 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "A07", building: "A", floor: 1, type: "T2", area: "132 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "A08", building: "A", floor: 1, type: "T2", area: "138 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "A09", building: "A", floor: 2, type: "T2", area: "133 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "A10", building: "A", floor: 2, type: "T2", area: "120 m²", parking: 2, orientation: "Norte / Nascente", status: "unknown" },
-  { id: "A11", building: "A", floor: 2, type: "T3", area: "260 m²", parking: 2, orientation: "Sul / Poente / Norte", status: "unknown" },
-  { id: "B01", building: "B", floor: 0, type: "T2", area: "118 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "B02", building: "B", floor: 0, type: "T2", area: "119 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "B03", building: "B", floor: 0, type: "T2", area: "115 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "B04", building: "B", floor: 0, type: "T2", area: "122 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "B05", building: "B", floor: 1, type: "T2", area: "127 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "B06", building: "B", floor: 1, type: "T2", area: "118 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "B07", building: "B", floor: 1, type: "T2", area: "112 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "B08", building: "B", floor: 1, type: "T2", area: "119 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "B09", building: "B", floor: 2, type: "T2", area: "128 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "B10", building: "B", floor: 2, type: "T2", area: "117 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-  { id: "B11", building: "B", floor: 2, type: "T2", area: "122 m²", parking: 2, orientation: "Sul / Nascente", status: "unknown" },
-  { id: "B12", building: "B", floor: 2, type: "T2", area: "119 m²", parking: 2, orientation: "Norte / Poente", status: "unknown" },
-];
-
-const getUnitPrice = (unit: Unit) => Math.max(parseFloat(unit.area) * PRICE_PER_SQM, MIN_PRICE);
+import { units, getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
+import { useReservedUnits } from "@/hooks/useReservedUnits";
 
 const AvailabilitySection = () => {
   const { t } = useLanguage();
@@ -55,23 +13,7 @@ const AvailabilitySection = () => {
   const [filterType, setFilterType] = useState<string>("all");
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [reservedIds, setReservedIds] = useState<Set<string>>(new Set());
-
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      const { data, error } = await supabase.rpc("get_reserved_unit_ids");
-      if (cancelled) return;
-      if (error) {
-        console.error("Failed to load reserved units", error);
-        return;
-      }
-      setReservedIds(new Set((data ?? []).map((r: { unit_id: string }) => r.unit_id)));
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const reservedIds = useReservedUnits();
 
   const getStatus = (unit: Unit): UnitStatus => (reservedIds.has(unit.id) ? "reserved" : unit.status);
 
@@ -87,6 +29,7 @@ const AvailabilitySection = () => {
     setSelectedUnit(unit);
     setDialogOpen(true);
   };
+
 
   return (
     <section id="disponibilidades" className="bg-background">
