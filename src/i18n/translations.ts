@@ -155,21 +155,39 @@ export const translations: Record<Lang, Record<string, string>> = {
     "reservation.error.desc": "Ocorreu um erro ao submeter a reserva. Tente novamente.",
 
     // Contact
-    "contact.label": "Contacto",
+    "contact.label": "Pedir Informação",
     "contact.title1": "Manifeste o",
     "contact.title2": "seu Interesse",
     "contact.desc": "Preencha o formulário e a nossa equipa comercial entrará em contacto consigo para mais informações sobre o Elocuente.",
+    "contact.firstName": "Nome",
+    "contact.lastName": "Apelido",
     "contact.name": "Nome completo",
     "contact.email": "Email",
-    "contact.phone": "Telefone",
-    "contact.typology": "Tipologia de interesse",
+    "contact.phone": "Telefone (opcional)",
+    "contact.typology": "Tipologias de interesse",
     "contact.message": "Mensagem (opcional)",
     "contact.submit": "Enviar Pedido",
     "contact.success": "Obrigado pelo seu interesse! Entraremos em contacto brevemente.",
+    "contact.error": "Erro ao enviar. Por favor verifique os dados e tente novamente.",
+    "contact.acceptTerms": "Li e aceito o tratamento dos meus dados conforme a",
+    "contact.acceptRequired": "Tem de aceitar a Política de Privacidade.",
+    "contact.privacyLink": "Política de Privacidade",
 
     // Footer
+    "footer.tagline": "Apartamentos contemporâneos em Albergaria, Marinha Grande.",
+    "footer.contacts": "Contactos",
+    "footer.follow": "Siga-nos",
+    "footer.privacy": "Política de Privacidade",
     "footer.rights": "© 2026 Elocuente. Todos os direitos reservados.",
     "footer.architect": "Arquitectura: Tiago Frazão Arquitetos",
+
+    // Privacy
+    "privacy.back": "Voltar",
+    "privacy.title": "Política de Privacidade",
+    "privacy.p1": "A Elocuente respeita a sua privacidade e está empenhada em proteger os dados pessoais que nos confia.",
+    "privacy.p2": "Os dados recolhidos através do formulário de contacto são utilizados exclusivamente para responder ao seu pedido de informação sobre o empreendimento.",
+    "privacy.p3": "Não partilhamos os seus dados com terceiros sem o seu consentimento prévio. Pode, a qualquer momento, solicitar o acesso, retificação ou eliminação dos seus dados.",
+    "privacy.p4": "Para questões relacionadas com privacidade, contacte-nos através de info@elocuente.pt.",
   },
   en: {
     "nav.development": "Development",
