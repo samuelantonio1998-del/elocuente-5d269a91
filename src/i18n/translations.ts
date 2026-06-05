@@ -60,15 +60,31 @@ export const translations: Record<Lang, Record<string, string>> = {
     "gallery.title": "Imagens do projeto",
     "gallery.count": "imagens",
 
-    // Apartments (Projeto)
-    "apartments.label": "Projeto",
-    "apartments.title": "Tipologias T2 e T3",
-    "apartments.desc": "Apartamentos com áreas generosas, varandas e excelente exposição solar.",
+    // Apartments (Frações cards)
+    "apartments.label": "Frações",
+    "apartments.title": "Frações por Bloco",
+    "apartments.desc": "Conheça as frações disponíveis nos blocos A e B, todas com varandas, estacionamento privativo e excelente exposição solar.",
+    "apartments.block": "Bloco",
+    "apartments.unitsCount": "frações",
+    "apartments.cardCta": "Pedir Informação",
     "apartments.cta": "Pedir Plantas",
     "apartments.t2.price": "",
     "apartments.t2.desc": "Sala e cozinha open-space, dois quartos, casa de banho completa e varandas generosas com excelente exposição solar.",
     "apartments.t3.price": "",
     "apartments.t3.desc": "Três quartos, amplos espaços de convívio, duas casas de banho e varanda privativa com vista desafogada.",
+
+    // Phases
+    "phases.label": "Fases do Projeto",
+    "phases.title": "Marcos do empreendimento",
+    "phases.desc": "Acompanhe a evolução do Elocuente, desde o licenciamento até à entrega das chaves.",
+    "phases.current": "Fase atual",
+    "phases.licensing.title": "Licenciamento",
+    "phases.licensing.desc": "Projeto submetido e em apreciação pelas entidades competentes.",
+    "phases.construction.title": "Início de obra",
+    "phases.construction.desc": "Arranque dos trabalhos de construção após aprovação final.",
+    "phases.completion.title": "Conclusão prevista",
+    "phases.completion.desc": "Entrega das chaves e início da nova vida em Albergaria.",
+
 
     // Availability
     "availability.label": "Disponibilidades",
