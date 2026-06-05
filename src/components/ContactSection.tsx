@@ -2,36 +2,65 @@ import { useState, FormEvent } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { toast } from "sonner";
+import { z } from "zod";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 
+const TYPOLOGIES = ["T2", "T3"] as const;
+
 const ContactSection = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
-    typology: "",
     message: "",
   });
+  const [typologies, setTypologies] = useState<string[]>([]);
+  const [accepted, setAccepted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const { t } = useLanguage();
+
+  const schema = z.object({
+    firstName: z.string().trim().min(1).max(80),
+    lastName: z.string().trim().min(1).max(80),
+    email: z.string().trim().email().max(255),
+    phone: z.string().trim().max(40).optional(),
+    message: z.string().trim().max(1000).optional(),
+  });
+
+  const toggleTypology = (typ: string) => {
+    setTypologies((prev) =>
+      prev.includes(typ) ? prev.filter((x) => x !== typ) : [...prev, typ]
+    );
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!accepted) {
+      toast.error(t("contact.acceptRequired"));
+      return;
+    }
+    const parsed = schema.safeParse(formData);
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0]?.message || t("contact.error"));
+      return;
+    }
     setSubmitting(true);
     try {
       const { error } = await supabase.from("contact_leads").insert({
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim() || null,
-        typology: formData.typology || null,
-        message: formData.message.trim() || null,
+        name: `${parsed.data.firstName} ${parsed.data.lastName}`.trim(),
+        email: parsed.data.email,
+        phone: parsed.data.phone || null,
+        typology: typologies.length ? typologies.join(", ") : null,
+        message: parsed.data.message || null,
       });
-
       if (error) throw error;
 
       toast.success(t("contact.success"));
-      setFormData({ name: "", email: "", phone: "", typology: "", message: "" });
+      setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+      setTypologies([]);
+      setAccepted(false);
     } catch (err) {
       console.error("Contact form submission error:", err);
       toast.error(t("contact.error") || "Erro ao enviar. Tente novamente.");
@@ -73,48 +102,88 @@ const ContactSection = () => {
         <div className="flex items-center px-8 lg:px-20 py-20 lg:py-0">
           <AnimatedSection delay={0.15} className="w-full max-w-md">
             <form onSubmit={handleSubmit} className="space-y-0">
-              {[
-                { name: "name" as const, placeholder: t("contact.name"), type: "text" },
-                { name: "email" as const, placeholder: t("contact.email"), type: "email" },
-                { name: "phone" as const, placeholder: t("contact.phone"), type: "tel" },
-              ].map((field) => (
+              <div className="grid grid-cols-2 gap-4">
                 <input
-                  key={field.name}
-                  type={field.type}
-                  placeholder={field.placeholder}
+                  type="text"
+                  placeholder={t("contact.firstName")}
                   required
-                  value={formData[field.name]}
-                  onChange={(e) =>
-                    setFormData({ ...formData, [field.name]: e.target.value })
-                  }
-                  className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors duration-300"
+                  value={formData.firstName}
+                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                  className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors"
                 />
-              ))}
-
-              <select
-                value={formData.typology}
-                onChange={(e) =>
-                  setFormData({ ...formData, typology: e.target.value })
-                }
+                <input
+                  type="text"
+                  placeholder={t("contact.lastName")}
+                  required
+                  value={formData.lastName}
+                  onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                  className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors"
+                />
+              </div>
+              <input
+                type="email"
+                placeholder={t("contact.email")}
                 required
-                className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground focus:outline-none focus:border-foreground transition-colors duration-300 appearance-none"
-              >
-                <option value="" disabled>
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors"
+              />
+              <input
+                type="tel"
+                placeholder={t("contact.phone")}
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors"
+              />
+
+              <div className="py-6 border-b border-border">
+                <p className="font-body text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-4">
                   {t("contact.typology")}
-                </option>
-                <option value="T2">T2</option>
-                <option value="T3">T3</option>
-              </select>
+                </p>
+                <div className="flex gap-3 flex-wrap">
+                  {TYPOLOGIES.map((typ) => {
+                    const active = typologies.includes(typ);
+                    return (
+                      <button
+                        key={typ}
+                        type="button"
+                        onClick={() => toggleTypology(typ)}
+                        className={`px-5 py-2 font-body text-[11px] tracking-[0.2em] uppercase border transition-all ${
+                          active
+                            ? "bg-foreground text-background border-foreground"
+                            : "bg-transparent text-muted-foreground border-border hover:border-foreground/40"
+                        }`}
+                      >
+                        {typ}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
 
               <textarea
                 placeholder={t("contact.message")}
                 rows={3}
                 value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
-                className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors duration-300 resize-none"
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors resize-none"
               />
+
+              <label className="flex items-start gap-3 pt-6 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={accepted}
+                  onChange={(e) => setAccepted(e.target.checked)}
+                  className="mt-1 w-4 h-4 accent-gold flex-shrink-0"
+                />
+                <span className="font-body text-xs text-muted-foreground leading-relaxed">
+                  {t("contact.acceptTerms")}{" "}
+                  <a href="/privacidade" className="text-foreground underline underline-offset-2 hover:text-gold">
+                    {t("contact.privacyLink")}
+                  </a>
+                  .
+                </span>
+              </label>
 
               <div className="pt-10">
                 <button
