@@ -32,7 +32,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.9 }}
-          className="font-heading text-5xl md:text-7xl xl:text-8xl text-primary-foreground leading-[1.05] tracking-wide"
+          className="font-display font-light text-5xl md:text-7xl xl:text-8xl text-primary-foreground leading-[1.05] tracking-[0.08em]"
         >
           {t("hero.name")}
         </motion.h1>
