@@ -1,10 +1,12 @@
 import { Instagram, Facebook, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { GUIDES } from "@/data/guideContent";
 import Logo from "./Logo";
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const guide = GUIDES[lang];
 
   const navItems = [
     { label: t("nav.development"), href: "#sobre" },
@@ -79,6 +81,12 @@ const Footer = () => {
                   {item.label}
                 </a>
               ))}
+              <Link
+                to={guide.path}
+                className="font-body text-[10px] tracking-[0.25em] uppercase text-primary-foreground/50 hover:text-primary-foreground transition-colors"
+              >
+                {guide.title}
+              </Link>
               <Link
                 to="/privacidade"
                 className="font-body text-[10px] tracking-[0.25em] uppercase text-primary-foreground/50 hover:text-primary-foreground transition-colors"
