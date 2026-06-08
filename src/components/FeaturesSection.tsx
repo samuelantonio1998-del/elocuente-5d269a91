@@ -57,7 +57,7 @@ const FeaturesSection = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mt-14">
+            <div className="flex justify-center mt-14">
               <a
                 href="#"
                 onClick={(e) => e.preventDefault()}
@@ -65,14 +65,6 @@ const FeaturesSection = () => {
               >
                 <FileDown className="w-3.5 h-3.5" strokeWidth={1.5} />
                 {t("features.download.finishes")}
-              </a>
-              <a
-                href="#"
-                onClick={(e) => e.preventDefault()}
-                className="inline-flex items-center justify-center gap-3 px-8 py-3.5 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
-              >
-                <FileDown className="w-3.5 h-3.5" strokeWidth={1.5} />
-                {t("features.download.payment")}
               </a>
             </div>
           </AnimatedSection>
