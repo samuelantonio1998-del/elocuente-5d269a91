@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import Privacy from "./pages/Privacy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import GuidePage from "./pages/GuidePage.tsx";
+import SilverCoastLanding from "./pages/SilverCoastLanding.tsx";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,8 @@ const App = () => (
             <Route path="/guia/viver-marinha-grande-leiria" element={<GuidePage locale="pt" />} />
             <Route path="/guides/living-in-marinha-grande-leiria" element={<GuidePage locale="en" />} />
             <Route path="/guia/vivir-en-marinha-grande-leiria" element={<GuidePage locale="es" />} />
+            {/* EN landing: new build apartments Silver Coast Portugal */}
+            <Route path="/new-build-apartments-silver-coast-portugal" element={<SilverCoastLanding />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
