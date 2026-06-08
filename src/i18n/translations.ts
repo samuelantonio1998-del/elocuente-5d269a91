@@ -432,6 +432,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "features.solar.desc": "Preparada para sistema solar fotovoltaico",
     "features.finishes.desc": "Alta gama, con gran atención al detalle",
     "features.areas.desc": "T2: 115–137 m² · T3: 148–260 m² (ABC)",
+    "features.outdoor": "Zona exterior",
+    "features.outdoor.desc": "Espacio exterior común para uso social",
     "features.download.finishes": "Memoria de Calidades",
     "features.download.payment": "Condiciones de Pago",
 
