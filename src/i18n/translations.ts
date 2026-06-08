@@ -442,6 +442,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "features.areas.desc": "T2: 115–137 m² · T3: 148–260 m² (ABC)",
     "features.outdoor": "Zona exterior",
     "features.outdoor.desc": "Espacio exterior común para uso social",
+    "features.storage": "Trastero",
+    "features.storage.desc": "Trastero privado incluido en cada vivienda",
+    "features.condo": "Condominio privado",
+    "features.condo.desc": "Acceso reservado a los residentes",
     "features.download.finishes": "Memoria de Calidades",
     "features.download.payment": "Condiciones de Pago",
 
