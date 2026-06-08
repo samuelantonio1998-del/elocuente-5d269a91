@@ -101,11 +101,12 @@ const ContactSection = () => {
 
         <div className="flex items-center px-8 lg:px-20 py-20 lg:py-0">
           <AnimatedSection delay={0.15} className="w-full max-w-md">
-            <form onSubmit={handleSubmit} className="space-y-0">
+            <form onSubmit={handleSubmit} className="space-y-0" aria-label={t("contact.label")}>
               <div className="grid grid-cols-2 gap-4">
                 <input
                   type="text"
                   placeholder={t("contact.firstName")}
+                  aria-label={t("contact.firstName")}
                   required
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
@@ -114,6 +115,7 @@ const ContactSection = () => {
                 <input
                   type="text"
                   placeholder={t("contact.lastName")}
+                  aria-label={t("contact.lastName")}
                   required
                   value={formData.lastName}
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
@@ -123,6 +125,7 @@ const ContactSection = () => {
               <input
                 type="email"
                 placeholder={t("contact.email")}
+                aria-label={t("contact.email")}
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -131,12 +134,13 @@ const ContactSection = () => {
               <input
                 type="tel"
                 placeholder={t("contact.phone")}
+                aria-label={t("contact.phone")}
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors"
               />
 
-              <div className="py-6 border-b border-border">
+              <div className="py-6 border-b border-border" role="group" aria-label={t("contact.typology")}>
                 <p className="font-body text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-4">
                   {t("contact.typology")}
                 </p>
@@ -148,6 +152,7 @@ const ContactSection = () => {
                         key={typ}
                         type="button"
                         onClick={() => toggleTypology(typ)}
+                        aria-pressed={active}
                         className={`px-5 py-2 font-body text-[11px] tracking-[0.2em] uppercase border transition-all ${
                           active
                             ? "bg-foreground text-background border-foreground"
@@ -163,6 +168,7 @@ const ContactSection = () => {
 
               <textarea
                 placeholder={t("contact.message")}
+                aria-label={t("contact.message")}
                 rows={3}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}

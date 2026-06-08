@@ -90,7 +90,9 @@ const GallerySection = () => {
           >
             <img
               src={img.src}
-              alt={img.alt}
+              alt={`Elocuente — ${img.alt}`}
+              width={800}
+              height={1000}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
             />
@@ -114,14 +116,14 @@ const GallerySection = () => {
             className="fixed inset-0 z-[100] bg-charcoal/95 backdrop-blur-md flex items-center justify-center"
             onClick={closeLightbox}
           >
-            <button onClick={closeLightbox} className="absolute top-6 right-6 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-              <X size={24} />
+            <button onClick={closeLightbox} aria-label={t("gallery.close") || "Close"} className="absolute top-6 right-6 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <X size={24} aria-hidden="true" />
             </button>
-            <button onClick={(e) => { e.stopPropagation(); prev(); }} className="absolute left-4 md:left-8 text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-              <ChevronLeft size={32} />
+            <button onClick={(e) => { e.stopPropagation(); prev(); }} aria-label={t("gallery.prev") || "Previous image"} className="absolute left-4 md:left-8 text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+              <ChevronLeft size={32} aria-hidden="true" />
             </button>
-            <button onClick={(e) => { e.stopPropagation(); next(); }} className="absolute right-4 md:right-8 text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-              <ChevronRight size={32} />
+            <button onClick={(e) => { e.stopPropagation(); next(); }} aria-label={t("gallery.next") || "Next image"} className="absolute right-4 md:right-8 text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+              <ChevronRight size={32} aria-hidden="true" />
             </button>
             <motion.img
               key={lightboxIndex}

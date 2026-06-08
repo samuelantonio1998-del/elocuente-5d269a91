@@ -141,13 +141,15 @@ const Navbar = () => {
         <div className="lg:hidden flex items-center gap-4">
           <button
             onClick={() => setLangOpen(!langOpen)}
+            aria-label="Change language"
+            aria-expanded={langOpen}
             className={`flex items-center gap-1 text-[11px] font-body tracking-[0.15em] transition-colors ${
               scrolled
                 ? "text-muted-foreground"
                 : "text-primary-foreground/70"
             }`}
           >
-            <Globe size={14} strokeWidth={1.5} />
+            <Globe size={14} strokeWidth={1.5} aria-hidden="true" />
             {langLabels[lang]}
           </button>
           <button

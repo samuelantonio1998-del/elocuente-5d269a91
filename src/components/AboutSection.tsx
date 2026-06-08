@@ -17,7 +17,9 @@ const AboutSection = () => {
         <AnimatedSection className="relative h-[50vh] lg:h-auto lg:min-h-[600px]">
           <img
             src={renderFront}
-            alt="Vista do empreendimento Elocuente"
+            alt="Render exterior da fachada principal do empreendimento Elocuente em Marinha Grande"
+            width={1600}
+            height={1200}
             className="w-full h-full object-cover"
             loading="lazy"
           />
