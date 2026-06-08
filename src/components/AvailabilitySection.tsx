@@ -52,6 +52,7 @@ const AvailabilitySection = () => {
               <select
                 value={filterBuilding}
                 onChange={(e) => setFilterBuilding(e.target.value)}
+                aria-label={t("availability.building")}
                 className="px-4 py-2.5 bg-transparent border border-border font-body text-[11px] tracking-[0.15em] uppercase text-foreground focus:outline-none focus:border-foreground/40 transition-colors"
               >
                 <option value="all">{t("availability.allBuildings")}</option>
@@ -62,6 +63,7 @@ const AvailabilitySection = () => {
               <select
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
+                aria-label={t("availability.col.type")}
                 className="px-4 py-2.5 bg-transparent border border-border font-body text-[11px] tracking-[0.15em] uppercase text-foreground focus:outline-none focus:border-foreground/40 transition-colors"
               >
                 <option value="all">{t("availability.allTypes")}</option>
