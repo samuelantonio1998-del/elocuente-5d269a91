@@ -4,6 +4,7 @@ import {
   Leaf,
   Wind,
   Plug,
+  Sun,
   Sparkles,
   Maximize,
   FileDown,
@@ -15,13 +16,14 @@ const FeaturesSection = () => {
   const { t } = useLanguage();
 
   const items = [
-    { icon: TreePine, label: t("features.balconies") },
-    { icon: Car, label: t("features.parking") },
-    { icon: Leaf, label: t("features.energy") },
-    { icon: Wind, label: t("features.ac") },
-    { icon: Plug, label: t("features.ev") },
-    { icon: Sparkles, label: t("features.finishes") },
-    { icon: Maximize, label: t("features.areas") },
+    { icon: TreePine, label: t("features.balconies"), desc: t("features.balconies.desc") },
+    { icon: Car, label: t("features.parking"), desc: t("features.parking.desc") },
+    { icon: Leaf, label: t("features.energy"), desc: t("features.energy.desc") },
+    { icon: Wind, label: t("features.ac"), desc: t("features.ac.desc") },
+    { icon: Plug, label: t("features.ev"), desc: t("features.ev.desc") },
+    { icon: Sun, label: t("features.solar"), desc: t("features.solar.desc") },
+    { icon: Sparkles, label: t("features.finishes"), desc: t("features.finishes.desc") },
+    { icon: Maximize, label: t("features.areas"), desc: t("features.areas.desc") },
   ];
 
   return (
@@ -48,13 +50,17 @@ const FeaturesSection = () => {
                   className="bg-background flex flex-col items-center text-center py-10 px-6 hover:bg-cream-dark/40 transition-colors duration-500"
                 >
                   <it.icon className="w-7 h-7 text-gold mb-5 stroke-[1.25]" />
-                  <p className="font-body text-xs md:text-sm tracking-wide text-foreground leading-relaxed">
+                  <p className="font-body text-xs md:text-sm tracking-wide text-foreground leading-relaxed mb-2">
                     {it.label}
+                  </p>
+                  <p className="font-body text-[11px] md:text-xs text-muted-foreground leading-relaxed">
+                    {it.desc}
                   </p>
                 </div>
               ))}
             </div>
           </AnimatedSection>
+
 
           <AnimatedSection delay={0.2}>
             <div className="flex justify-center mt-14">
