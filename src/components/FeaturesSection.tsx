@@ -7,6 +7,7 @@ import {
   Sun,
   Sparkles,
   Maximize,
+  Trees,
   FileDown,
 } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
