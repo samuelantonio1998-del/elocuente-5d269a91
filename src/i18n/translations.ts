@@ -281,6 +281,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "location.dist.vieira": "Praia da Vieira",
     "location.dist.nazare": "Nazaré",
     "location.dist.lisbon": "Lisbon Airport",
+    "location.dist.services": "Local schools, shops and services",
 
     "gallery.label": "Gallery",
     "gallery.title": "Project images",
