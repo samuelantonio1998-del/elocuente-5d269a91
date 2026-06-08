@@ -413,6 +413,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   },
   es: {
     "nav.development": "Promoción",
+    "nav.features": "Características",
     "nav.location": "Ubicación",
     "nav.units": "Viviendas",
     "nav.gallery": "Galería",
