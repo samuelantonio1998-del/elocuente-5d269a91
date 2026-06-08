@@ -25,6 +25,7 @@ const FeaturesSection = () => {
     { icon: Sun, label: t("features.solar"), desc: t("features.solar.desc") },
     { icon: Sparkles, label: t("features.finishes"), desc: t("features.finishes.desc") },
     { icon: Maximize, label: t("features.areas"), desc: t("features.areas.desc") },
+    { icon: Trees, label: t("features.outdoor"), desc: t("features.outdoor.desc") },
   ];
 
   return (
