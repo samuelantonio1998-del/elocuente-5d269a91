@@ -11,7 +11,7 @@ const navKeys = [
   { key: "nav.units", href: "#disponibilidades" },
   { key: "nav.gallery", href: "#galeria" },
   { key: "nav.project", href: "#apartamentos" },
-  { key: "nav.contact", href: "#contacto" },
+  
 ];
 
 const langLabels: Record<Lang, string> = { pt: "PT", en: "EN", es: "ES" };
