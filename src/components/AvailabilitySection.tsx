@@ -261,6 +261,7 @@ const AvailabilitySection = () => {
         open={dialogOpen}
         onOpenChange={setDialogOpen}
       />
+      <PaymentTermsDialog open={paymentOpen} onOpenChange={setPaymentOpen} />
     </section>
   );
 };
