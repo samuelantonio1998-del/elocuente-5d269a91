@@ -90,7 +90,9 @@ const GallerySection = () => {
           >
             <img
               src={img.src}
-              alt={img.alt}
+              alt={`Elocuente — ${img.alt}`}
+              width={800}
+              height={1000}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
             />

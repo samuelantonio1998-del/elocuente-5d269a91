@@ -19,7 +19,9 @@ const LocationSection = () => {
       <AnimatedSection className="relative h-[40vh] md:h-[55vh]">
         <img
           src={renderAerial}
-          alt="Vista aérea da localização"
+          alt="Vista aérea de Albergaria, Marinha Grande, com a localização do Elocuente"
+          width={1920}
+          height={1080}
           className="w-full h-full object-cover"
           loading="lazy"
         />
