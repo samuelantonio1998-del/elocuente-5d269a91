@@ -1,10 +1,13 @@
-import { Waves, Building2, MapPin, Car, GraduationCap } from "lucide-react";
+import { Waves, Building2, MapPin, Car, GraduationCap, BookOpen } from "lucide-react";
+import { Link } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
 import renderAerial from "@/assets/render-aerial.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { GUIDES } from "@/data/guideContent";
 
 const LocationSection = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const guide = GUIDES[lang];
 
   const points = [
     { icon: Waves, label: t("location.poi.beaches") },
@@ -88,14 +91,23 @@ const LocationSection = () => {
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base mb-8">
               {t("location.desc")}
             </p>
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Rua+do+Fagundo,+Albergaria,+Marinha+Grande"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block self-start px-8 py-3.5 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
-            >
-              {t("location.cta")}
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Rua+do+Fagundo,+Albergaria,+Marinha+Grande"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-3.5 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
+              >
+                {t("location.cta")}
+              </a>
+              <Link
+                to={guide.path}
+                className="inline-flex items-center gap-2 px-8 py-3.5 border border-gold/40 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-gold hover:text-background hover:border-gold transition-all duration-500"
+              >
+                <BookOpen size={12} strokeWidth={1.5} aria-hidden="true" />
+                {guide.title}
+              </Link>
+            </div>
           </div>
         </div>
       </AnimatedSection>

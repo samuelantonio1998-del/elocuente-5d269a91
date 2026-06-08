@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/i18n/LanguageContext";
 import Index from "./pages/Index.tsx";
 import Privacy from "./pages/Privacy.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import GuidePage from "./pages/GuidePage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,10 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/privacidade" element={<Privacy />} />
+            {/* SEO long-form guide — one route per language */}
+            <Route path="/guia/viver-marinha-grande-leiria" element={<GuidePage locale="pt" />} />
+            <Route path="/guides/living-in-marinha-grande-leiria" element={<GuidePage locale="en" />} />
+            <Route path="/guia/vivir-en-marinha-grande-leiria" element={<GuidePage locale="es" />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
