@@ -71,8 +71,8 @@ const ContactSection = () => {
 
   return (
     <section id="contacto" className="bg-background">
-      <div className="grid lg:grid-cols-2 min-h-[80vh]">
-        <div className="flex items-center px-8 lg:px-20 py-20 lg:py-0 bg-cream-dark">
+      <div className="grid md:grid-cols-2 min-h-[80vh]">
+        <div className="flex items-center px-8 md:px-12 lg:px-20 py-20 md:py-0 bg-cream-dark">
           <AnimatedSection>
             <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-10">
               {t("contact.label")}
@@ -99,7 +99,7 @@ const ContactSection = () => {
           </AnimatedSection>
         </div>
 
-        <div className="flex items-center px-8 lg:px-20 py-20 lg:py-0">
+        <div className="flex items-center px-8 md:px-12 lg:px-20 py-20 md:py-0">
           <AnimatedSection delay={0.15} className="w-full max-w-md">
             <form onSubmit={handleSubmit} className="space-y-0" aria-label={t("contact.label")}>
               <div className="grid grid-cols-2 gap-4">
