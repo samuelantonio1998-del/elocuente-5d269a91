@@ -375,7 +375,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "hero.badge": "En Licencia",
     "hero.name": "Elocuente",
     "hero.tagline": "Entre Leiria y el Atlántico",
-    "hero.subtitle": "Apartamentos contemporáneos en Albergaria, Marinha Grande.",
+    "hero.subtitle": "Un condominio contemporáneo en una ubicación única — a minutos del centro de Leiria y de la costa atlántica, con la tranquilidad de vivir fuera de la ciudad.",
     "hero.cta1": "Solicitar Información",
     "hero.cta2": "Ver Viviendas",
     "hero.scroll": "Scroll",
