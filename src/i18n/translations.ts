@@ -215,6 +215,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   },
   en: {
     "nav.development": "Development",
+    "nav.features": "Features",
     "nav.location": "Location",
     "nav.units": "Units",
     "nav.gallery": "Gallery",
