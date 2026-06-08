@@ -62,13 +62,19 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Location
     "location.label": "Localização",
     "location.title": "Albergaria, Marinha Grande",
-    "location.desc": "Uma posição privilegiada entre a costa atlântica e a cidade de Leiria, com excelentes acessos e a comodidade dos serviços locais.",
+    "location.desc": "Entre o pinhal de Leiria e as praias do Atlântico, o Elocuente oferece a serenidade de uma vila portuguesa com a conveniência dos principais eixos do país.",
     "location.poi.beaches": "Praias de São Pedro de Moel e Vieira (Atlântico)",
     "location.poi.center": "Centro da Marinha Grande",
     "location.poi.leiria": "Leiria a ~15 minutos",
     "location.poi.highways": "Acessos A8 / IC2",
     "location.poi.schools": "Escolas, comércio e serviços locais",
     "location.cta": "Ver no Google Maps",
+    "location.dist.leiria": "Leiria",
+    "location.dist.highways": "Acessos A8 / A17",
+    "location.dist.spm": "S. Pedro de Moel",
+    "location.dist.vieira": "Praia da Vieira",
+    "location.dist.nazare": "Nazaré",
+    "location.dist.lisbon": "Aeroporto de Lisboa",
 
     // Gallery
     "gallery.label": "Galeria",
