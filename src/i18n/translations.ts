@@ -52,6 +52,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "features.areas.desc": "T2: 115–137 m² · T3: 148–260 m² (ABP)",
     "features.outdoor": "Logradouro exterior",
     "features.outdoor.desc": "Espaço exterior comum para área social",
+    "features.storage": "Box de arrumos",
+    "features.storage.desc": "Arrumação privativa incluída em cada fração",
+    "features.condo": "Condomínio privado",
+    "features.condo.desc": "Acesso reservado aos residentes",
     "features.download.finishes": "Mapa de Acabamentos",
     "features.download.payment": "Condições de Pagamento",
 
@@ -248,6 +252,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "features.areas.desc": "T2: 115–137 sqm · T3: 148–260 sqm (GBA)",
     "features.outdoor": "Outdoor grounds",
     "features.outdoor.desc": "Shared outdoor area for social use",
+    "features.storage": "Storage room",
+    "features.storage.desc": "Private storage included in every unit",
+    "features.condo": "Private condominium",
+    "features.condo.desc": "Restricted access for residents",
     "features.download.finishes": "Finishes Schedule",
     "features.download.payment": "Payment Conditions",
 
@@ -434,6 +442,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "features.areas.desc": "T2: 115–137 m² · T3: 148–260 m² (ABC)",
     "features.outdoor": "Zona exterior",
     "features.outdoor.desc": "Espacio exterior común para uso social",
+    "features.storage": "Trastero",
+    "features.storage.desc": "Trastero privado incluido en cada vivienda",
+    "features.condo": "Condominio privado",
+    "features.condo.desc": "Acceso reservado a los residentes",
     "features.download.finishes": "Memoria de Calidades",
     "features.download.payment": "Condiciones de Pago",
 
