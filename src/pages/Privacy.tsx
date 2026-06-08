@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import Seo from "@/components/Seo";
 
 const Privacy = () => {
   const { t } = useLanguage();
   return (
     <main className="min-h-screen bg-background py-28 px-8 lg:px-16">
+      <Seo
+        title="Política de Privacidade — Elocuente"
+        description="Como tratamos os seus dados pessoais no site do empreendimento Elocuente, em Marinha Grande."
+        path="/privacidade"
+        image="/og-privacy.jpg"
+      />
       <div className="max-w-3xl mx-auto">
         <Link
           to="/"

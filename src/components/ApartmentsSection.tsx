@@ -1,7 +1,7 @@
 import { Building2, ArrowRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { units, type Unit, type UnitStatus } from "@/data/units";
+import { units, type Unit, type UnitStatus, getUnitPrice } from "@/data/units";
 import { useReservedUnits } from "@/hooks/useReservedUnits";
 
 const ApartmentsSection = () => {
@@ -50,11 +50,37 @@ const ApartmentsSection = () => {
                   {block.units.map((u) => {
                     const status = getStatus(u);
                     const reserved = status === "reserved";
+                    const residenceLd = {
+                      "@context": "https://schema.org",
+                      "@type": "Residence",
+                      name: `Elocuente ${u.id} — ${u.type}`,
+                      address: {
+                        "@type": "PostalAddress",
+                        addressLocality: "Marinha Grande",
+                        addressRegion: "Leiria",
+                        addressCountry: "PT",
+                      },
+                      numberOfRooms: u.type,
+                      floorSize: { "@type": "QuantitativeValue", value: parseFloat(u.area), unitCode: "MTK" },
+                      floorLevel: u.floor,
+                      offers: {
+                        "@type": "Offer",
+                        price: getUnitPrice(u),
+                        priceCurrency: "EUR",
+                        availability: reserved
+                          ? "https://schema.org/SoldOut"
+                          : "https://schema.org/InStock",
+                      },
+                    };
                     return (
                       <div
                         key={u.id}
                         className="bg-background border border-border/60 flex flex-col group hover:border-foreground/30 transition-colors duration-500"
                       >
+                        <script
+                          type="application/ld+json"
+                          dangerouslySetInnerHTML={{ __html: JSON.stringify(residenceLd) }}
+                        />
                         {/* Floor plan placeholder */}
                         <div className="relative aspect-[4/3] bg-cream-dark/50 flex items-center justify-center overflow-hidden">
                           <svg
