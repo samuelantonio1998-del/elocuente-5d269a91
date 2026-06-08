@@ -93,7 +93,7 @@ const LocationSection = () => {
             </p>
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Rua+do+Fagundo,+Albergaria,+Marinha+Grande"
+                href="https://www.google.com/maps/search/?api=1&query=39.746029,-8.889281"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-8 py-3.5 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
