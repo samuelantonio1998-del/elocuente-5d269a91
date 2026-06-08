@@ -4,9 +4,9 @@ import AnimatedSection from "./AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useCurrency } from "@/hooks/useCurrency";
 import ReservationDialog from "./ReservationDialog";
+import PaymentTermsDialog from "./PaymentTermsDialog";
 import { units, getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
 import { useReservedUnits } from "@/hooks/useReservedUnits";
-import paymentTermsPdf from "@/assets/condicoes-pagamento.pdf.asset.json";
 
 const AvailabilitySection = () => {
   const { t } = useLanguage();
@@ -15,6 +15,7 @@ const AvailabilitySection = () => {
   const [filterType, setFilterType] = useState<string>("all");
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [paymentOpen, setPaymentOpen] = useState(false);
   const reservedIds = useReservedUnits();
 
   const getStatus = (unit: Unit): UnitStatus => (reservedIds.has(unit.id) ? "reserved" : unit.status);
@@ -47,15 +48,14 @@ const AvailabilitySection = () => {
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-2xl mx-auto">
               {t("availability.desc")}
             </p>
-            <a
-              href={paymentTermsPdf.url}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => setPaymentOpen(true)}
               className="inline-flex items-center gap-2 mt-8 px-6 py-3 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-colors"
             >
               <FileText size={14} strokeWidth={1.5} aria-hidden="true" />
               {t("availability.paymentTerms")}
-            </a>
+            </button>
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
@@ -261,6 +261,7 @@ const AvailabilitySection = () => {
         open={dialogOpen}
         onOpenChange={setDialogOpen}
       />
+      <PaymentTermsDialog open={paymentOpen} onOpenChange={setPaymentOpen} />
     </section>
   );
 };
