@@ -252,6 +252,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "features.areas.desc": "T2: 115–137 sqm · T3: 148–260 sqm (GBA)",
     "features.outdoor": "Outdoor grounds",
     "features.outdoor.desc": "Shared outdoor area for social use",
+    "features.storage": "Storage room",
+    "features.storage.desc": "Private storage included in every unit",
+    "features.condo": "Private condominium",
+    "features.condo.desc": "Restricted access for residents",
     "features.download.finishes": "Finishes Schedule",
     "features.download.payment": "Payment Conditions",
 
