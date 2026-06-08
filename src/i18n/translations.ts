@@ -75,6 +75,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "location.dist.vieira": "Praia da Vieira",
     "location.dist.nazare": "Nazaré",
     "location.dist.lisbon": "Aeroporto de Lisboa",
+    "location.dist.services": "Escolas, comércio e serviços locais",
 
     // Gallery
     "gallery.label": "Galeria",
@@ -280,6 +281,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "location.dist.vieira": "Praia da Vieira",
     "location.dist.nazare": "Nazaré",
     "location.dist.lisbon": "Lisbon Airport",
+    "location.dist.services": "Local schools, shops and services",
 
     "gallery.label": "Gallery",
     "gallery.title": "Project images",
@@ -476,6 +478,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "location.dist.vieira": "Praia da Vieira",
     "location.dist.nazare": "Nazaré",
     "location.dist.lisbon": "Aeropuerto de Lisboa",
+    "location.dist.services": "Escuelas, comercio y servicios locales",
 
     "gallery.label": "Galería",
     "gallery.title": "Imágenes del proyecto",

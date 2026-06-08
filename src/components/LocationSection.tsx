@@ -16,6 +16,7 @@ const LocationSection = () => {
     { label: t("location.dist.vieira"), time: "20 min" },
     { label: t("location.dist.nazare"), time: "25 min" },
     { label: t("location.dist.lisbon"), time: "80 min" },
+    { label: t("location.dist.services"), time: "5 min" },
   ];
 
   const lat = 39.746029;
