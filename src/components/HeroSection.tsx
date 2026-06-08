@@ -18,7 +18,7 @@ const HeroSection = () => {
       />
       <div className="absolute inset-0 bg-charcoal/50" />
 
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+      <div className="relative z-10 flex flex-col items-start justify-end h-full text-left px-6 md:px-16 lg:px-24 pb-20 md:pb-28">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -28,29 +28,11 @@ const HeroSection = () => {
           {t("hero.badge")}
         </motion.span>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.9 }}
-          className="font-display font-light text-5xl md:text-7xl xl:text-8xl text-primary-foreground leading-[1.05] tracking-[0.08em]"
-        >
-          {t("hero.name")}
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 1.2 }}
-          className="font-heading italic text-xl md:text-2xl text-primary-foreground/90 mt-6"
-        >
-          {t("hero.tagline")}
-        </motion.p>
-
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 1.5 }}
-          className="font-body text-sm md:text-base text-primary-foreground/75 tracking-wide max-w-xl mt-5"
+          className="font-body font-light text-2xl md:text-4xl lg:text-5xl text-white tracking-wide max-w-3xl leading-snug"
         >
           {t("hero.subtitle")}
         </motion.p>
@@ -59,7 +41,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.9 }}
-          className="flex flex-col sm:flex-row gap-3 mt-12"
+          className="flex flex-col sm:flex-row gap-3 mt-10"
         >
           <a
             href="#contacto"
@@ -74,6 +56,7 @@ const HeroSection = () => {
             {t("hero.cta2")}
           </a>
         </motion.div>
+
 
         <motion.div
           initial={{ opacity: 0 }}
