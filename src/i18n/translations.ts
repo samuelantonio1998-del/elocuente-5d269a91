@@ -240,7 +240,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "about.sub3": "Contemporary architecture.",
     "about.p3": "Generous areas and a strong relationship between interior and exterior, designed for different lifestyles.",
 
-    "features.label": "Features",
+    "features.label": "Amenities",
     "features.title": "Designed for everyday life",
     "features.desc": "Details that make the difference in every unit.",
     "features.balconies": "Balconies and terraces",
