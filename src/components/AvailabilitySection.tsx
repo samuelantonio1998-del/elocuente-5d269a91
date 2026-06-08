@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { FileText } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useCurrency } from "@/hooks/useCurrency";
 import ReservationDialog from "./ReservationDialog";
 import { units, getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
 import { useReservedUnits } from "@/hooks/useReservedUnits";
+import paymentTermsPdf from "@/assets/condicoes-pagamento.pdf.asset.json";
 
 const AvailabilitySection = () => {
   const { t } = useLanguage();
@@ -45,6 +47,15 @@ const AvailabilitySection = () => {
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-2xl mx-auto">
               {t("availability.desc")}
             </p>
+            <a
+              href={paymentTermsPdf.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-8 px-6 py-3 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-colors"
+            >
+              <FileText size={14} strokeWidth={1.5} aria-hidden="true" />
+              {t("availability.paymentTerms")}
+            </a>
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
