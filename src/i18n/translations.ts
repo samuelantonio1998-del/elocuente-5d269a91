@@ -438,7 +438,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "about.sub3": "Arquitectura contemporánea.",
     "about.p3": "Áreas generosas y una fuerte relación entre interior y exterior, pensada para diferentes estilos de vida.",
 
-    "features.label": "Características",
+    "features.label": "Amenidades",
     "features.title": "Pensado para vivir bien",
     "features.desc": "Detalles que marcan la diferencia en cada vivienda.",
     "features.balconies": "Balcones y terrazas",
