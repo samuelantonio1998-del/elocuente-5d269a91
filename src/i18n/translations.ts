@@ -32,7 +32,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "about.p3": "Áreas generosas e uma forte relação entre interior e exterior, pensada para diferentes estilos de vida.",
 
     // Features
-    "features.label": "Características",
+    "features.label": "Amenidades",
     "features.title": "Pensado para viver bem",
     "features.desc": "Detalhes que fazem a diferença no dia a dia, em cada fração.",
     "features.balconies": "Varandas e terraços",
@@ -240,7 +240,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "about.sub3": "Contemporary architecture.",
     "about.p3": "Generous areas and a strong relationship between interior and exterior, designed for different lifestyles.",
 
-    "features.label": "Features",
+    "features.label": "Amenities",
     "features.title": "Designed for everyday life",
     "features.desc": "Details that make the difference in every unit.",
     "features.balconies": "Balconies and terraces",
@@ -438,7 +438,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "about.sub3": "Arquitectura contemporánea.",
     "about.p3": "Áreas generosas y una fuerte relación entre interior y exterior, pensada para diferentes estilos de vida.",
 
-    "features.label": "Características",
+    "features.label": "Amenidades",
     "features.title": "Pensado para vivir bien",
     "features.desc": "Detalles que marcan la diferencia en cada vivienda.",
     "features.balconies": "Balcones y terrazas",
