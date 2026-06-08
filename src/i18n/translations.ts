@@ -113,7 +113,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.col.floorPlan": "Planta",
     "availability.floorPlan.soon": "Brevemente",
     "availability.reserve": "Reservar",
-    "availability.paymentTerms": "Condições de Pagamento (PDF)",
+    "availability.paymentTerms": "Condições de Pagamento",
 
     // Reservation
     "reservation.title": "Pedido de Reserva",
@@ -292,7 +292,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.col.floorPlan": "Floor Plan",
     "availability.floorPlan.soon": "Coming Soon",
     "availability.reserve": "Reserve",
-    "availability.paymentTerms": "Payment Terms (PDF)",
+    "availability.paymentTerms": "Payment Terms",
 
     "reservation.title": "Reservation Request",
     "reservation.personalData": "Fill in your personal details",
@@ -467,7 +467,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "availability.col.floorPlan": "Plano",
     "availability.floorPlan.soon": "Próximamente",
     "availability.reserve": "Reservar",
-    "availability.paymentTerms": "Condiciones de Pago (PDF)",
+    "availability.paymentTerms": "Condiciones de Pago",
 
     "reservation.title": "Solicitud de Reserva",
     "reservation.personalData": "Complete sus datos personales",
