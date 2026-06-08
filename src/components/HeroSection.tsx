@@ -28,14 +28,14 @@ const HeroSection = () => {
           {t("hero.badge")}
         </motion.span>
 
-        <motion.p
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 1.5 }}
           className="font-body font-light text-2xl md:text-4xl lg:text-5xl text-white tracking-wide max-w-3xl leading-snug"
         >
           {t("hero.subtitle")}
-        </motion.p>
+        </motion.h1>
 
 
 
