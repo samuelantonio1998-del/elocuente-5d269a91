@@ -71,7 +71,7 @@ const LocationSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="h-[400px] lg:h-[550px]">
             <iframe
-              src="https://www.google.com/maps?q=Rua+do+Fagundo,+Albergaria,+Marinha+Grande&output=embed"
+              src="https://www.google.com/maps?q=39.746029,-8.889281&z=16&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, filter: "grayscale(0.3) contrast(1.05)" }}
