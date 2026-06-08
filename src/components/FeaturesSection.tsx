@@ -8,6 +8,8 @@ import {
   Sparkles,
   Maximize,
   Trees,
+  Package,
+  ShieldCheck,
   FileDown,
 } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
