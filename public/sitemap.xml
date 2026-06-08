@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://elocuente.lovable.app/</loc>
     <changefreq>weekly</changefreq>
@@ -9,5 +10,32 @@
     <loc>https://elocuente.lovable.app/privacidade</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://elocuente.lovable.app/guia/viver-marinha-grande-leiria</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://elocuente.lovable.app/guia/viver-marinha-grande-leiria"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elocuente.lovable.app/guides/living-in-marinha-grande-leiria"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://elocuente.lovable.app/guia/vivir-en-marinha-grande-leiria"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elocuente.lovable.app/guides/living-in-marinha-grande-leiria"/>
+  </url>
+  <url>
+    <loc>https://elocuente.lovable.app/guides/living-in-marinha-grande-leiria</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://elocuente.lovable.app/guia/viver-marinha-grande-leiria"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elocuente.lovable.app/guides/living-in-marinha-grande-leiria"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://elocuente.lovable.app/guia/vivir-en-marinha-grande-leiria"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elocuente.lovable.app/guides/living-in-marinha-grande-leiria"/>
+  </url>
+  <url>
+    <loc>https://elocuente.lovable.app/guia/vivir-en-marinha-grande-leiria</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://elocuente.lovable.app/guia/viver-marinha-grande-leiria"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elocuente.lovable.app/guides/living-in-marinha-grande-leiria"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://elocuente.lovable.app/guia/vivir-en-marinha-grande-leiria"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elocuente.lovable.app/guides/living-in-marinha-grande-leiria"/>
   </url>
 </urlset>
