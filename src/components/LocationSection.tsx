@@ -1,4 +1,4 @@
-import { Waves, Building2, MapPin, Car, GraduationCap, BookOpen } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
 import renderAerial from "@/assets/render-aerial.jpg";
@@ -9,13 +9,20 @@ const LocationSection = () => {
   const { t, lang } = useLanguage();
   const guide = GUIDES[lang];
 
-  const points = [
-    { icon: Waves, label: t("location.poi.beaches") },
-    { icon: Building2, label: t("location.poi.center") },
-    { icon: MapPin, label: t("location.poi.leiria") },
-    { icon: Car, label: t("location.poi.highways") },
-    { icon: GraduationCap, label: t("location.poi.schools") },
+  const distances = [
+    { label: t("location.dist.leiria"), time: "10 min" },
+    { label: t("location.dist.highways"), time: "5 min" },
+    { label: t("location.dist.spm"), time: "15 min" },
+    { label: t("location.dist.vieira"), time: "20 min" },
+    { label: t("location.dist.nazare"), time: "25 min" },
+    { label: t("location.dist.lisbon"), time: "80 min" },
   ];
+
+  const lat = 39.746029;
+  const lon = -8.889281;
+  const delta = 0.012;
+  const bbox = `${lon - delta},${lat - delta * 0.7},${lon + delta},${lat + delta * 0.7}`;
+  const osmSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lon}`;
 
   return (
     <section id="localizacao" className="bg-background">
@@ -41,73 +48,59 @@ const LocationSection = () => {
         </div>
       </AnimatedSection>
 
-      <div className="px-8 lg:px-16 py-20 md:py-28">
-        <div className="max-w-5xl mx-auto">
-          <AnimatedSection className="text-center mb-14">
-            <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-2xl mx-auto">
+      <AnimatedSection delay={0.2}>
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          {/* Left: dark panel with description + distances */}
+          <div className="bg-charcoal text-primary-foreground px-8 lg:px-16 py-16 lg:py-20 flex flex-col justify-center">
+            <p className="font-body text-primary-foreground/80 leading-[2] text-sm md:text-base max-w-md mb-12">
               {t("location.desc")}
             </p>
-          </AnimatedSection>
 
-          <AnimatedSection delay={0.15}>
-            <ul className="grid sm:grid-cols-2 gap-px bg-border border border-border">
-              {points.map((p, i) => (
+            <ul className="w-full max-w-md">
+              {distances.map((d, i) => (
                 <li
                   key={i}
-                  className="bg-background flex items-start gap-4 px-6 py-6"
+                  className="flex items-center justify-between py-5 border-b border-primary-foreground/15"
                 >
-                  <p.icon className="w-5 h-5 text-gold flex-shrink-0 mt-0.5 stroke-[1.5]" />
-                  <span className="font-body text-sm text-foreground leading-relaxed">
-                    {p.label}
+                  <span className="font-body text-sm md:text-base text-primary-foreground">
+                    {d.label}
+                  </span>
+                  <span className="font-body text-sm md:text-base text-primary-foreground/80 tracking-wide">
+                    {d.time}
                   </span>
                 </li>
               ))}
             </ul>
-          </AnimatedSection>
-        </div>
-      </div>
 
-      <AnimatedSection delay={0.2}>
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="h-[400px] lg:h-[550px]">
-            <iframe
-              src="https://www.google.com/maps?q=39.746029,-8.889281&z=16&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: "grayscale(0.3) contrast(1.05)" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Localização Elocuente"
-            />
-          </div>
-          <div className="flex flex-col justify-center px-8 lg:px-16 py-16 lg:py-20 bg-muted/30">
-            <p className="font-body text-[10px] tracking-[0.5em] uppercase text-muted-foreground mb-4">
-              {t("location.label")}
-            </p>
-            <h3 className="font-heading text-2xl md:text-4xl text-foreground mb-6">
-              {t("location.title")}
-            </h3>
-            <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base mb-8">
-              {t("location.desc")}
-            </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 mt-12">
               <a
-                href="https://www.google.com/maps/search/?api=1&query=39.746029,-8.889281"
+                href={`https://www.google.com/maps/search/?api=1&query=${lat},${lon}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-8 py-3.5 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
+                className="inline-block px-8 py-3.5 border border-primary-foreground/30 font-body text-[10px] tracking-[0.3em] uppercase text-primary-foreground hover:bg-primary-foreground hover:text-charcoal transition-all duration-500"
               >
                 {t("location.cta")}
               </a>
               <Link
                 to={guide.path}
-                className="inline-flex items-center gap-2 px-8 py-3.5 border border-gold/40 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-gold hover:text-background hover:border-gold transition-all duration-500"
+                className="inline-flex items-center gap-2 px-8 py-3.5 border border-gold/60 font-body text-[10px] tracking-[0.3em] uppercase text-primary-foreground hover:bg-gold hover:text-charcoal hover:border-gold transition-all duration-500"
               >
                 <BookOpen size={12} strokeWidth={1.5} aria-hidden="true" />
                 {guide.title}
               </Link>
             </div>
+          </div>
+
+          {/* Right: light OSM map */}
+          <div className="h-[400px] lg:h-auto lg:min-h-[600px]">
+            <iframe
+              src={osmSrc}
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: "grayscale(1) contrast(1.05)" }}
+              loading="lazy"
+              title="Localização Elocuente"
+            />
           </div>
         </div>
       </AnimatedSection>
