@@ -4,6 +4,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   pt: {
     // Navbar
     "nav.development": "Empreendimento",
+    "nav.features": "Características",
     "nav.location": "Localização",
     "nav.units": "Frações",
     "nav.gallery": "Galeria",
@@ -214,6 +215,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   },
   en: {
     "nav.development": "Development",
+    "nav.features": "Features",
     "nav.location": "Location",
     "nav.units": "Units",
     "nav.gallery": "Gallery",
@@ -411,6 +413,7 @@ export const translations: Record<Lang, Record<string, string>> = {
   },
   es: {
     "nav.development": "Promoción",
+    "nav.features": "Características",
     "nav.location": "Ubicación",
     "nav.units": "Viviendas",
     "nav.gallery": "Galería",
