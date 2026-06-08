@@ -32,7 +32,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "about.p3": "Áreas generosas e uma forte relação entre interior e exterior, pensada para diferentes estilos de vida.",
 
     // Features
-    "features.label": "Características",
+    "features.label": "Amenidades",
     "features.title": "Pensado para viver bem",
     "features.desc": "Detalhes que fazem a diferença no dia a dia, em cada fração.",
     "features.balconies": "Varandas e terraços",
