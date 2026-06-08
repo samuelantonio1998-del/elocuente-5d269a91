@@ -9,8 +9,8 @@ const navKeys = [
   { key: "nav.development", href: "#sobre" },
   { key: "nav.features", href: "#caracteristicas" },
   { key: "nav.location", href: "#localizacao" },
-  { key: "nav.project", href: "#apartamentos" },
-  { key: "nav.units", href: "#disponibilidades" },
+  { key: "nav.units", href: "#apartamentos" },
+  { key: "nav.availability", href: "#disponibilidades" },
   { key: "nav.gallery", href: "#galeria" },
 ];
 
