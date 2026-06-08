@@ -37,25 +37,6 @@ const HeroSection = () => {
           {t("hero.subtitle")}
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.9 }}
-          className="flex flex-col sm:flex-row gap-3 mt-10"
-        >
-          <a
-            href="#contacto"
-            className="px-8 py-3.5 bg-gold text-charcoal font-body text-[10px] tracking-[0.3em] uppercase hover:bg-gold/90 transition-all duration-500"
-          >
-            {t("hero.cta1")}
-          </a>
-          <a
-            href="#disponibilidades"
-            className="px-8 py-3.5 border border-primary-foreground/40 text-primary-foreground font-body text-[10px] tracking-[0.3em] uppercase hover:bg-primary-foreground hover:text-charcoal transition-all duration-500"
-          >
-            {t("hero.cta2")}
-          </a>
-        </motion.div>
 
 
         <motion.div
