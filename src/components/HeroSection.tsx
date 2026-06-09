@@ -7,15 +7,16 @@ const HeroSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="hero" className="relative h-screen w-full overflow-hidden">
+    <section id="hero" className="relative h-screen w-full overflow-hidden bg-charcoal">
       <img
         src={heroImage}
         alt="Vista exterior do empreendimento Elocuente"
-        className="absolute inset-0 w-full h-full object-cover scale-105"
+        className="absolute inset-0 w-full h-full object-cover scale-105 opacity-65"
         width={1920}
         height={1080}
         fetchPriority="high"
       />
+
       {/* Top gradient — hides printed credits on render and grounds the navbar */}
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-charcoal/85 via-charcoal/40 to-transparent" />
       {/* Bottom gradient — guarantees headline legibility */}
