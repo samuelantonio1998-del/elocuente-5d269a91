@@ -16,7 +16,10 @@ const HeroSection = () => {
         height={1080}
         fetchPriority="high"
       />
-      <div className="absolute inset-0 bg-charcoal/50" />
+      {/* Top gradient — hides printed credits on render and grounds the navbar */}
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-charcoal/85 via-charcoal/40 to-transparent" />
+      {/* Bottom gradient — guarantees headline legibility */}
+      <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-charcoal/85 via-charcoal/40 to-transparent" />
 
       <div className="relative z-10 flex flex-col items-start justify-end h-full text-left px-6 md:px-16 lg:px-24 pb-20 md:pb-28">
         <motion.span
@@ -32,10 +35,21 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 1.5 }}
-          className="font-body font-light text-2xl md:text-4xl lg:text-5xl text-white tracking-wide max-w-3xl leading-snug"
+          className="font-body font-light text-2xl md:text-4xl lg:text-5xl text-white tracking-wide max-w-4xl leading-tight [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
         >
           {t("hero.subtitle")}
         </motion.h1>
+
+        {/* Credits */}
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 2.2 }}
+          className="absolute bottom-10 right-6 md:right-16 lg:right-24 font-body text-[10px] tracking-[0.25em] uppercase text-primary-foreground/40"
+        >
+          Estudo prévio · Imagem indicativa · Tiago Frazão Arquitetos
+        </motion.span>
+
 
 
 
