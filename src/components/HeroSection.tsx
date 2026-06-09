@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import heroImage from "@/assets/render-side.jpg";
+import heroImage from "@/assets/render-front.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const HeroSection = () => {

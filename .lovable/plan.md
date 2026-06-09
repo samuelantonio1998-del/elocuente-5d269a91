@@ -1,30 +1,28 @@
-# Substituição dos renders do projeto
+# Reordenar imagens conforme a numeração 1-6
 
-Substituir as imagens atualmente em `src/assets/render-*.jpg` e `interior-living.jpg` pelas 6 novas imagens enviadas (1.jpeg–6.jpeg).
+A imagem **1** passa a ser o fundo do Hero, e a galeria mostra as imagens pela ordem **1 → 2 → 3 → 4 → 5 → 6**.
 
-## Mapeamento proposto
+## Mapeamento de ficheiros (binários a sobrescrever)
 
-Cada imagem nova é atribuída ao slot que melhor corresponde ao seu enquadramento, mantendo os imports existentes (nenhum componente precisa de ser editado):
-
-| Slot atual | Nova imagem | Porquê |
+| Ficheiro | Imagem | Usado em |
 |---|---|---|
-| `render-entrance.jpg` | imagem **1** | entrada com portão e sinalética |
-| `interior-living.jpg` | imagem **2** | terraço/varanda — estilo de vida |
-| `render-front.jpg` | imagem **3** | fachada principal vista da rua |
-| `render-back.jpg` | imagem **4** | volume traseiro com passadiço |
-| `render-side.jpg` | imagem **5** | fachada lateral com árvores |
-| `render-garden.jpg` | imagem **6** | jardim interior / pátio |
-| `render-aerial.jpg` | imagem **3** (reutilizada) | sem render aéreo nos envios; usar a mais panorâmica |
-| `render-detail.jpg` | imagem **4** (reutilizada) | sem novo detalhe; usar render do passadiço |
+| `render-front.jpg` | **1** | Hero (novo), Gallery #1, AboutSection, SilverCoastLanding |
+| `render-side.jpg` | **2** | Gallery #2 |
+| `render-garden.jpg` | **3** | Gallery #3, AmenitiesSection |
+| `render-entrance.jpg` | **4** | Gallery #4, AmenitiesSection |
+| `render-detail.jpg` | **5** | Gallery #5, AmenitiesSection |
+| `render-back.jpg` | **6** | Gallery #6 |
+| `render-aerial.jpg` | **1** (reutilizada) | LocationSection, GuidePage, AmenitiesSection, SilverCoastLanding — não tem slot na galeria |
+| `interior-living.jpg` | **2** (reutilizada) | SilverCoastLanding |
 
-## Detalhes técnicos
+## Alterações de código
 
-1. Fazer upload das 6 imagens via `lovable-assets create` a partir de `/mnt/user-uploads/{1..6}.jpeg` para o CDN, gerando ficheiros `*.asset.json` em `src/assets/`.
-2. Substituir os ficheiros binários atuais (`render-front.jpg`, `render-side.jpg`, `render-back.jpg`, `render-garden.jpg`, `render-entrance.jpg`, `render-detail.jpg`, `render-aerial.jpg`, `interior-living.jpg`) — atualizar os imports nos componentes (`HeroSection`, `GallerySection`, `AboutSection`, `AmenitiesSection`, `LocationSection`, `SilverCoastLanding`, `GuidePage`) para apontar para os novos `.asset.json` em vez dos `.jpg` antigos.
-3. Apagar os `.jpg` antigos que deixam de ser referenciados.
-4. Não tocar em `hero-building.jpg`, `interior-bedroom.jpg`, `amenities-pool.jpg` (não usados na app atualmente).
+1. **`src/components/HeroSection.tsx`** — trocar `import heroImage from "@/assets/render-side.jpg"` para `"@/assets/render-front.jpg"` (para o Hero usar a imagem 1).
+2. **`src/components/GallerySection.tsx`** — reordenar `galleryImages` para 6 entradas pela ordem 1-6:
+   ```
+   Front (1), Side (2), Garden (3), Entrance (4), Detail (5), Back (6)
+   ```
+   Remover a entrada `renderAerial` da lista (e o respetivo import).
+3. **Sobrescrever os 8 binários** em `src/assets/` conforme a tabela acima, copiando de `user-uploads://1.jpeg`..`6.jpeg`.
 
-## Pontos a confirmar
-
-- Confirmas a sinalética **"MONTE GRANDE VILLAGE"** visível na imagem 1 (não diz "Elocuente")?
-- Ok reutilizar a imagem 3 para o slot "aéreo" e a imagem 4 para "detalhe"?
+Nenhuma outra alteração nos componentes — os imports nos restantes ficheiros (Amenities, Location, About, etc.) permanecem válidos.

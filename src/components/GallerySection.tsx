@@ -10,16 +10,14 @@ import renderGarden from "@/assets/render-garden.jpg";
 import renderEntrance from "@/assets/render-entrance.jpg";
 import renderDetail from "@/assets/render-detail.jpg";
 import renderBack from "@/assets/render-back.jpg";
-import renderAerial from "@/assets/render-aerial.jpg";
 
 const galleryImages = [
-  { src: renderFront, alt: "Fachada principal" },
-  { src: renderSide, alt: "Vista lateral" },
-  { src: renderGarden, alt: "Jardim interior" },
-  { src: renderAerial, alt: "Vista aérea" },
-  { src: renderEntrance, alt: "Entrada principal" },
-  { src: renderDetail, alt: "Detalhe das varandas" },
-  { src: renderBack, alt: "Vista posterior" },
+  { src: renderFront, alt: "Entrada principal" },
+  { src: renderSide, alt: "Terraço" },
+  { src: renderGarden, alt: "Fachada principal" },
+  { src: renderEntrance, alt: "Jardim interior" },
+  { src: renderDetail, alt: "Vista lateral" },
+  { src: renderBack, alt: "Jardim posterior" },
 ];
 
 const GallerySection = () => {
