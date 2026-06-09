@@ -11,7 +11,7 @@ const HeroSection = () => {
       <img
         src={heroImage}
         alt="Vista exterior do empreendimento Elocuente"
-        className="absolute inset-0 w-full h-full object-cover scale-105 opacity-65"
+        className="absolute inset-0 w-full h-full object-cover scale-105 opacity-55"
         width={1920}
         height={1080}
         fetchPriority="high"
