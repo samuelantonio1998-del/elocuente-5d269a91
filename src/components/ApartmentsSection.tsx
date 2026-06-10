@@ -74,8 +74,9 @@ const ApartmentsSection = () => {
                       },
                     };
                     return (
-                      <div
+                      <StaggerItem
                         key={u.id}
+                        variant="fade-up"
                         className="bg-background border border-border/60 flex flex-col group hover:border-foreground/30 transition-colors duration-500"
                       >
                         <script
@@ -137,11 +138,11 @@ const ApartmentsSection = () => {
                             <ArrowRight className="w-3 h-3" strokeWidth={1.5} />
                           </a>
                         </div>
-                      </div>
+                      </StaggerItem>
                     );
                   })}
                 </div>
-              </AnimatedSection>
+              </StaggerGroup>
             </div>
           ))}
         </div>
