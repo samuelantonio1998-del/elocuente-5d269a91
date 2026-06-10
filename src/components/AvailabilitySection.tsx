@@ -7,6 +7,7 @@ import ReservationDialog from "./ReservationDialog";
 import PaymentTermsDialog from "./PaymentTermsDialog";
 import { getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
 import { useUnits } from "@/hooks/useUnits";
+import { openFloorPlan } from "@/lib/floorPlan";
 
 const AvailabilitySection = () => {
   const { t } = useLanguage();
@@ -141,9 +142,19 @@ const AvailabilitySection = () => {
                         </span>
                       </td>
                       <td className="py-4 px-3">
-                        <span className="inline-block px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground border border-border/50">
-                          {t("availability.floorPlan.soon")}
-                        </span>
+                        {unit.floorPlanUrl ? (
+                          <button
+                            onClick={() => openFloorPlan(unit.floorPlanUrl!)}
+                            className="inline-flex items-center gap-1.5 px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase text-foreground border border-foreground/30 hover:bg-foreground hover:text-background transition-colors"
+                          >
+                            <FileText size={12} strokeWidth={1.5} />
+                            {t("availability.floorPlan.view")}
+                          </button>
+                        ) : (
+                          <span className="inline-block px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground border border-border/50">
+                            {t("availability.floorPlan.soon")}
+                          </span>
+                        )}
                       </td>
                       <td className="py-4 px-3">
                         <button
@@ -232,9 +243,19 @@ const AvailabilitySection = () => {
                       <p className="font-heading text-lg text-gold">{formatPrice(getUnitPrice(unit))}</p>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="inline-block px-2.5 py-1 font-body text-[9px] tracking-[0.1em] uppercase text-muted-foreground border border-border/50">
-                        {t("availability.floorPlan.soon")}
-                      </span>
+                      {unit.floorPlanUrl ? (
+                        <button
+                          onClick={() => openFloorPlan(unit.floorPlanUrl!)}
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 font-body text-[9px] tracking-[0.1em] uppercase text-foreground border border-foreground/30 hover:bg-foreground hover:text-background transition-colors"
+                        >
+                          <FileText size={11} strokeWidth={1.5} />
+                          {t("availability.floorPlan.view")}
+                        </button>
+                      ) : (
+                        <span className="inline-block px-2.5 py-1 font-body text-[9px] tracking-[0.1em] uppercase text-muted-foreground border border-border/50">
+                          {t("availability.floorPlan.soon")}
+                        </span>
+                      )}
                       <button
                         onClick={() => handleReserve(unit)}
                         disabled={disabled}
