@@ -127,9 +127,11 @@ export type Database = {
           area: string
           building: string
           floor: number
+          floor_plan_url: string | null
           id: string
           orientation: string
           parking: number
+          price: number | null
           sort_order: number
           status: string
           type: string
@@ -139,9 +141,11 @@ export type Database = {
           area: string
           building: string
           floor: number
+          floor_plan_url?: string | null
           id: string
           orientation: string
           parking?: number
+          price?: number | null
           sort_order?: number
           status?: string
           type: string
@@ -151,9 +155,11 @@ export type Database = {
           area?: string
           building?: string
           floor?: number
+          floor_plan_url?: string | null
           id?: string
           orientation?: string
           parking?: number
+          price?: number | null
           sort_order?: number
           status?: string
           type?: string

@@ -12,6 +12,8 @@ export interface Unit {
   parking: number;
   orientation: string;
   status: UnitStatus;
+  price?: number | null;
+  floorPlanUrl?: string | null;
 }
 
 // Fallback list (used only if DB is unreachable). DB is source of truth.
@@ -41,5 +43,7 @@ export const units: Unit[] = [
   { id: "B12", building: "B", floor: 2, type: "T2", area: "119 m²", parking: 2, orientation: "Norte / Poente", status: "available" },
 ];
 
-export const getUnitPrice = (unit: Pick<Unit, "area">) =>
-  Math.max(parseFloat(unit.area) * PRICE_PER_SQM, MIN_PRICE);
+export const getUnitPrice = (unit: Pick<Unit, "area" | "price">) => {
+  if (unit.price != null && Number(unit.price) > 0) return Number(unit.price);
+  return Math.max(parseFloat(unit.area) * PRICE_PER_SQM, MIN_PRICE);
+};
