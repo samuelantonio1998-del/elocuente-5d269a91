@@ -30,44 +30,34 @@ const Navbar = () => {
 
   const LangSwitcher = ({ compact = false }: { compact?: boolean }) => (
     <div
-      className="flex items-center"
+      className="flex flex-col items-center gap-1 leading-none"
       role="group"
       aria-label="Change language"
     >
-      {langOrder.map((l, i) => {
+      {langOrder.map((l) => {
         const isActive = lang === l;
         const inactiveColor = scrolled
           ? "text-muted-foreground hover:text-foreground"
           : "text-primary-foreground/60 hover:text-primary-foreground";
         const activeColor = "text-gold";
         return (
-          <div key={l} className="flex items-center">
-            {i > 0 && (
-              <span
-                aria-hidden="true"
-                className={`mx-2 text-[10px] ${
-                  scrolled ? "text-muted-foreground/40" : "text-primary-foreground/30"
-                }`}
-              >
-                ·
-              </span>
-            )}
-            <button
-              type="button"
-              onClick={() => setLang(l)}
-              aria-pressed={isActive}
-              aria-label={`Switch to ${langLabels[l]}`}
-              className={`text-[11px] font-body tracking-[0.2em] uppercase transition-colors duration-300 ${
-                isActive ? activeColor : inactiveColor
-              } ${compact ? "" : ""}`}
-            >
-              {langLabels[l]}
-            </button>
-          </div>
+          <button
+            key={l}
+            type="button"
+            onClick={() => setLang(l)}
+            aria-pressed={isActive}
+            aria-label={`Switch to ${langLabels[l]}`}
+            className={`text-[10px] font-body tracking-[0.2em] uppercase transition-colors duration-300 ${
+              isActive ? activeColor : inactiveColor
+            }`}
+          >
+            {langLabels[l]}
+          </button>
         );
       })}
     </div>
   );
+
 
   return (
     <motion.nav
