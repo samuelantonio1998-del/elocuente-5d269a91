@@ -26,26 +26,11 @@ const Footer = () => {
     <footer className="bg-charcoal text-primary-foreground py-16 md:py-20">
       <div className="px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-12 mb-12">
+          <div className="grid md:grid-cols-2 gap-12 mb-12">
             <div>
               <Logo height={22} aria-label="Elocuente" />
               <p className="font-body text-xs text-primary-foreground/50 leading-relaxed mt-6 max-w-[260px]">
                 {t("footer.tagline")}
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 md:items-center">
-              <p className="font-body text-[10px] tracking-[0.3em] uppercase text-primary-foreground/40 mb-2">
-                {t("footer.contacts")}
-              </p>
-              <a href="tel:+351916422521" className="font-body text-sm text-primary-foreground/80 hover:text-gold transition-colors">
-                +351 916 422 521
-              </a>
-              <a href="mailto:info@elocuente.pt" className="font-body text-sm text-primary-foreground/80 hover:text-gold transition-colors">
-                info@elocuente.pt
-              </a>
-              <p className="font-body text-sm text-primary-foreground/60 leading-relaxed">
-                Rua do Fagundo, Albergaria<br />Marinha Grande
               </p>
             </div>
 

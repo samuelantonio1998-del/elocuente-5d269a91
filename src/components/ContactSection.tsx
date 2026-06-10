@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react";
-import { Phone, Mail, MapPin } from "lucide-react";
+
 import AnimatedSection from "./AnimatedSection";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -84,18 +84,6 @@ const ContactSection = () => {
               {t("contact.desc")}
             </p>
 
-            <div className="space-y-8">
-              {[
-                { icon: Phone, text: "+351 916 422 521" },
-                { icon: Mail, text: "info@elocuente.pt" },
-                { icon: MapPin, text: "Rua do Fagundo, Albergaria\nMarinha Grande" },
-              ].map((item) => (
-                <div key={item.text} className="flex items-start gap-4">
-                  <item.icon className="w-4 h-4 text-gold flex-shrink-0 mt-0.5 stroke-[1.5]" />
-                  <span className="font-body text-sm text-foreground whitespace-pre-line">{item.text}</span>
-                </div>
-              ))}
-            </div>
           </AnimatedSection>
         </div>
 
