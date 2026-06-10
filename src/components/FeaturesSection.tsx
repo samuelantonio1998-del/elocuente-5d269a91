@@ -13,6 +13,7 @@ import {
   FileDown,
 } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const FeaturesSection = () => {
@@ -48,11 +49,12 @@ const FeaturesSection = () => {
             </p>
           </AnimatedSection>
 
-          <AnimatedSection delay={0.1}>
+          <StaggerGroup stagger={0.06} delayChildren={0.05}>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-border">
               {items.map((it, i) => (
-                <div
+                <StaggerItem
                   key={i}
+                  variant="fade-up"
                   className="bg-background flex flex-col items-center text-center py-10 px-6 hover:bg-cream-dark/40 transition-colors duration-500"
                 >
                   <it.icon className="w-7 h-7 text-gold mb-5 stroke-[1.25]" />
@@ -62,10 +64,10 @@ const FeaturesSection = () => {
                   <p className="font-body text-[11px] md:text-xs text-muted-foreground leading-relaxed">
                     {it.desc}
                   </p>
-                </div>
+                </StaggerItem>
               ))}
             </div>
-          </AnimatedSection>
+          </StaggerGroup>
 
 
           <AnimatedSection delay={0.2}>
