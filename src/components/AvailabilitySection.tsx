@@ -174,8 +174,8 @@ const AvailabilitySection = () => {
           <AnimatedSection delay={0.2} className="md:hidden">
             <div className="space-y-4">
               {filtered.map((unit) => {
-                const status = getStatus(unit);
-                const isReserved = status === "reserved";
+                const status = unit.status;
+                const disabled = status !== "available";
                 return (
                 <div key={unit.id} className="border border-border p-5 space-y-4">
                   <div className="flex items-center justify-between">
@@ -184,15 +184,12 @@ const AvailabilitySection = () => {
                       <span className="font-body text-xs text-muted-foreground">Ref {unit.id}</span>
                     </div>
                     <span
-                      className={`inline-block px-2.5 py-1 font-body text-[9px] tracking-[0.15em] uppercase ${
-                        isReserved
-                          ? "bg-muted text-muted-foreground"
-                          : "bg-secondary text-secondary-foreground"
-                      }`}
+                      className={`inline-block px-2.5 py-1 font-body text-[9px] tracking-[0.15em] uppercase ${statusClass(status)}`}
                     >
-                      {isReserved ? t("availability.status.reserved") : t("availability.status.unknown")}
+                      {statusLabel(status)}
                     </span>
                   </div>
+
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
