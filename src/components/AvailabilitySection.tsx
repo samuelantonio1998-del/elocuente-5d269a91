@@ -5,8 +5,8 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { useCurrency } from "@/hooks/useCurrency";
 import ReservationDialog from "./ReservationDialog";
 import PaymentTermsDialog from "./PaymentTermsDialog";
-import { units, getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
-import { useReservedUnits } from "@/hooks/useReservedUnits";
+import { getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
+import { useUnits } from "@/hooks/useUnits";
 
 const AvailabilitySection = () => {
   const { t } = useLanguage();
@@ -16,9 +16,7 @@ const AvailabilitySection = () => {
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [paymentOpen, setPaymentOpen] = useState(false);
-  const reservedIds = useReservedUnits();
-
-  const getStatus = (unit: Unit): UnitStatus => (reservedIds.has(unit.id) ? "reserved" : unit.status);
+  const { units } = useUnits();
 
   const filtered = units.filter((u) => {
     if (filterBuilding !== "all" && u.building !== filterBuilding) return false;
@@ -32,6 +30,15 @@ const AvailabilitySection = () => {
     setSelectedUnit(unit);
     setDialogOpen(true);
   };
+
+  const statusLabel = (s: UnitStatus) => t(`availability.status.${s}`);
+  const statusClass = (s: UnitStatus) =>
+    s === "available"
+      ? "bg-secondary text-secondary-foreground"
+      : s === "reserved"
+      ? "bg-muted text-muted-foreground"
+      : "bg-foreground/10 text-foreground/60";
+
 
 
   return (
