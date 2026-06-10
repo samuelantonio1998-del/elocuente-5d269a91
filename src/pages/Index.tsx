@@ -8,6 +8,7 @@ import ApartmentsSection from "@/components/ApartmentsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
+import WhatsAppFAB from "@/components/WhatsAppFAB";
 
 // Heavy below-the-fold sections — code-split
 const AvailabilitySection = lazy(() => import("@/components/AvailabilitySection"));
@@ -56,6 +57,7 @@ const Index = () => {
       </Suspense>
       <ContactSection />
       <Footer />
+      <WhatsAppFAB />
     </main>
   );
 };

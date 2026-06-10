@@ -213,6 +213,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     "privacy.p2": "Os dados recolhidos através do formulário de contacto são utilizados exclusivamente para responder ao seu pedido de informação sobre o empreendimento.",
     "privacy.p3": "Não partilhamos os seus dados com terceiros sem o seu consentimento prévio. Pode, a qualquer momento, solicitar o acesso, retificação ou eliminação dos seus dados.",
     "privacy.p4": "Para questões relacionadas com privacidade, contacte-nos através de info@elocuente.pt.",
+
+    "whatsapp.aria": "Contactar via WhatsApp",
+    "whatsapp.message": "Olá, entre em contacto com o vendedor.",
   },
   en: {
     "nav.development": "Development",
@@ -412,6 +415,9 @@ export const translations: Record<Lang, Record<string, string>> = {
     "privacy.p2": "Data collected via the contact form is used exclusively to respond to your information request about the development.",
     "privacy.p3": "We do not share your data with third parties without your prior consent. You may at any time request access, rectification or deletion of your data.",
     "privacy.p4": "For privacy-related queries, contact us at info@elocuente.pt.",
+
+    "whatsapp.aria": "Contact via WhatsApp",
+    "whatsapp.message": "Hello, please get in touch with the sales agent.",
   },
   es: {
     "nav.development": "Promoción",
