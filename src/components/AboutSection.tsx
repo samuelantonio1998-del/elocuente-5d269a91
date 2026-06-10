@@ -1,4 +1,5 @@
-import AnimatedSection from "./AnimatedSection";
+import Reveal from "./motion/Reveal";
+import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import renderFront from "@/assets/render-front.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -14,7 +15,11 @@ const AboutSection = () => {
   return (
     <section id="sobre" className="bg-background">
       <div className="grid lg:grid-cols-2">
-        <AnimatedSection className="relative h-[50vh] lg:h-auto lg:min-h-[600px]">
+        <Reveal
+          variant="mask-reveal"
+          duration={1.1}
+          className="relative h-[50vh] lg:h-auto lg:min-h-[600px] overflow-hidden"
+        >
           <img
             src={renderFront}
             alt="Render exterior da fachada principal do empreendimento Elocuente em Marinha Grande"
@@ -23,10 +28,10 @@ const AboutSection = () => {
             className="w-full h-full object-cover"
             loading="lazy"
           />
-        </AnimatedSection>
+        </Reveal>
 
         <div className="flex items-center px-8 lg:px-20 py-20 md:py-28 bg-cream-dark">
-          <AnimatedSection delay={0.1}>
+          <Reveal variant="slide-right" delay={0.1}>
             <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-8">
               {t("about.label")}
             </p>
@@ -34,17 +39,17 @@ const AboutSection = () => {
               {t("about.title")}
             </h2>
 
-            <div className="space-y-8 max-w-lg">
+            <StaggerGroup stagger={0.12} delayChildren={0.2} className="space-y-8 max-w-lg">
               {blocks.map((b, i) => (
-                <div key={i}>
+                <StaggerItem key={i}>
                   <p className="font-body text-sm md:text-base text-foreground leading-[1.9]">
                     <strong className="font-semibold text-foreground">{b.sub}</strong>{" "}
                     <span className="text-muted-foreground">{b.p}</span>
                   </p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
-          </AnimatedSection>
+            </StaggerGroup>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -52,3 +57,4 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
+
