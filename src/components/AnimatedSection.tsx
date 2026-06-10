@@ -1,22 +1,18 @@
-import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import Reveal, { type RevealVariant } from "./motion/Reveal";
 
 interface Props {
   children: ReactNode;
   className?: string;
   delay?: number;
+  variant?: RevealVariant;
 }
 
-const AnimatedSection = ({ children, className = "", delay = 0 }: Props) => (
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 0.7, delay, ease: "easeOut" }}
-    className={className}
-  >
+/** Backwards-compatible wrapper around the new Reveal primitive. */
+const AnimatedSection = ({ children, className, delay, variant }: Props) => (
+  <Reveal className={className} delay={delay} variant={variant}>
     {children}
-  </motion.div>
+  </Reveal>
 );
 
 export default AnimatedSection;
