@@ -15,6 +15,7 @@ import {
 import AnimatedSection from "./AnimatedSection";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
+import mapaAcabamentosAsset from "@/assets/mapa-acabamentos.pdf.asset.json";
 
 const FeaturesSection = () => {
   const { t } = useLanguage();
@@ -73,8 +74,9 @@ const FeaturesSection = () => {
           <AnimatedSection delay={0.2}>
             <div className="flex justify-center mt-14">
               <a
-                href="#"
-                onClick={(e) => e.preventDefault()}
+                href={mapaAcabamentosAsset.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 px-8 py-3.5 border border-foreground/20 font-body text-[10px] tracking-[0.3em] uppercase text-foreground hover:bg-foreground hover:text-background transition-all duration-500"
               >
                 <FileDown className="w-3.5 h-3.5" strokeWidth={1.5} />
