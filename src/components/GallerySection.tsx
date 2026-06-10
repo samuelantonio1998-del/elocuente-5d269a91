@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 import renderFront from "@/assets/render-front.jpg";
@@ -76,28 +77,37 @@ const GallerySection = () => {
         </AnimatedSection>
       </div>
 
-      <div
-        ref={scrollRef}
+      <StaggerGroup
+        stagger={0.1}
+        delayChildren={0.1}
+        margin="-5% 0px"
         className="flex gap-4 px-8 lg:px-16 overflow-x-auto hide-scrollbar"
       >
-        {galleryImages.map((img, i) => (
-          <button
-            key={i}
-            onClick={() => setLightboxIndex(i)}
-            className="flex-shrink-0 relative overflow-hidden group cursor-pointer h-[350px] md:h-[500px] w-[300px] md:w-[400px]"
-          >
-            <img
-              src={img.src}
-              alt={`Elocuente — ${img.alt}`}
-              width={800}
-              height={1000}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-500" />
-          </button>
-        ))}
-      </div>
+        <div ref={scrollRef} className="flex gap-4 contents">
+          {galleryImages.map((img, i) => (
+            <StaggerItem
+              key={i}
+              variant="mask-reveal"
+              className="flex-shrink-0 h-[350px] md:h-[500px] w-[300px] md:w-[400px]"
+            >
+              <button
+                onClick={() => setLightboxIndex(i)}
+                className="relative w-full h-full overflow-hidden group cursor-pointer"
+              >
+                <img
+                  src={img.src}
+                  alt={`Elocuente — ${img.alt}`}
+                  width={800}
+                  height={1000}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-500" />
+              </button>
+            </StaggerItem>
+          ))}
+        </div>
+      </StaggerGroup>
 
       <div className="px-8 lg:px-16 mt-8">
         <p className="font-body text-[10px] tracking-[0.3em] text-muted-foreground">
