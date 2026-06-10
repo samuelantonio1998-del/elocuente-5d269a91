@@ -117,8 +117,8 @@ const AvailabilitySection = () => {
                 </thead>
                 <tbody>
                   {filtered.map((unit) => {
-                    const status = getStatus(unit);
-                    const isReserved = status === "reserved";
+                    const status = unit.status;
+                    const disabled = status !== "available";
                     return (
                     <tr key={unit.id} className="border-b border-border/50 hover:bg-muted/30 transition-colors">
                       <td className="py-4 px-3 font-body text-sm text-foreground font-medium">{unit.id}</td>
@@ -130,13 +130,9 @@ const AvailabilitySection = () => {
                       <td className="py-4 px-3 font-body text-sm text-muted-foreground">{unit.parking}</td>
                       <td className="py-4 px-3">
                         <span
-                          className={`inline-block px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase ${
-                            isReserved
-                              ? "bg-muted text-muted-foreground"
-                              : "bg-secondary text-secondary-foreground"
-                          }`}
+                          className={`inline-block px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase ${statusClass(status)}`}
                         >
-                          {isReserved ? t("availability.status.reserved") : t("availability.status.unknown")}
+                          {statusLabel(status)}
                         </span>
                       </td>
                       <td className="py-4 px-3">
@@ -152,7 +148,7 @@ const AvailabilitySection = () => {
                       <td className="py-4 px-3">
                         <button
                           onClick={() => handleReserve(unit)}
-                          disabled={isReserved}
+                          disabled={disabled}
                           className="px-4 py-2 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-gold"
                         >
                           {t("availability.reserve")}
@@ -161,6 +157,7 @@ const AvailabilitySection = () => {
                     </tr>
                     );
                   })}
+
                   {filtered.length === 0 && (
                     <tr>
                       <td colSpan={11} className="py-12 text-center font-body text-sm text-muted-foreground">
