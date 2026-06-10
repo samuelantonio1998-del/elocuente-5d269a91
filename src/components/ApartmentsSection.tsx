@@ -1,5 +1,6 @@
 import { Building2, ArrowRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { units, type Unit, type UnitStatus, getUnitPrice } from "@/data/units";
 import { useReservedUnits } from "@/hooks/useReservedUnits";
@@ -45,7 +46,7 @@ const ApartmentsSection = () => {
                 </span>
               </AnimatedSection>
 
-              <AnimatedSection delay={0.1}>
+              <StaggerGroup stagger={0.07} delayChildren={0.05}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {block.units.map((u) => {
                     const status = getStatus(u);
