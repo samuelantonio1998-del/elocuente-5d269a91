@@ -617,5 +617,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "privacy.p2": "Los datos recogidos a través del formulario de contacto se utilizan exclusivamente para responder a su solicitud de información sobre la promoción.",
     "privacy.p3": "No compartimos sus datos con terceros sin su consentimiento previo. Puede en cualquier momento solicitar el acceso, rectificación o eliminación de sus datos.",
     "privacy.p4": "Para cuestiones de privacidad, contáctenos en info@elocuente.pt.",
+
+    "whatsapp.aria": "Contactar por WhatsApp",
+    "whatsapp.message": "Hola, póngase en contacto con el vendedor.",
   },
 };
