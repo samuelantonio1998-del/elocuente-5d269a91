@@ -237,7 +237,7 @@ const AvailabilitySection = () => {
                       </span>
                       <button
                         onClick={() => handleReserve(unit)}
-                        disabled={isReserved}
+                        disabled={disabled}
                         className="px-4 py-2.5 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-gold"
                       >
                         {t("availability.reserve")}
