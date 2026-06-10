@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Lang } from "@/i18n/translations";
 import Logo from "./Logo";
@@ -15,11 +15,11 @@ const navKeys = [
 ];
 
 const langLabels: Record<Lang, string> = { pt: "PT", en: "EN", es: "ES" };
+const langOrder: Lang[] = ["pt", "en", "es"];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
   const { lang, setLang, t } = useLanguage();
 
   useEffect(() => {
@@ -27,6 +27,47 @@ const Navbar = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const LangSwitcher = ({ compact = false }: { compact?: boolean }) => (
+    <div
+      className="flex items-center"
+      role="group"
+      aria-label="Change language"
+    >
+      {langOrder.map((l, i) => {
+        const isActive = lang === l;
+        const inactiveColor = scrolled
+          ? "text-muted-foreground hover:text-foreground"
+          : "text-primary-foreground/60 hover:text-primary-foreground";
+        const activeColor = "text-gold";
+        return (
+          <div key={l} className="flex items-center">
+            {i > 0 && (
+              <span
+                aria-hidden="true"
+                className={`mx-2 text-[10px] ${
+                  scrolled ? "text-muted-foreground/40" : "text-primary-foreground/30"
+                }`}
+              >
+                ·
+              </span>
+            )}
+            <button
+              type="button"
+              onClick={() => setLang(l)}
+              aria-pressed={isActive}
+              aria-label={`Switch to ${langLabels[l]}`}
+              className={`text-[11px] font-body tracking-[0.2em] uppercase transition-colors duration-300 ${
+                isActive ? activeColor : inactiveColor
+              } ${compact ? "" : ""}`}
+            >
+              {langLabels[l]}
+            </button>
+          </div>
+        );
+      })}
+    </div>
+  );
 
   return (
     <motion.nav
@@ -67,76 +108,17 @@ const Navbar = () => {
 
           <a
             href="#contacto"
-            className={`text-[11px] font-body tracking-[0.2em] uppercase whitespace-nowrap px-5 py-2.5 transition-all duration-300 ${
-              scrolled
-                ? "bg-gold text-charcoal hover:bg-gold/90"
-                : "bg-gold text-charcoal hover:bg-gold/90"
-            }`}
+            className="text-[11px] font-body tracking-[0.2em] uppercase whitespace-nowrap px-5 py-2.5 bg-gold text-charcoal hover:bg-gold/90 transition-all duration-300"
           >
             {t("nav.cta")}
           </a>
 
-
-          {/* Language switcher */}
-          <div className="relative">
-            <button
-              onClick={() => setLangOpen(!langOpen)}
-              className={`flex items-center gap-1.5 text-[11px] font-body tracking-[0.15em] uppercase transition-colors duration-300 ${
-                scrolled
-                  ? "text-muted-foreground hover:text-foreground"
-                  : "text-primary-foreground/70 hover:text-primary-foreground"
-              }`}
-              aria-label="Change language"
-            >
-              <Globe size={14} strokeWidth={1.5} />
-              {langLabels[lang]}
-            </button>
-            <AnimatePresence>
-              {langOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full right-0 mt-2 bg-background border border-border shadow-lg min-w-[80px]"
-                >
-                  {(Object.keys(langLabels) as Lang[]).map((l) => (
-                    <button
-                      key={l}
-                      onClick={() => {
-                        setLang(l);
-                        setLangOpen(false);
-                      }}
-                      className={`block w-full text-left px-4 py-2.5 font-body text-[11px] tracking-[0.15em] transition-colors ${
-                        lang === l
-                          ? "text-foreground bg-muted"
-                          : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                      }`}
-                    >
-                      {langLabels[l]}
-                    </button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+          <LangSwitcher />
         </div>
 
         {/* Mobile: lang + hamburger */}
         <div className="lg:hidden flex items-center gap-4">
-          <button
-            onClick={() => setLangOpen(!langOpen)}
-            aria-label="Change language"
-            aria-expanded={langOpen}
-            className={`flex items-center gap-1 text-[11px] font-body tracking-[0.15em] transition-colors ${
-              scrolled
-                ? "text-muted-foreground"
-                : "text-primary-foreground/70"
-            }`}
-          >
-            <Globe size={14} strokeWidth={1.5} aria-hidden="true" />
-            {langLabels[lang]}
-          </button>
+          <LangSwitcher compact />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className={`transition-colors ${
@@ -147,35 +129,6 @@ const Navbar = () => {
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-
-        {/* Mobile lang dropdown */}
-        <AnimatePresence>
-          {langOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -5 }}
-              className="lg:hidden absolute top-full right-8 mt-1 bg-background border border-border shadow-lg min-w-[80px] z-50"
-            >
-              {(Object.keys(langLabels) as Lang[]).map((l) => (
-                <button
-                  key={l}
-                  onClick={() => {
-                    setLang(l);
-                    setLangOpen(false);
-                  }}
-                  className={`block w-full text-left px-4 py-2.5 font-body text-[11px] tracking-[0.15em] transition-colors ${
-                    lang === l
-                      ? "text-foreground bg-muted"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                  }`}
-                >
-                  {langLabels[l]}
-                </button>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
       {/* Mobile menu */}
