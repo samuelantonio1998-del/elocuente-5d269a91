@@ -5,8 +5,8 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { useCurrency } from "@/hooks/useCurrency";
 import ReservationDialog from "./ReservationDialog";
 import PaymentTermsDialog from "./PaymentTermsDialog";
-import { units, getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
-import { useReservedUnits } from "@/hooks/useReservedUnits";
+import { getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
+import { useUnits } from "@/hooks/useUnits";
 
 const AvailabilitySection = () => {
   const { t } = useLanguage();
@@ -16,9 +16,7 @@ const AvailabilitySection = () => {
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [paymentOpen, setPaymentOpen] = useState(false);
-  const reservedIds = useReservedUnits();
-
-  const getStatus = (unit: Unit): UnitStatus => (reservedIds.has(unit.id) ? "reserved" : unit.status);
+  const { units } = useUnits();
 
   const filtered = units.filter((u) => {
     if (filterBuilding !== "all" && u.building !== filterBuilding) return false;
@@ -32,6 +30,15 @@ const AvailabilitySection = () => {
     setSelectedUnit(unit);
     setDialogOpen(true);
   };
+
+  const statusLabel = (s: UnitStatus) => t(`availability.status.${s}`);
+  const statusClass = (s: UnitStatus) =>
+    s === "available"
+      ? "bg-secondary text-secondary-foreground"
+      : s === "reserved"
+      ? "bg-muted text-muted-foreground"
+      : "bg-foreground/10 text-foreground/60";
+
 
 
   return (
@@ -110,8 +117,8 @@ const AvailabilitySection = () => {
                 </thead>
                 <tbody>
                   {filtered.map((unit) => {
-                    const status = getStatus(unit);
-                    const isReserved = status === "reserved";
+                    const status = unit.status;
+                    const disabled = status !== "available";
                     return (
                     <tr key={unit.id} className="border-b border-border/50 hover:bg-muted/30 transition-colors">
                       <td className="py-4 px-3 font-body text-sm text-foreground font-medium">{unit.id}</td>
@@ -123,13 +130,9 @@ const AvailabilitySection = () => {
                       <td className="py-4 px-3 font-body text-sm text-muted-foreground">{unit.parking}</td>
                       <td className="py-4 px-3">
                         <span
-                          className={`inline-block px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase ${
-                            isReserved
-                              ? "bg-muted text-muted-foreground"
-                              : "bg-secondary text-secondary-foreground"
-                          }`}
+                          className={`inline-block px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase ${statusClass(status)}`}
                         >
-                          {isReserved ? t("availability.status.reserved") : t("availability.status.unknown")}
+                          {statusLabel(status)}
                         </span>
                       </td>
                       <td className="py-4 px-3">
@@ -145,7 +148,7 @@ const AvailabilitySection = () => {
                       <td className="py-4 px-3">
                         <button
                           onClick={() => handleReserve(unit)}
-                          disabled={isReserved}
+                          disabled={disabled}
                           className="px-4 py-2 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-gold"
                         >
                           {t("availability.reserve")}
@@ -154,6 +157,7 @@ const AvailabilitySection = () => {
                     </tr>
                     );
                   })}
+
                   {filtered.length === 0 && (
                     <tr>
                       <td colSpan={11} className="py-12 text-center font-body text-sm text-muted-foreground">
@@ -170,8 +174,8 @@ const AvailabilitySection = () => {
           <AnimatedSection delay={0.2} className="md:hidden">
             <div className="space-y-4">
               {filtered.map((unit) => {
-                const status = getStatus(unit);
-                const isReserved = status === "reserved";
+                const status = unit.status;
+                const disabled = status !== "available";
                 return (
                 <div key={unit.id} className="border border-border p-5 space-y-4">
                   <div className="flex items-center justify-between">
@@ -180,15 +184,12 @@ const AvailabilitySection = () => {
                       <span className="font-body text-xs text-muted-foreground">Ref {unit.id}</span>
                     </div>
                     <span
-                      className={`inline-block px-2.5 py-1 font-body text-[9px] tracking-[0.15em] uppercase ${
-                        isReserved
-                          ? "bg-muted text-muted-foreground"
-                          : "bg-secondary text-secondary-foreground"
-                      }`}
+                      className={`inline-block px-2.5 py-1 font-body text-[9px] tracking-[0.15em] uppercase ${statusClass(status)}`}
                     >
-                      {isReserved ? t("availability.status.reserved") : t("availability.status.unknown")}
+                      {statusLabel(status)}
                     </span>
                   </div>
+
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
@@ -236,7 +237,7 @@ const AvailabilitySection = () => {
                       </span>
                       <button
                         onClick={() => handleReserve(unit)}
-                        disabled={isReserved}
+                        disabled={disabled}
                         className="px-4 py-2.5 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-gold"
                       >
                         {t("availability.reserve")}
