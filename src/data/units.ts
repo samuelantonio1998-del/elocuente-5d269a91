@@ -17,7 +17,7 @@ export interface Unit {
 // Fallback list (used only if DB is unreachable). DB is source of truth.
 export const units: Unit[] = [
   { id: "A01", building: "A", floor: 0, type: "T2", area: "132 m²", parking: 2, orientation: "Sul / Nascente", status: "available" },
-  { id: "A02", building: "A", floor: 0, type: "T2", area: "130 m²", parking: 2, orientation: "Norte / Poente", status: "available" },
+  { id: "A02", building: "A", floor: 0, type: "T3", area: "130 m²", parking: 2, orientation: "Norte / Poente", status: "available" },
   { id: "A03", building: "A", floor: 0, type: "T2", area: "120 m²", parking: 2, orientation: "Sul / Nascente", status: "available" },
   { id: "A04", building: "A", floor: 0, type: "T2", area: "140 m²", parking: 2, orientation: "Norte / Poente", status: "available" },
   { id: "A05", building: "A", floor: 1, type: "T2", area: "133 m²", parking: 2, orientation: "Sul / Nascente", status: "available" },
