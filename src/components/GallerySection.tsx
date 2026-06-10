@@ -77,13 +77,17 @@ const GallerySection = () => {
         </AnimatedSection>
       </div>
 
-      <StaggerGroup
-        stagger={0.1}
-        delayChildren={0.1}
-        margin="-5% 0px"
+      <div
+        ref={scrollRef}
         className="flex gap-4 px-8 lg:px-16 overflow-x-auto hide-scrollbar"
       >
-        <div ref={scrollRef} className="flex gap-4 contents">
+        <StaggerGroup
+          as="div"
+          stagger={0.1}
+          delayChildren={0.05}
+          margin="-5% 0px"
+          className="flex gap-4"
+        >
           {galleryImages.map((img, i) => (
             <StaggerItem
               key={i}
@@ -106,8 +110,8 @@ const GallerySection = () => {
               </button>
             </StaggerItem>
           ))}
-        </div>
-      </StaggerGroup>
+        </StaggerGroup>
+      </div>
 
       <div className="px-8 lg:px-16 mt-8">
         <p className="font-body text-[10px] tracking-[0.3em] text-muted-foreground">
