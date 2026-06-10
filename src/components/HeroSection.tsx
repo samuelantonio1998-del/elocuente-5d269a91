@@ -1,17 +1,29 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useRef } from "react";
 import heroImage from "@/assets/render-front.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
+import SplitText from "./motion/SplitText";
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion() ?? false;
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const imgY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 120]);
+  const imgScale = useTransform(scrollYProgress, [0, 1], reduce ? [1.05, 1.05] : [1.05, 1.15]);
+  const contentY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -40]);
 
   return (
-    <section id="hero" className="relative h-screen w-full overflow-hidden bg-charcoal">
-      <img
+    <section ref={ref} id="hero" className="relative h-screen w-full overflow-hidden bg-charcoal">
+      <motion.img
         src={heroImage}
         alt="Vista exterior do empreendimento Elocuente"
-        className="absolute inset-0 w-full h-full object-cover scale-105 opacity-55"
+        style={{ y: imgY, scale: imgScale }}
+        className="absolute inset-0 w-full h-full object-cover opacity-55 will-change-transform"
         width={1920}
         height={1080}
         fetchPriority="high"
@@ -22,7 +34,10 @@ const HeroSection = () => {
       {/* Bottom gradient — guarantees headline legibility */}
       <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-charcoal/85 via-charcoal/40 to-transparent" />
 
-      <div className="relative z-10 flex flex-col items-start justify-end h-full text-left px-6 md:px-16 lg:px-24 pb-20 md:pb-28">
+      <motion.div
+        style={{ y: contentY }}
+        className="relative z-10 flex flex-col items-start justify-end h-full text-left px-6 md:px-16 lg:px-24 pb-20 md:pb-28"
+      >
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -32,14 +47,13 @@ const HeroSection = () => {
           {t("hero.badge")}
         </motion.span>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 1.5 }}
+        <SplitText
+          as="h1"
+          text={t("hero.subtitle")}
+          delay={1.2}
+          stagger={0.08}
           className="font-body font-light text-2xl md:text-4xl lg:text-5xl text-white tracking-wide max-w-4xl leading-tight [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
-        >
-          {t("hero.subtitle")}
-        </motion.h1>
+        />
 
         {/* Credits */}
         <motion.span
