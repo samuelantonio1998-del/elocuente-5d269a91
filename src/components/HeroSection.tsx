@@ -52,7 +52,7 @@ const HeroSection = () => {
           text={t("hero.subtitle")}
           delay={1.2}
           stagger={0.08}
-          className="font-body font-light text-2xl md:text-4xl lg:text-5xl text-white tracking-wide max-w-4xl leading-tight [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
+          className="font-body font-light text-lg md:text-2xl lg:text-3xl text-white tracking-wide max-w-4xl leading-tight [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
         />
 
         {/* Credits */}

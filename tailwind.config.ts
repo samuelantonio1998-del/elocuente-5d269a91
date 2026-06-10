@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['Playfair Display', 'serif'],
+        heading: ['Jost', 'sans-serif'],
         body: ['Montserrat', 'sans-serif'],
         display: ['Jost', 'sans-serif'],
       },
