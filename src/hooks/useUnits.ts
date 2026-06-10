@@ -12,14 +12,14 @@ export function useUnits() {
     const load = async () => {
       const { data, error } = await supabase
         .from("units")
-        .select("id,building,floor,type,area,parking,orientation,status,sort_order")
+        .select("id,building,floor,type,area,parking,orientation,status,sort_order,price,floor_plan_url")
         .order("sort_order", { ascending: true });
       if (cancelled) return;
       if (error) {
         console.error("Failed to load units", error);
       } else if (data) {
         setUnits(
-          data.map((u) => ({
+          data.map((u: any) => ({
             id: u.id,
             building: u.building,
             floor: u.floor,
@@ -28,6 +28,8 @@ export function useUnits() {
             parking: u.parking,
             orientation: u.orientation,
             status: u.status as UnitStatus,
+            price: u.price,
+            floorPlanUrl: u.floor_plan_url,
           }))
         );
       }
