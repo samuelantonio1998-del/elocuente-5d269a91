@@ -13,7 +13,7 @@ const PhasesSection = () => {
 
   return (
     <section id="fases" className="bg-background">
-      <div className="py-28 md:py-40 px-8 lg:px-16">
+      <div className="py-16 md:py-24 px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-20">
             <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-4">

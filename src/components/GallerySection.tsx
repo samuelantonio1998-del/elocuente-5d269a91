@@ -47,7 +47,7 @@ const GallerySection = () => {
   };
 
   return (
-    <section id="galeria" className="py-28 md:py-40 bg-background">
+    <section id="galeria" className="py-16 md:py-24 bg-background">
       <div className="px-8 lg:px-16 mb-12">
         <AnimatedSection className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
