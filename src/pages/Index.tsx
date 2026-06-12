@@ -2,7 +2,9 @@ import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
-import FeaturesSection from "@/components/FeaturesSection";
+import ApartmentSection from "@/components/ApartmentSection";
+import CondominiumSection from "@/components/CondominiumSection";
+import LifeAtSection from "@/components/LifeAtSection";
 import LocationSection from "@/components/LocationSection";
 import ApartmentsSection from "@/components/ApartmentsSection";
 import ContactSection from "@/components/ContactSection";
@@ -43,7 +45,9 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <FeaturesSection />
+      <ApartmentSection />
+      <CondominiumSection />
+      <LifeAtSection />
       <LocationSection />
       <ApartmentsSection />
       <Suspense fallback={<SectionFallback />}>

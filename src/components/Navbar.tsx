@@ -6,8 +6,7 @@ import { Lang } from "@/i18n/translations";
 import Logo from "./Logo";
 
 const navKeys = [
-  { key: "nav.development", href: "#sobre" },
-  { key: "nav.features", href: "#caracteristicas" },
+  { key: "nav.features", href: "#empreendimento" },
   { key: "nav.location", href: "#localizacao" },
   { key: "nav.units", href: "#apartamentos" },
   { key: "nav.availability", href: "#disponibilidades" },
