@@ -389,8 +389,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "life.remote.desc": "High-speed fibre optic in every unit. For those working remotely, the coffee break becomes a café terrace, not an office machine.",
     "life.nature": "Sea and pine forest all year round",
     "life.nature.desc": "Sea swimming ten months a year · twelve thousand hectares of Pinhal de Leiria to run and cycle · Atlantic air · pine-forest nights without traffic.",
-    "life.services": "Education and healthcare 20 minutes away",
-    "life.services.desc": "Leiria Hospital Centre 15 min away · top-tier public schools in Marinha Grande · private schools in Leiria 30 min away.",
+    "life.services": "Health and education at your door",
+    "life.services.desc": "Private hospitals 10 minutes away · Leiria Hospital Centre 15 minutes away · top-tier public schools in Marinha Grande · private schools in Leiria and Marinha Grande 10 minutes away.",
     "life.investment": "Investment on the Silver Coast",
     "life.investment.desc": "An area with sustained appreciation and strong off-season holiday-rental demand. Delivery planned with licensing complete, with no risk of stalled construction.",
 
