@@ -44,12 +44,12 @@ const LifeAtSection = () => {
             </div>
           </AnimatedSection>
 
-          <StaggerGroup stagger={0.08} delayChildren={0.05}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-14 md:gap-y-16 max-w-5xl mx-auto">
+          <StaggerGroup stagger={0.06} delayChildren={0.05}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 md:gap-y-14">
               {items.map((it, i) => (
                 <StaggerItem key={i} variant="fade-up">
                   <div className="flex flex-col gap-4">
-                    <h3 className="font-heading text-2xl md:text-[26px] leading-tight text-foreground">
+                    <h3 className="font-heading text-xl md:text-2xl leading-tight text-foreground">
                       {it.title}
                     </h3>
                     <p className="font-body text-sm md:text-base text-muted-foreground leading-[1.9]">
