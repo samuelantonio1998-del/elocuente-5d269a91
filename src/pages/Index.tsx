@@ -28,8 +28,8 @@ const Index = () => {
   return (
     <main className="scroll-smooth">
       <Seo
-        title="Elocuente — Apartamentos Contemporâneos em Marinha Grande"
-        description="Novo empreendimento residencial em Albergaria, Marinha Grande. Apartamentos T2 e T3 entre Leiria e o Atlântico, com tipologias, plantas e disponibilidade."
+        title="Elocuente — Residências Premium em Marinha Grande"
+        description="Vinte e três residências premium T2 e T3 em Albergaria, Marinha Grande, entre o pinhal de Leiria e o Atlântico. Acabamentos em mármore e madeira nobre. Desde 320.000 €."
         path="/"
         image="/og-home.jpg"
       />
