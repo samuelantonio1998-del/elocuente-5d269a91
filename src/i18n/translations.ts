@@ -11,16 +11,27 @@ export const translations: Record<Lang, Record<string, string>> = {
     "nav.gallery": "Galeria",
     "nav.project": "Projeto",
     "nav.contact": "Contacto",
-    "nav.cta": "Pedir Informação",
+    "nav.cta": "Seja Proprietário",
 
     // Hero
     "hero.badge": "Em Licenciamento",
     "hero.name": "Elocuente",
     "hero.tagline": "Entre Leiria e o Atlântico",
-    "hero.subtitle": "Um condomínio premium numa localização central — a minutos do centro de Leiria e da costa atlântica, com a tranquilidade de viver fora da cidade.",
-    "hero.cta1": "Pedir Informação",
+    "hero.title": "Entre o pinhal de Leiria e o Atlântico.",
+    "hero.tagline2": "Vinte e três residências de arquitetura premium, T2 e T3.",
+    "hero.location": "Albergaria · Marinha Grande",
+    "hero.subtitle": "Vinte e três residências de arquitetura premium, T2 e T3.",
+    "hero.cta1": "Seja Proprietário",
     "hero.cta2": "Ver Frações",
     "hero.scroll": "Scroll",
+
+    // Proof numbers
+    "proof.residences": "Residências",
+    "proof.buildings": "Edifícios",
+    "proof.parking": "Lugares de estacionamento / fração",
+    "proof.areas": "Áreas (ABP)",
+    "proof.balcony": "Varanda média",
+    "proof.delivery": "Entrega prevista",
 
     // About
     "about.label": "O Empreendimento",
