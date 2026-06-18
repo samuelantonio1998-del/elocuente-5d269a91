@@ -37,7 +37,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "about.label": "O Empreendimento",
     "about.title": "Viver entre a cidade e o mar",
     "about.sub1": "Um novo empreendimento.",
-    "about.p1": "O Elocuente é um novo empreendimento de apartamentos contemporâneos em Albergaria, Marinha Grande, composto por dois blocos residenciais.",
+    "about.p1": "O Elocuente é um novo empreendimento de residências premium em Albergaria, Marinha Grande, composto por dois blocos residenciais.",
     "about.sub2": "Entre Leiria e o Atlântico.",
     "about.p2": "Combina a tranquilidade de uma zona residencial com a proximidade da cidade, dos serviços e das praias de São Pedro de Moel.",
     "about.sub3": "Arquitetura contemporânea.",
@@ -75,7 +75,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Apartment (Section 1)
     "apartment.label": "Residência",
     "apartment.title": "O Apartamento",
-    "apartment.desc": "Aquilo que vais habitar todos os dias.",
+    "apartment.desc": "Aquilo que vai habitar todos os dias.",
     "apartment.areas": "Áreas generosas",
     "apartment.areas.desc": "T2 de 115 a 137 m² · T3 de 148 a 260 m² (ABP). Acima da média do mercado nacional para a mesma tipologia.",
     "apartment.kitchen": "Cozinha em mármore e madeira nobre",
@@ -92,11 +92,11 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Condominium (Section 2)
     "condo.label": "Condomínio",
     "condo.title": "O Condomínio",
-    "condo.desc": "Aquilo que partilhas com o teu prédio.",
+    "condo.desc": "Aquilo que partilha com o seu edifício.",
     "condo.parking": "Dois lugares de estacionamento por fração",
     "condo.parking.desc": "Em todas as frações T2 e T3 · ponto eléctrico individual no estacionamento. Acima do que oferece a generalidade do mercado.",
     "condo.storage": "Box de arrumos privativo",
-    "condo.storage.desc": "Espaço de arrumação extra por fração. Para bicicletas, pranchas, malas de viagem ou o que precisares fora do dia-a-dia.",
+    "condo.storage.desc": "Espaço de arrumação extra por fração. Para bicicletas, pranchas, malas de viagem ou o que precisar fora do dia a dia.",
     "condo.solar": "Pré-instalação fotovoltaica e wallbox",
     "condo.solar.desc": "Pronto para auto-consumo solar e carregamento eléctrico. Investimento sem retrabalho.",
     "condo.garden": "Jardim e logradouro comum",
@@ -107,7 +107,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Life at Elocuente (Section 3)
     "life.label": "Porquê aqui",
     "life.title": "A Vida no Elocuente",
-    "life.desc": "Porque é que esta é a melhor decisão para os próximos anos da tua vida.",
+    "life.desc": "Porque esta é a melhor decisão para os próximos anos da sua vida.",
     "life.time": "Tempo, recuperado",
     "life.time.desc": "10 minutos do centro de Leiria · 15 minutos das praias da Vieira e de São Pedro de Moel · 5 minutos da escola, supermercado e do café da manhã. Em vez de duas horas por dia em trânsito, duas horas com a família.",
     "life.connectivity": "A 90 minutos de Lisboa, a 1h45 do Porto",
@@ -150,7 +150,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "apartments.desc": "Conheça as frações disponíveis nos blocos A e B, todas com varandas, estacionamento privativo e excelente exposição solar.",
     "apartments.block": "Bloco",
     "apartments.unitsCount": "frações",
-    "apartments.cardCta": "Pedir Informação",
+    "apartments.cardCta": "Manifestar Interesse",
     "apartments.cta": "Pedir Plantas",
     "apartments.t2.price": "",
     "apartments.t2.desc": "Sala e cozinha open-space, dois quartos, casa de banho completa e varandas generosas com excelente exposição solar.",
@@ -241,7 +241,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "reservation.error.desc": "Ocorreu um erro ao submeter a reserva. Tente novamente.",
 
     // Contact
-    "contact.label": "Pedir Informação",
+    "contact.label": "Seja Proprietário",
     "contact.title1": "Manifeste o",
     "contact.title2": "seu Interesse",
     "contact.desc": "Preencha o formulário e a nossa equipa comercial entrará em contacto consigo para mais informações sobre o Elocuente.",
@@ -252,7 +252,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "contact.phone": "Telefone (opcional)",
     "contact.typology": "Tipologias de interesse",
     "contact.message": "Mensagem (opcional)",
-    "contact.submit": "Enviar Pedido",
+    "contact.submit": "Iniciar Conversa",
     "contact.success": "Obrigado pelo seu interesse! Entraremos em contacto brevemente.",
     "contact.error": "Erro ao enviar. Por favor verifique os dados e tente novamente.",
     "contact.acceptTerms": "Li e aceito o tratamento dos meus dados conforme a",
@@ -260,7 +260,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "contact.privacyLink": "Política de Privacidade",
 
     // Footer
-    "footer.tagline": "Apartamentos contemporâneos em Albergaria, Marinha Grande.",
+    "footer.tagline": "Residências premium em Albergaria, Marinha Grande.",
     "footer.contacts": "Contactos",
     "footer.follow": "Siga-nos",
     "footer.privacy": "Política de Privacidade",
