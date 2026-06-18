@@ -7,7 +7,7 @@ import ApartmentSection from "@/components/ApartmentSection";
 import CondominiumSection from "@/components/CondominiumSection";
 import LifeAtSection from "@/components/LifeAtSection";
 import LocationSection from "@/components/LocationSection";
-import ApartmentsSection from "@/components/ApartmentsSection";
+
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
@@ -28,19 +28,19 @@ const Index = () => {
   return (
     <main className="scroll-smooth">
       <Seo
-        title="Elocuente — Apartamentos Contemporâneos em Marinha Grande"
-        description="Novo empreendimento residencial em Albergaria, Marinha Grande. Apartamentos T2 e T3 entre Leiria e o Atlântico, com tipologias, plantas e disponibilidade."
+        title="Elocuente — Residências Premium em Marinha Grande"
+        description="Vinte e três residências premium T2 e T3 em Albergaria, Marinha Grande, entre o pinhal de Leiria e o Atlântico. Acabamentos em mármore e madeira nobre. Desde 320.000 €."
         path="/"
         image="/og-home.jpg"
       />
 
       {/* AI / assistant summary — visible to screen readers and crawlers, hidden visually */}
       <p className="sr-only">
-        Elocuente é um novo empreendimento residencial em Albergaria, Marinha Grande,
-        a poucos minutos do centro de Leiria e da costa atlântica. Oferece 23 apartamentos
-        contemporâneos de tipologias T2 e T3 (cerca de 112 a 260 m²), distribuídos pelos
-        Blocos A e B. Os preços partem de 290 000 € (a 2 250 €/m²) e o projeto encontra-se
-        atualmente em fase de licenciamento.
+        Elocuente é um novo empreendimento residencial premium em Albergaria, Marinha Grande,
+        a poucos minutos do centro de Leiria e da costa atlântica. Oferece 23 residências
+        premium de tipologias T2 e T3 (cerca de 115 a 260 m²), distribuídas pelos Blocos A e B,
+        com acabamentos em mármore e madeira nobre. Desde 320 000 €. Projeto atualmente em
+        fase de licenciamento.
       </p>
 
       <Navbar />
@@ -51,7 +51,6 @@ const Index = () => {
       <CondominiumSection />
       <LifeAtSection />
       <LocationSection />
-      <ApartmentsSection />
       <Suspense fallback={<SectionFallback />}>
         <AvailabilitySection />
       </Suspense>

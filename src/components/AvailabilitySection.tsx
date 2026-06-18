@@ -151,9 +151,7 @@ const AvailabilitySection = () => {
                             {t("availability.floorPlan.view")}
                           </button>
                         ) : (
-                          <span className="inline-block px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground border border-border/50">
-                            {t("availability.floorPlan.soon")}
-                          </span>
+                          <span className="font-body text-sm text-muted-foreground/50">—</span>
                         )}
                       </td>
                       <td className="py-4 px-3">
@@ -252,9 +250,7 @@ const AvailabilitySection = () => {
                           {t("availability.floorPlan.view")}
                         </button>
                       ) : (
-                        <span className="inline-block px-2.5 py-1 font-body text-[9px] tracking-[0.1em] uppercase text-muted-foreground border border-border/50">
-                          {t("availability.floorPlan.soon")}
-                        </span>
+                        <span className="font-body text-xs text-muted-foreground/50">—</span>
                       )}
                       <button
                         onClick={() => handleReserve(unit)}

@@ -8,7 +8,6 @@ import Logo from "./Logo";
 const navKeys = [
   { key: "nav.features", href: "#empreendimento" },
   { key: "nav.location", href: "#localizacao" },
-  { key: "nav.units", href: "#apartamentos" },
   { key: "nav.availability", href: "#disponibilidades" },
   { key: "nav.gallery", href: "#galeria" },
 ];
