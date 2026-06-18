@@ -17,8 +17,8 @@ const LifeAtSection = () => {
   return (
     <section id="vida-elocuente" className="bg-background">
       <div className="py-24 md:py-32 px-8 lg:px-16">
-        <div className="max-w-3xl mx-auto">
-          <AnimatedSection className="text-center mb-20">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection className="text-center mb-12">
             <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-4">
               {t("life.label")}
             </p>
@@ -30,13 +30,26 @@ const LifeAtSection = () => {
             </p>
           </AnimatedSection>
 
+          <AnimatedSection delay={0.1}>
+            <div className="relative w-full aspect-[21/9] bg-muted overflow-hidden rounded-sm flex items-center justify-center mb-20 md:mb-24">
+              <img
+                src=""
+                alt="[Imagem: pinhal de Leiria / Atlântico]"
+                className="absolute inset-0 w-full h-full object-cover"
+                onError={(e) => ((e.currentTarget.style.display = "none"))}
+              />
+              <span className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground">
+                [Imagem: pinhal de Leiria / Atlântico]
+              </span>
+            </div>
+          </AnimatedSection>
+
           <StaggerGroup stagger={0.08} delayChildren={0.05}>
-            <div className="flex flex-col gap-16 md:gap-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-14 md:gap-y-16 max-w-5xl mx-auto">
               {items.map((it, i) => (
                 <StaggerItem key={i} variant="fade-up">
-                  {/* Future: alternate with image on left/right via md:grid-cols-2 */}
-                  <div className="flex flex-col gap-5">
-                    <h3 className="font-heading text-2xl md:text-[28px] leading-tight text-foreground">
+                  <div className="flex flex-col gap-4">
+                    <h3 className="font-heading text-2xl md:text-[26px] leading-tight text-foreground">
                       {it.title}
                     </h3>
                     <p className="font-body text-sm md:text-base text-muted-foreground leading-[1.9]">
