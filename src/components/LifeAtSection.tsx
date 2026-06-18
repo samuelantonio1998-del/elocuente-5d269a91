@@ -31,7 +31,7 @@ const LifeAtSection = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <div className="relative w-full aspect-[21/9] bg-muted overflow-hidden rounded-sm flex items-center justify-center mb-20 md:mb-24">
+            <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden rounded-sm flex items-center justify-center mb-20 md:mb-24">
               <img
                 src=""
                 alt="[Imagem: pinhal de Leiria / Atlântico]"
