@@ -116,8 +116,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "life.remote.desc": "Fibra óptica de alto débito em todas as frações. Para quem trabalha à distância, a pausa para café passa a ser numa esplanada, não numa máquina do escritório.",
     "life.nature": "Mar e pinhal todo o ano",
     "life.nature.desc": "Banhos de mar dez meses por ano · doze mil hectares de Pinhal de Leiria para correr e andar de bicicleta · ar do Atlântico · noites de pinhal sem trânsito.",
-    "life.services": "Educação e saúde a 20 minutos",
-    "life.services.desc": "Centro Hospitalar de Leiria a 15 min · escolas públicas de referência em Marinha Grande · colégios privados em Leiria a 30 min.",
+    "life.services": "Saúde e educação à porta",
+    "life.services.desc": "Hospitais privados a 10 minutos · Centro Hospitalar de Leiria a 15 minutos · escolas públicas de referência em Marinha Grande · colégios privados em Leiria e Marinha Grande a 10 minutos.",
     "life.investment": "Investimento na Costa de Prata",
     "life.investment.desc": "Zona em valorização sustentada, com forte procura para arrendamento turístico fora de época. Entrega prevista com licenciamento concluído, sem risco de obra parada.",
 
