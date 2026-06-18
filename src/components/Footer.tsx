@@ -11,7 +11,7 @@ const Footer = () => {
   const navItems = [
     { label: t("nav.development"), href: "#sobre" },
     { label: t("nav.location"), href: "#localizacao" },
-    { label: t("nav.units"), href: "#apartamentos" },
+    { label: t("nav.availability"), href: "#disponibilidades" },
     { label: t("nav.gallery"), href: "#galeria" },
     { label: t("nav.contact"), href: "#contacto" },
   ];

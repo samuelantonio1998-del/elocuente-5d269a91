@@ -186,6 +186,7 @@ const ContactSection = () => {
                   className="w-full py-5 bg-gold text-charcoal font-body text-[11px] font-medium tracking-[0.3em] uppercase hover:bg-gold/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed shadow-[0_8px_24px_-8px_hsl(var(--gold)/0.6)]"
                 >
                   {submitting ? "..." : t("contact.submit")}
+
                 </button>
               </div>
             </form>
