@@ -49,11 +49,40 @@ const HeroSection = () => {
 
         <SplitText
           as="h1"
-          text={t("hero.subtitle")}
-          delay={1.2}
-          stagger={0.08}
-          className="font-body font-light text-lg md:text-2xl lg:text-3xl text-white tracking-wide max-w-4xl leading-tight [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
+          text={t("hero.title")}
+          delay={1.0}
+          stagger={0.06}
+          className="font-heading font-light text-4xl md:text-6xl lg:text-7xl text-white tracking-tight max-w-5xl leading-[1.05] [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
         />
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.6 }}
+          className="mt-6 font-body font-light text-base md:text-lg lg:text-xl text-white/90 tracking-wide max-w-3xl [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
+        >
+          {t("hero.tagline2")}
+        </motion.p>
+
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.9 }}
+          className="mt-5 font-body text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-white/70"
+        >
+          {t("hero.location")}
+        </motion.span>
+
+        <motion.a
+          href="#contacto"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 2.1 }}
+          className="mt-8 inline-block px-7 py-3.5 bg-gold text-charcoal font-body text-[11px] tracking-[0.25em] uppercase hover:bg-gold/90 transition-colors duration-300"
+        >
+          {t("hero.cta1")}
+        </motion.a>
+
 
         {/* Credits */}
         <motion.span

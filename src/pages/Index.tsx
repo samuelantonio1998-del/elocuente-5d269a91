@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import ProofNumbersSection from "@/components/ProofNumbersSection";
 import AboutSection from "@/components/AboutSection";
 import ApartmentSection from "@/components/ApartmentSection";
 import CondominiumSection from "@/components/CondominiumSection";
@@ -44,6 +45,7 @@ const Index = () => {
 
       <Navbar />
       <HeroSection />
+      <ProofNumbersSection />
       <AboutSection />
       <ApartmentSection />
       <CondominiumSection />
