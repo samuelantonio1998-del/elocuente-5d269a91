@@ -3,14 +3,16 @@ import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useSiteImage } from "@/hooks/useSiteImages";
 import mapaAcabamentosAsset from "@/assets/mapa-acabamentos.pdf.asset.json";
 import apt1 from "@/assets/apt-1.png.asset.json";
 import apt2 from "@/assets/apt-2.png.asset.json";
 
-const images = [apt1.url, apt2.url];
-
 const ApartmentSection = () => {
   const { t } = useLanguage();
+  const a1 = useSiteImage("apartment.1", apt1.url);
+  const a2 = useSiteImage("apartment.2", apt2.url);
+  const images = [a1, a2];
   const [index, setIndex] = useState(0);
 
   const items = [
