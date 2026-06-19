@@ -3,16 +3,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Lang } from "@/i18n/translations";
-import Logo from "./Logo";
+import logoAsset from "@/assets/elocuente-logo-transparent.png.asset.json";
 
-const navKeys = [
+const leftNavKeys = [
   { key: "nav.promoter", href: "#promotor" },
   { key: "nav.location", href: "#localizacao" },
   { key: "nav.architecture", href: "#arquitetura" },
+];
+
+const rightNavKeys = [
   { key: "nav.availability", href: "#disponibilidades" },
   { key: "nav.features", href: "#empreendimento" },
   { key: "nav.gallery", href: "#galeria" },
 ];
+
+const allNavKeys = [...leftNavKeys, ...rightNavKeys];
 
 const langLabels: Record<Lang, string> = { pt: "PT", en: "EN", es: "ES" };
 const langOrder: Lang[] = ["pt", "en", "es"];
@@ -58,6 +63,11 @@ const Navbar = () => {
     </div>
   );
 
+  const linkClass = `text-[11px] font-body tracking-[0.2em] uppercase whitespace-nowrap transition-colors duration-300 ${
+    scrolled
+      ? "text-muted-foreground hover:text-foreground"
+      : "text-primary-foreground/70 hover:text-primary-foreground"
+  }`;
 
   return (
     <motion.nav
@@ -69,29 +79,33 @@ const Navbar = () => {
       }`}
     >
       <div className="w-full px-8 lg:px-12 flex items-center justify-between h-20 lg:h-24 gap-8">
-        {/* Left logo */}
+        {/* Desktop left nav */}
+        <div className="hidden lg:flex items-center gap-6 xl:gap-9 flex-1">
+          {leftNavKeys.map((item) => (
+            <a key={item.href} href={item.href} className={linkClass}>
+              {t(item.key)}
+            </a>
+          ))}
+        </div>
+
+        {/* Centered logo */}
         <a
           href="#hero"
           aria-label="Elocuente"
-          className={`flex items-center flex-shrink-0 transition-colors duration-500 ${
-            scrolled ? "text-foreground" : "text-primary-foreground"
-          }`}
+          className="flex-shrink-0 flex items-center justify-center"
         >
-          <Logo height={22} className="lg:h-[26px]" />
+          <img
+            src={logoAsset.url}
+            alt="Elocuente"
+            className="h-7 md:h-8 lg:h-9 w-auto select-none"
+            draggable={false}
+          />
         </a>
 
-        {/* Right nav items */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-9 justify-end">
-          {navKeys.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`text-[11px] font-body tracking-[0.2em] uppercase whitespace-nowrap transition-colors duration-300 ${
-                scrolled
-                  ? "text-muted-foreground hover:text-foreground"
-                  : "text-primary-foreground/70 hover:text-primary-foreground"
-              }`}
-            >
+        {/* Desktop right nav + CTA + lang */}
+        <div className="hidden lg:flex items-center gap-6 xl:gap-9 flex-1 justify-end">
+          {rightNavKeys.map((item) => (
+            <a key={item.href} href={item.href} className={linkClass}>
               {t(item.key)}
             </a>
           ))}
@@ -131,7 +145,7 @@ const Navbar = () => {
             className="lg:hidden bg-charcoal overflow-hidden"
           >
             <div className="px-8 py-10 space-y-1">
-              {navKeys.map((item, i) => (
+              {allNavKeys.map((item, i) => (
                 <motion.a
                   key={item.href}
                   href={item.href}
