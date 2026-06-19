@@ -6,13 +6,18 @@ import renderEntrance from "@/assets/render-entrance.jpg";
 import renderDetail from "@/assets/render-detail.jpg";
 import renderAerial from "@/assets/render-aerial.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useSiteImage } from "@/hooks/useSiteImages";
 
 const AmenitiesSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const { t } = useLanguage();
+  const imgGardens = useSiteImage("amenities.gardens", renderGarden);
+  const imgParking = useSiteImage("amenities.parking", renderEntrance);
+  const imgBalconies = useSiteImage("amenities.balconies", renderDetail);
+  const imgSecurity = useSiteImage("amenities.security", renderAerial);
 
   const amenities = [
-    { label: t("amenities.gardens"), desc: t("amenities.gardens.desc"), image: renderGarden },
+    { label: t("amenities.gardens"), desc: t("amenities.gardens.desc"), image: imgGardens },
     { label: t("amenities.parking"), desc: t("amenities.parking.desc"), image: renderEntrance },
     { label: t("amenities.balconies"), desc: t("amenities.balconies.desc"), image: renderDetail },
     { label: t("amenities.security"), desc: t("amenities.security.desc"), image: renderAerial },
