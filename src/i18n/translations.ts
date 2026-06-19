@@ -4,14 +4,28 @@ export const translations: Record<Lang, Record<string, string>> = {
   pt: {
     // Navbar
     "nav.development": "Empreendimento",
-    "nav.features": "Empreendimento",
+    "nav.features": "Características",
     "nav.location": "Localização",
     "nav.units": "Frações",
-    "nav.availability": "Tipologias",
+    "nav.availability": "Disponibilidades",
     "nav.gallery": "Galeria",
     "nav.project": "Projeto",
     "nav.contact": "Contacto",
+    "nav.promoter": "O Promotor",
+    "nav.architecture": "Arquitetura",
     "nav.cta": "Seja Proprietário",
+
+    // Promoter
+    "promoter.label": "Promotor",
+    "promoter.title": "Quem constrói o Elocuente",
+    "promoter.text": "Texto de apresentação do promotor — a visão por trás do Elocuente. (a preencher)",
+    "promoter.photo": "[Foto: promotor]",
+
+    // Architecture
+    "architecture.label": "Arquitetura",
+    "architecture.title": "Uma assinatura contemporânea",
+    "architecture.quote": "[Frase do arquiteto Tiago Frazão sobre o projeto — a preencher]",
+    "architecture.signature": "Tiago Frazão Arquitetos",
 
     // Hero
     "hero.badge": "Em Licenciamento",
@@ -296,14 +310,28 @@ export const translations: Record<Lang, Record<string, string>> = {
   },
   en: {
     "nav.development": "Development",
-    "nav.features": "Development",
+    "nav.features": "Features",
     "nav.location": "Location",
     "nav.units": "Units",
-    "nav.availability": "Typologies",
+    "nav.availability": "Availability",
     "nav.gallery": "Gallery",
     "nav.project": "Project",
     "nav.contact": "Contact",
+    "nav.promoter": "The Developer",
+    "nav.architecture": "Architecture",
     "nav.cta": "Become an Owner",
+
+    // Promoter
+    "promoter.label": "Developer",
+    "promoter.title": "Who builds Elocuente",
+    "promoter.text": "Introduction text about the developer — the vision behind Elocuente. (to be filled in)",
+    "promoter.photo": "[Photo: developer]",
+
+    // Architecture
+    "architecture.label": "Architecture",
+    "architecture.title": "A contemporary signature",
+    "architecture.quote": "[Quote from architect Tiago Frazão about the project — to be filled in]",
+    "architecture.signature": "Tiago Frazão Arquitetos",
 
     "hero.badge": "In Licensing",
     "hero.name": "Elocuente",
@@ -575,14 +603,28 @@ export const translations: Record<Lang, Record<string, string>> = {
   },
   es: {
     "nav.development": "Promoción",
-    "nav.features": "Promoción",
+    "nav.features": "Características",
     "nav.location": "Ubicación",
     "nav.units": "Viviendas",
-    "nav.availability": "Tipologías",
+    "nav.availability": "Disponibilidad",
     "nav.gallery": "Galería",
     "nav.project": "Proyecto",
     "nav.contact": "Contacto",
+    "nav.promoter": "El Promotor",
+    "nav.architecture": "Arquitectura",
     "nav.cta": "Sea Propietario",
+
+    // Promoter
+    "promoter.label": "Promotor",
+    "promoter.title": "Quién construye Elocuente",
+    "promoter.text": "Texto de presentación del promotor — la visión detrás de Elocuente. (a rellenar)",
+    "promoter.photo": "[Foto: promotor]",
+
+    // Architecture
+    "architecture.label": "Arquitectura",
+    "architecture.title": "Una firma contemporánea",
+    "architecture.quote": "[Frase del arquitecto Tiago Frazão sobre el proyecto — a rellenar]",
+    "architecture.signature": "Tiago Frazão Arquitetos",
 
     "hero.badge": "En Licencia",
     "hero.name": "Elocuente",

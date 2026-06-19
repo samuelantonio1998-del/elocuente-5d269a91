@@ -6,9 +6,11 @@ import { Lang } from "@/i18n/translations";
 import Logo from "./Logo";
 
 const navKeys = [
-  { key: "nav.features", href: "#empreendimento" },
+  { key: "nav.promoter", href: "#promotor" },
   { key: "nav.location", href: "#localizacao" },
+  { key: "nav.architecture", href: "#arquitetura" },
   { key: "nav.availability", href: "#disponibilidades" },
+  { key: "nav.features", href: "#empreendimento" },
   { key: "nav.gallery", href: "#galeria" },
 ];
 

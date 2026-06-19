@@ -1,0 +1,71 @@
+import { useEffect, useState } from "react";
+import Reveal from "./motion/Reveal";
+import render1 from "@/assets/render-1.png.asset.json";
+import render2 from "@/assets/render-2.png.asset.json";
+import render3 from "@/assets/render-3.png.asset.json";
+import { useLanguage } from "@/i18n/LanguageContext";
+
+const renders = [render1.url, render2.url, render3.url];
+
+const ArchitectureSection = () => {
+  const { t } = useLanguage();
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setIdx((i) => (i + 1) % renders.length), 5000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <section id="arquitetura" className="bg-background">
+      <div className="grid lg:grid-cols-2">
+        <Reveal
+          variant="mask-reveal"
+          duration={1.1}
+          className="relative h-[50vh] lg:h-auto lg:min-h-[640px] overflow-hidden"
+        >
+          {renders.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt="Arquitetura do empreendimento Elocuente em Marinha Grande"
+              width={1600}
+              height={1200}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
+              loading="lazy"
+            />
+          ))}
+        </Reveal>
+
+        <div className="flex items-center px-8 lg:px-20 py-20 md:py-28 bg-cream-dark">
+          <Reveal variant="slide-right" delay={0.1}>
+            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-8">
+              {t("architecture.label")}
+            </p>
+            <h2 className="font-heading text-3xl md:text-5xl text-foreground leading-[1.15] mb-12">
+              {t("architecture.title")}
+            </h2>
+
+            <div className="space-y-8 max-w-lg">
+              <p className="font-body text-sm md:text-base text-foreground leading-[1.9]">
+                <strong className="font-semibold text-foreground">{t("about.sub3")}</strong>{" "}
+                <span className="text-muted-foreground">{t("about.p3")}</span>
+              </p>
+
+              <figure className="border-l-2 border-gold pl-6 mt-12">
+                <blockquote className="font-heading italic text-xl md:text-2xl text-foreground leading-[1.5]">
+                  {t("architecture.quote")}
+                </blockquote>
+                <figcaption className="font-body text-[10px] tracking-[0.3em] uppercase text-muted-foreground mt-4">
+                  {t("architecture.signature")}
+                </figcaption>
+              </figure>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ArchitectureSection;
