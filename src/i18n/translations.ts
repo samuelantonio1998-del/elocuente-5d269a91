@@ -310,14 +310,28 @@ export const translations: Record<Lang, Record<string, string>> = {
   },
   en: {
     "nav.development": "Development",
-    "nav.features": "Development",
+    "nav.features": "Features",
     "nav.location": "Location",
     "nav.units": "Units",
-    "nav.availability": "Typologies",
+    "nav.availability": "Availability",
     "nav.gallery": "Gallery",
     "nav.project": "Project",
     "nav.contact": "Contact",
+    "nav.promoter": "The Developer",
+    "nav.architecture": "Architecture",
     "nav.cta": "Become an Owner",
+
+    // Promoter
+    "promoter.label": "Developer",
+    "promoter.title": "Who builds Elocuente",
+    "promoter.text": "Introduction text about the developer — the vision behind Elocuente. (to be filled in)",
+    "promoter.photo": "[Photo: developer]",
+
+    // Architecture
+    "architecture.label": "Architecture",
+    "architecture.title": "A contemporary signature",
+    "architecture.quote": "[Quote from architect Tiago Frazão about the project — to be filled in]",
+    "architecture.signature": "Tiago Frazão Arquitetos",
 
     "hero.badge": "In Licensing",
     "hero.name": "Elocuente",
