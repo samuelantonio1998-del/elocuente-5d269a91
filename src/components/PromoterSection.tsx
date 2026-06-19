@@ -1,8 +1,10 @@
 import Reveal from "./motion/Reveal";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useSiteImage } from "@/hooks/useSiteImages";
 
 const PromoterSection = () => {
   const { t } = useLanguage();
+  const photo = useSiteImage("promoter.photo", "");
 
   return (
     <section id="promotor" className="bg-background">
@@ -12,11 +14,20 @@ const PromoterSection = () => {
           duration={1.1}
           className="relative lg:min-h-[600px] overflow-hidden"
         >
-          <div className="aspect-[3/4] lg:aspect-auto lg:h-full w-full bg-muted flex items-center justify-center">
-            <span className="font-body text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
-              {t("promoter.photo")}
-            </span>
-          </div>
+          {photo ? (
+            <img
+              src={photo}
+              alt="Fotografia do promotor do Elocuente"
+              className="w-full h-full object-cover aspect-[3/4] lg:aspect-auto"
+              loading="lazy"
+            />
+          ) : (
+            <div className="aspect-[3/4] lg:aspect-auto lg:h-full w-full bg-muted flex items-center justify-center">
+              <span className="font-body text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
+                {t("promoter.photo")}
+              </span>
+            </div>
+          )}
         </Reveal>
 
         <div className="flex items-center px-8 lg:px-20 py-20 md:py-28 bg-cream-dark">
