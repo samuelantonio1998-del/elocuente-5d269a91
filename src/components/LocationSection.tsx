@@ -30,8 +30,8 @@ const LocationSection = () => {
       <AnimatedSection delay={0.2}>
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left: dark panel with description + distances */}
-          <div className="bg-charcoal text-primary-foreground px-8 lg:px-16 py-16 lg:py-20 flex flex-col justify-center">
-            <p className="font-body text-primary-foreground/80 leading-[2] text-sm md:text-base max-w-md mb-12">
+          <div className="bg-charcoal text-primary-foreground px-8 lg:px-16 py-10 lg:py-14 flex flex-col justify-center">
+            <p className="font-body text-primary-foreground/80 leading-[2] text-sm md:text-base max-w-md mb-8">
               {t("location.desc")}
             </p>
 
@@ -39,7 +39,7 @@ const LocationSection = () => {
               {distances.map((d, i) => (
                 <li
                   key={i}
-                  className="flex items-center justify-between py-5 border-b border-primary-foreground/15"
+                  className="flex items-center justify-between py-3.5 border-b border-primary-foreground/15"
                 >
                   <span className="font-body text-sm md:text-base text-primary-foreground">
                     {d.label}
