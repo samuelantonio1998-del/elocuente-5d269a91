@@ -70,15 +70,13 @@ const LocationSection = () => {
             </div>
           </div>
 
-          {/* Right: light OSM map */}
+          {/* Right: custom map image */}
           <div className="h-[400px] lg:h-auto lg:min-h-[600px]">
-            <iframe
-              src={osmSrc}
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: "grayscale(1) contrast(1.05)" }}
+            <img
+              src={mapaAsset.url}
+              alt="Localização Elocuente"
+              className="w-full h-full object-cover"
               loading="lazy"
-              title="Localização Elocuente"
             />
           </div>
         </div>
