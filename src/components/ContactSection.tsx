@@ -1,4 +1,4 @@
-import { useState, FormEvent, useMemo } from "react";
+import { useState, FormEvent } from "react";
 
 import AnimatedSection from "./AnimatedSection";
 import { toast } from "sonner";
@@ -12,7 +12,7 @@ import polaroid3 from "@/assets/render-front.jpg";
 const TYPOLOGIES = ["T2", "T3"] as const;
 
 const ContactSection = () => {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: "",
     salutation: "",
