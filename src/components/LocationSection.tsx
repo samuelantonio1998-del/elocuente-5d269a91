@@ -1,7 +1,6 @@
 import { BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
-import renderAerial from "@/assets/render-aerial.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { GUIDES } from "@/data/guideContent";
 
@@ -27,28 +26,6 @@ const LocationSection = () => {
 
   return (
     <section id="localizacao" className="bg-background">
-      <AnimatedSection className="relative h-[40vh] md:h-[55vh]">
-        <img
-          src={renderAerial}
-          alt="Vista aérea de Albergaria, Marinha Grande, com a localização do Elocuente"
-          width={1920}
-          height={1080}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-charcoal/40" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <p className="font-body text-[10px] tracking-[0.5em] uppercase text-primary-foreground/70 mb-4">
-              {t("location.label")}
-            </p>
-            <h2 className="font-heading text-3xl md:text-5xl lg:text-6xl text-primary-foreground">
-              {t("location.title")}
-            </h2>
-          </div>
-        </div>
-      </AnimatedSection>
-
       <AnimatedSection delay={0.2}>
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left: dark panel with description + distances */}
