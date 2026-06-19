@@ -9,20 +9,59 @@ import apt2 from "@/assets/apt-2.png.asset.json";
 
 const tipologias = [
   {
-    key: "t2",
+    key: "t2" as const,
     title: "T2",
     area: "115–137 m²",
     image: apt1,
     siteKey: "apartment.1" as const,
   },
   {
-    key: "t3",
+    key: "t3" as const,
     title: "T3",
     area: "148–260 m²",
     image: apt2,
     siteKey: "apartment.2" as const,
   },
 ];
+
+const TipologiaCard = ({
+  tlog,
+  delay,
+}: {
+  tlog: (typeof tipologias)[number];
+  delay: number;
+}) => {
+  const { t } = useLanguage();
+  const img = useSiteImage(tlog.siteKey, tlog.image.url);
+
+  return (
+    <AnimatedSection delay={delay}>
+      <div className="group border border-border overflow-hidden">
+        <div className="relative aspect-[4/3] overflow-hidden">
+          <img
+            src={img}
+            alt={`Tipologia ${tlog.title}`}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+        </div>
+        <div className="p-6 space-y-3">
+          <div className="flex items-baseline justify-between">
+            <h3 className="font-heading text-2xl text-foreground">
+              {tlog.title}
+            </h3>
+            <span className="font-body text-sm text-muted-foreground">
+              {tlog.area}
+            </span>
+          </div>
+          <p className="font-body text-sm text-muted-foreground leading-[1.9]">
+            {t(`apartments.${tlog.key}.desc`)}
+          </p>
+        </div>
+      </div>
+    </AnimatedSection>
+  );
+};
 
 const TipologiasSection = () => {
   const { t } = useLanguage();
@@ -52,36 +91,9 @@ const TipologiasSection = () => {
 
         {/* Desktop: side-by-side cards */}
         <div className="hidden md:grid md:grid-cols-2 gap-8">
-          {tipologias.map((tlog, i) => {
-            const img = useSiteImage(tlog.siteKey, tlog.image.url);
-            return (
-              <AnimatedSection key={tlog.key} delay={0.1 * i}>
-                <div className="group border border-border overflow-hidden">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img
-                      src={img}
-                      alt={`Tipologia ${tlog.title}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-6 space-y-3">
-                    <div className="flex items-baseline justify-between">
-                      <h3 className="font-heading text-2xl text-foreground">
-                        {tlog.title}
-                      </h3>
-                      <span className="font-body text-sm text-muted-foreground">
-                        {tlog.area}
-                      </span>
-                    </div>
-                    <p className="font-body text-sm text-muted-foreground leading-[1.9]">
-                      {t(`apartments.${tlog.key}.desc`)}
-                    </p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            );
-          })}
+          {tipologias.map((tlog, i) => (
+            <TipologiaCard key={tlog.key} tlog={tlog} delay={0.1 * i} />
+          ))}
         </div>
 
         {/* Mobile: carousel */}
