@@ -1,36 +1,49 @@
 ## Objetivo
-Permitir ao admin editar **ABP (área)**, **preço**, e **anexar a planta em PDF** de cada uma das 23 fracções, com reflexo imediato no site público.
 
-## 1. Base de dados (migração)
-Adicionar duas colunas à tabela `units`:
-- `price` `numeric` (nullable) — preço manual em €; quando vazio, usa o cálculo dinâmico (`area × 2 250 €/m²`, mínimo 290 000 €).
-- `floor_plan_url` `text` (nullable) — URL público do PDF da planta.
+Redesenhar visualmente a secção de contacto (`ContactSection.tsx`) mantendo **todos os campos atuais do formulário** intactos, aplicando um layout mais editorial inspirado em colagens polaroid com tipografia manuscrita simulada via Playfair Display italic.
 
-A coluna `area` já existe (text, ex. `"130 m²"`) — mantém-se editável.
+## O que muda
 
-## 2. Storage
-Criar bucket público **`floor-plans`** via `supabase--storage_create_bucket` (`public: true`).
-Políticas RLS em `storage.objects`:
-- `SELECT` público (qualquer pessoa pode ver/descarregar plantas).
-- `INSERT`/`UPDATE`/`DELETE` só para admins (`has_role(auth.uid(), 'admin')`).
-Convenção de nomes: `units/{unit_id}.pdf` (substituível por upload novo).
+### Layout
+- Passar de layout centrado simples para **layout assimétrico de duas colunas** em desktop:
+  - **Coluna esquerda (40%)**: colagem editorial com 2–3 "polaroids" inclinadas (rotações leves -4° / +3° / -2°), molduras brancas, sombras suaves, e pequenas notas manuscritas em Playfair italic sobrepostas ("Marinha Grande", "T2 · vista jardim", etc.)
+  - **Coluna direita (60%)**: cartão do formulário com fundo cream, padding generoso, e título manuscrito em Playfair italic
+- Em mobile: colagem empilhada por cima, formulário por baixo
 
-## 3. Backoffice — `AdminUnitsTab`
-Reformular a linha de cada fracção para incluir:
-- **ABP**: `Input` de texto (placeholder `130 m²`) com guardar automático ao desfocar.
-- **Preço (€)**: `Input` numérico. Placeholder mostra o preço calculado actual; vazio = automático.
-- **Planta PDF**: botão "Carregar PDF" (input file `accept="application/pdf"`). Quando existe, mostra "Ver PDF" + "Substituir" + "Remover". Upload → Supabase Storage → guarda `floor_plan_url` na linha.
-- **Estado**: mantém-se como hoje.
+### Tipografia
+- Título principal continua Playfair Display, mas adiciono uma **palavra-âncora em italic** (ex: *"Manifeste"* italic + "o seu interesse" regular)
+- Pequenas anotações decorativas (etiquetas nas polaroids, "P.S." junto ao botão) em Playfair italic, tamanho pequeno, cor charcoal/60
+- Corpo do formulário inalterado (DM Sans)
 
-Feedback via `toast`; actualização optimista com rollback em caso de erro.
+### Cores e materiais
+- Fundo da secção: cream com leve textura/grão (gradiente subtil)
+- Moldura polaroid: branco puro com `shadow-elegant` já existente
+- Acentos dourados mantidos no botão e divisores
 
-## 4. Site público
-- `getUnitPrice(unit)`: se `unit.price != null` → devolve esse valor; senão mantém o cálculo actual.
-- `useUnits` passa a expor também `price` e `floor_plan_url`.
-- No modal de detalhe da fracção (`UnitDetailsModal`/`AvailabilitySection`), mostrar botão **"Ver planta"** (abre PDF em nova aba) quando `floor_plan_url` existe.
-- Traduções PT/EN/ES para "Ver planta".
+### Placeholders das imagens
+- Como vais fornecer as imagens depois, deixo **3 slots polaroid** com placeholders semitransparentes referenciando paths previsíveis:
+  - `src/assets/polaroid-1.jpg`
+  - `src/assets/polaroid-2.jpg`
+  - `src/assets/polaroid-3.jpg`
+- Quando enviares as imagens, basta substituir os ficheiros.
 
-## 5. Notas técnicas
-- Tipo `Unit` em `src/data/units.ts` ganha `price?: number | null` e `floorPlanUrl?: string | null`.
-- Regenerar tipos Supabase é automático após a migração.
-- Nenhuma alteração ao fluxo de reservas — usa o `getUnitPrice` actualizado.
+### Animação
+- Entrada via `AnimatedSection` já existente
+- Polaroids com hover sutil: levantam 4px e endireitam a rotação
+
+## O que NÃO muda
+
+- Todos os campos do formulário (nome completo, email, telefone, data de nascimento com 3 dropdowns, tipologia, mensagem, RGPD, etc.)
+- Validações e submissão para Supabase
+- Traduções PT/EN/ES (apenas adapto/adiciono chaves para os novos textos decorativos)
+
+## Ficheiros afetados
+
+- `src/components/ContactSection.tsx` — reescrita da estrutura JSX e classes, formulário intacto
+- `src/i18n/translations.ts` — adicionar chaves para as legendas das polaroids e título italic
+- `src/index.css` — pequenas utilities para rotação/moldura polaroid se necessário
+
+## Próximos passos após aprovação
+
+1. Implementar o redesenho
+2. Avisar-te para enviares as 3 imagens das polaroids
