@@ -97,7 +97,9 @@ const Navbar = () => {
           <img
             src={logoAsset.url}
             alt="Elocuente"
-            className="h-7 md:h-8 lg:h-9 w-auto select-none"
+            className={`h-10 md:h-12 lg:h-14 w-auto select-none transition-all duration-500 ${
+              scrolled ? "" : "brightness-0 invert"
+            }`}
             draggable={false}
           />
         </a>
