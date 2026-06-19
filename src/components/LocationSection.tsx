@@ -71,7 +71,7 @@ const LocationSection = () => {
           </div>
 
           {/* Right: custom map image */}
-          <div className="h-[400px] lg:h-auto lg:min-h-[600px]">
+          <div className="h-[400px] lg:h-full">
             <img
               src={mapaAsset.url}
               alt="Localização Elocuente"
