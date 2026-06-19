@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 import { useRef } from "react";
-import heroAsset from "@/assets/hero-render.png.asset.json";
+import heroAsset from "@/assets/hero-sketch.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
 import SplitText from "./motion/SplitText";
 
@@ -29,7 +28,7 @@ const HeroSection = () => {
         fetchPriority="high"
       />
 
-      {/* Top gradient — hides printed credits on render and grounds the navbar */}
+      {/* Top gradient — grounds the navbar */}
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-charcoal/85 via-charcoal/40 to-transparent" />
       {/* Bottom gradient — guarantees headline legibility */}
       <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-charcoal/85 via-charcoal/40 to-transparent" />
@@ -38,81 +37,22 @@ const HeroSection = () => {
         style={{ y: contentY }}
         className="relative z-10 flex flex-col items-start justify-end h-full text-left px-6 md:px-16 lg:px-24 pb-20 md:pb-28"
       >
-        <motion.span
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="inline-block px-4 py-1.5 border border-gold/60 text-gold font-body text-[10px] tracking-[0.35em] uppercase mb-8"
-        >
-          {t("hero.badge")}
-        </motion.span>
-
         <SplitText
           as="h1"
           text={t("hero.title")}
-          delay={1.0}
-          stagger={0.06}
+          delay={0.8}
+          stagger={0.05}
           className="font-heading font-light text-4xl md:text-6xl lg:text-7xl text-white tracking-tight max-w-5xl leading-[1.05] [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
         />
 
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.6 }}
+          transition={{ duration: 1, delay: 1.4 }}
           className="mt-6 font-body font-light text-base md:text-lg lg:text-xl text-white/90 tracking-wide max-w-3xl [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
         >
           {t("hero.tagline2")}
         </motion.p>
-
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.9 }}
-          className="mt-5 font-body text-[10px] md:text-[11px] tracking-[0.35em] uppercase text-white/70"
-        >
-          {t("hero.location")}
-        </motion.span>
-
-        <motion.a
-          href="#contacto"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 2.1 }}
-          className="mt-8 inline-block px-7 py-3.5 bg-gold text-charcoal font-body text-[11px] tracking-[0.25em] uppercase hover:bg-gold/90 transition-colors duration-300"
-        >
-          {t("hero.cta1")}
-        </motion.a>
-
-
-        {/* Credits */}
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2.2 }}
-          className="absolute bottom-10 right-6 md:right-16 lg:right-24 font-body text-[10px] tracking-[0.25em] uppercase text-primary-foreground/40"
-        >
-          Estudo prévio · Imagem indicativa · Tiago Frazão Arquitetos
-        </motion.span>
-
-
-
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2.4 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
-        >
-          <span className="font-body text-[9px] tracking-[0.4em] uppercase text-primary-foreground/50">
-            {t("hero.scroll")}
-          </span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ChevronDown className="w-4 h-4 text-primary-foreground/40" />
-          </motion.div>
-        </motion.div>
       </motion.div>
     </section>
   );
