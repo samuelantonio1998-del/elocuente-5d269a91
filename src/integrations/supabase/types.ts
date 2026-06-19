@@ -164,6 +164,39 @@ export type Database = {
         }
         Relationships: []
       }
+      site_images: {
+        Row: {
+          alt: string | null
+          key: string
+          label: string
+          section: string
+          storage_path: string | null
+          updated_at: string
+          updated_by: string | null
+          url: string
+        }
+        Insert: {
+          alt?: string | null
+          key: string
+          label: string
+          section: string
+          storage_path?: string | null
+          updated_at?: string
+          updated_by?: string | null
+          url: string
+        }
+        Update: {
+          alt?: string | null
+          key?: string
+          label?: string
+          section?: string
+          storage_path?: string | null
+          updated_at?: string
+          updated_by?: string | null
+          url?: string
+        }
+        Relationships: []
+      }
       units: {
         Row: {
           area: string

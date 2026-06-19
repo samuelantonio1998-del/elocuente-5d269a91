@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AdminUnitsTab from "@/components/admin/AdminUnitsTab";
 import AdminReservationsTab from "@/components/admin/AdminReservationsTab";
 import AdminContactsTab from "@/components/admin/AdminContactsTab";
+import AdminImagesTab from "@/components/admin/AdminImagesTab";
 
 const AdminDashboard = () => {
   const { user, isAdmin, loading } = useAdminAuth();
@@ -82,10 +83,12 @@ const AdminDashboard = () => {
             <TabsTrigger value="units">Fracções</TabsTrigger>
             <TabsTrigger value="reservations">Reservas</TabsTrigger>
             <TabsTrigger value="contacts">Contactos</TabsTrigger>
+            <TabsTrigger value="images">Imagens</TabsTrigger>
           </TabsList>
           <TabsContent value="units"><AdminUnitsTab /></TabsContent>
           <TabsContent value="reservations"><AdminReservationsTab /></TabsContent>
           <TabsContent value="contacts"><AdminContactsTab /></TabsContent>
+          <TabsContent value="images"><AdminImagesTab /></TabsContent>
         </Tabs>
       </section>
     </main>

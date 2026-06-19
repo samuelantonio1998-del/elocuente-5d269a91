@@ -4,11 +4,13 @@ import { ChevronDown } from "lucide-react";
 import heroAsset from "@/assets/hero-sketch.png.asset.json";
 import logoAsset from "@/assets/elocuente-logo-transparent.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useSiteImage } from "@/hooks/useSiteImages";
 
 const LOGO_SRC = logoAsset.url;
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const heroSrc = useSiteImage("hero.main", heroAsset.url);
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion() ?? false;
   const { scrollYProgress } = useScroll({
@@ -22,7 +24,7 @@ const HeroSection = () => {
   return (
     <section ref={ref} id="hero" className="relative h-screen w-full overflow-hidden bg-charcoal">
       <motion.img
-        src={heroAsset.url}
+        src={heroSrc}
         alt="Vista exterior do empreendimento Elocuente"
         style={{ y: imgY, scale: imgScale }}
         className="absolute inset-0 w-full h-full object-cover opacity-55 will-change-transform"
