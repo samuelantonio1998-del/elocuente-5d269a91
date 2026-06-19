@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
+import { ChevronDown } from "lucide-react";
 import heroAsset from "@/assets/hero-sketch.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
 import SplitText from "./motion/SplitText";
@@ -28,32 +29,49 @@ const HeroSection = () => {
         fetchPriority="high"
       />
 
-      {/* Top gradient — grounds the navbar */}
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-charcoal/85 via-charcoal/40 to-transparent" />
-      {/* Bottom gradient — guarantees headline legibility */}
       <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-charcoal/85 via-charcoal/40 to-transparent" />
 
       <motion.div
         style={{ y: contentY }}
-        className="relative z-10 flex flex-col items-start justify-end h-full text-left px-6 md:px-16 lg:px-24 pb-20 md:pb-28"
+        className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
       >
         <SplitText
           as="h1"
-          text={t("hero.title")}
-          delay={0.8}
+          text="Elocuente"
+          delay={0.4}
           stagger={0.05}
-          className="font-heading font-light text-4xl md:text-6xl lg:text-7xl text-white tracking-tight max-w-5xl leading-[1.05] [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
+          className="font-heading font-light text-5xl md:text-7xl lg:text-8xl text-white tracking-tight leading-[1.05] [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
         />
-
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.4 }}
-          className="mt-6 font-body font-light text-base md:text-lg lg:text-xl text-white/90 tracking-wide max-w-3xl [text-shadow:0_2px_20px_rgba(0,0,0,0.35)]"
-        >
-          {t("hero.tagline2")}
-        </motion.p>
       </motion.div>
+
+      {/* Become an Owner CTA */}
+      <motion.a
+        href="#contacto"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1.2 }}
+        className="absolute left-1/2 -translate-x-1/2 bottom-24 md:bottom-28 z-10 text-[11px] font-body tracking-[0.2em] uppercase whitespace-nowrap px-6 py-3 bg-gold text-charcoal hover:bg-gold/90 transition-all duration-300"
+      >
+        {t("nav.cta")}
+      </motion.a>
+
+      {/* Scroll indicator */}
+      <motion.a
+        href="#numeros"
+        aria-label="Scroll down"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.6 }}
+        className="absolute left-1/2 -translate-x-1/2 bottom-8 z-10 text-white/70 hover:text-white transition-colors"
+      >
+        <motion.div
+          animate={reduce ? {} : { y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ChevronDown size={28} strokeWidth={1.5} />
+        </motion.div>
+      </motion.a>
     </section>
   );
 };
