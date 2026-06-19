@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "@/hooks/use-toast";
 import { getUnitPrice, type UnitStatus } from "@/data/units";
+import { useShowPrices } from "@/hooks/useShowPrices";
+import { Switch } from "@/components/ui/switch";
 import { Upload, FileText, Trash2, Loader2 } from "lucide-react";
 
 interface Row {
@@ -41,6 +43,7 @@ const AdminUnitsTab = () => {
   const [loading, setLoading] = useState(true);
   const [uploadingId, setUploadingId] = useState<string | null>(null);
   const fileInputs = useRef<Record<string, HTMLInputElement | null>>({});
+  const { showPrices, setShowPrices } = useShowPrices();
 
   const load = async () => {
     const { data, error } = await supabase
@@ -152,7 +155,23 @@ const AdminUnitsTab = () => {
   }
 
   return (
-    <div className="border border-border overflow-x-auto">
+    <div className="space-y-4">
+      <div className="flex items-center justify-between gap-4 border border-border p-4">
+        <div>
+          <p className="text-sm font-medium">Mostrar preços no site</p>
+          <p className="text-xs text-muted-foreground">
+            Quando desativado, a coluna “Valor” fica oculta na página pública de disponibilidades.
+          </p>
+        </div>
+        <Switch
+          checked={showPrices}
+          onCheckedChange={(v) => {
+            setShowPrices(v);
+            toast({ title: v ? "Preços visíveis no site" : "Preços ocultos no site" });
+          }}
+        />
+      </div>
+      <div className="border border-border overflow-x-auto">
       <Table>
         <TableHeader>
           <TableRow>
@@ -246,6 +265,7 @@ const AdminUnitsTab = () => {
           })}
         </TableBody>
       </Table>
+      </div>
     </div>
   );
 };
