@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AdminUnitsTab from "@/components/admin/AdminUnitsTab";
 import AdminReservationsTab from "@/components/admin/AdminReservationsTab";
 import AdminContactsTab from "@/components/admin/AdminContactsTab";
+import AdminImagesTab from "@/components/admin/AdminImagesTab";
 
 const AdminDashboard = () => {
   const { user, isAdmin, loading } = useAdminAuth();
