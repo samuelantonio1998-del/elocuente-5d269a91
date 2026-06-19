@@ -18,9 +18,9 @@ const AmenitiesSection = () => {
 
   const amenities = [
     { label: t("amenities.gardens"), desc: t("amenities.gardens.desc"), image: imgGardens },
-    { label: t("amenities.parking"), desc: t("amenities.parking.desc"), image: renderEntrance },
-    { label: t("amenities.balconies"), desc: t("amenities.balconies.desc"), image: renderDetail },
-    { label: t("amenities.security"), desc: t("amenities.security.desc"), image: renderAerial },
+    { label: t("amenities.parking"), desc: t("amenities.parking.desc"), image: imgParking },
+    { label: t("amenities.balconies"), desc: t("amenities.balconies.desc"), image: imgBalconies },
+    { label: t("amenities.security"), desc: t("amenities.security.desc"), image: imgSecurity },
   ];
 
   return (
