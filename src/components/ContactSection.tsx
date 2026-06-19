@@ -125,24 +125,64 @@ const ContactSection = () => {
     "w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground focus:outline-none focus:border-foreground transition-colors appearance-none cursor-pointer";
 
   return (
-    <section id="contacto" className="bg-background">
-      <div className="grid md:grid-cols-2 min-h-[80vh]">
-        <div className="flex items-center px-8 md:px-12 lg:px-20 py-20 md:py-0 bg-cream-dark">
-          <AnimatedSection>
+    <section id="contacto" className="bg-cream-dark relative overflow-hidden">
+      {/* Subtle grain background */}
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply"
+        style={{
+          backgroundImage:
+            "radial-gradient(hsl(var(--foreground)) 1px, transparent 1px)",
+          backgroundSize: "3px 3px",
+        }}
+      />
+
+      <div className="relative grid lg:grid-cols-[42%_58%] min-h-[80vh]">
+        {/* LEFT — Polaroid collage */}
+        <div className="flex items-center justify-center px-8 md:px-12 lg:px-16 py-20 lg:py-24">
+          <AnimatedSection className="w-full max-w-md">
             <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-10">
               {t("contact.label")}
             </p>
-            <h2 className="font-heading text-3xl md:text-5xl text-foreground leading-[1.15] mb-8">
-              {t("contact.title1")}<br />{t("contact.title2")}
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground leading-[1.05] mb-10">
+              <span className="italic font-light text-gold">{t("contact.titleItalic")}</span>
+              <br />
+              {t("contact.titleRest")}
             </h2>
-            <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base mb-16 max-w-md">
+
+            <div className="relative h-[420px] md:h-[460px] mt-6">
+              {/* Polaroid 1 */}
+              <figure className="absolute top-0 left-2 w-[58%] bg-white p-3 pb-12 shadow-elegant rotate-[-5deg] hover:rotate-[-2deg] hover:-translate-y-1 transition-transform duration-500">
+                <img src={polaroid1} alt="" className="w-full aspect-[4/5] object-cover" />
+                <figcaption className="absolute bottom-3 left-0 right-0 text-center font-heading italic text-sm text-charcoal/70">
+                  {t("contact.note1")}
+                </figcaption>
+              </figure>
+              {/* Polaroid 2 */}
+              <figure className="absolute top-16 right-0 w-[55%] bg-white p-3 pb-12 shadow-elegant rotate-[4deg] hover:rotate-[1deg] hover:-translate-y-1 transition-transform duration-500">
+                <img src={polaroid2} alt="" className="w-full aspect-square object-cover" />
+                <figcaption className="absolute bottom-3 left-0 right-0 text-center font-heading italic text-sm text-charcoal/70">
+                  {t("contact.note2")}
+                </figcaption>
+              </figure>
+              {/* Polaroid 3 */}
+              <figure className="absolute bottom-0 left-10 w-[50%] bg-white p-3 pb-12 shadow-elegant rotate-[-2deg] hover:rotate-[0deg] hover:-translate-y-1 transition-transform duration-500">
+                <img src={polaroid3} alt="" className="w-full aspect-[5/4] object-cover" />
+                <figcaption className="absolute bottom-3 left-0 right-0 text-center font-heading italic text-sm text-charcoal/70">
+                  {t("contact.note3")}
+                </figcaption>
+              </figure>
+            </div>
+
+            <p className="font-body text-muted-foreground leading-[2] text-sm mt-12 max-w-sm">
               {t("contact.desc")}
             </p>
           </AnimatedSection>
         </div>
 
-        <div className="flex items-center px-8 md:px-12 lg:px-20 py-20 md:py-0">
-          <AnimatedSection delay={0.15} className="w-full max-w-md">
+        {/* RIGHT — Form card */}
+        <div className="flex items-center px-8 md:px-12 lg:px-20 py-20 lg:py-24 bg-background">
+          <AnimatedSection delay={0.15} className="w-full max-w-md mx-auto">
             <form onSubmit={handleSubmit} className="space-y-0" aria-label={t("contact.label")}>
               <input
                 type="text"
