@@ -603,14 +603,28 @@ export const translations: Record<Lang, Record<string, string>> = {
   },
   es: {
     "nav.development": "Promoción",
-    "nav.features": "Promoción",
+    "nav.features": "Características",
     "nav.location": "Ubicación",
     "nav.units": "Viviendas",
-    "nav.availability": "Tipologías",
+    "nav.availability": "Disponibilidad",
     "nav.gallery": "Galería",
     "nav.project": "Proyecto",
     "nav.contact": "Contacto",
+    "nav.promoter": "El Promotor",
+    "nav.architecture": "Arquitectura",
     "nav.cta": "Sea Propietario",
+
+    // Promoter
+    "promoter.label": "Promotor",
+    "promoter.title": "Quién construye Elocuente",
+    "promoter.text": "Texto de presentación del promotor — la visión detrás de Elocuente. (a rellenar)",
+    "promoter.photo": "[Foto: promotor]",
+
+    // Architecture
+    "architecture.label": "Arquitectura",
+    "architecture.title": "Una firma contemporánea",
+    "architecture.quote": "[Frase del arquitecto Tiago Frazão sobre el proyecto — a rellenar]",
+    "architecture.signature": "Tiago Frazão Arquitetos",
 
     "hero.badge": "En Licencia",
     "hero.name": "Elocuente",
