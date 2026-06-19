@@ -2,18 +2,22 @@ import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useSiteImage } from "@/hooks/useSiteImages";
 import condo1 from "@/assets/condo-1.png.asset.json";
 import condo2 from "@/assets/condo-2.png.asset.json";
 import condo3 from "@/assets/condo-3.png.asset.json";
 
 const CondominiumSection = () => {
   const { t } = useLanguage();
+  const c1 = useSiteImage("condo.1", condo1.url);
+  const c2 = useSiteImage("condo.2", condo2.url);
+  const c3 = useSiteImage("condo.3", condo3.url);
   const [current, setCurrent] = useState(0);
 
   const images = [
-    { src: condo1.url, alt: "Espaços comuns do condomínio Elocuente — pátio ajardinado" },
-    { src: condo2.url, alt: "Espaços comuns do condomínio Elocuente — entrada e percurso pedonal" },
-    { src: condo3.url, alt: "Parqueamento subterrâneo do condomínio Elocuente" },
+    { src: c1, alt: "Espaços comuns do condomínio Elocuente — pátio ajardinado" },
+    { src: c2, alt: "Espaços comuns do condomínio Elocuente — entrada e percurso pedonal" },
+    { src: c3, alt: "Parqueamento subterrâneo do condomínio Elocuente" },
   ];
 
   const items = [
