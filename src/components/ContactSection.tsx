@@ -357,6 +357,9 @@ const ContactSection = () => {
                 >
                   {submitting ? "..." : t("contact.submit")}
                 </button>
+                <p className="font-heading italic text-sm text-muted-foreground mt-5 text-center">
+                  {t("contact.ps")}
+                </p>
               </div>
             </form>
           </AnimatedSection>
