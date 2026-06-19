@@ -2,11 +2,9 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import heroAsset from "@/assets/hero-sketch.png.asset.json";
-import logoAsset from "@/assets/elocuente-logo-transparent.png.asset.json";
+import Logo from "@/components/Logo";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useSiteImage } from "@/hooks/useSiteImages";
-
-const LOGO_SRC = logoAsset.url;
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -36,31 +34,19 @@ const HeroSection = () => {
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-charcoal/85 via-charcoal/40 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-charcoal/85 via-charcoal/40 to-transparent" />
 
-      {/* Top-right CTA */}
-      <motion.a
-        href="#contacto"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="absolute top-6 right-6 md:top-8 md:right-10 z-20 text-[11px] font-body tracking-[0.2em] uppercase whitespace-nowrap px-5 py-2.5 bg-gold text-charcoal hover:bg-gold/90 transition-all duration-300 shadow-lg"
-      >
-        {t("nav.cta")}
-      </motion.a>
-
       <motion.div
         style={{ y: contentY }}
         className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
       >
-        {/* Logótipo Elocuente (imagem) */}
-        <motion.img
-          src={LOGO_SRC}
-          alt="Elocuente"
+        {/* Logótipo Elocuente */}
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="w-[280px] md:w-[440px] lg:w-[560px] h-auto select-none [filter:drop-shadow(0_2px_20px_rgba(0,0,0,0.35))]"
-          draggable={false}
-        />
+          className="text-primary-foreground [filter:drop-shadow(0_2px_20px_rgba(0,0,0,0.45))]"
+        >
+          <Logo height={64} className="w-[280px] md:w-[440px] lg:w-[560px] h-auto" />
+        </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}
