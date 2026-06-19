@@ -44,8 +44,6 @@ const Index = () => {
         fase de licenciamento.
       </p>
 
-      
-      <Navbar />
       <HeroSection />
       <ProofNumbersSection />
       <PromoterSection />
