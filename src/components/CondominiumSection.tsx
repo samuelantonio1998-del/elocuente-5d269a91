@@ -1,12 +1,20 @@
+import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
 import condo1 from "@/assets/condo-1.png.asset.json";
 import condo2 from "@/assets/condo-2.png.asset.json";
-
+import condo3 from "@/assets/condo-3.png.asset.json";
 
 const CondominiumSection = () => {
   const { t } = useLanguage();
+  const [current, setCurrent] = useState(0);
+
+  const images = [
+    { src: condo1.url, alt: "Espaços comuns do condomínio Elocuente — pátio ajardinado" },
+    { src: condo2.url, alt: "Espaços comuns do condomínio Elocuente — entrada e percurso pedonal" },
+    { src: condo3.url, alt: "Parqueamento subterrâneo do condomínio Elocuente" },
+  ];
 
   const items = [
     { label: t("condo.parking"), desc: t("condo.parking.desc") },
@@ -16,7 +24,8 @@ const CondominiumSection = () => {
     { label: t("condo.security"), desc: t("condo.security.desc") },
   ];
 
-  
+  const next = () => setCurrent((prev) => (prev + 1) % images.length);
+  const prev = () => setCurrent((prev) => (prev - 1 + images.length) % images.length);
 
   return (
     <section id="condominio" className="bg-cream-dark/30">
@@ -35,26 +44,53 @@ const CondominiumSection = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20 md:mb-24">
-              <div className="relative w-full aspect-[16/10] bg-muted overflow-hidden rounded-sm">
+            <div className="relative w-full aspect-[16/10] bg-muted overflow-hidden rounded-sm mb-20 md:mb-24 group">
+              {images.map((img, i) => (
                 <img
-                  src={condo1.url}
-                  alt="Espaços comuns do condomínio Elocuente — pátio ajardinado"
-                  className="absolute inset-0 w-full h-full object-cover"
+                  key={i}
+                  src={img.src}
+                  alt={img.alt}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                    i === current ? "opacity-100" : "opacity-0"
+                  }`}
                   loading="lazy"
                 />
-              </div>
-              <div className="relative w-full aspect-[16/10] bg-muted overflow-hidden rounded-sm">
-                <img
-                  src={condo2.url}
-                  alt="Espaços comuns do condomínio Elocuente — entrada e percurso pedonal"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                />
+              ))}
+
+              <button
+                onClick={prev}
+                aria-label="Imagem anterior"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-background/80 backdrop-blur-sm text-foreground hover:bg-background transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+
+              <button
+                onClick={next}
+                aria-label="Imagem seguinte"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-background/80 backdrop-blur-sm text-foreground hover:bg-background transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrent(i)}
+                    aria-label={`Ir para imagem ${i + 1}`}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      i === current ? "bg-background w-6" : "bg-background/50"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
           </AnimatedSection>
-
 
           <StaggerGroup stagger={0.06} delayChildren={0.05}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 md:gap-y-14">
