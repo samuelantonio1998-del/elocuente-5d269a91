@@ -1,11 +1,17 @@
-import { FileDown } from "lucide-react";
+import { FileDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
 import mapaAcabamentosAsset from "@/assets/mapa-acabamentos.pdf.asset.json";
+import apt1 from "@/assets/apt-1.png.asset.json";
+import apt2 from "@/assets/apt-2.png.asset.json";
+
+const images = [apt1.url, apt2.url];
 
 const ApartmentSection = () => {
   const { t } = useLanguage();
+  const [index, setIndex] = useState(0);
 
   const items = [
     { label: t("apartment.areas"), desc: t("apartment.areas.desc") },
@@ -16,7 +22,8 @@ const ApartmentSection = () => {
     { label: t("apartment.climate"), desc: t("apartment.climate.desc") },
   ];
 
-  const heroPlaceholder = "[Render: interior — cozinha/sala]";
+  const prev = () => setIndex((i) => (i - 1 + images.length) % images.length);
+  const next = () => setIndex((i) => (i + 1) % images.length);
 
   return (
     <section id="empreendimento" className="bg-background">
@@ -35,16 +42,43 @@ const ApartmentSection = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden rounded-sm flex items-center justify-center mb-20 md:mb-24">
-              <img
-                src=""
-                alt={heroPlaceholder}
-                className="absolute inset-0 w-full h-full object-cover"
-                onError={(e) => ((e.currentTarget.style.display = "none"))}
-              />
-              <span className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground">
-                {heroPlaceholder}
-              </span>
+            <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden rounded-sm mb-20 md:mb-24 group">
+              {images.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`Apartamento ${i + 1}`}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                    i === index ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
+              <button
+                onClick={prev}
+                aria-label="Anterior"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <ChevronLeft className="w-5 h-5" strokeWidth={1.5} />
+              </button>
+              <button
+                onClick={next}
+                aria-label="Seguinte"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
+              </button>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setIndex(i)}
+                    aria-label={`Ir para imagem ${i + 1}`}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      i === index ? "bg-foreground" : "bg-foreground/30"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </AnimatedSection>
 
