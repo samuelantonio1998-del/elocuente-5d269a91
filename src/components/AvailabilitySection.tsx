@@ -7,11 +7,13 @@ import ReservationDialog from "./ReservationDialog";
 import PaymentTermsDialog from "./PaymentTermsDialog";
 import { getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
 import { useUnits } from "@/hooks/useUnits";
+import { useShowPrices } from "@/hooks/useShowPrices";
 import { openFloorPlan } from "@/lib/floorPlan";
 
 const AvailabilitySection = () => {
   const { t } = useLanguage();
   const { formatPrice } = useCurrency();
+  const { showPrices } = useShowPrices();
   const [filterBuilding, setFilterBuilding] = useState<string>("all");
   const [filterType, setFilterType] = useState<string>("all");
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
@@ -106,9 +108,11 @@ const AvailabilitySection = () => {
                         {t(`availability.col.${col}`)}
                       </th>
                     ))}
-                    <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
-                      {t("availability.col.price")}
-                    </th>
+                    {showPrices && (
+                      <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
+                        {t("availability.col.price")}
+                      </th>
+                    )}
                     <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
                       {t("availability.col.floorPlan")}
                     </th>
@@ -136,11 +140,13 @@ const AvailabilitySection = () => {
                           {statusLabel(status)}
                         </span>
                       </td>
-                      <td className="py-4 px-3">
-                        <span className="font-body text-sm text-gold font-medium">
-                          {formatPrice(getUnitPrice(unit))}
-                        </span>
-                      </td>
+                      {showPrices && (
+                        <td className="py-4 px-3">
+                          <span className="font-body text-sm text-gold font-medium">
+                            {formatPrice(getUnitPrice(unit))}
+                          </span>
+                        </td>
+                      )}
                       <td className="py-4 px-3">
                         {unit.floorPlanUrl ? (
                           <button
@@ -234,12 +240,14 @@ const AvailabilitySection = () => {
                   </div>
 
                   <div className="flex items-center justify-between pt-3 border-t border-border/50">
-                    <div>
-                      <p className="font-body text-[9px] tracking-[0.15em] uppercase text-muted-foreground mb-1">
-                        {t("availability.col.price")}
-                      </p>
-                      <p className="font-heading text-lg text-gold">{formatPrice(getUnitPrice(unit))}</p>
-                    </div>
+                    {showPrices ? (
+                      <div>
+                        <p className="font-body text-[9px] tracking-[0.15em] uppercase text-muted-foreground mb-1">
+                          {t("availability.col.price")}
+                        </p>
+                        <p className="font-heading text-lg text-gold">{formatPrice(getUnitPrice(unit))}</p>
+                      </div>
+                    ) : <div />}
                     <div className="flex items-center gap-2">
                       {unit.floorPlanUrl ? (
                         <button
