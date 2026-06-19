@@ -1,10 +1,21 @@
+import { useEffect, useState } from "react";
 import Reveal from "./motion/Reveal";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
-import renderFront from "@/assets/render-front.jpg";
+import render1 from "@/assets/render-1.png.asset.json";
+import render2 from "@/assets/render-2.png.asset.json";
+import render3 from "@/assets/render-3.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
+
+const renders = [render1.url, render2.url, render3.url];
 
 const AboutSection = () => {
   const { t } = useLanguage();
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setIdx((i) => (i + 1) % renders.length), 5000);
+    return () => clearInterval(id);
+  }, []);
 
   const blocks = [
     { sub: t("about.sub1"), p: t("about.p1") },
@@ -20,15 +31,19 @@ const AboutSection = () => {
           duration={1.1}
           className="relative h-[50vh] lg:h-auto lg:min-h-[600px] overflow-hidden"
         >
-          <img
-            src={renderFront}
-            alt="Render exterior da fachada principal do empreendimento Elocuente em Marinha Grande"
-            width={1600}
-            height={1200}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
+          {renders.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt="Render exterior do empreendimento Elocuente em Marinha Grande"
+              width={1600}
+              height={1200}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          ))}
         </Reveal>
+
 
         <div className="flex items-center px-8 lg:px-20 py-20 md:py-28 bg-cream-dark">
           <Reveal variant="slide-right" delay={0.1}>
