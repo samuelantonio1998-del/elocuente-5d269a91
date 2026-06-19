@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Lang } from "@/i18n/translations";
-import logoAsset from "@/assets/elocuente-logo-transparent.png.asset.json";
+import Logo from "@/components/Logo";
 
 const leftNavKeys = [
   { key: "nav.promoter", href: "#promotor" },
@@ -94,13 +94,11 @@ const Navbar = () => {
           aria-label="Elocuente"
           className="flex-shrink-0 flex items-center justify-center"
         >
-          <img
-            src={logoAsset.url}
-            alt="Elocuente"
-            className={`h-10 md:h-12 lg:h-14 w-auto select-none transition-all duration-500 ${
-              scrolled ? "" : "brightness-0 invert"
+          <Logo
+            height={48}
+            className={`w-[170px] md:w-[210px] lg:w-[245px] h-auto transition-colors duration-500 ${
+              scrolled ? "text-foreground" : "text-primary-foreground"
             }`}
-            draggable={false}
           />
         </a>
 

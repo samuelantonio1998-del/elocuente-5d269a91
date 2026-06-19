@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 
+import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ProofNumbersSection from "@/components/ProofNumbersSection";
 import PromoterSection from "@/components/PromoterSection";
@@ -45,6 +46,7 @@ const Index = () => {
       </p>
 
       
+      <Navbar />
       <HeroSection />
       <ProofNumbersSection />
       <PromoterSection />

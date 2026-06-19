@@ -2,11 +2,9 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import heroAsset from "@/assets/hero-sketch.png.asset.json";
-import logoAsset from "@/assets/elocuente-logo-transparent.png.asset.json";
+import Logo from "@/components/Logo";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useSiteImage } from "@/hooks/useSiteImages";
-
-const LOGO_SRC = logoAsset.url;
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -51,16 +49,15 @@ const HeroSection = () => {
         style={{ y: contentY }}
         className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
       >
-        {/* Logótipo Elocuente (imagem) */}
-        <motion.img
-          src={LOGO_SRC}
-          alt="Elocuente"
+        {/* Logótipo Elocuente */}
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="w-[280px] md:w-[440px] lg:w-[560px] h-auto select-none [filter:drop-shadow(0_2px_20px_rgba(0,0,0,0.35))]"
-          draggable={false}
-        />
+          className="text-primary-foreground [filter:drop-shadow(0_2px_20px_rgba(0,0,0,0.45))]"
+        >
+          <Logo height={64} className="w-[280px] md:w-[440px] lg:w-[560px] h-auto" />
+        </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}
