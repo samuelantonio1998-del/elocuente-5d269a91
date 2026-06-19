@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { GUIDES } from "@/data/guideContent";
+import mapaAsset from "@/assets/mapa-albergariia.png.asset.json";
 
 const LocationSection = () => {
   const { t, lang } = useLanguage();
