@@ -27,9 +27,18 @@ const PromoterSection = () => {
             <h2 className="font-heading text-3xl md:text-5xl text-foreground leading-[1.15] mb-12">
               {t("promoter.title")}
             </h2>
-            <p className="font-body text-sm md:text-base text-muted-foreground leading-[1.9] max-w-lg">
-              {t("promoter.text")}
-            </p>
+            <div className="max-w-lg space-y-6">
+              {t("promoter.text")
+                .split("\n\n")
+                .map((paragraph, i) => (
+                  <p
+                    key={i}
+                    className="font-body text-sm md:text-base text-muted-foreground leading-[1.9]"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+            </div>
           </Reveal>
         </div>
       </div>

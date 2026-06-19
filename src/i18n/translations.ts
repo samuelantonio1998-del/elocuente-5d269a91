@@ -18,7 +18,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Promoter
     "promoter.label": "Promotor",
     "promoter.title": "Quem constrói o Elocuente",
-    "promoter.text": "Texto de apresentação do promotor — a visão por trás do Elocuente. (a preencher)",
+    "promoter.text": "O Elocuente nasceu de uma inquietação. Olhei para o que o mercado oferece e percebi que quase tudo se limita ao essencial — o apartamento que cumpre, mas que não surpreende. Quis fazer o contrário: pensar a habitação para lá da necessidade, a partir de como se vive nela de facto.\n\nIsso traduziu-se em escolhas concretas. Habitações espaçosas, porque o espaço é o primeiro luxo. Conforto e acabamentos modernos, de qualidade superior, porque os detalhes são o que distingue uma casa de um lugar onde apenas se dorme. E amenidades que raramente se encontram neste segmento, porque acredito que viver bem não devia ser um privilégio de poucos.\n\nA minha visão enquanto promotor foi sempre a mesma: ir além do normal. Não construir mais um edifício, mas criar um sítio onde se quer mesmo estar.",
     "promoter.photo": "[Foto: promotor]",
 
     // Architecture
