@@ -10,6 +10,7 @@ const LOGO_SRC = logoAsset.url;
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const heroSrc = useSiteImage("hero.main", heroAsset.url);
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion() ?? false;
   const { scrollYProgress } = useScroll({
