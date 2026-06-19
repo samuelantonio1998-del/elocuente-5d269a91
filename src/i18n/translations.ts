@@ -16,8 +16,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "nav.cta": "Seja Proprietário",
 
     // Promoter
-    "promoter.label": "A ideia",
-    "promoter.title": "Quem constrói o Elocuente",
+    "promoter.label": "O PROMOTOR",
+    "promoter.title": "A ideia por trás do Elocuente",
     "promoter.text": "O Elocuente nasceu de uma inquietação. Olhei para o que o mercado oferece e percebi que quase tudo se limita ao essencial — o apartamento que cumpre, mas que não surpreende.\u00a0Quis fazer o contrário: pensar a habitação para lá da necessidade, a partir de como se vive nela de facto.\n\nIsso traduziu-se em escolhas concretas.\u00a0\nHabitações espaçosas, porque o espaço é o primeiro luxo. Conforto e acabamentos modernos, de qualidade superior, porque os detalhes são o que distingue uma casa de um lugar onde apenas se dorme.\u00a0\nE amenidades que raramente se encontram neste segmento.\n\n\nA minha visão enquanto promotor foi sempre a mesma: ir além do normal. Não construir mais um edifício, mas criar um sítio onde se quer mesmo estar.",
     "promoter.photo": "[Foto: promotor]",
 
@@ -322,8 +322,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "nav.cta": "Become an Owner",
 
     // Promoter
-    "promoter.label": "The idea",
-    "promoter.title": "Who builds Elocuente",
+    "promoter.label": "THE PROMOTER",
+    "promoter.title": "The idea behind Elocuente",
     "promoter.text": "Introduction text about the developer — the vision behind Elocuente. (to be filled in)",
     "promoter.photo": "[Photo: developer]",
 
@@ -615,8 +615,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "nav.cta": "Sea Propietario",
 
     // Promoter
-    "promoter.label": "La idea",
-    "promoter.title": "Quién construye Elocuente",
+    "promoter.label": "EL PROMOTOR",
+    "promoter.title": "La idea detrás de Elocuente",
     "promoter.text": "Texto de presentación del promotor — la visión detrás de Elocuente. (a rellenar)",
     "promoter.photo": "[Foto: promotor]",
 
