@@ -4,14 +4,28 @@ export const translations: Record<Lang, Record<string, string>> = {
   pt: {
     // Navbar
     "nav.development": "Empreendimento",
-    "nav.features": "Empreendimento",
+    "nav.features": "Características",
     "nav.location": "Localização",
     "nav.units": "Frações",
-    "nav.availability": "Tipologias",
+    "nav.availability": "Disponibilidades",
     "nav.gallery": "Galeria",
     "nav.project": "Projeto",
     "nav.contact": "Contacto",
+    "nav.promoter": "O Promotor",
+    "nav.architecture": "Arquitetura",
     "nav.cta": "Seja Proprietário",
+
+    // Promoter
+    "promoter.label": "Promotor",
+    "promoter.title": "Quem constrói o Elocuente",
+    "promoter.text": "Texto de apresentação do promotor — a visão por trás do Elocuente. (a preencher)",
+    "promoter.photo": "[Foto: promotor]",
+
+    // Architecture
+    "architecture.label": "Arquitetura",
+    "architecture.title": "Uma assinatura contemporânea",
+    "architecture.quote": "[Frase do arquiteto Tiago Frazão sobre o projeto — a preencher]",
+    "architecture.signature": "Tiago Frazão Arquitetos",
 
     // Hero
     "hero.badge": "Em Licenciamento",
