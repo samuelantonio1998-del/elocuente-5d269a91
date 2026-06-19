@@ -39,16 +39,43 @@ const LifeAtSection = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden rounded-sm flex items-center justify-center mb-20 md:mb-24">
-              <img
-                src=""
-                alt="[Imagem: pinhal de Leiria / Atlântico]"
-                className="absolute inset-0 w-full h-full object-cover"
-                onError={(e) => ((e.currentTarget.style.display = "none"))}
-              />
-              <span className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground">
-                [Imagem: pinhal de Leiria / Atlântico]
-              </span>
+            <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden rounded-sm mb-20 md:mb-24 group">
+              {images.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt="A Vida no Elocuente"
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                    i === current ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
+              <button
+                onClick={prev}
+                aria-label="Previous"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={next}
+                aria-label="Next"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrent(i)}
+                    aria-label={`Go to image ${i + 1}`}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      i === current ? "bg-foreground w-6" : "bg-foreground/40"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </AnimatedSection>
 
