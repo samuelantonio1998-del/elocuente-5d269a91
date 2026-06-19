@@ -1,6 +1,9 @@
 import AnimatedSection from "./AnimatedSection";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
+import condo1 from "@/assets/condo-1.png.asset.json";
+import condo2 from "@/assets/condo-2.png.asset.json";
+
 
 const CondominiumSection = () => {
   const { t } = useLanguage();
@@ -32,18 +35,26 @@ const CondominiumSection = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden rounded-sm flex items-center justify-center mb-20 md:mb-24">
-              <img
-                src=""
-                alt={heroPlaceholder}
-                className="absolute inset-0 w-full h-full object-cover"
-                onError={(e) => ((e.currentTarget.style.display = "none"))}
-              />
-              <span className="font-body text-[11px] tracking-[0.25em] uppercase text-muted-foreground">
-                {heroPlaceholder}
-              </span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20 md:mb-24">
+              <div className="relative w-full aspect-[16/10] bg-muted overflow-hidden rounded-sm">
+                <img
+                  src={condo1.url}
+                  alt="Espaços comuns do condomínio Elocuente — pátio ajardinado"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="relative w-full aspect-[16/10] bg-muted overflow-hidden rounded-sm">
+                <img
+                  src={condo2.url}
+                  alt="Espaços comuns do condomínio Elocuente — entrada e percurso pedonal"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </AnimatedSection>
+
 
           <StaggerGroup stagger={0.06} delayChildren={0.05}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 md:gap-y-14">
