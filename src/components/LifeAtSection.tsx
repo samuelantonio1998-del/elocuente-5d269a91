@@ -3,12 +3,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useSiteImage } from "@/hooks/useSiteImages";
 import life1 from "@/assets/life-1.png.asset.json";
 import life2 from "@/assets/life-2.png.asset.json";
 
 const LifeAtSection = () => {
   const { t } = useLanguage();
-  const images = [life1.url, life2.url];
+  const l1 = useSiteImage("life.1", life1.url);
+  const l2 = useSiteImage("life.2", life2.url);
+  const images = [l1, l2];
   const [current, setCurrent] = useState(0);
   const next = () => setCurrent((c) => (c + 1) % images.length);
   const prev = () => setCurrent((c) => (c - 1 + images.length) % images.length);
