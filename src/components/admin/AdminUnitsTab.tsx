@@ -13,6 +13,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { toast } from "@/hooks/use-toast";
 import { getUnitPrice, type UnitStatus } from "@/data/units";
 import { useShowPrices } from "@/hooks/useShowPrices";
+import { useShowReserve } from "@/hooks/useShowReserve";
 import { Switch } from "@/components/ui/switch";
 import { Upload, FileText, Trash2, Loader2 } from "lucide-react";
 
@@ -44,6 +45,7 @@ const AdminUnitsTab = () => {
   const [uploadingId, setUploadingId] = useState<string | null>(null);
   const fileInputs = useRef<Record<string, HTMLInputElement | null>>({});
   const { showPrices, setShowPrices } = useShowPrices();
+  const { showReserve, setShowReserve } = useShowReserve();
 
   const load = async () => {
     const { data, error } = await supabase
@@ -168,6 +170,21 @@ const AdminUnitsTab = () => {
           onCheckedChange={(v) => {
             setShowPrices(v);
             toast({ title: v ? "Preços visíveis no site" : "Preços ocultos no site" });
+          }}
+        />
+      </div>
+      <div className="flex items-center justify-between gap-4 border border-border p-4">
+        <div>
+          <p className="text-sm font-medium">Mostrar botão de reservar no site</p>
+          <p className="text-xs text-muted-foreground">
+            Quando desativado, a coluna “Reservar” fica oculta na página pública de disponibilidades.
+          </p>
+        </div>
+        <Switch
+          checked={showReserve}
+          onCheckedChange={(v) => {
+            setShowReserve(v);
+            toast({ title: v ? "Botão de reservar visível no site" : "Botão de reservar oculto no site" });
           }}
         />
       </div>

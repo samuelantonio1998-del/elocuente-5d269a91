@@ -8,12 +8,14 @@ import PaymentTermsDialog from "./PaymentTermsDialog";
 import { getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
 import { useUnits } from "@/hooks/useUnits";
 import { useShowPrices } from "@/hooks/useShowPrices";
+import { useShowReserve } from "@/hooks/useShowReserve";
 import { openFloorPlan } from "@/lib/floorPlan";
 
 const AvailabilitySection = () => {
   const { t } = useLanguage();
   const { formatPrice } = useCurrency();
   const { showPrices } = useShowPrices();
+  const { showReserve } = useShowReserve();
   const [filterBuilding, setFilterBuilding] = useState<string>("all");
   const [filterType, setFilterType] = useState<string>("all");
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
@@ -116,8 +118,10 @@ const AvailabilitySection = () => {
                     <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
                       {t("availability.col.floorPlan")}
                     </th>
-                    <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
-                    </th>
+                    {showReserve && (
+                      <th className="py-4 px-3 font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground font-medium">
+                      </th>
+                    )}
                   </tr>
                 </thead>
                 <tbody>
@@ -160,15 +164,17 @@ const AvailabilitySection = () => {
                           <span className="font-body text-sm text-muted-foreground/50">—</span>
                         )}
                       </td>
-                      <td className="py-4 px-3">
-                        <button
-                          onClick={() => handleReserve(unit)}
-                          disabled={disabled}
-                          className="px-4 py-2 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-gold"
-                        >
-                          {t("availability.reserve")}
-                        </button>
-                      </td>
+                      {showReserve && (
+                        <td className="py-4 px-3">
+                          <button
+                            onClick={() => handleReserve(unit)}
+                            disabled={disabled}
+                            className="px-4 py-2 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-gold"
+                          >
+                            {t("availability.reserve")}
+                          </button>
+                        </td>
+                      )}
                     </tr>
                     );
                   })}
@@ -260,13 +266,15 @@ const AvailabilitySection = () => {
                       ) : (
                         <span className="font-body text-xs text-muted-foreground/50">—</span>
                       )}
-                      <button
-                        onClick={() => handleReserve(unit)}
-                        disabled={disabled}
-                        className="px-4 py-2.5 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-gold"
-                      >
-                        {t("availability.reserve")}
-                      </button>
+                      {showReserve && (
+                        <button
+                          onClick={() => handleReserve(unit)}
+                          disabled={disabled}
+                          className="px-4 py-2.5 bg-gold text-background font-body text-[10px] tracking-[0.15em] uppercase hover:bg-gold/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-gold"
+                        >
+                          {t("availability.reserve")}
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
