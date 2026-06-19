@@ -24,7 +24,7 @@ const LifeAtSection = () => {
 
   return (
     <section id="vida-elocuente" className="bg-background">
-      <div className="py-24 md:py-32 px-8 lg:px-16">
+      <div className="pt-24 md:pt-32 px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-12">
             <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-4">
@@ -37,48 +37,52 @@ const LifeAtSection = () => {
               {t("life.desc")}
             </p>
           </AnimatedSection>
+        </div>
+      </div>
 
-          <AnimatedSection delay={0.1}>
-            <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden rounded-sm mb-20 md:mb-24 group">
-              {images.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt="A Vida no Elocuente"
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    i === current ? "opacity-100" : "opacity-0"
-                  }`}
-                />
-              ))}
+      <AnimatedSection delay={0.1}>
+        <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden mb-20 md:mb-24 group">
+          {images.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt="A Vida no Elocuente"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                i === current ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ))}
+          <button
+            onClick={prev}
+            aria-label="Previous"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={next}
+            aria-label="Next"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {images.map((_, i) => (
               <button
-                onClick={prev}
-                aria-label="Previous"
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={next}
-                aria-label="Next"
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                {images.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrent(i)}
-                    aria-label={`Go to image ${i + 1}`}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      i === current ? "bg-foreground w-6" : "bg-foreground/40"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-          </AnimatedSection>
+                key={i}
+                onClick={() => setCurrent(i)}
+                aria-label={`Go to image ${i + 1}`}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  i === current ? "bg-foreground w-6" : "bg-foreground/40"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
 
+      <div className="pb-24 md:pb-32 px-8 lg:px-16">
+        <div className="max-w-6xl mx-auto">
           <StaggerGroup stagger={0.06} delayChildren={0.05}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 md:gap-y-14">
               {items.map((it, i) => (

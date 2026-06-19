@@ -27,7 +27,7 @@ const ApartmentSection = () => {
 
   return (
     <section id="empreendimento" className="bg-background">
-      <div className="py-24 md:py-32 px-8 lg:px-16">
+      <div className="pt-24 md:pt-32 px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-12">
             <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-4">
@@ -40,48 +40,52 @@ const ApartmentSection = () => {
               {t("apartment.desc")}
             </p>
           </AnimatedSection>
+        </div>
+      </div>
 
-          <AnimatedSection delay={0.1}>
-            <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden rounded-sm mb-20 md:mb-24 group">
-              {images.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={`Apartamento ${i + 1}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    i === index ? "opacity-100" : "opacity-0"
-                  }`}
-                />
-              ))}
+      <AnimatedSection delay={0.1}>
+        <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden mb-20 md:mb-24 group">
+          {images.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt={`Apartamento ${i + 1}`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                i === index ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          ))}
+          <button
+            onClick={prev}
+            aria-label="Anterior"
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <ChevronLeft className="w-5 h-5" strokeWidth={1.5} />
+          </button>
+          <button
+            onClick={next}
+            aria-label="Seguinte"
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
+          </button>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {images.map((_, i) => (
               <button
-                onClick={prev}
-                aria-label="Anterior"
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                <ChevronLeft className="w-5 h-5" strokeWidth={1.5} />
-              </button>
-              <button
-                onClick={next}
-                aria-label="Seguinte"
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
-              </button>
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                {images.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setIndex(i)}
-                    aria-label={`Ir para imagem ${i + 1}`}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      i === index ? "bg-foreground" : "bg-foreground/30"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-          </AnimatedSection>
+                key={i}
+                onClick={() => setIndex(i)}
+                aria-label={`Ir para imagem ${i + 1}`}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  i === index ? "bg-foreground" : "bg-foreground/30"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
 
+      <div className="pb-24 md:pb-32 px-8 lg:px-16">
+        <div className="max-w-6xl mx-auto">
           <StaggerGroup stagger={0.06} delayChildren={0.05}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 md:gap-y-14">
               {items.map((it, i) => (
