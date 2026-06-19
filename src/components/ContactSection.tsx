@@ -1,4 +1,4 @@
-import { useState, FormEvent, useMemo } from "react";
+import { useState, FormEvent } from "react";
 
 import AnimatedSection from "./AnimatedSection";
 import { toast } from "sonner";
@@ -12,13 +12,10 @@ import polaroid3 from "@/assets/render-front.jpg";
 const TYPOLOGIES = ["T2", "T3"] as const;
 
 const ContactSection = () => {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: "",
     salutation: "",
-    birthYear: "",
-    birthMonth: "",
-    birthDay: "",
     gender: "",
     nationality: "",
     city: "",
@@ -30,25 +27,6 @@ const ContactSection = () => {
   const [typologies, setTypologies] = useState<string[]>([]);
   const [accepted, setAccepted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-
-  const currentYear = new Date().getFullYear();
-  const years = useMemo(
-    () => Array.from({ length: 100 }, (_, i) => currentYear - 18 - i),
-    [currentYear]
-  );
-  const months = useMemo(
-    () => Array.from({ length: 12 }, (_, i) => i + 1),
-    []
-  );
-  const daysInMonth = useMemo(() => {
-    const y = parseInt(formData.birthYear) || 2000;
-    const m = parseInt(formData.birthMonth) || 1;
-    return new Date(y, m, 0).getDate();
-  }, [formData.birthYear, formData.birthMonth]);
-  const days = useMemo(
-    () => Array.from({ length: daysInMonth }, (_, i) => i + 1),
-    [daysInMonth]
-  );
 
   const schema = z.object({
     fullName: z.string().trim().min(1).max(160),
@@ -86,9 +64,6 @@ const ContactSection = () => {
         email: parsed.data.email,
         phone: parsed.data.phone || null,
         salutation: parsed.data.salutation || null,
-        birth_year: formData.birthYear ? parseInt(formData.birthYear) : null,
-        birth_month: formData.birthMonth ? parseInt(formData.birthMonth) : null,
-        birth_day: formData.birthDay ? parseInt(formData.birthDay) : null,
         gender: parsed.data.gender || null,
         nationality: parsed.data.nationality || null,
         city: parsed.data.city || null,
@@ -100,7 +75,7 @@ const ContactSection = () => {
 
       toast.success(t("contact.success"));
       setFormData({
-        fullName: "", salutation: "", birthYear: "", birthMonth: "", birthDay: "",
+        fullName: "", salutation: "",
         gender: "", nationality: "", city: "", country: "",
         email: "", phone: "", message: "",
       });
@@ -114,10 +89,6 @@ const ContactSection = () => {
     }
   };
 
-  const monthLabel = (m: number) => {
-    const locale = lang === "pt" ? "pt-PT" : lang === "es" ? "es-ES" : "en-US";
-    return new Date(2000, m - 1, 1).toLocaleDateString(locale, { month: "long" });
-  };
 
   const inputCls =
     "w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors";
@@ -203,46 +174,6 @@ const ContactSection = () => {
                 className={inputCls}
               />
 
-              <div className="py-6 border-b border-border">
-                <p className="font-body text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-4">
-                  {t("contact.birthDate")}
-                </p>
-                <div className="grid grid-cols-3 gap-3">
-                  <select
-                    aria-label={t("contact.year")}
-                    value={formData.birthYear}
-                    onChange={(e) => setFormData({ ...formData, birthYear: e.target.value })}
-                    className={selectCls + " py-3"}
-                  >
-                    <option value="">{t("contact.year")}</option>
-                    {years.map((y) => (
-                      <option key={y} value={y}>{y}</option>
-                    ))}
-                  </select>
-                  <select
-                    aria-label={t("contact.month")}
-                    value={formData.birthMonth}
-                    onChange={(e) => setFormData({ ...formData, birthMonth: e.target.value })}
-                    className={selectCls + " py-3"}
-                  >
-                    <option value="">{t("contact.month")}</option>
-                    {months.map((m) => (
-                      <option key={m} value={m}>{monthLabel(m)}</option>
-                    ))}
-                  </select>
-                  <select
-                    aria-label={t("contact.day")}
-                    value={formData.birthDay}
-                    onChange={(e) => setFormData({ ...formData, birthDay: e.target.value })}
-                    className={selectCls + " py-3"}
-                  >
-                    <option value="">{t("contact.day")}</option>
-                    {days.map((d) => (
-                      <option key={d} value={d}>{d}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
 
               <input
                 type="text"
