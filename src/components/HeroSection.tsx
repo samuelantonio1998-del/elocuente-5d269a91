@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 import heroAsset from "@/assets/hero-sketch.png.asset.json";
 import logoAsset from "@/assets/elocuente-logo-transparent.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useSiteImage } from "@/hooks/useSiteImages";
 
 const LOGO_SRC = logoAsset.url;
 
