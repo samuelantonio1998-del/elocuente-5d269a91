@@ -16,30 +16,54 @@ export type Database = {
     Tables: {
       contact_leads: {
         Row: {
+          birth_day: number | null
+          birth_month: number | null
+          birth_year: number | null
+          city: string | null
+          country: string | null
           created_at: string
           email: string
+          gender: string | null
           id: string
           message: string | null
           name: string
+          nationality: string | null
           phone: string | null
+          salutation: string | null
           typology: string | null
         }
         Insert: {
+          birth_day?: number | null
+          birth_month?: number | null
+          birth_year?: number | null
+          city?: string | null
+          country?: string | null
           created_at?: string
           email: string
+          gender?: string | null
           id?: string
           message?: string | null
           name: string
+          nationality?: string | null
           phone?: string | null
+          salutation?: string | null
           typology?: string | null
         }
         Update: {
+          birth_day?: number | null
+          birth_month?: number | null
+          birth_year?: number | null
+          city?: string | null
+          country?: string | null
           created_at?: string
           email?: string
+          gender?: string | null
           id?: string
           message?: string | null
           name?: string
+          nationality?: string | null
           phone?: string | null
+          salutation?: string | null
           typology?: string | null
         }
         Relationships: []

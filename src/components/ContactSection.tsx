@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useMemo } from "react";
 
 import AnimatedSection from "./AnimatedSection";
 import { toast } from "sonner";
@@ -9,10 +9,17 @@ import { supabase } from "@/integrations/supabase/client";
 const TYPOLOGIES = ["T2", "T3"] as const;
 
 const ContactSection = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    fullName: "",
+    salutation: "",
+    birthYear: "",
+    birthMonth: "",
+    birthDay: "",
+    gender: "",
+    nationality: "",
+    city: "",
+    country: "",
     email: "",
     phone: "",
     message: "",
@@ -21,11 +28,34 @@ const ContactSection = () => {
   const [accepted, setAccepted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
+  const currentYear = new Date().getFullYear();
+  const years = useMemo(
+    () => Array.from({ length: 100 }, (_, i) => currentYear - 18 - i),
+    [currentYear]
+  );
+  const months = useMemo(
+    () => Array.from({ length: 12 }, (_, i) => i + 1),
+    []
+  );
+  const daysInMonth = useMemo(() => {
+    const y = parseInt(formData.birthYear) || 2000;
+    const m = parseInt(formData.birthMonth) || 1;
+    return new Date(y, m, 0).getDate();
+  }, [formData.birthYear, formData.birthMonth]);
+  const days = useMemo(
+    () => Array.from({ length: daysInMonth }, (_, i) => i + 1),
+    [daysInMonth]
+  );
+
   const schema = z.object({
-    firstName: z.string().trim().min(1).max(80),
-    lastName: z.string().trim().min(1).max(80),
+    fullName: z.string().trim().min(1).max(160),
     email: z.string().trim().email().max(255),
     phone: z.string().trim().max(40).optional(),
+    salutation: z.string().trim().max(40).optional(),
+    gender: z.string().trim().max(40).optional(),
+    nationality: z.string().trim().max(80).optional(),
+    city: z.string().trim().max(80).optional(),
+    country: z.string().trim().max(80).optional(),
     message: z.string().trim().max(1000).optional(),
   });
 
@@ -49,16 +79,28 @@ const ContactSection = () => {
     setSubmitting(true);
     try {
       const { error } = await supabase.from("contact_leads").insert({
-        name: `${parsed.data.firstName} ${parsed.data.lastName}`.trim(),
+        name: parsed.data.fullName,
         email: parsed.data.email,
         phone: parsed.data.phone || null,
+        salutation: parsed.data.salutation || null,
+        birth_year: formData.birthYear ? parseInt(formData.birthYear) : null,
+        birth_month: formData.birthMonth ? parseInt(formData.birthMonth) : null,
+        birth_day: formData.birthDay ? parseInt(formData.birthDay) : null,
+        gender: parsed.data.gender || null,
+        nationality: parsed.data.nationality || null,
+        city: parsed.data.city || null,
+        country: parsed.data.country || null,
         typology: typologies.length ? typologies.join(", ") : null,
         message: parsed.data.message || null,
       });
       if (error) throw error;
 
       toast.success(t("contact.success"));
-      setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+      setFormData({
+        fullName: "", salutation: "", birthYear: "", birthMonth: "", birthDay: "",
+        gender: "", nationality: "", city: "", country: "",
+        email: "", phone: "", message: "",
+      });
       setTypologies([]);
       setAccepted(false);
     } catch (err) {
@@ -68,6 +110,16 @@ const ContactSection = () => {
       setSubmitting(false);
     }
   };
+
+  const monthLabel = (m: number) => {
+    const locale = lang === "pt" ? "pt-PT" : lang === "es" ? "es-ES" : "en-US";
+    return new Date(2000, m - 1, 1).toLocaleDateString(locale, { month: "long" });
+  };
+
+  const inputCls =
+    "w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors";
+  const selectCls =
+    "w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground focus:outline-none focus:border-foreground transition-colors appearance-none cursor-pointer";
 
   return (
     <section id="contacto" className="bg-background">
@@ -83,33 +135,108 @@ const ContactSection = () => {
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base mb-16 max-w-md">
               {t("contact.desc")}
             </p>
-
           </AnimatedSection>
         </div>
 
         <div className="flex items-center px-8 md:px-12 lg:px-20 py-20 md:py-0">
           <AnimatedSection delay={0.15} className="w-full max-w-md">
             <form onSubmit={handleSubmit} className="space-y-0" aria-label={t("contact.label")}>
-              <div className="grid grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder={t("contact.firstName")}
-                  aria-label={t("contact.firstName")}
-                  required
-                  value={formData.firstName}
-                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors"
-                />
-                <input
-                  type="text"
-                  placeholder={t("contact.lastName")}
-                  aria-label={t("contact.lastName")}
-                  required
-                  value={formData.lastName}
-                  onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors"
-                />
+              <input
+                type="text"
+                placeholder={t("contact.fullName")}
+                aria-label={t("contact.fullName")}
+                required
+                value={formData.fullName}
+                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                className={inputCls}
+              />
+
+              <input
+                type="text"
+                placeholder={t("contact.salutation")}
+                aria-label={t("contact.salutation")}
+                value={formData.salutation}
+                onChange={(e) => setFormData({ ...formData, salutation: e.target.value })}
+                className={inputCls}
+              />
+
+              <div className="py-6 border-b border-border">
+                <p className="font-body text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-4">
+                  {t("contact.birthDate")}
+                </p>
+                <div className="grid grid-cols-3 gap-3">
+                  <select
+                    aria-label={t("contact.year")}
+                    value={formData.birthYear}
+                    onChange={(e) => setFormData({ ...formData, birthYear: e.target.value })}
+                    className={selectCls + " py-3"}
+                  >
+                    <option value="">{t("contact.year")}</option>
+                    {years.map((y) => (
+                      <option key={y} value={y}>{y}</option>
+                    ))}
+                  </select>
+                  <select
+                    aria-label={t("contact.month")}
+                    value={formData.birthMonth}
+                    onChange={(e) => setFormData({ ...formData, birthMonth: e.target.value })}
+                    className={selectCls + " py-3"}
+                  >
+                    <option value="">{t("contact.month")}</option>
+                    {months.map((m) => (
+                      <option key={m} value={m}>{monthLabel(m)}</option>
+                    ))}
+                  </select>
+                  <select
+                    aria-label={t("contact.day")}
+                    value={formData.birthDay}
+                    onChange={(e) => setFormData({ ...formData, birthDay: e.target.value })}
+                    className={selectCls + " py-3"}
+                  >
+                    <option value="">{t("contact.day")}</option>
+                    {days.map((d) => (
+                      <option key={d} value={d}>{d}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
+
+              <input
+                type="text"
+                placeholder={t("contact.gender")}
+                aria-label={t("contact.gender")}
+                value={formData.gender}
+                onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
+                className={inputCls}
+              />
+
+              <input
+                type="text"
+                placeholder={t("contact.nationality")}
+                aria-label={t("contact.nationality")}
+                value={formData.nationality}
+                onChange={(e) => setFormData({ ...formData, nationality: e.target.value })}
+                className={inputCls}
+              />
+
+              <input
+                type="text"
+                placeholder={t("contact.city")}
+                aria-label={t("contact.city")}
+                value={formData.city}
+                onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                className={inputCls}
+              />
+
+              <input
+                type="text"
+                placeholder={t("contact.country")}
+                aria-label={t("contact.country")}
+                value={formData.country}
+                onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                className={inputCls}
+              />
+
               <input
                 type="email"
                 placeholder={t("contact.email")}
@@ -117,7 +244,7 @@ const ContactSection = () => {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors"
+                className={inputCls}
               />
               <input
                 type="tel"
@@ -125,7 +252,7 @@ const ContactSection = () => {
                 aria-label={t("contact.phone")}
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors"
+                className={inputCls}
               />
 
               <div className="py-6 border-b border-border" role="group" aria-label={t("contact.typology")}>
@@ -160,7 +287,7 @@ const ContactSection = () => {
                 rows={3}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors resize-none"
+                className={inputCls + " resize-none"}
               />
 
               <label className="flex items-start gap-3 pt-6 cursor-pointer">
@@ -186,7 +313,6 @@ const ContactSection = () => {
                   className="w-full py-5 bg-gold text-charcoal font-body text-[11px] font-medium tracking-[0.3em] uppercase hover:bg-gold/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed shadow-[0_8px_24px_-8px_hsl(var(--gold)/0.6)]"
                 >
                   {submitting ? "..." : t("contact.submit")}
-
                 </button>
               </div>
             </form>
