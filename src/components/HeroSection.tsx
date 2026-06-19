@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useRef } from "react";
-import heroImage from "@/assets/render-front.jpg";
+import heroAsset from "@/assets/hero-render.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
 import SplitText from "./motion/SplitText";
 
@@ -20,7 +20,7 @@ const HeroSection = () => {
   return (
     <section ref={ref} id="hero" className="relative h-screen w-full overflow-hidden bg-charcoal">
       <motion.img
-        src={heroImage}
+        src={heroAsset.url}
         alt="Vista exterior do empreendimento Elocuente"
         style={{ y: imgY, scale: imgScale }}
         className="absolute inset-0 w-full h-full object-cover opacity-55 will-change-transform"
