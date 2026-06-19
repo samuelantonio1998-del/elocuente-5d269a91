@@ -1,36 +1,39 @@
 ## Objetivo
-Permitir ao admin editar **ABP (área)**, **preço**, e **anexar a planta em PDF** de cada uma das 23 fracções, com reflexo imediato no site público.
 
-## 1. Base de dados (migração)
-Adicionar duas colunas à tabela `units`:
-- `price` `numeric` (nullable) — preço manual em €; quando vazio, usa o cálculo dinâmico (`area × 2 250 €/m²`, mínimo 290 000 €).
-- `floor_plan_url` `text` (nullable) — URL público do PDF da planta.
+Substituir o carrossel automático em "O Empreendimento" por um efeito de scroll: a coluna da imagem fica fixa (sticky) enquanto se faz scroll, e a imagem muda à medida que cada bloco de texto entra em vista. Após o último bloco, o scroll da página continua normalmente.
 
-A coluna `area` já existe (text, ex. `"130 m²"`) — mantém-se editável.
+## Como vai funcionar
 
-## 2. Storage
-Criar bucket público **`floor-plans`** via `supabase--storage_create_bucket` (`public: true`).
-Políticas RLS em `storage.objects`:
-- `SELECT` público (qualquer pessoa pode ver/descarregar plantas).
-- `INSERT`/`UPDATE`/`DELETE` só para admins (`has_role(auth.uid(), 'admin')`).
-Convenção de nomes: `units/{unit_id}.pdf` (substituível por upload novo).
+```text
+┌──────────────────────┬──────────────────────┐
+│                      │  Bloco 1 (texto)     │
+│   IMAGEM 1           │                      │
+│   (sticky)           ├──────────────────────┤
+│                      │  Bloco 2 (texto)     │
+│   → muda p/ IMAGEM 2 │                      │
+│                      ├──────────────────────┤
+│   → muda p/ IMAGEM 3 │  Bloco 3 (texto)     │
+└──────────────────────┴──────────────────────┘
+       scroll continua para a próxima secção
+```
 
-## 3. Backoffice — `AdminUnitsTab`
-Reformular a linha de cada fracção para incluir:
-- **ABP**: `Input` de texto (placeholder `130 m²`) com guardar automático ao desfocar.
-- **Preço (€)**: `Input` numérico. Placeholder mostra o preço calculado actual; vazio = automático.
-- **Planta PDF**: botão "Carregar PDF" (input file `accept="application/pdf"`). Quando existe, mostra "Ver PDF" + "Substituir" + "Remover". Upload → Supabase Storage → guarda `floor_plan_url` na linha.
-- **Estado**: mantém-se como hoje.
+- Coluna esquerda: container `sticky top-0 h-screen` com as 3 imagens sobrepostas (fade entre elas).
+- Coluna direita: os 3 blocos de texto, cada um ocupando aprox. uma altura de viewport para criar o "espaço" de scroll.
+- Um `IntersectionObserver` em cada bloco define qual imagem está ativa (índice 0/1/2).
+- A transição entre imagens é um fade suave (opacity), mantendo a estética minimal atual.
+- No fim do último bloco, o sticky liberta e a página continua o scroll normal para a secção seguinte.
 
-Feedback via `toast`; actualização optimista com rollback em caso de erro.
+## Mobile
 
-## 4. Site público
-- `getUnitPrice(unit)`: se `unit.price != null` → devolve esse valor; senão mantém o cálculo actual.
-- `useUnits` passa a expor também `price` e `floor_plan_url`.
-- No modal de detalhe da fracção (`UnitDetailsModal`/`AvailabilitySection`), mostrar botão **"Ver planta"** (abre PDF em nova aba) quando `floor_plan_url` existe.
-- Traduções PT/EN/ES para "Ver planta".
+Em ecrãs pequenos (`lg` abaixo), mantém o layout empilhado atual com uma única imagem fixa no topo da secção (sem sticky), porque o efeito side-by-side só faz sentido em desktop. Alternativa: usar a primeira imagem como estática no mobile.
 
-## 5. Notas técnicas
-- Tipo `Unit` em `src/data/units.ts` ganha `price?: number | null` e `floorPlanUrl?: string | null`.
-- Regenerar tipos Supabase é automático após a migração.
-- Nenhuma alteração ao fluxo de reservas — usa o `getUnitPrice` actualizado.
+## Detalhes técnicos
+
+- Ficheiro: `src/components/AboutSection.tsx`.
+- Remover `setInterval` e o estado baseado em tempo.
+- Estrutura:
+  - Wrapper `grid lg:grid-cols-2`.
+  - Esquerda: `<div className="lg:sticky lg:top-0 lg:h-screen">` com as 3 `<img>` em `absolute inset-0` e `opacity` controlado por `activeIdx`.
+  - Direita: 3 `<div>` cada um `lg:min-h-screen flex items-center`, com `ref` registado num `IntersectionObserver` (`threshold: 0.5` ou `rootMargin: "-40% 0px -40% 0px"`) que faz `setActiveIdx(i)`.
+- Manter as animações `Reveal`/`Stagger` existentes dentro de cada bloco.
+- Sem libs novas — apenas React + IntersectionObserver nativo.
