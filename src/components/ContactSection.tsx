@@ -174,46 +174,6 @@ const ContactSection = () => {
                 className={inputCls}
               />
 
-              <div className="py-6 border-b border-border">
-                <p className="font-body text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-4">
-                  {t("contact.birthDate")}
-                </p>
-                <div className="grid grid-cols-3 gap-3">
-                  <select
-                    aria-label={t("contact.year")}
-                    value={formData.birthYear}
-                    onChange={(e) => setFormData({ ...formData, birthYear: e.target.value })}
-                    className={selectCls + " py-3"}
-                  >
-                    <option value="">{t("contact.year")}</option>
-                    {years.map((y) => (
-                      <option key={y} value={y}>{y}</option>
-                    ))}
-                  </select>
-                  <select
-                    aria-label={t("contact.month")}
-                    value={formData.birthMonth}
-                    onChange={(e) => setFormData({ ...formData, birthMonth: e.target.value })}
-                    className={selectCls + " py-3"}
-                  >
-                    <option value="">{t("contact.month")}</option>
-                    {months.map((m) => (
-                      <option key={m} value={m}>{monthLabel(m)}</option>
-                    ))}
-                  </select>
-                  <select
-                    aria-label={t("contact.day")}
-                    value={formData.birthDay}
-                    onChange={(e) => setFormData({ ...formData, birthDay: e.target.value })}
-                    className={selectCls + " py-3"}
-                  >
-                    <option value="">{t("contact.day")}</option>
-                    {days.map((d) => (
-                      <option key={d} value={d}>{d}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
 
               <input
                 type="text"
