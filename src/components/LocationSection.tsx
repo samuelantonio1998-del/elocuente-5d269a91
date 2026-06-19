@@ -51,7 +51,7 @@ const LocationSection = () => {
               ))}
             </ul>
 
-            <div className="flex flex-wrap gap-3 mt-12">
+            <div className="flex flex-wrap gap-3 mt-8">
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${lat},${lon}`}
                 target="_blank"
