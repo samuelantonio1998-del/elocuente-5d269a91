@@ -5,9 +5,6 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
-import polaroid1 from "@/assets/render-garden.jpg";
-import polaroid2 from "@/assets/interior-living.jpg";
-import polaroid3 from "@/assets/render-front.jpg";
 
 const TYPOLOGIES = ["T2", "T3"] as const;
 
@@ -121,29 +118,6 @@ const ContactSection = () => {
               {t("contact.titleRest")}
             </h2>
 
-            <div className="relative h-[420px] md:h-[460px] mt-6">
-              {/* Polaroid 1 */}
-              <figure className="absolute top-0 left-2 w-[58%] bg-white p-3 pb-12 shadow-elegant rotate-[-5deg] hover:rotate-[-2deg] hover:-translate-y-1 transition-transform duration-500">
-                <img src={polaroid1} alt="" className="w-full aspect-[4/5] object-cover" />
-                <figcaption className="absolute bottom-3 left-0 right-0 text-center font-heading italic text-sm text-charcoal/70">
-                  {t("contact.note1")}
-                </figcaption>
-              </figure>
-              {/* Polaroid 2 */}
-              <figure className="absolute top-16 right-0 w-[55%] bg-white p-3 pb-12 shadow-elegant rotate-[4deg] hover:rotate-[1deg] hover:-translate-y-1 transition-transform duration-500">
-                <img src={polaroid2} alt="" className="w-full aspect-square object-cover" />
-                <figcaption className="absolute bottom-3 left-0 right-0 text-center font-heading italic text-sm text-charcoal/70">
-                  {t("contact.note2")}
-                </figcaption>
-              </figure>
-              {/* Polaroid 3 */}
-              <figure className="absolute bottom-0 left-10 w-[50%] bg-white p-3 pb-12 shadow-elegant rotate-[-2deg] hover:rotate-[0deg] hover:-translate-y-1 transition-transform duration-500">
-                <img src={polaroid3} alt="" className="w-full aspect-[5/4] object-cover" />
-                <figcaption className="absolute bottom-3 left-0 right-0 text-center font-heading italic text-sm text-charcoal/70">
-                  {t("contact.note3")}
-                </figcaption>
-              </figure>
-            </div>
 
             <p className="font-body text-muted-foreground leading-[2] text-sm mt-12 max-w-sm">
               {t("contact.desc")}
