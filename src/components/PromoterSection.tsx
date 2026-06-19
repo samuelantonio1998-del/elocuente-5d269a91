@@ -33,7 +33,7 @@ const PromoterSection = () => {
                 .map((paragraph, i) => (
                   <p
                     key={i}
-                    className="font-body text-sm md:text-base text-muted-foreground leading-[1.9]"
+                    className="font-body text-sm md:text-base text-muted-foreground leading-[1.9] whitespace-pre-line"
                   >
                     {paragraph}
                   </p>
