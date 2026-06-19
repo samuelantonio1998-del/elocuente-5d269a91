@@ -5,6 +5,9 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
+import polaroid1 from "@/assets/render-garden.jpg";
+import polaroid2 from "@/assets/interior-living.jpg";
+import polaroid3 from "@/assets/render-front.jpg";
 
 const TYPOLOGIES = ["T2", "T3"] as const;
 
