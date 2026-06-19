@@ -4,11 +4,14 @@ import render1 from "@/assets/render-1.png.asset.json";
 import render2 from "@/assets/render-2.png.asset.json";
 import render3 from "@/assets/render-3.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
-
-const renders = [render1.url, render2.url, render3.url];
+import { useSiteImage } from "@/hooks/useSiteImages";
 
 const ArchitectureSection = () => {
   const { t } = useLanguage();
+  const r1 = useSiteImage("about.render-1", render1.url);
+  const r2 = useSiteImage("about.render-2", render2.url);
+  const r3 = useSiteImage("about.render-3", render3.url);
+  const renders = [r1, r2, r3];
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
