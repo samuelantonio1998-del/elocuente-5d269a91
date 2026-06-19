@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useRef } from "react";
-import heroImage from "@/assets/hero-render.png.asset.json";
+import heroAsset from "@/assets/hero-render.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
 import SplitText from "./motion/SplitText";
 
