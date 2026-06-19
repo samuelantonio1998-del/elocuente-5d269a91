@@ -24,7 +24,7 @@ const HeroSection = () => {
   return (
     <section ref={ref} id="hero" className="relative h-screen w-full overflow-hidden bg-charcoal">
       <motion.img
-        src={heroAsset.url}
+        src={heroSrc}
         alt="Vista exterior do empreendimento Elocuente"
         style={{ y: imgY, scale: imgScale }}
         className="absolute inset-0 w-full h-full object-cover opacity-55 will-change-transform"
