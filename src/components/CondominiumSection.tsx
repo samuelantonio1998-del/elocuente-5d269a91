@@ -16,7 +16,7 @@ const CondominiumSection = () => {
     { label: t("condo.security"), desc: t("condo.security.desc") },
   ];
 
-  const heroPlaceholder = "[Render: espaços comuns — jardim/entrada]";
+  
 
   return (
     <section id="condominio" className="bg-cream-dark/30">
