@@ -83,10 +83,12 @@ const AdminDashboard = () => {
             <TabsTrigger value="units">Fracções</TabsTrigger>
             <TabsTrigger value="reservations">Reservas</TabsTrigger>
             <TabsTrigger value="contacts">Contactos</TabsTrigger>
+            <TabsTrigger value="images">Imagens</TabsTrigger>
           </TabsList>
           <TabsContent value="units"><AdminUnitsTab /></TabsContent>
           <TabsContent value="reservations"><AdminReservationsTab /></TabsContent>
           <TabsContent value="contacts"><AdminContactsTab /></TabsContent>
+          <TabsContent value="images"><AdminImagesTab /></TabsContent>
         </Tabs>
       </section>
     </main>
