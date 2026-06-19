@@ -725,7 +725,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "life.remote": "Trabajo remoto en la Costa de Plata",
     "life.remote.desc": "Fibra óptica en todas las viviendas. Para quien trabaja a distancia, la pausa para el café pasa a ser una terraza, no una máquina de oficina.",
     "life.nature": "Mar y pinar todo el año",
-    "life.nature.desc": "Baños de mar diez meses al año · doce mil hectáreas del Pinhal de Leiria para correr y andar en bicicleta · aire del Atlántico · noches de pinar sin tráfico.",
+    "life.nature.desc": "Baños de mar diez meses al año · Hectáreas de pinar para correr y andar de bicicleta · Aire del Atlántico · Noches de pinar sin tráfico.",
     "life.services": "Salud y educación a la puerta",
     "life.services.desc": "Hospitales privados a 10 minutos · Centro Hospitalario de Leiria a 15 minutos · Escuelas públicas de referencia en Marinha Grande · Colegios privados en Leiria y Marinha Grande a 10 minutos.",
     "life.investment": "Inversión en la Costa de Plata",
