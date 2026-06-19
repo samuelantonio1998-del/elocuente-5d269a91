@@ -16,9 +16,6 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     salutation: "",
-    birthYear: "",
-    birthMonth: "",
-    birthDay: "",
     gender: "",
     nationality: "",
     city: "",
@@ -30,25 +27,6 @@ const ContactSection = () => {
   const [typologies, setTypologies] = useState<string[]>([]);
   const [accepted, setAccepted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-
-  const currentYear = new Date().getFullYear();
-  const years = useMemo(
-    () => Array.from({ length: 100 }, (_, i) => currentYear - 18 - i),
-    [currentYear]
-  );
-  const months = useMemo(
-    () => Array.from({ length: 12 }, (_, i) => i + 1),
-    []
-  );
-  const daysInMonth = useMemo(() => {
-    const y = parseInt(formData.birthYear) || 2000;
-    const m = parseInt(formData.birthMonth) || 1;
-    return new Date(y, m, 0).getDate();
-  }, [formData.birthYear, formData.birthMonth]);
-  const days = useMemo(
-    () => Array.from({ length: daysInMonth }, (_, i) => i + 1),
-    [daysInMonth]
-  );
 
   const schema = z.object({
     fullName: z.string().trim().min(1).max(160),
@@ -86,9 +64,6 @@ const ContactSection = () => {
         email: parsed.data.email,
         phone: parsed.data.phone || null,
         salutation: parsed.data.salutation || null,
-        birth_year: formData.birthYear ? parseInt(formData.birthYear) : null,
-        birth_month: formData.birthMonth ? parseInt(formData.birthMonth) : null,
-        birth_day: formData.birthDay ? parseInt(formData.birthDay) : null,
         gender: parsed.data.gender || null,
         nationality: parsed.data.nationality || null,
         city: parsed.data.city || null,
@@ -100,7 +75,7 @@ const ContactSection = () => {
 
       toast.success(t("contact.success"));
       setFormData({
-        fullName: "", salutation: "", birthYear: "", birthMonth: "", birthDay: "",
+        fullName: "", salutation: "",
         gender: "", nationality: "", city: "", country: "",
         email: "", phone: "", message: "",
       });
@@ -114,10 +89,6 @@ const ContactSection = () => {
     }
   };
 
-  const monthLabel = (m: number) => {
-    const locale = lang === "pt" ? "pt-PT" : lang === "es" ? "es-ES" : "en-US";
-    return new Date(2000, m - 1, 1).toLocaleDateString(locale, { month: "long" });
-  };
 
   const inputCls =
     "w-full px-0 py-5 bg-transparent border-b border-border font-body text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground transition-colors";
