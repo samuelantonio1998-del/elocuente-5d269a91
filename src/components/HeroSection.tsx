@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
-import heroAsset from "@/assets/hero-new.png.asset.json";
+import heroAsset from "@/assets/hero-sketch.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
 import SplitText from "./motion/SplitText";
 
