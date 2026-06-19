@@ -80,7 +80,7 @@ const Navbar = () => {
     >
       <div className="w-full px-8 lg:px-12 flex items-center justify-between h-20 lg:h-24 gap-8">
         {/* Desktop left nav */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-9 flex-1">
+        <div className="hidden xl:flex items-center gap-6 2xl:gap-9 flex-1">
           {leftNavKeys.map((item) => (
             <a key={item.href} href={item.href} className={linkClass}>
               {t(item.key)}
@@ -96,14 +96,14 @@ const Navbar = () => {
         >
           <Logo
             height={48}
-            className={`w-[170px] md:w-[210px] lg:w-[245px] h-auto transition-colors duration-500 ${
+            className={`w-[170px] md:w-[210px] xl:w-[245px] h-auto transition-colors duration-500 ${
               scrolled ? "text-foreground" : "text-primary-foreground"
             }`}
           />
         </a>
 
         {/* Desktop right nav + CTA + lang */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-9 flex-1 justify-end">
+        <div className="hidden xl:flex items-center gap-6 2xl:gap-9 flex-1 justify-end">
           {rightNavKeys.map((item) => (
             <a key={item.href} href={item.href} className={linkClass}>
               {t(item.key)}
@@ -121,7 +121,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile: lang + hamburger */}
-        <div className="lg:hidden flex items-center gap-4">
+        <div className="xl:hidden flex items-center gap-4">
           <LangSwitcher compact />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -142,7 +142,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-charcoal overflow-hidden"
+            className="xl:hidden bg-charcoal overflow-hidden"
           >
             <div className="px-8 py-10 space-y-1">
               {allNavKeys.map((item, i) => (
