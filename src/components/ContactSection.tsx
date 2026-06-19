@@ -9,7 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 const TYPOLOGIES = ["T2", "T3"] as const;
 
 const ContactSection = () => {
-  const { t, language } = useLanguage();
+  const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: "",
     salutation: "",
@@ -112,7 +112,7 @@ const ContactSection = () => {
   };
 
   const monthLabel = (m: number) => {
-    const locale = language === "pt" ? "pt-PT" : language === "es" ? "es-ES" : "en-US";
+    const locale = lang === "pt" ? "pt-PT" : lang === "es" ? "es-ES" : "en-US";
     return new Date(2000, m - 1, 1).toLocaleDateString(locale, { month: "long" });
   };
 
