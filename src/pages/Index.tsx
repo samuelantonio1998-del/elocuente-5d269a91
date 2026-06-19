@@ -1,5 +1,4 @@
 import { lazy, Suspense } from "react";
-import TipologiasSection from "@/components/TipologiasSection";
 
 import HeroSection from "@/components/HeroSection";
 import ProofNumbersSection from "@/components/ProofNumbersSection";
@@ -56,7 +55,6 @@ const Index = () => {
       <ApartmentSection />
       <CondominiumSection />
       <LifeAtSection />
-      <TipologiasSection />
       <Suspense fallback={<SectionFallback />}>
         <GallerySection />
       </Suspense>
