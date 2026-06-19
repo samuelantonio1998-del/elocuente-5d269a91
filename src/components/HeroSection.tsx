@@ -1,8 +1,12 @@
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { useRef } from "react";
-import heroAsset from "@/assets/hero-sketch.png.asset.json";
+import { motion, useScroll, useTransform, useReducedMotion, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import hero1 from "@/assets/hero-1.png.asset.json";
+import hero2 from "@/assets/hero-2.png.asset.json";
+import hero3 from "@/assets/hero-3.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
 import SplitText from "./motion/SplitText";
+
+const heroImages = [hero1.url, hero2.url, hero3.url];
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -16,17 +20,32 @@ const HeroSection = () => {
   const imgScale = useTransform(scrollYProgress, [0, 1], reduce ? [1.05, 1.05] : [1.05, 1.15]);
   const contentY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -40]);
 
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    if (reduce) return;
+    const id = setInterval(() => setIndex((i) => (i + 1) % heroImages.length), 6000);
+    return () => clearInterval(id);
+  }, [reduce]);
+
   return (
     <section ref={ref} id="hero" className="relative h-screen w-full overflow-hidden bg-charcoal">
-      <motion.img
-        src={heroAsset.url}
-        alt="Vista exterior do empreendimento Elocuente"
-        style={{ y: imgY, scale: imgScale }}
-        className="absolute inset-0 w-full h-full object-cover opacity-55 will-change-transform"
-        width={1920}
-        height={1080}
-        fetchPriority="high"
-      />
+      <AnimatePresence mode="sync">
+        <motion.img
+          key={index}
+          src={heroImages[index]}
+          alt="Vista exterior do empreendimento Elocuente"
+          style={{ y: imgY, scale: imgScale }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.55 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover will-change-transform"
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+        />
+      </AnimatePresence>
+
 
       {/* Top gradient — grounds the navbar */}
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-charcoal/85 via-charcoal/40 to-transparent" />
