@@ -47,7 +47,7 @@ const LifeAtSection = () => {
         <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden mb-20 md:mb-24 group">
           {images.map((src, i) => (
             <img
-              key={i}
+              key={src}
               src={src}
               alt="A Vida no Elocuente"
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
