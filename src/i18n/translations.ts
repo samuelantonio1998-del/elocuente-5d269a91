@@ -49,10 +49,10 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     // About
     "about.label": "O Empreendimento",
-    "about.title": "Viver entre a cidade e o mar",
+    "about.title": "Viver perto da cidade e do mar",
     "about.sub1": "Um novo empreendimento.",
     "about.p1": "O Elocuente é um novo empreendimento de residências premium em Albergaria, Marinha Grande, composto por dois blocos residenciais.",
-    "about.sub2": "Entre Leiria e o Atlântico.",
+    "about.sub2": "À porta do pinhal e do Atlântico.",
     "about.p2": "Combina a tranquilidade de uma zona residencial com a proximidade da cidade, dos serviços e das praias de São Pedro de Moel.",
     "about.sub3": "Arquitetura contemporânea.",
     "about.p3": "Áreas generosas e uma forte relação entre interior e exterior, pensada para diferentes estilos de vida.",
