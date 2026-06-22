@@ -733,7 +733,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     "location.label": "Ubicación",
     "location.title": "Albergaria, Marinha Grande",
-    "location.desc": "Entre el pinar de Leiria y las playas del Atlántico, Elocuente ofrece la serenidad de un pueblo portugués con la comodidad de los principales ejes del país.",
+    "location.desc": "A las puertas del pinar de Leiria y del Atlántico, Elocuente ofrece la serenidad de un pueblo portugués con la comodidad de los principales ejes del país.",
     "location.poi.beaches": "Playas de São Pedro de Moel y Vieira (Atlántico)",
     "location.poi.center": "Centro de Marinha Grande",
     "location.poi.leiria": "Leiria a ~15 minutos",
