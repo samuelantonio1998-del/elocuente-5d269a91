@@ -335,8 +335,8 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     "hero.badge": "In Licensing",
     "hero.name": "Elocuente",
-    "hero.tagline": "Between Leiria and the Atlantic",
-    "hero.title": "Between the Leiria pine forest and the Atlantic.",
+    "hero.tagline": "At the doorstep of the pine forest and the Atlantic",
+    "hero.title": "At the doorstep of the Leiria pine forest and the Atlantic.",
     "hero.tagline2": "Twenty-three premium-architecture residences, 2- and 3-bedroom.",
     "hero.location": "Albergaria · Marinha Grande",
     "hero.subtitle": "Twenty-three premium-architecture residences, 2- and 3-bedroom.",
