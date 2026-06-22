@@ -138,12 +138,12 @@ export const GUIDE_EN: GuideContent = {
   locale: "en",
   htmlLang: "en",
   path: "/guides/living-in-marinha-grande-leiria",
-  title: "Living between Leiria and the Atlantic",
+  title: "Living at the doorstep of the pine forest and the Atlantic",
   metaTitle: "Living in Marinha Grande and Leiria — 2026 guide | Elocuente",
   metaDescription:
-    "A practical guide to living between Leiria and the Atlantic: Marinha Grande, the Leiria Pine Forest, beaches, healthcare, schools, IRS Jovem, IFICI, NIF and buying property as a foreigner.",
+    "A practical guide to living at the doorstep of the Leiria pine forest and the Atlantic: Marinha Grande, the Leiria Pine Forest, beaches, healthcare, schools, IRS Jovem, IFICI, NIF and buying property as a foreigner.",
   heroEyebrow: "Guide · Central Portugal",
-  heroTitle: "Living between Leiria and the Atlantic",
+  heroTitle: "Living at the doorstep of the pine forest and the Atlantic",
   heroLead:
     "Marinha Grande sits between the city of Leiria and the Silver Coast, on a plateau covered by the Leiria Pine Forest. It is a rare place: minutes from work, beach and forest, with the calm of living outside the city.",
   publishedAt: "2026-06-08",
