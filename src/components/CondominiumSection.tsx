@@ -53,7 +53,7 @@ const CondominiumSection = () => {
         <div className="relative w-full aspect-[16/10] bg-muted overflow-hidden mb-20 md:mb-24 group">
           {images.map((img, i) => (
             <img
-              key={i}
+              key={img.src}
               src={img.src}
               alt={img.alt}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
