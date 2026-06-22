@@ -313,7 +313,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "nav.features": "Features",
     "nav.location": "Location",
     "nav.units": "Units",
-    "nav.availability": "Availability",
+    "nav.availability": "Typologies",
     "nav.gallery": "Gallery",
     "nav.project": "Project",
     "nav.contact": "Contact",
