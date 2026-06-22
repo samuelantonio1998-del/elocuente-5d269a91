@@ -606,7 +606,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "nav.features": "Características",
     "nav.location": "Ubicación",
     "nav.units": "Viviendas",
-    "nav.availability": "Disponibilidad",
+    "nav.availability": "Tipologías",
     "nav.gallery": "Galería",
     "nav.project": "Proyecto",
     "nav.contact": "Contacto",
