@@ -39,12 +39,6 @@ const LifeAtSection = () => {
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-2xl mx-auto">
               {t("life.desc")}
             </p>
-            <a
-              href="#disponibilidades"
-              className="inline-block mt-6 font-body text-[10px] tracking-[0.3em] uppercase text-foreground border-b border-foreground/30 hover:border-foreground pb-1 transition-colors"
-            >
-              {t("availability.title")}
-            </a>
           </AnimatedSection>
         </div>
       </div>

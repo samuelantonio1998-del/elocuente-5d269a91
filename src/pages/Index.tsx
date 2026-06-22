@@ -31,7 +31,7 @@ const Index = () => {
     <main className="scroll-smooth">
       <Seo
         title="Elocuente — Residências Premium em Marinha Grande"
-        description="Vinte e três residências premium T2 e T3 em Albergaria, Marinha Grande, entre o pinhal de Leiria e o Atlântico. Acabamentos em mármore e madeira nobre. Desde 320.000 €."
+        description="Vinte e três residências premium T2 e T3 em Albergaria, Marinha Grande, à porta do pinhal de Leiria e do Atlântico. Acabamentos em mármore e madeira nobre. Desde 320.000 €."
         path="/"
         image="/og-home.jpg"
       />
