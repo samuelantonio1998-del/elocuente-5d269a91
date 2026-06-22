@@ -353,10 +353,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proof.delivery": "Estimated delivery",
 
     "about.label": "The Development",
-    "about.title": "Living between the city and the sea",
+    "about.title": "Living close to the city and the sea",
     "about.sub1": "A new development.",
     "about.p1": "Elocuente is a new premium residential development in Albergaria, Marinha Grande, composed of two residential blocks.",
-    "about.sub2": "Between Leiria and the Atlantic.",
+    "about.sub2": "At the doorstep of the pine forest and the Atlantic.",
     "about.p2": "It combines the tranquility of a residential area with the proximity of the city, services, and the beaches of São Pedro de Moel.",
     "about.sub3": "Contemporary architecture.",
     "about.p3": "Generous areas and a strong relationship between interior and exterior, designed for different lifestyles.",
