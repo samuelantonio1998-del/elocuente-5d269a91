@@ -44,7 +44,7 @@ const AmenitiesSection = () => {
               <div className="md:col-span-3 h-[350px] md:h-[500px] overflow-hidden relative">
                 <AnimatePresence mode="wait">
                   <motion.img
-                    key={activeIndex}
+                    key={`${activeIndex}-${amenities[activeIndex].image}`}
                     src={amenities[activeIndex].image}
                     alt={amenities[activeIndex].label}
                     initial={{ opacity: 0 }}
