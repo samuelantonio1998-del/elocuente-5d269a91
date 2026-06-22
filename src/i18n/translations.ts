@@ -646,10 +646,10 @@ export const translations: Record<Lang, Record<string, string>> = {
     "proof.delivery": "Entrega prevista",
 
     "about.label": "La Promoción",
-    "about.title": "Vivir entre la ciudad y el mar",
+    "about.title": "Vivir cerca de la ciudad y del mar",
     "about.sub1": "Una nueva promoción.",
     "about.p1": "Elocuente es una nueva promoción de residencias premium en Albergaria, Marinha Grande, compuesta por dos bloques residenciales.",
-    "about.sub2": "Entre Leiria y el Atlántico.",
+    "about.sub2": "A las puertas del pinar y del Atlántico.",
     "about.p2": "Combina la tranquilidad de una zona residencial con la cercanía de la ciudad, los servicios y las playas de São Pedro de Moel.",
     "about.sub3": "Arquitectura contemporánea.",
     "about.p3": "Áreas generosas y una fuerte relación entre interior y exterior, pensada para diferentes estilos de vida.",
