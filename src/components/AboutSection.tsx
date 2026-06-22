@@ -34,17 +34,19 @@ const AboutSection = () => {
           duration={1.1}
           className="relative h-[50vh] lg:h-auto lg:min-h-[600px] overflow-hidden"
         >
-          {renders.map((src, i) => (
-            <img
-              key={src}
-              src={src}
-              alt="Render exterior do empreendimento Elocuente em Marinha Grande"
-              width={1600}
-              height={1200}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
-              loading={i === 0 ? "eager" : "lazy"}
-            />
-          ))}
+          {renders.map((image, i) =>
+            image.src && image.isResolved ? (
+              <img
+                key={image.renderKey}
+                src={image.src}
+                alt="Render exterior do empreendimento Elocuente em Marinha Grande"
+                width={1600}
+                height={1200}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
+                loading={i === 0 ? "eager" : "lazy"}
+              />
+            ) : null
+          )}
         </Reveal>
 
 

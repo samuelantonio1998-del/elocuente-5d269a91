@@ -22,6 +22,7 @@ const AmenitiesSection = () => {
     { label: t("amenities.balconies"), desc: t("amenities.balconies.desc"), image: imgBalconies },
     { label: t("amenities.security"), desc: t("amenities.security.desc"), image: imgSecurity },
   ];
+  const activeImage = amenities[activeIndex].image;
 
   return (
     <section id="amenidades" className="bg-charcoal text-primary-foreground">
@@ -42,19 +43,18 @@ const AmenitiesSection = () => {
           <AnimatedSection delay={0.1}>
             <div className="grid md:grid-cols-5 gap-0">
               <div className="md:col-span-3 h-[350px] md:h-[500px] overflow-hidden relative">
-                <AnimatePresence mode="wait">
+                {activeImage.src && activeImage.isResolved && (
                   <motion.img
-                    key={`${activeIndex}-${amenities[activeIndex].image}`}
-                    src={amenities[activeIndex].image}
+                    key={activeImage.renderKey}
+                    src={activeImage.src}
                     alt={amenities[activeIndex].label}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
                     className="w-full h-full object-cover absolute inset-0"
                     loading="lazy"
                   />
-                </AnimatePresence>
+                )}
                 <div className="absolute bottom-6 left-6 font-body text-[10px] tracking-[0.3em] text-primary-foreground/60">
                   {activeIndex + 1} / {amenities.length}
                 </div>

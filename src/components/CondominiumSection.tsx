@@ -15,9 +15,9 @@ const CondominiumSection = () => {
   const [current, setCurrent] = useState(0);
 
   const images = [
-    { src: c1, alt: "Espaços comuns do condomínio Elocuente — pátio ajardinado" },
-    { src: c2, alt: "Espaços comuns do condomínio Elocuente — entrada e percurso pedonal" },
-    { src: c3, alt: "Parqueamento subterrâneo do condomínio Elocuente" },
+    { image: c1, alt: "Espaços comuns do condomínio Elocuente — pátio ajardinado" },
+    { image: c2, alt: "Espaços comuns do condomínio Elocuente — entrada e percurso pedonal" },
+    { image: c3, alt: "Parqueamento subterrâneo do condomínio Elocuente" },
   ];
 
   const items = [
@@ -51,17 +51,19 @@ const CondominiumSection = () => {
 
       <AnimatedSection delay={0.1}>
         <div className="relative w-full aspect-[16/10] bg-muted overflow-hidden mb-20 md:mb-24 group">
-          {images.map((img, i) => (
-            <img
-              key={img.src}
-              src={img.src}
-              alt={img.alt}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                i === current ? "opacity-100" : "opacity-0"
-              }`}
-              loading="lazy"
-            />
-          ))}
+          {images.map((img, i) =>
+            img.image.src && img.image.isResolved ? (
+              <img
+                key={img.image.renderKey}
+                src={img.image.src}
+                alt={img.alt}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                  i === current ? "opacity-100" : "opacity-0"
+                }`}
+                loading="lazy"
+              />
+            ) : null
+          )}
 
           <button
             onClick={prev}

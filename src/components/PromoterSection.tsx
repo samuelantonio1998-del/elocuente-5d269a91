@@ -14,10 +14,10 @@ const PromoterSection = () => {
           duration={1.1}
           className="relative lg:min-h-[600px] overflow-hidden"
         >
-          {photo ? (
+          {photo.src && photo.isResolved ? (
             <img
-              key={photo}
-              src={photo}
+              key={photo.renderKey}
+              src={photo.src}
               alt="Fotografia do promotor do Elocuente"
               className="w-full h-full object-cover aspect-[3/4] lg:aspect-auto"
               loading="lazy"
