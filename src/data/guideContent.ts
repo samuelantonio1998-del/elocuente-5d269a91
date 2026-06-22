@@ -49,12 +49,12 @@ export const GUIDE_PT: GuideContent = {
   locale: "pt",
   htmlLang: "pt-PT",
   path: "/guia/viver-marinha-grande-leiria",
-  title: "Viver entre Leiria e o Atlântico",
+  title: "Viver à porta do pinhal e do Atlântico",
   metaTitle: "Viver na Marinha Grande e em Leiria — guia 2026 | Elocuente",
   metaDescription:
-    "Guia para viver entre Leiria e o Atlântico: Marinha Grande, Pinhal de Leiria, praias, saúde, educação, IRS Jovem, NIF e processo de compra para compradores estrangeiros.",
+    "Guia para viver à porta do pinhal de Leiria e do Atlântico: Marinha Grande, Pinhal de Leiria, praias, saúde, educação, IRS Jovem, NIF e processo de compra para compradores estrangeiros.",
   heroEyebrow: "Guia · Centro de Portugal",
-  heroTitle: "Viver entre Leiria e o Atlântico",
+  heroTitle: "Viver à porta do pinhal e do Atlântico",
   heroLead:
     "Marinha Grande fica entre a cidade de Leiria e a Costa de Prata, num planalto coberto pelo Pinhal de Leiria. É um sítio raro: à distância de minutos do trabalho, da praia e da floresta, com a calma de viver fora da cidade.",
   publishedAt: "2026-06-08",
