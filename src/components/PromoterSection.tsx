@@ -16,6 +16,7 @@ const PromoterSection = () => {
         >
           {photo ? (
             <img
+              key={photo}
               src={photo}
               alt="Fotografia do promotor do Elocuente"
               className="w-full h-full object-cover aspect-[3/4] lg:aspect-auto"
