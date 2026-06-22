@@ -30,8 +30,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Hero
     "hero.badge": "Em Licenciamento",
     "hero.name": "Elocuente",
-    "hero.tagline": "Entre Leiria e o Atlântico",
-    "hero.title": "Entre o pinhal de Leiria e o Atlântico.",
+    "hero.tagline": "À porta do pinhal e do Atlântico",
+    "hero.title": "À porta do pinhal de Leiria e do Atlântico.",
     "hero.tagline2": "Vinte e três residências de arquitetura premium, T2 e T3.",
     "hero.location": "Albergaria · Marinha Grande",
     "hero.subtitle": "Vinte e três residências de arquitetura premium, T2 e T3.",
