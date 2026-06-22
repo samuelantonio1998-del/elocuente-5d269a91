@@ -138,7 +138,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     // Location
     "location.label": "Localização",
     "location.title": "Albergaria, Marinha Grande",
-    "location.desc": "Entre o pinhal de Leiria e as praias do Atlântico, o Elocuente oferece a serenidade de uma vila portuguesa com a conveniência dos principais eixos do país.",
+    "location.desc": "À porta do pinhal de Leiria e do Atlântico, o Elocuente oferece a serenidade de uma vila portuguesa com a conveniência dos principais eixos do país.",
     "location.poi.beaches": "Praias de São Pedro de Moel e Vieira (Atlântico)",
     "location.poi.center": "Centro da Marinha Grande",
     "location.poi.leiria": "Leiria a ~15 minutos",
