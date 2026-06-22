@@ -22,6 +22,7 @@ const HeroSection = () => {
   return (
     <section ref={ref} id="hero" className="relative h-screen w-full overflow-hidden bg-charcoal">
       <motion.img
+        key={heroSrc}
         src={heroSrc}
         alt="Vista exterior do empreendimento Elocuente"
         style={{ y: imgY, scale: imgScale }}
