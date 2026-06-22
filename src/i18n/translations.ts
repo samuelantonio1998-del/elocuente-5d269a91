@@ -440,7 +440,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     "location.label": "Location",
     "location.title": "Albergaria, Marinha Grande",
-    "location.desc": "Between the Leiria pine forest and the Atlantic beaches, Elocuente offers the serenity of a Portuguese village with the convenience of the country's main routes.",
+    "location.desc": "At the doorstep of the Leiria pine forest and the Atlantic, Elocuente offers the serenity of a Portuguese village with the convenience of the country's main routes.",
     "location.poi.beaches": "São Pedro de Moel and Vieira beaches (Atlantic)",
     "location.poi.center": "Marinha Grande city centre",
     "location.poi.leiria": "Leiria ~15 minutes away",
