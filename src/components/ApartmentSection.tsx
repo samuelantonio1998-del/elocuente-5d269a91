@@ -47,16 +47,18 @@ const ApartmentSection = () => {
 
       <AnimatedSection delay={0.1}>
         <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden mb-20 md:mb-24 group">
-          {images.map((src, i) => (
-            <img
-              key={src}
-              src={src}
-              alt={`Apartamento ${i + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                i === index ? "opacity-100" : "opacity-0"
-              }`}
-            />
-          ))}
+          {images.map((image, i) =>
+            image.src && image.isResolved ? (
+              <img
+                key={image.renderKey}
+                src={image.src}
+                alt={`Apartamento ${i + 1}`}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                  i === index ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ) : null
+          )}
           <button
             onClick={prev}
             aria-label="Anterior"

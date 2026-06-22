@@ -8,7 +8,7 @@ import { useSiteImage } from "@/hooks/useSiteImages";
 
 const HeroSection = () => {
   const { t } = useLanguage();
-  const heroSrc = useSiteImage("hero.main", heroAsset.url);
+  const heroImage = useSiteImage("hero.main", heroAsset.url);
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion() ?? false;
   const { scrollYProgress } = useScroll({
@@ -21,16 +21,18 @@ const HeroSection = () => {
 
   return (
     <section ref={ref} id="hero" className="relative h-screen w-full overflow-hidden bg-charcoal">
-      <motion.img
-        key={heroSrc}
-        src={heroSrc}
-        alt="Vista exterior do empreendimento Elocuente"
-        style={{ y: imgY, scale: imgScale }}
-        className="absolute inset-0 w-full h-full object-cover opacity-55 will-change-transform"
-        width={1920}
-        height={1080}
-        fetchPriority="high"
-      />
+      {heroImage.src && heroImage.isResolved && (
+        <motion.img
+          key={heroImage.renderKey}
+          src={heroImage.src}
+          alt="Vista exterior do empreendimento Elocuente"
+          style={{ y: imgY, scale: imgScale }}
+          className="absolute inset-0 w-full h-full object-cover opacity-55 will-change-transform"
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+        />
+      )}
 
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-charcoal/85 via-charcoal/40 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-charcoal/85 via-charcoal/40 to-transparent" />

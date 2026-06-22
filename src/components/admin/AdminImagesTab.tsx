@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import { Upload, RotateCcw, Loader2 } from "lucide-react";
 import { SITE_IMAGES, SITE_IMAGE_SECTIONS } from "@/lib/siteImagesRegistry";
-import { useSiteImagesContext } from "@/hooks/useSiteImages";
+import { useSiteImage, useSiteImagesContext } from "@/hooks/useSiteImages";
 
 const MAX_BYTES = 25 * 1024 * 1024; // 25MB
 
@@ -18,8 +18,29 @@ type Row = {
   alt: string | null;
 };
 
+const AdminImagePreview = ({ imageKey, label }: { imageKey: string; label: string }) => {
+  const image = useSiteImage(imageKey, "");
+
+  if (!image.src || !image.isResolved) {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
+        Original
+      </div>
+    );
+  }
+
+  return (
+    <img
+      key={image.renderKey}
+      src={image.src}
+      alt={label}
+      className="w-full h-full object-cover"
+    />
+  );
+};
+
 const AdminImagesTab = () => {
-  const { map, refresh } = useSiteImagesContext();
+  const { refresh } = useSiteImagesContext();
   const [rows, setRows] = useState<Record<string, Row>>({});
   const [loading, setLoading] = useState(true);
   const [busyKey, setBusyKey] = useState<string | null>(null);
@@ -80,13 +101,14 @@ const AdminImagesTab = () => {
         }, { onConflict: "key" });
       if (dbErr) throw dbErr;
 
+      await refresh({ [key]: path });
+
       if (prev && prev !== path) {
         await supabase.storage.from("site-images").remove([prev]);
       }
 
       toast({ title: "Imagem atualizada", description: label });
       await load();
-      await refresh();
     } catch (e: any) {
       toast({ title: "Falha no upload", description: e.message, variant: "destructive" });
     } finally {
@@ -103,10 +125,10 @@ const AdminImagesTab = () => {
       const prev = rows[key]?.storage_path;
       const { error } = await supabase.from("site_images").delete().eq("key", key);
       if (error) throw error;
+      await refresh({ [key]: null });
       if (prev) await supabase.storage.from("site-images").remove([prev]);
       toast({ title: "Reposto", description: `${label} voltou à imagem original.` });
       await load();
-      await refresh();
     } catch (e: any) {
       toast({ title: "Falha", description: e.message, variant: "destructive" });
     } finally {
@@ -138,23 +160,12 @@ const AdminImagesTab = () => {
             {entries.map((entry) => {
               const row = rows[entry.key];
               const hasOverride = !!row?.storage_path;
-              const previewUrl = map[entry.key];
               const isBusy = busyKey === entry.key;
 
               return (
                 <div key={entry.key} className="border border-border rounded-md overflow-hidden bg-background">
                   <div className="relative aspect-[4/3] bg-muted">
-                    {previewUrl ? (
-                      <img
-                        src={previewUrl}
-                        alt={entry.label}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
-                        Original
-                      </div>
-                    )}
+                    <AdminImagePreview imageKey={entry.key} label={entry.label} />
                     {hasOverride && (
                       <span className="absolute top-2 right-2 text-[9px] tracking-[0.2em] uppercase bg-gold text-charcoal px-2 py-0.5">
                         Personalizada
