@@ -628,8 +628,8 @@ export const translations: Record<Lang, Record<string, string>> = {
 
     "hero.badge": "En Licencia",
     "hero.name": "Elocuente",
-    "hero.tagline": "Entre Leiria y el Atlántico",
-    "hero.title": "Entre el pinar de Leiria y el Atlántico.",
+    "hero.tagline": "A las puertas del pinar y del Atlántico",
+    "hero.title": "A las puertas del pinar de Leiria y del Atlántico.",
     "hero.tagline2": "Veintitrés residencias de arquitectura premium, de 2 y 3 dormitorios.",
     "hero.location": "Albergaria · Marinha Grande",
     "hero.subtitle": "Veintitrés residencias de arquitectura premium, de 2 y 3 dormitorios.",
