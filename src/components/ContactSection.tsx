@@ -259,7 +259,43 @@ const ContactSection = () => {
                     );
                   })}
                 </div>
+
+                {typologies.length > 0 && (
+                  <div className="mt-6">
+                    <p className="font-body text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-3">
+                      {t("contact.unit")}
+                    </p>
+                    {availableUnits.length > 0 ? (
+                      <div className="flex gap-2 flex-wrap" role="group" aria-label={t("contact.unit")}>
+                        {availableUnits.map((id) => {
+                          const active = selectedUnit === id;
+                          return (
+                            <button
+                              key={id}
+                              type="button"
+                              onClick={() => setSelectedUnit(active ? null : id)}
+                              aria-pressed={active}
+                              className={`min-w-[3.5rem] px-3 py-2 font-body text-[11px] tracking-[0.15em] uppercase border transition-all ${
+                                active
+                                  ? "bg-gold text-charcoal border-gold"
+                                  : "bg-transparent text-muted-foreground border-border hover:border-foreground/40"
+                              }`}
+                            >
+                              {id}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <p className="font-body text-xs text-muted-foreground leading-relaxed">
+                        {t("contact.noUnits").replace("{typology}", typologies.join(" / "))}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
+
+
 
               <textarea
                 placeholder={t("contact.message")}
