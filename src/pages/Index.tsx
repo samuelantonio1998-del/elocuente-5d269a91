@@ -54,7 +54,16 @@ const Index = () => {
       <ApartmentSection />
       <CondominiumSection />
       <LifeAtSection />
-      <unknown: 
+      <Suspense fallback={<SectionFallback />}>
+        <GallerySection />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <AvailabilitySection />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <PhasesSection />
+      </Suspense>
+      <ContactSection />
       <Footer />
       <WhatsAppFAB />
     </main>
