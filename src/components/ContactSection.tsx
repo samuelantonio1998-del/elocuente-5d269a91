@@ -1,12 +1,15 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useMemo, useEffect } from "react";
 
 import AnimatedSection from "./AnimatedSection";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
+import { useUnits } from "@/hooks/useUnits";
+import { useReservedUnits } from "@/hooks/useReservedUnits";
 
 const TYPOLOGIES = ["T2", "T3"] as const;
+type Typology = (typeof TYPOLOGIES)[number];
 
 const ContactSection = () => {
   const { t } = useLanguage();
