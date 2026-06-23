@@ -27,6 +27,33 @@ const ContactSection = () => {
   const [typologies, setTypologies] = useState<string[]>([]);
   const [accepted, setAccepted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [selectedUnit, setSelectedUnit] = useState<string | null>(null);
+
+  const { units } = useUnits();
+  const reservedIds = useReservedUnits();
+
+  const availableByType = useMemo(() => {
+    const map: Record<Typology, string[]> = { T2: [], T3: [] };
+    for (const u of units) {
+      if (u.status !== "available") continue;
+      if (reservedIds.has(u.id)) continue;
+      if (u.type === "T2" || u.type === "T3") map[u.type].push(u.id);
+    }
+    return map;
+  }, [units, reservedIds]);
+
+  const availableUnits = useMemo(() => {
+    const types = (typologies.length ? typologies : []) as Typology[];
+    const ids = types.flatMap((t) => availableByType[t] ?? []);
+    return Array.from(new Set(ids));
+  }, [typologies, availableByType]);
+
+  // Clear selected unit when typologies change and it's no longer available
+  useEffect(() => {
+    if (selectedUnit && !availableUnits.includes(selectedUnit)) {
+      setSelectedUnit(null);
+    }
+  }, [availableUnits, selectedUnit]);
 
   const schema = z.object({
     fullName: z.string().trim().min(1).max(160),
@@ -69,8 +96,9 @@ const ContactSection = () => {
         city: parsed.data.city || null,
         country: parsed.data.country || null,
         typology: typologies.length ? typologies.join(", ") : null,
+        fracao_interesse: selectedUnit,
         message: parsed.data.message || null,
-      });
+      } as any);
       if (error) throw error;
 
       toast.success(t("contact.success"));
@@ -80,6 +108,7 @@ const ContactSection = () => {
         email: "", phone: "", message: "",
       });
       setTypologies([]);
+      setSelectedUnit(null);
       setAccepted(false);
     } catch (err) {
       console.error("Contact form submission error:", err);
