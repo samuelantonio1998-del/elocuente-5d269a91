@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { units as fallback, type Unit, type UnitStatus } from "@/data/units";
 
 export function useUnits() {
   const [units, setUnits] = useState<Unit[]>(fallback);
   const [loading, setLoading] = useState(true);
+
+  const channelRef = useRef<string | null>(null);
+  if (!channelRef.current) {
+    channelRef.current = `units-changes-${Math.random().toString(36).slice(2, 9)}`;
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -38,8 +43,9 @@ export function useUnits() {
 
     load();
 
+    const channelName = channelRef.current!;
     const channel = supabase
-      .channel("units-changes")
+      .channel(channelName)
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "units" },

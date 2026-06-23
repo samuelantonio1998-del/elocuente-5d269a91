@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
 const KEY = "show_unit_prices";
@@ -6,6 +6,11 @@ const KEY = "show_unit_prices";
 export const useShowPrices = () => {
   const [show, setShow] = useState<boolean>(true);
   const [loading, setLoading] = useState(true);
+
+  const channelRef = useRef<string | null>(null);
+  if (!channelRef.current) {
+    channelRef.current = `app_settings_show_prices-${Math.random().toString(36).slice(2, 9)}`;
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -21,8 +26,9 @@ export const useShowPrices = () => {
       }
     })();
 
+    const channelName = channelRef.current!;
     const channel = supabase
-      .channel("app_settings_show_prices")
+      .channel(channelName)
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "app_settings", filter: `key=eq.${KEY}` },
