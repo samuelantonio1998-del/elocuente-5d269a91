@@ -7,6 +7,11 @@ export const useShowPrices = () => {
   const [show, setShow] = useState<boolean>(true);
   const [loading, setLoading] = useState(true);
 
+  const channelRef = useRef<string | null>(null);
+  if (!channelRef.current) {
+    channelRef.current = `app_settings_show_prices-${Math.random().toString(36).slice(2, 9)}`;
+  }
+
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -21,8 +26,9 @@ export const useShowPrices = () => {
       }
     })();
 
+    const channelName = channelRef.current!;
     const channel = supabase
-      .channel("app_settings_show_prices")
+      .channel(channelName)
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "app_settings", filter: `key=eq.${KEY}` },
