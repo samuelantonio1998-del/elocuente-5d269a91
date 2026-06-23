@@ -1,0 +1,1 @@
+ALTER TABLE public.contact_leads ADD COLUMN IF NOT EXISTS fracao_interesse text;

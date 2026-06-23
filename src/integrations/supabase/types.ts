@@ -41,6 +41,7 @@ export type Database = {
           country: string | null
           created_at: string
           email: string
+          fracao_interesse: string | null
           gender: string | null
           id: string
           message: string | null
@@ -58,6 +59,7 @@ export type Database = {
           country?: string | null
           created_at?: string
           email: string
+          fracao_interesse?: string | null
           gender?: string | null
           id?: string
           message?: string | null
@@ -75,6 +77,7 @@ export type Database = {
           country?: string | null
           created_at?: string
           email?: string
+          fracao_interesse?: string | null
           gender?: string | null
           id?: string
           message?: string | null

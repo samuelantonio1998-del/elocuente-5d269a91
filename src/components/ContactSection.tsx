@@ -1,12 +1,15 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useMemo, useEffect } from "react";
 
 import AnimatedSection from "./AnimatedSection";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
+import { useUnits } from "@/hooks/useUnits";
+import { useReservedUnits } from "@/hooks/useReservedUnits";
 
 const TYPOLOGIES = ["T2", "T3"] as const;
+type Typology = (typeof TYPOLOGIES)[number];
 
 const ContactSection = () => {
   const { t } = useLanguage();
@@ -24,6 +27,33 @@ const ContactSection = () => {
   const [typologies, setTypologies] = useState<string[]>([]);
   const [accepted, setAccepted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [selectedUnit, setSelectedUnit] = useState<string | null>(null);
+
+  const { units } = useUnits();
+  const reservedIds = useReservedUnits();
+
+  const availableByType = useMemo(() => {
+    const map: Record<Typology, string[]> = { T2: [], T3: [] };
+    for (const u of units) {
+      if (u.status !== "available") continue;
+      if (reservedIds.has(u.id)) continue;
+      if (u.type === "T2" || u.type === "T3") map[u.type].push(u.id);
+    }
+    return map;
+  }, [units, reservedIds]);
+
+  const availableUnits = useMemo(() => {
+    const types = (typologies.length ? typologies : []) as Typology[];
+    const ids = types.flatMap((t) => availableByType[t] ?? []);
+    return Array.from(new Set(ids));
+  }, [typologies, availableByType]);
+
+  // Clear selected unit when typologies change and it's no longer available
+  useEffect(() => {
+    if (selectedUnit && !availableUnits.includes(selectedUnit)) {
+      setSelectedUnit(null);
+    }
+  }, [availableUnits, selectedUnit]);
 
   const schema = z.object({
     fullName: z.string().trim().min(1).max(160),
@@ -66,8 +96,9 @@ const ContactSection = () => {
         city: parsed.data.city || null,
         country: parsed.data.country || null,
         typology: typologies.length ? typologies.join(", ") : null,
+        fracao_interesse: selectedUnit,
         message: parsed.data.message || null,
-      });
+      } as any);
       if (error) throw error;
 
       toast.success(t("contact.success"));
@@ -77,6 +108,7 @@ const ContactSection = () => {
         email: "", phone: "", message: "",
       });
       setTypologies([]);
+      setSelectedUnit(null);
       setAccepted(false);
     } catch (err) {
       console.error("Contact form submission error:", err);
@@ -227,7 +259,43 @@ const ContactSection = () => {
                     );
                   })}
                 </div>
+
+                {typologies.length > 0 && (
+                  <div className="mt-6">
+                    <p className="font-body text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-3">
+                      {t("contact.unit")}
+                    </p>
+                    {availableUnits.length > 0 ? (
+                      <div className="flex gap-2 flex-wrap" role="group" aria-label={t("contact.unit")}>
+                        {availableUnits.map((id) => {
+                          const active = selectedUnit === id;
+                          return (
+                            <button
+                              key={id}
+                              type="button"
+                              onClick={() => setSelectedUnit(active ? null : id)}
+                              aria-pressed={active}
+                              className={`min-w-[3.5rem] px-3 py-2 font-body text-[11px] tracking-[0.15em] uppercase border transition-all ${
+                                active
+                                  ? "bg-gold text-charcoal border-gold"
+                                  : "bg-transparent text-muted-foreground border-border hover:border-foreground/40"
+                              }`}
+                            >
+                              {id}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <p className="font-body text-xs text-muted-foreground leading-relaxed">
+                        {t("contact.noUnits").replace("{typology}", typologies.join(" / "))}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
+
+
 
               <textarea
                 placeholder={t("contact.message")}
