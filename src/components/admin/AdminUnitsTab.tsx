@@ -44,7 +44,9 @@ const AdminUnitsTab = () => {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploadingId, setUploadingId] = useState<string | null>(null);
+  const [uploadingImgId, setUploadingImgId] = useState<string | null>(null);
   const fileInputs = useRef<Record<string, HTMLInputElement | null>>({});
+  const imgInputs = useRef<Record<string, HTMLInputElement | null>>({});
   const { showPrices, setShowPrices } = useShowPrices();
   const { showReserve, setShowReserve } = useShowReserve();
 
