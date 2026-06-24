@@ -17,7 +17,12 @@ const Navbar = () => {
       transition={{ duration: 1, delay: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50 bg-transparent"
     >
-      <div className="w-full px-6 sm:px-8 lg:px-12 flex items-center justify-end h-20 lg:h-24 gap-4 sm:gap-6">
+      <div className="w-full px-6 sm:px-8 lg:px-12 flex items-center justify-between h-20 lg:h-24 gap-4 sm:gap-6">
+        <img
+          src="/elocuente-261-logo.png"
+          alt="Elocuente 261"
+          className="h-5 sm:h-6 w-auto invert"
+        />
         {/* Language selector */}
         <div className="flex items-center gap-3 sm:gap-4">
           {langs.map(({ code, label }) => (

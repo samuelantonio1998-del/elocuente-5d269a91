@@ -6,17 +6,17 @@ interface LogoProps {
 }
 
 /**
- * ELOCUENTE wordmark — geometric light sans-serif with the three "E" letters
+ * ELOCUENTE 261 wordmark — geometric light sans-serif with the three "E" letters
  * rendered as three horizontal bars (no vertical stem), matching the brand
- * "Conceito C" identity.
+ * "Conceito C" identity. Numbers follow the same wire-thin line language.
  *
  * Color is inherited via `currentColor` so it adapts to text color utilities.
  */
-const Logo = ({ className = "", height = 28, title = "Elocuente" }: LogoProps) => {
-  // ViewBox tuned so the wordmark sits on a 60-unit-tall baseline grid.
+const Logo = ({ className = "", height = 28, title = "Elocuente 261" }: LogoProps) => {
+  // ViewBox tuned so the wordmark + 261 sits on a 60-unit-tall baseline grid.
   return (
     <svg
-      viewBox="0 0 520 60"
+      viewBox="0 0 680 60"
       height={height}
       role="img"
       aria-label={title}
@@ -62,6 +62,17 @@ const Logo = ({ className = "", height = 28, title = "Elocuente" }: LogoProps) =
         <line x1="436" y1="10" x2="466" y2="10" />
         <line x1="436" y1="30" x2="460" y2="30" />
         <line x1="436" y1="50" x2="466" y2="50" />
+
+        {/* 261 — same thin-line language */}
+        {/* 2 */}
+        <path d="M 526 10 Q 556 10 556 25 Q 556 40 526 40 L 556 40" />
+
+        {/* 6 */}
+        <ellipse cx="596" cy="30" rx="16" ry="20" />
+        <line x1="596" y1="10" x2="596" y2="30" />
+
+        {/* 1 */}
+        <line x1="636" y1="10" x2="636" y2="50" />
       </g>
     </svg>
   );
