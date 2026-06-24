@@ -209,6 +209,7 @@ export type Database = {
           id: string
           orientation: string
           parking: number
+          planta_img_path: string | null
           price: number | null
           sort_order: number
           status: string
@@ -223,6 +224,7 @@ export type Database = {
           id: string
           orientation: string
           parking?: number
+          planta_img_path?: string | null
           price?: number | null
           sort_order?: number
           status?: string
@@ -237,6 +239,7 @@ export type Database = {
           id?: string
           orientation?: string
           parking?: number
+          planta_img_path?: string | null
           price?: number | null
           sort_order?: number
           status?: string
