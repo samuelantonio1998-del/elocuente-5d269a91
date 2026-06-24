@@ -9,7 +9,7 @@ import { getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
 import { useUnits } from "@/hooks/useUnits";
 import { useShowPrices } from "@/hooks/useShowPrices";
 import { useShowReserve } from "@/hooks/useShowReserve";
-import { openFloorPlan } from "@/lib/floorPlan";
+import FloorPlanLightbox from "./FloorPlanLightbox";
 
 const AvailabilitySection = () => {
   const { t } = useLanguage();
