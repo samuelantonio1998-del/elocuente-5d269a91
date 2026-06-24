@@ -155,6 +155,41 @@ const AdminUnitsTab = () => {
     toast({ title: `Planta de ${id} removida` });
   };
 
+  const handleImage = async (id: string, file: File, prevPath: string | null) => {
+    if (!/^image\/(jpe?g|png|webp)$/i.test(file.type)) {
+      toast({ title: "Só são permitidas imagens (JPEG/PNG/WebP)", variant: "destructive" });
+      return;
+    }
+    if (file.size > 15 * 1024 * 1024) {
+      toast({ title: "Imagem demasiado grande (máx. 15MB)", variant: "destructive" });
+      return;
+    }
+    setUploadingImgId(id);
+    const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
+    const path = `units/${id}-${Date.now()}.${ext}`;
+    const { error: upErr } = await supabase.storage
+      .from("floor-plans")
+      .upload(path, file, { upsert: false, contentType: file.type, cacheControl: "3600" });
+    if (upErr) {
+      toast({ title: "Erro no upload", description: upErr.message, variant: "destructive" });
+      setUploadingImgId(null);
+      return;
+    }
+    const ok = await patch(id, { planta_img_path: path });
+    if (ok && prevPath && prevPath !== path) {
+      await supabase.storage.from("floor-plans").remove([prevPath]);
+    }
+    toast({ title: `Imagem da planta de ${id} carregada` });
+    setUploadingImgId(null);
+  };
+
+  const removeImage = async (id: string, path: string) => {
+    if (!confirm(`Remover a imagem da planta da fracção ${id}?`)) return;
+    await supabase.storage.from("floor-plans").remove([path]);
+    await patch(id, { planta_img_path: null });
+    toast({ title: `Imagem da planta de ${id} removida` });
+  };
+
   if (loading) {
     return <p className="text-sm text-muted-foreground">A carregar…</p>;
   }
