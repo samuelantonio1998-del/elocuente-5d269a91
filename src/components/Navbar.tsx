@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
+import Logo from "@/components/Logo";
 
 const Navbar = () => {
   const { t, lang, setLang } = useLanguage();
