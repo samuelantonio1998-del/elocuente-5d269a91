@@ -245,6 +245,7 @@ const AdminUnitsTab = () => {
           {rows.map((r) => {
             const computed = getUnitPrice({ area: r.area, price: null });
             const uploading = uploadingId === r.id;
+            const uploadingImg = uploadingImgId === r.id;
             return (
               <TableRow key={r.id}>
                 <TableCell className="font-medium">{r.id}</TableCell>
