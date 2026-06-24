@@ -28,6 +28,7 @@ interface Row {
   sort_order: number;
   price: number | null;
   floor_plan_url: string | null;
+  planta_img_path: string | null;
 }
 
 const STATUS_OPTIONS: UnitStatus[] = ["available", "reserved", "sold"];
