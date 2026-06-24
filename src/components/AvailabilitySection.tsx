@@ -21,6 +21,7 @@ const AvailabilitySection = () => {
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [paymentOpen, setPaymentOpen] = useState(false);
+  const [planUnit, setPlanUnit] = useState<Unit | null>(null);
   const { units } = useUnits();
 
   const filtered = units.filter((u) => {
