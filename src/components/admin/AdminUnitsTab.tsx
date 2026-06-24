@@ -308,6 +308,37 @@ const AdminUnitsTab = () => {
                   )}
                 </TableCell>
                 <TableCell>
+                  <input
+                    ref={(el) => (imgInputs.current[r.id] = el)}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    className="hidden"
+                    onChange={(e) => {
+                      const f = e.target.files?.[0];
+                      if (f) handleImage(r.id, f, r.planta_img_path);
+                      e.target.value = "";
+                    }}
+                  />
+                  {r.planta_img_path ? (
+                    <div className="flex items-center gap-1">
+                      <span className="font-mono text-[10px] text-muted-foreground truncate max-w-[110px]" title={r.planta_img_path}>
+                        {r.planta_img_path.split("/").pop()}
+                      </span>
+                      <Button size="sm" variant="outline" onClick={() => imgInputs.current[r.id]?.click()} disabled={uploadingImg} className="h-8 px-2">
+                        {uploadingImg ? <Loader2 className="size-3.5 animate-spin" /> : <Upload className="size-3.5" />}
+                      </Button>
+                      <Button size="sm" variant="ghost" onClick={() => removeImage(r.id, r.planta_img_path!)} className="h-8 px-2 text-destructive">
+                        <Trash2 className="size-3.5" />
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button size="sm" variant="outline" onClick={() => imgInputs.current[r.id]?.click()} disabled={uploadingImg} className="h-8">
+                      {uploadingImg ? <Loader2 className="size-3.5 mr-1 animate-spin" /> : <ImageIcon className="size-3.5 mr-1" />}
+                      Carregar imagem
+                    </Button>
+                  )}
+                </TableCell>
+                <TableCell>
                   <Select value={r.status} onValueChange={(v) => updateStatus(r.id, v as UnitStatus)}>
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
