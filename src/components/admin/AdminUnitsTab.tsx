@@ -237,6 +237,7 @@ const AdminUnitsTab = () => {
             <TableHead className="w-[120px]">ABP</TableHead>
             <TableHead className="w-[160px]">Preço (€)</TableHead>
             <TableHead className="w-[220px]">Planta (PDF)</TableHead>
+            <TableHead className="w-[240px]">Planta (Imagem)</TableHead>
             <TableHead className="w-[170px]">Estado</TableHead>
           </TableRow>
         </TableHeader>
