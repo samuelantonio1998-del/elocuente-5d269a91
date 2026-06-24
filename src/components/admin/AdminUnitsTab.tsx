@@ -15,7 +15,7 @@ import { getUnitPrice, type UnitStatus } from "@/data/units";
 import { useShowPrices } from "@/hooks/useShowPrices";
 import { useShowReserve } from "@/hooks/useShowReserve";
 import { Switch } from "@/components/ui/switch";
-import { Upload, FileText, Trash2, Loader2 } from "lucide-react";
+import { Upload, FileText, Trash2, Loader2, Image as ImageIcon } from "lucide-react";
 
 interface Row {
   id: string;
