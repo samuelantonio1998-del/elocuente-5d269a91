@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
+import Logo from "@/components/Logo";
 
 const Navbar = () => {
   const { t, lang, setLang } = useLanguage();
@@ -17,7 +18,8 @@ const Navbar = () => {
       transition={{ duration: 1, delay: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50 bg-transparent"
     >
-      <div className="w-full px-6 sm:px-8 lg:px-12 flex items-center justify-end h-20 lg:h-24 gap-4 sm:gap-6">
+      <div className="w-full px-6 sm:px-8 lg:px-12 flex items-center justify-between h-20 lg:h-24 gap-4 sm:gap-6">
+        <Logo height={22} className="text-white" />
         {/* Language selector */}
         <div className="flex items-center gap-3 sm:gap-4">
           {langs.map(({ code, label }) => (
