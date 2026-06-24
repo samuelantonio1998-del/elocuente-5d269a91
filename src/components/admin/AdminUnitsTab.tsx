@@ -53,7 +53,7 @@ const AdminUnitsTab = () => {
   const load = async () => {
     const { data, error } = await supabase
       .from("units")
-      .select("id,building,floor,type,area,orientation,status,sort_order,price,floor_plan_url")
+      .select("id,building,floor,type,area,orientation,status,sort_order,price,floor_plan_url,planta_img_path")
       .order("sort_order", { ascending: true });
     if (error) {
       toast({ title: "Erro ao carregar fracções", description: error.message, variant: "destructive" });
