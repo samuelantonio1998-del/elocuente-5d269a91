@@ -256,9 +256,9 @@ const AvailabilitySection = () => {
                       </div>
                     ) : <div />}
                     <div className="flex items-center gap-2">
-                      {unit.floorPlanUrl ? (
+                      {unit.plantaImgPath ? (
                         <button
-                          onClick={() => openFloorPlan(unit.floorPlanUrl!)}
+                          onClick={() => setPlanUnit(unit)}
                           className="inline-flex items-center gap-1.5 px-2.5 py-1 font-body text-[9px] tracking-[0.1em] uppercase text-foreground border border-foreground/30 hover:bg-foreground hover:text-background transition-colors"
                         >
                           <FileText size={11} strokeWidth={1.5} />
