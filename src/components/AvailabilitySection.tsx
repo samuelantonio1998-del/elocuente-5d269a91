@@ -153,9 +153,9 @@ const AvailabilitySection = () => {
                         </td>
                       )}
                       <td className="py-4 px-3">
-                        {unit.floorPlanUrl ? (
+                        {unit.plantaImgPath ? (
                           <button
-                            onClick={() => openFloorPlan(unit.floorPlanUrl!)}
+                            onClick={() => setPlanUnit(unit)}
                             className="inline-flex items-center gap-1.5 px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase text-foreground border border-foreground/30 hover:bg-foreground hover:text-background transition-colors"
                           >
                             <FileText size={12} strokeWidth={1.5} />
