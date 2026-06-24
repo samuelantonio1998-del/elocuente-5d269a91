@@ -297,6 +297,12 @@ const AvailabilitySection = () => {
         onOpenChange={setDialogOpen}
       />
       <PaymentTermsDialog open={paymentOpen} onOpenChange={setPaymentOpen} />
+      <FloorPlanLightbox
+        storagePath={planUnit?.plantaImgPath ?? null}
+        unitId={planUnit?.id}
+        open={!!planUnit}
+        onClose={() => setPlanUnit(null)}
+      />
     </section>
   );
 };
