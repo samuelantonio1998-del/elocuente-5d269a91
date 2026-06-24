@@ -9,7 +9,7 @@ import { getUnitPrice, type Unit, type UnitStatus } from "@/data/units";
 import { useUnits } from "@/hooks/useUnits";
 import { useShowPrices } from "@/hooks/useShowPrices";
 import { useShowReserve } from "@/hooks/useShowReserve";
-import { openFloorPlan } from "@/lib/floorPlan";
+import FloorPlanLightbox from "./FloorPlanLightbox";
 
 const AvailabilitySection = () => {
   const { t } = useLanguage();
@@ -21,6 +21,7 @@ const AvailabilitySection = () => {
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [paymentOpen, setPaymentOpen] = useState(false);
+  const [planUnit, setPlanUnit] = useState<Unit | null>(null);
   const { units } = useUnits();
 
   const filtered = units.filter((u) => {
@@ -152,9 +153,9 @@ const AvailabilitySection = () => {
                         </td>
                       )}
                       <td className="py-4 px-3">
-                        {unit.floorPlanUrl ? (
+                        {unit.plantaImgPath ? (
                           <button
-                            onClick={() => openFloorPlan(unit.floorPlanUrl!)}
+                            onClick={() => setPlanUnit(unit)}
                             className="inline-flex items-center gap-1.5 px-3 py-1 font-body text-[10px] tracking-[0.15em] uppercase text-foreground border border-foreground/30 hover:bg-foreground hover:text-background transition-colors"
                           >
                             <FileText size={12} strokeWidth={1.5} />
@@ -255,9 +256,9 @@ const AvailabilitySection = () => {
                       </div>
                     ) : <div />}
                     <div className="flex items-center gap-2">
-                      {unit.floorPlanUrl ? (
+                      {unit.plantaImgPath ? (
                         <button
-                          onClick={() => openFloorPlan(unit.floorPlanUrl!)}
+                          onClick={() => setPlanUnit(unit)}
                           className="inline-flex items-center gap-1.5 px-2.5 py-1 font-body text-[9px] tracking-[0.1em] uppercase text-foreground border border-foreground/30 hover:bg-foreground hover:text-background transition-colors"
                         >
                           <FileText size={11} strokeWidth={1.5} />
@@ -296,6 +297,12 @@ const AvailabilitySection = () => {
         onOpenChange={setDialogOpen}
       />
       <PaymentTermsDialog open={paymentOpen} onOpenChange={setPaymentOpen} />
+      <FloorPlanLightbox
+        storagePath={planUnit?.plantaImgPath ?? null}
+        unitId={planUnit?.id}
+        open={!!planUnit}
+        onClose={() => setPlanUnit(null)}
+      />
     </section>
   );
 };

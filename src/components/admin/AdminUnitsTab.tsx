@@ -15,7 +15,7 @@ import { getUnitPrice, type UnitStatus } from "@/data/units";
 import { useShowPrices } from "@/hooks/useShowPrices";
 import { useShowReserve } from "@/hooks/useShowReserve";
 import { Switch } from "@/components/ui/switch";
-import { Upload, FileText, Trash2, Loader2 } from "lucide-react";
+import { Upload, FileText, Trash2, Loader2, Image as ImageIcon } from "lucide-react";
 
 interface Row {
   id: string;
@@ -28,6 +28,7 @@ interface Row {
   sort_order: number;
   price: number | null;
   floor_plan_url: string | null;
+  planta_img_path: string | null;
 }
 
 const STATUS_OPTIONS: UnitStatus[] = ["available", "reserved", "sold"];
@@ -43,14 +44,16 @@ const AdminUnitsTab = () => {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploadingId, setUploadingId] = useState<string | null>(null);
+  const [uploadingImgId, setUploadingImgId] = useState<string | null>(null);
   const fileInputs = useRef<Record<string, HTMLInputElement | null>>({});
+  const imgInputs = useRef<Record<string, HTMLInputElement | null>>({});
   const { showPrices, setShowPrices } = useShowPrices();
   const { showReserve, setShowReserve } = useShowReserve();
 
   const load = async () => {
     const { data, error } = await supabase
       .from("units")
-      .select("id,building,floor,type,area,orientation,status,sort_order,price,floor_plan_url")
+      .select("id,building,floor,type,area,orientation,status,sort_order,price,floor_plan_url,planta_img_path")
       .order("sort_order", { ascending: true });
     if (error) {
       toast({ title: "Erro ao carregar fracções", description: error.message, variant: "destructive" });
@@ -152,6 +155,41 @@ const AdminUnitsTab = () => {
     toast({ title: `Planta de ${id} removida` });
   };
 
+  const handleImage = async (id: string, file: File, prevPath: string | null) => {
+    if (!/^image\/(jpe?g|png|webp)$/i.test(file.type)) {
+      toast({ title: "Só são permitidas imagens (JPEG/PNG/WebP)", variant: "destructive" });
+      return;
+    }
+    if (file.size > 15 * 1024 * 1024) {
+      toast({ title: "Imagem demasiado grande (máx. 15MB)", variant: "destructive" });
+      return;
+    }
+    setUploadingImgId(id);
+    const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
+    const path = `units/${id}-${Date.now()}.${ext}`;
+    const { error: upErr } = await supabase.storage
+      .from("floor-plans")
+      .upload(path, file, { upsert: false, contentType: file.type, cacheControl: "3600" });
+    if (upErr) {
+      toast({ title: "Erro no upload", description: upErr.message, variant: "destructive" });
+      setUploadingImgId(null);
+      return;
+    }
+    const ok = await patch(id, { planta_img_path: path });
+    if (ok && prevPath && prevPath !== path) {
+      await supabase.storage.from("floor-plans").remove([prevPath]);
+    }
+    toast({ title: `Imagem da planta de ${id} carregada` });
+    setUploadingImgId(null);
+  };
+
+  const removeImage = async (id: string, path: string) => {
+    if (!confirm(`Remover a imagem da planta da fracção ${id}?`)) return;
+    await supabase.storage.from("floor-plans").remove([path]);
+    await patch(id, { planta_img_path: null });
+    toast({ title: `Imagem da planta de ${id} removida` });
+  };
+
   if (loading) {
     return <p className="text-sm text-muted-foreground">A carregar…</p>;
   }
@@ -199,6 +237,7 @@ const AdminUnitsTab = () => {
             <TableHead className="w-[120px]">ABP</TableHead>
             <TableHead className="w-[160px]">Preço (€)</TableHead>
             <TableHead className="w-[220px]">Planta (PDF)</TableHead>
+            <TableHead className="w-[240px]">Planta (Imagem)</TableHead>
             <TableHead className="w-[170px]">Estado</TableHead>
           </TableRow>
         </TableHeader>
@@ -206,6 +245,7 @@ const AdminUnitsTab = () => {
           {rows.map((r) => {
             const computed = getUnitPrice({ area: r.area, price: null });
             const uploading = uploadingId === r.id;
+            const uploadingImg = uploadingImgId === r.id;
             return (
               <TableRow key={r.id}>
                 <TableCell className="font-medium">{r.id}</TableCell>
@@ -264,6 +304,37 @@ const AdminUnitsTab = () => {
                     <Button size="sm" variant="outline" onClick={() => fileInputs.current[r.id]?.click()} disabled={uploading} className="h-8">
                       {uploading ? <Loader2 className="size-3.5 mr-1 animate-spin" /> : <Upload className="size-3.5 mr-1" />}
                       Carregar PDF
+                    </Button>
+                  )}
+                </TableCell>
+                <TableCell>
+                  <input
+                    ref={(el) => (imgInputs.current[r.id] = el)}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    className="hidden"
+                    onChange={(e) => {
+                      const f = e.target.files?.[0];
+                      if (f) handleImage(r.id, f, r.planta_img_path);
+                      e.target.value = "";
+                    }}
+                  />
+                  {r.planta_img_path ? (
+                    <div className="flex items-center gap-1">
+                      <span className="font-mono text-[10px] text-muted-foreground truncate max-w-[110px]" title={r.planta_img_path}>
+                        {r.planta_img_path.split("/").pop()}
+                      </span>
+                      <Button size="sm" variant="outline" onClick={() => imgInputs.current[r.id]?.click()} disabled={uploadingImg} className="h-8 px-2">
+                        {uploadingImg ? <Loader2 className="size-3.5 animate-spin" /> : <Upload className="size-3.5" />}
+                      </Button>
+                      <Button size="sm" variant="ghost" onClick={() => removeImage(r.id, r.planta_img_path!)} className="h-8 px-2 text-destructive">
+                        <Trash2 className="size-3.5" />
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button size="sm" variant="outline" onClick={() => imgInputs.current[r.id]?.click()} disabled={uploadingImg} className="h-8">
+                      {uploadingImg ? <Loader2 className="size-3.5 mr-1 animate-spin" /> : <ImageIcon className="size-3.5 mr-1" />}
+                      Carregar imagem
                     </Button>
                   )}
                 </TableCell>

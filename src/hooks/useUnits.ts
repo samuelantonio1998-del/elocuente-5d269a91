@@ -17,7 +17,7 @@ export function useUnits() {
     const load = async () => {
       const { data, error } = await supabase
         .from("units")
-        .select("id,building,floor,type,area,parking,orientation,status,sort_order,price,floor_plan_url")
+        .select("id,building,floor,type,area,parking,orientation,status,sort_order,price,floor_plan_url,planta_img_path")
         .order("sort_order", { ascending: true });
       if (cancelled) return;
       if (error) {
@@ -35,6 +35,7 @@ export function useUnits() {
             status: u.status as UnitStatus,
             price: u.price,
             floorPlanUrl: u.floor_plan_url,
+            plantaImgPath: u.planta_img_path,
           }))
         );
       }

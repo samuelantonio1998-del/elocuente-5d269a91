@@ -14,6 +14,7 @@ export interface Unit {
   status: UnitStatus;
   price?: number | null;
   floorPlanUrl?: string | null;
+  plantaImgPath?: string | null;
 }
 
 // Fallback list (used only if DB is unreachable). DB is source of truth.
