@@ -1,15 +1,38 @@
-import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { ReactNode } from "react";
+import {
+  Children,
+  cloneElement,
+  CSSProperties,
+  isValidElement,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import type { RevealVariant } from "./Reveal";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+
+const transformFor = (variant: RevealVariant): string => {
+  switch (variant) {
+    case "fade":
+      return "none";
+    case "slide-left":
+      return "translate3d(-24px, 0, 0)";
+    case "slide-right":
+      return "translate3d(24px, 0, 0)";
+    case "scale-in":
+      return "scale(0.95)";
+    case "mask-reveal":
+    case "fade-up":
+    default:
+      return "translate3d(0, 18px, 0)";
+  }
+};
 
 interface GroupProps {
   children: ReactNode;
   className?: string;
-  /** seconds between each child */
   stagger?: number;
-  /** initial delay before first child */
   delayChildren?: number;
   margin?: string;
   as?: "div" | "ul" | "ol" | "section" | "tbody";
@@ -20,31 +43,52 @@ export const StaggerGroup = ({
   className = "",
   stagger = 0.08,
   delayChildren = 0,
-  margin = "-10% 0px",
   as = "div",
 }: GroupProps) => {
-  const reduce = useReducedMotion() ?? false;
-  const variants: Variants = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: reduce ? 0 : stagger,
-        delayChildren: reduce ? 0 : delayChildren,
+  const ref = useRef<HTMLElement | null>(null);
+  const [enabled, setEnabled] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || typeof IntersectionObserver === "undefined") {
+      setEnabled(false);
+      setVisible(true);
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    setEnabled(true);
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+            break;
+          }
+        }
       },
-    },
-  };
-  const MotionTag = motion[as] as typeof motion.div;
-  return (
-    <MotionTag
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin }}
-      variants={variants}
-      className={className}
-    >
-      {children}
-    </MotionTag>
-  );
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const items = Children.toArray(children);
+  const decorated = items.map((child, i) => {
+    if (!isValidElement(child)) return child;
+    return cloneElement(child as React.ReactElement<any>, {
+      __staggerEnabled: enabled,
+      __staggerVisible: visible,
+      __staggerDelay: delayChildren + stagger * i,
+    });
+  });
+
+  const Tag = as as keyof JSX.IntrinsicElements;
+  // @ts-expect-error — generic ref across tags
+  return <Tag ref={ref} className={className}>{decorated}</Tag>;
 };
 
 interface ItemProps {
@@ -53,67 +97,41 @@ interface ItemProps {
   variant?: RevealVariant;
   duration?: number;
   as?: "div" | "li" | "tr" | "article" | "section";
+  // injected by StaggerGroup
+  __staggerEnabled?: boolean;
+  __staggerVisible?: boolean;
+  __staggerDelay?: number;
 }
-
-const itemVariants = (variant: RevealVariant, reduce: boolean): Variants => {
-  if (reduce) {
-    return {
-      hidden: { opacity: 0 },
-      show: { opacity: 1, transition: { duration: 0.4 } },
-    };
-  }
-  const base = { duration: 0.65, ease: EASE };
-  switch (variant) {
-    case "scale-in":
-      return {
-        hidden: { opacity: 0, scale: 0.9 },
-        show: { opacity: 1, scale: 1, transition: base },
-      };
-    case "slide-left":
-      return {
-        hidden: { opacity: 0, x: -30 },
-        show: { opacity: 1, x: 0, transition: base },
-      };
-    case "slide-right":
-      return {
-        hidden: { opacity: 0, x: 30 },
-        show: { opacity: 1, x: 0, transition: base },
-      };
-    case "mask-reveal":
-      return {
-        hidden: { opacity: 0, clipPath: "inset(0 0 100% 0)" },
-        show: {
-          opacity: 1,
-          clipPath: "inset(0 0 0% 0)",
-          transition: { duration: 0.9, ease: EASE },
-        },
-      };
-    case "fade":
-      return {
-        hidden: { opacity: 0 },
-        show: { opacity: 1, transition: base },
-      };
-    case "fade-up":
-    default:
-      return {
-        hidden: { opacity: 0, y: 24 },
-        show: { opacity: 1, y: 0, transition: base },
-      };
-  }
-};
 
 export const StaggerItem = ({
   children,
   className = "",
   variant = "fade-up",
+  duration = 0.65,
   as = "div",
+  __staggerEnabled = false,
+  __staggerVisible = true,
+  __staggerDelay = 0,
 }: ItemProps) => {
-  const reduce = useReducedMotion() ?? false;
-  const variants = itemVariants(variant, reduce);
-  const MotionTag = motion[as] as typeof motion.div;
+  let style: CSSProperties | undefined;
+  if (__staggerEnabled && !__staggerVisible) {
+    style = {
+      opacity: 0,
+      transform: transformFor(variant),
+      willChange: "opacity, transform",
+    };
+  } else if (__staggerEnabled && __staggerVisible) {
+    style = {
+      opacity: 1,
+      transform: "none",
+      transition: `opacity ${duration}s ${EASE} ${__staggerDelay}s, transform ${duration}s ${EASE} ${__staggerDelay}s`,
+    };
+  }
+
+  const Tag = as as keyof JSX.IntrinsicElements;
   return (
-    <MotionTag variants={variants} className={className}>
+    <Tag className={className} style={style}>
       {children}
-    </MotionTag>
+    </Tag>
   );
 };
