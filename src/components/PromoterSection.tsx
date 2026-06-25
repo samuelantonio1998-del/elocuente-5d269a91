@@ -8,7 +8,7 @@ const PromoterSection = () => {
 
   return (
     <section id="promotor" className="bg-background">
-      <div className="grid lg:grid-cols-2">
+      <div className="grid lg:grid-cols-2 section-py bg-cream-dark">
         <Reveal
           variant="mask-reveal"
           duration={1.1}
