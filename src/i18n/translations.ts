@@ -592,7 +592,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.contacts": "Contacts",
     "footer.follow": "Follow us",
     "footer.privacy": "Privacy Policy",
-    "footer.rights": "© 2026 Elocuente. All rights reserved.",
+    "footer.rights": "© 2026 Elocuente 261. All rights reserved.",
     "footer.architect": "Architecture: Tiago Frazão Arquitetos",
 
     "privacy.back": "Back",
