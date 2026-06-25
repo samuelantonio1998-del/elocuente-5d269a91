@@ -1,5 +1,4 @@
-import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef, useState, CSSProperties } from "react";
 
 export type RevealVariant =
   | "fade-up"
@@ -15,83 +14,89 @@ interface Props {
   delay?: number;
   duration?: number;
   variant?: RevealVariant;
-  /** viewport margin override */
+  /** legacy/no-op — kept for API compatibility */
   margin?: string;
   as?: "div" | "section" | "article" | "li" | "ul";
 }
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
-const buildVariants = (variant: RevealVariant, reduce: boolean): Variants => {
-  if (reduce) {
-    return {
-      hidden: { opacity: 0 },
-      show: { opacity: 1 },
-    };
-  }
+const transformFor = (variant: RevealVariant): string => {
   switch (variant) {
     case "fade":
-      return { hidden: { opacity: 0 }, show: { opacity: 1 } };
+      return "none";
     case "slide-left":
-      return {
-        hidden: { opacity: 0, x: -40 },
-        show: { opacity: 1, x: 0 },
-      };
+      return "translate3d(-30px, 0, 0)";
     case "slide-right":
-      return {
-        hidden: { opacity: 0, x: 40 },
-        show: { opacity: 1, x: 0 },
-      };
+      return "translate3d(30px, 0, 0)";
     case "scale-in":
-      return {
-        hidden: { opacity: 0, scale: 0.92 },
-        show: { opacity: 1, scale: 1 },
-      };
+      return "scale(0.96)";
     case "mask-reveal":
-      return {
-        hidden: {
-          opacity: 0,
-          clipPath: "inset(0 0 100% 0)",
-        },
-        show: {
-          opacity: 1,
-          clipPath: "inset(0 0 0% 0)",
-        },
-      };
     case "fade-up":
     default:
-      return {
-        hidden: { opacity: 0, y: 32 },
-        show: { opacity: 1, y: 0 },
-      };
+      return "translate3d(0, 20px, 0)";
   }
 };
+
+const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 const Reveal = ({
   children,
   className = "",
   delay = 0,
-  duration = 0.75,
+  duration = 0.7,
   variant = "fade-up",
-  margin = "-12% 0px",
   as = "div",
 }: Props) => {
-  const reduce = useReducedMotion() ?? false;
-  const variants = buildVariants(variant, reduce);
-  const MotionTag = motion[as] as typeof motion.div;
+  const ref = useRef<HTMLElement | null>(null);
+  /** enabled = JS is in control and we should hide initially */
+  const [enabled, setEnabled] = useState(false);
+  const [visible, setVisible] = useState(false);
 
-  return (
-    <MotionTag
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin }}
-      variants={variants}
-      transition={{ duration, delay, ease: EASE }}
-      className={className}
-    >
-      {children}
-    </MotionTag>
-  );
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || typeof IntersectionObserver === "undefined") {
+      // Fallback: stay visible, no animation
+      setEnabled(false);
+      setVisible(true);
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    setEnabled(true);
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  let style: CSSProperties | undefined;
+  if (enabled && !visible) {
+    style = {
+      opacity: 0,
+      transform: transformFor(variant),
+      willChange: "opacity, transform",
+    };
+  } else if (enabled && visible) {
+    style = {
+      opacity: 1,
+      transform: "none",
+      transition: `opacity ${duration}s ${EASE} ${delay}s, transform ${duration}s ${EASE} ${delay}s`,
+    };
+  }
+
+  const Tag = as as keyof JSX.IntrinsicElements;
+  // @ts-expect-error — generic ref across tags
+  return <Tag ref={ref} className={className} style={style}>{children}</Tag>;
 };
 
 export default Reveal;
