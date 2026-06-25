@@ -296,7 +296,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.contacts": "Contactos",
     "footer.follow": "Siga-nos",
     "footer.privacy": "Política de Privacidade",
-    "footer.rights": "© 2026 Elocuente. Todos os direitos reservados.",
+    "footer.rights": "© 2026 Elocuente 261. Todos os direitos reservados.",
     "footer.architect": "Arquitectura: Tiago Frazão Arquitetos",
 
     // Privacy
