@@ -8,8 +8,8 @@ const Privacy = () => {
   return (
     <main className="min-h-screen bg-background py-28 px-8 lg:px-16">
       <Seo
-        title="Política de Privacidade — Elocuente"
-        description="Como tratamos os seus dados pessoais no site do empreendimento Elocuente, em Marinha Grande."
+        title="Política de Privacidade — Elocuente 261"
+        description="Como tratamos os seus dados pessoais no site do empreendimento Elocuente 261, em Marinha Grande."
         path="/privacidade"
         image="/og-privacy.jpg"
       />
