@@ -8,7 +8,7 @@ const PromoterSection = () => {
 
   return (
     <section id="promotor" className="bg-background">
-      <div className="grid lg:grid-cols-2">
+      <div className="grid lg:grid-cols-2 section-py bg-cream-dark">
         <Reveal
           variant="mask-reveal"
           duration={1.1}
@@ -31,7 +31,7 @@ const PromoterSection = () => {
           )}
         </Reveal>
 
-        <div className="flex items-center px-8 lg:px-20 section-py bg-cream-dark">
+        <div className="flex items-center px-8 lg:px-20 bg-cream-dark">
           <Reveal variant="slide-right" delay={0.1}>
             <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-12 md:mb-16">
               {t("promoter.label")}
