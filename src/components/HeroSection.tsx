@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import heroAsset from "@/assets/hero-sketch.png.asset.json";
-import Logo from "@/components/Logo";
+import logoWhiteAsset from "@/assets/elocuente-261-logo-white.png.asset.json";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useSiteImage } from "@/hooks/useSiteImages";
 
