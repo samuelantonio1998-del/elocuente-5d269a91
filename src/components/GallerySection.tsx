@@ -47,11 +47,11 @@ const GallerySection = () => {
   };
 
   return (
-    <section id="galeria" className="py-16 md:py-24 bg-background">
-      <div className="px-8 lg:px-16 mb-12">
+    <section id="galeria" className="section-py bg-background">
+      <div className="px-8 lg:px-16 mb-20 md:mb-28">
         <AnimatedSection className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
-            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-4">
+            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-8 md:mb-10">
               {t("gallery.label")}
             </p>
             <h2 className="font-heading text-3xl md:text-5xl text-foreground">

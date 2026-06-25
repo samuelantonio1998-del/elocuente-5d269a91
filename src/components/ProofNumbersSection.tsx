@@ -15,7 +15,7 @@ const ProofNumbersSection = () => {
   return (
     <section
       aria-label="Números do empreendimento"
-      className="bg-cream py-14 md:py-20 border-y border-charcoal/5"
+      className="bg-cream section-py border-y border-charcoal/5"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-8">
         <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6">

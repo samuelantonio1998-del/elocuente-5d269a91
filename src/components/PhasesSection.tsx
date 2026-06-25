@@ -13,13 +13,13 @@ const PhasesSection = () => {
 
   return (
     <section id="fases" className="bg-background">
-      <div className="py-16 md:py-24 px-8 lg:px-16">
+      <div className="section-py px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
-          <AnimatedSection className="text-center mb-20">
-            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-4">
+          <AnimatedSection className="text-center mb-24 md:mb-32">
+            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-8 md:mb-10">
               {t("phases.label")}
             </p>
-            <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-6">
+            <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-10 md:mb-12">
               {t("phases.title")}
             </h2>
             <p className="font-body text-muted-foreground leading-[2] text-sm md:text-base max-w-2xl mx-auto">

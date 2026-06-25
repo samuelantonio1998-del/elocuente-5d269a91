@@ -139,12 +139,12 @@ const ContactSection = () => {
 
       <div className="relative grid lg:grid-cols-[42%_58%] min-h-[80vh]">
         {/* LEFT — Polaroid collage */}
-        <div className="flex items-center justify-center px-8 md:px-12 lg:px-16 py-20 lg:py-24">
+        <div className="flex items-center justify-center px-8 md:px-12 lg:px-16 section-py">
           <AnimatedSection className="w-full max-w-md">
-            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-10">
+            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-12 md:mb-16">
               {t("contact.label")}
             </p>
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground leading-[1.05] mb-10">
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground leading-[1.05] mb-12 md:mb-16">
               <span className="italic font-light text-gold">{t("contact.titleItalic")}</span>
               <br />
               {t("contact.titleRest")}
@@ -158,7 +158,7 @@ const ContactSection = () => {
         </div>
 
         {/* RIGHT — Form card */}
-        <div className="flex items-center px-8 md:px-12 lg:px-20 py-20 lg:py-24 bg-background">
+        <div className="flex items-center px-8 md:px-12 lg:px-20 section-py bg-background">
           <AnimatedSection delay={0.15} className="w-full max-w-md mx-auto">
             <form onSubmit={handleSubmit} className="space-y-0" aria-label={t("contact.label")}>
               <input
