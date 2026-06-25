@@ -50,7 +50,7 @@ export const GUIDE_PT: GuideContent = {
   htmlLang: "pt-PT",
   path: "/guia/viver-marinha-grande-leiria",
   title: "Viver à porta do pinhal e do Atlântico",
-  metaTitle: "Viver na Marinha Grande e em Leiria — guia 2026 | Elocuente",
+  metaTitle: "Viver na Marinha Grande e em Leiria — guia 2026 | Elocuente 261",
   metaDescription:
     "Guia para viver à porta do pinhal de Leiria e do Atlântico: Marinha Grande, Pinhal de Leiria, praias, saúde, educação, IRS Jovem, NIF e processo de compra para compradores estrangeiros.",
   heroEyebrow: "Guia · Centro de Portugal",
