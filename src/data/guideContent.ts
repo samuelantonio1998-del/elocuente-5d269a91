@@ -139,7 +139,7 @@ export const GUIDE_EN: GuideContent = {
   htmlLang: "en",
   path: "/guides/living-in-marinha-grande-leiria",
   title: "Living at the doorstep of the pine forest and the Atlantic",
-  metaTitle: "Living in Marinha Grande and Leiria — 2026 guide | Elocuente",
+  metaTitle: "Living in Marinha Grande and Leiria — 2026 guide | Elocuente 261",
   metaDescription:
     "A practical guide to living at the doorstep of the Leiria pine forest and the Atlantic: Marinha Grande, the Leiria Pine Forest, beaches, healthcare, schools, IRS Jovem, IFICI, NIF and buying property as a foreigner.",
   heroEyebrow: "Guide · Central Portugal",
