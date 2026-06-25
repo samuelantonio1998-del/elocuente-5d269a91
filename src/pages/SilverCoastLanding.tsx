@@ -38,14 +38,14 @@ const SilverCoastLanding = () => {
     new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
 
   const url = `${SITE_URL}${PATH}`;
-  const metaTitle = "New Build Apartments on Portugal's Silver Coast | Elocuente";
+  const metaTitle = "New Build Apartments on Portugal's Silver Coast | Elocuente 261";
   const metaDescription =
     "Contemporary 2 & 3-bedroom new build apartments on Portugal's Silver Coast — minutes from Leiria, São Pedro de Moel and the Atlantic. From €290,000.";
 
   const residenceLd = {
     "@context": "https://schema.org",
     "@type": "ApartmentComplex",
-    name: "Elocuente — New Build Apartments, Silver Coast Portugal",
+    name: "Elocuente 261 — New Build Apartments, Silver Coast Portugal",
     description: metaDescription,
     url,
     numberOfAccommodationUnits: units.length,

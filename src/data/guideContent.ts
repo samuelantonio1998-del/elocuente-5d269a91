@@ -50,7 +50,7 @@ export const GUIDE_PT: GuideContent = {
   htmlLang: "pt-PT",
   path: "/guia/viver-marinha-grande-leiria",
   title: "Viver à porta do pinhal e do Atlântico",
-  metaTitle: "Viver na Marinha Grande e em Leiria — guia 2026 | Elocuente",
+  metaTitle: "Viver na Marinha Grande e em Leiria — guia 2026 | Elocuente 261",
   metaDescription:
     "Guia para viver à porta do pinhal de Leiria e do Atlântico: Marinha Grande, Pinhal de Leiria, praias, saúde, educação, IRS Jovem, NIF e processo de compra para compradores estrangeiros.",
   heroEyebrow: "Guia · Centro de Portugal",
@@ -139,7 +139,7 @@ export const GUIDE_EN: GuideContent = {
   htmlLang: "en",
   path: "/guides/living-in-marinha-grande-leiria",
   title: "Living at the doorstep of the pine forest and the Atlantic",
-  metaTitle: "Living in Marinha Grande and Leiria — 2026 guide | Elocuente",
+  metaTitle: "Living in Marinha Grande and Leiria — 2026 guide | Elocuente 261",
   metaDescription:
     "A practical guide to living at the doorstep of the Leiria pine forest and the Atlantic: Marinha Grande, the Leiria Pine Forest, beaches, healthcare, schools, IRS Jovem, IFICI, NIF and buying property as a foreigner.",
   heroEyebrow: "Guide · Central Portugal",
@@ -228,7 +228,7 @@ export const GUIDE_ES: GuideContent = {
   htmlLang: "es",
   path: "/guia/vivir-en-marinha-grande-leiria",
   title: "Vivir a las puertas del pinar y del Atlántico",
-  metaTitle: "Vivir en Marinha Grande y Leiria — guía 2026 | Elocuente",
+  metaTitle: "Vivir en Marinha Grande y Leiria — guía 2026 | Elocuente 261",
   metaDescription:
     "Guía práctica para vivir a las puertas del pinar de Leiria y del Atlántico: Marinha Grande, Pinar de Leiria, playas, sanidad, educación, IRS Jovem, IFICI, NIF y compra de inmuebles para extranjeros.",
   heroEyebrow: "Guía · Centro de Portugal",

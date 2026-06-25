@@ -12,7 +12,7 @@ const NotFound = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <Seo
-        title="Página não encontrada — Elocuente"
+        title="Página não encontrada — Elocuente 261"
         description="A página que procura não existe ou foi movida."
         path={location.pathname}
         noIndex

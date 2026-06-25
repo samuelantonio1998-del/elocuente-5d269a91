@@ -28,7 +28,7 @@ const Footer = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 mb-12">
             <div>
-              <Logo height={22} aria-label="Elocuente" />
+              <Logo height={22} aria-label="Elocuente 261" />
               <p className="font-body text-xs text-primary-foreground/50 leading-relaxed mt-6 max-w-[260px]">
                 {t("footer.tagline")}
               </p>

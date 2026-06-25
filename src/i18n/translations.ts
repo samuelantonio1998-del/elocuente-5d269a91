@@ -296,7 +296,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.contacts": "Contactos",
     "footer.follow": "Siga-nos",
     "footer.privacy": "Política de Privacidade",
-    "footer.rights": "© 2026 Elocuente. Todos os direitos reservados.",
+    "footer.rights": "© 2026 Elocuente 261. Todos os direitos reservados.",
     "footer.architect": "Arquitectura: Tiago Frazão Arquitetos",
 
     // Privacy
@@ -592,7 +592,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.contacts": "Contacts",
     "footer.follow": "Follow us",
     "footer.privacy": "Privacy Policy",
-    "footer.rights": "© 2026 Elocuente. All rights reserved.",
+    "footer.rights": "© 2026 Elocuente 261. All rights reserved.",
     "footer.architect": "Architecture: Tiago Frazão Arquitetos",
 
     "privacy.back": "Back",
@@ -887,7 +887,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "footer.contacts": "Contactos",
     "footer.follow": "Síganos",
     "footer.privacy": "Política de Privacidad",
-    "footer.rights": "© 2026 Elocuente. Todos los derechos reservados.",
+    "footer.rights": "© 2026 Elocuente 261. Todos los derechos reservados.",
     "footer.architect": "Arquitectura: Tiago Frazão Arquitetos",
 
     "privacy.back": "Volver",
