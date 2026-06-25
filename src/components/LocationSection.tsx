@@ -26,12 +26,12 @@ const LocationSection = () => {
   const osmSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lon}`;
 
   return (
-    <section id="localizacao" className="bg-background">
+    <section id="localizacao" className="bg-background section-py">
       <AnimatedSection delay={0.2}>
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left: dark panel with description + distances */}
-          <div className="bg-charcoal text-primary-foreground px-8 lg:px-16 py-10 lg:py-14 flex flex-col justify-center">
-            <p className="font-body text-primary-foreground/80 leading-[2] text-sm md:text-base max-w-md mb-8">
+          <div className="bg-charcoal text-primary-foreground px-8 lg:px-16 py-16 lg:py-20 flex flex-col justify-center">
+            <p className="font-body text-primary-foreground/80 leading-[2] text-sm md:text-base max-w-md mb-10 md:mb-12">
               {t("location.desc")}
             </p>
 

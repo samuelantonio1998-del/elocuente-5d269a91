@@ -44,7 +44,7 @@ const LifeAtSection = () => {
       </div>
 
       <AnimatedSection delay={0.1}>
-        <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden mb-20 md:mb-24 group">
+        <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden mb-24 md:mb-32 group">
           {images.map((image, i) =>
             image.src && image.isResolved ? (
               <img
@@ -86,7 +86,7 @@ const LifeAtSection = () => {
         </div>
       </AnimatedSection>
 
-      <div className="pb-24 md:pb-32 px-8 lg:px-16">
+      <div className="section-pb px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
           <StaggerGroup stagger={0.06} delayChildren={0.05}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12 md:gap-y-14">

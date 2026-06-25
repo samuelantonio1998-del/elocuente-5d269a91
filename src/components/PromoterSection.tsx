@@ -31,12 +31,12 @@ const PromoterSection = () => {
           )}
         </Reveal>
 
-        <div className="flex items-center px-8 lg:px-20 py-20 md:py-28 bg-cream-dark">
+        <div className="flex items-center px-8 lg:px-20 section-py bg-cream-dark">
           <Reveal variant="slide-right" delay={0.1}>
-            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-8">
+            <p className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-muted-foreground mb-12 md:mb-16">
               {t("promoter.label")}
             </p>
-            <h2 className="font-heading text-3xl md:text-5xl text-foreground leading-[1.15] mb-12">
+            <h2 className="font-heading text-3xl md:text-5xl text-foreground leading-[1.15] mb-16 md:mb-20">
               {t("promoter.title")}
             </h2>
             <div className="max-w-lg space-y-6">

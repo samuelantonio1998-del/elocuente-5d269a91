@@ -150,7 +150,30 @@
   .bg-warm-beige {
     background-color: hsl(var(--warm-beige));
   }
+
+  /* Editorial vertical rhythm — applied to content sections (not hero) */
+  .section-py {
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+  .section-pt {
+    padding-top: 140px;
+  }
+  .section-pb {
+    padding-bottom: 140px;
+  }
+  @media (min-width: 768px) {
+    .section-py { padding-top: 180px; padding-bottom: 180px; }
+    .section-pt { padding-top: 180px; }
+    .section-pb { padding-bottom: 180px; }
+  }
+  @media (min-width: 1024px) {
+    .section-py { padding-top: 200px; padding-bottom: 200px; }
+    .section-pt { padding-top: 200px; }
+    .section-pb { padding-bottom: 200px; }
+  }
 }
+
 
 html {
   scroll-behavior: smooth;
