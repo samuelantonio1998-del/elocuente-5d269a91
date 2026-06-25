@@ -50,7 +50,7 @@ const CondominiumSection = () => {
       </div>
 
       <AnimatedSection delay={0.1}>
-        <div className="relative w-full aspect-[16/10] bg-muted overflow-hidden mb-20 md:mb-24 group">
+        <div className="relative w-full aspect-[16/10] bg-muted overflow-hidden mb-24 md:mb-32 group">
           {images.map((img, i) =>
             img.image.src && img.image.isResolved ? (
               <img
