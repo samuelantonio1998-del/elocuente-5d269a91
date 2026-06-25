@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import Logo from "@/components/Logo";
+import logoWhiteAsset from "@/assets/elocuente-261-logo-white.png.asset.json";
 
 const Navbar = () => {
   const { t, lang, setLang } = useLanguage();
