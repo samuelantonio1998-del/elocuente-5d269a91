@@ -1,4 +1,6 @@
 import { useLanguage } from "@/i18n/LanguageContext";
+import { StaggerGroup, StaggerItem } from "./motion/Stagger";
+
 
 const ProofNumbersSection = () => {
   const { t } = useLanguage();
