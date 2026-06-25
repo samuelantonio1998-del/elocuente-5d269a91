@@ -42,14 +42,14 @@ const HeroSection = () => {
         className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
       >
         {/* Logótipo Elocuente */}
-        <motion.div
+        <motion.img
+          src={logoWhiteAsset.url}
+          alt="Elocuente 261"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="text-primary-foreground [filter:drop-shadow(0_2px_20px_rgba(0,0,0,0.45))]"
-        >
-          <Logo height={64} className="w-[280px] md:w-[440px] lg:w-[560px] h-auto" />
-        </motion.div>
+          className="w-[280px] md:w-[440px] lg:w-[560px] h-auto [filter:drop-shadow(0_2px_20px_rgba(0,0,0,0.45))]"
+        />
       </motion.div>
 
       {/* Scroll indicator */}
