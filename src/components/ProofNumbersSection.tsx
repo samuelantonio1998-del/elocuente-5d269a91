@@ -20,10 +20,12 @@ const ProofNumbersSection = () => {
       className="bg-cream section-py border-y border-charcoal/5"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
+        <StaggerGroup as="ul" stagger={0.08} delayChildren={0.05} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
           {items.map((item, i) => (
-            <li
+            <StaggerItem
               key={i}
+              as="li"
+              variant="fade-up"
               className="flex flex-col items-center text-center px-3 md:px-4 py-5 md:py-0 md:border-r md:border-charcoal/15 md:last:border-r-0"
             >
               <span className="font-heading text-3xl md:text-4xl lg:text-5xl text-charcoal font-light tracking-tight whitespace-nowrap">
@@ -32,10 +34,11 @@ const ProofNumbersSection = () => {
               <span className="mt-3 font-body text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-charcoal/60 leading-relaxed">
                 {item.label}
               </span>
-            </li>
+            </StaggerItem>
           ))}
-        </ul>
+        </StaggerGroup>
       </div>
+
     </section>
   );
 };
