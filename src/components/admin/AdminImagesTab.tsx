@@ -6,6 +6,7 @@ import { toast } from "@/hooks/use-toast";
 import { Upload, RotateCcw, Loader2 } from "lucide-react";
 import { SITE_IMAGES, SITE_IMAGE_SECTIONS } from "@/lib/siteImagesRegistry";
 import { useSiteImage, useSiteImagesContext } from "@/hooks/useSiteImages";
+import AdminGalleriesPanel from "./AdminGalleriesPanel";
 
 const MAX_BYTES = 25 * 1024 * 1024; // 25MB
 
@@ -223,6 +224,10 @@ const AdminImagesTab = () => {
           </div>
         </section>
       ))}
+
+      <div className="pt-10 mt-10 border-t border-border">
+        <AdminGalleriesPanel />
+      </div>
     </div>
   );
 };
