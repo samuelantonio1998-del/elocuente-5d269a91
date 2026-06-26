@@ -151,26 +151,22 @@
     background-color: hsl(var(--warm-beige));
   }
 
-  /* Editorial vertical rhythm — applied to content sections (not hero) */
+  /* Editorial vertical rhythm — contained respiro, no dead gaps between sections */
   .section-py {
-    padding-top: 140px;
-    padding-bottom: 140px;
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
-  .section-pt {
-    padding-top: 140px;
-  }
-  .section-pb {
-    padding-bottom: 140px;
-  }
+  .section-pt { padding-top: 72px; }
+  .section-pb { padding-bottom: 72px; }
   @media (min-width: 768px) {
-    .section-py { padding-top: 180px; padding-bottom: 180px; }
-    .section-pt { padding-top: 180px; }
-    .section-pb { padding-bottom: 180px; }
+    .section-py { padding-top: 96px; padding-bottom: 96px; }
+    .section-pt { padding-top: 96px; }
+    .section-pb { padding-bottom: 96px; }
   }
   @media (min-width: 1024px) {
-    .section-py { padding-top: 200px; padding-bottom: 200px; }
-    .section-pt { padding-top: 200px; }
-    .section-pb { padding-bottom: 200px; }
+    .section-py { padding-top: 112px; padding-bottom: 112px; }
+    .section-pt { padding-top: 112px; }
+    .section-pb { padding-bottom: 112px; }
   }
 }
 
