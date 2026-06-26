@@ -224,6 +224,10 @@ const AdminImagesTab = () => {
           </div>
         </section>
       ))}
+
+      <div className="pt-10 mt-10 border-t border-border">
+        <AdminGalleriesPanel />
+      </div>
     </div>
   );
 };
