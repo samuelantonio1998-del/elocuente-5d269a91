@@ -79,7 +79,7 @@ const GallerySection = () => {
 
       <div
         ref={scrollRef}
-        className="flex gap-4 px-8 lg:px-16 overflow-x-auto hide-scrollbar"
+        className="flex gap-4 px-8 lg:px-32 overflow-x-auto hide-scrollbar"
       >
         <StaggerGroup
           as="div"
@@ -92,7 +92,7 @@ const GallerySection = () => {
             <StaggerItem
               key={i}
               variant="mask-reveal"
-              className="flex-shrink-0 h-[350px] md:h-[500px] w-[300px] md:w-[400px]"
+              className="flex-shrink-0 h-[300px] md:h-[420px] w-[260px] md:w-[340px]"
             >
               <button
                 onClick={() => setLightboxIndex(i)}
@@ -113,7 +113,7 @@ const GallerySection = () => {
         </StaggerGroup>
       </div>
 
-      <div className="px-8 lg:px-16 mt-8">
+      <div className="px-8 lg:px-32 mt-8">
         <p className="font-body text-[10px] tracking-[0.3em] text-muted-foreground">
           {galleryImages.length} {t("gallery.count")}
         </p>
