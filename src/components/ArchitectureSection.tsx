@@ -48,25 +48,27 @@ const ArchitectureSection = () => {
         </Reveal>
       </div>
 
-      <Reveal
-        variant="mask-reveal"
-        duration={1.1}
-        className="relative h-[50vh] lg:h-auto lg:min-h-[640px] overflow-hidden"
-      >
-        {renders.map((image, i) =>
-          image.src && image.isResolved ? (
-            <img
-              key={image.renderKey}
-              src={image.src}
-              alt="Arquitetura do empreendimento Elocuente em Marinha Grande"
-              width={1600}
-              height={1200}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
-              loading="lazy"
-            />
-          ) : null
-        )}
-      </Reveal>
+      <div className="px-6 md:px-12 lg:px-16 pb-24 md:pb-32 bg-cream-dark">
+        <Reveal
+          variant="mask-reveal"
+          duration={1.1}
+          className="relative mx-auto w-full lg:max-w-[62vw] aspect-[4/3] overflow-hidden"
+        >
+          {renders.map((image, i) =>
+            image.src && image.isResolved ? (
+              <img
+                key={image.renderKey}
+                src={image.src}
+                alt="Arquitetura do empreendimento Elocuente em Marinha Grande"
+                width={1600}
+                height={1200}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
+                loading="lazy"
+              />
+            ) : null
+          )}
+        </Reveal>
+      </div>
     </section>
   );
 };
