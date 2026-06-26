@@ -44,44 +44,46 @@ const LifeAtSection = () => {
       </div>
 
       <AnimatedSection delay={0.1}>
-        <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden mb-24 md:mb-32 group">
-          {images.map((image, i) =>
-            image.src && image.isResolved ? (
-              <img
-                key={image.renderKey}
-                src={image.src}
-                alt="A Vida no Elocuente"
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                  i === current ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            ) : null
-          )}
-          <button
-            onClick={prev}
-            aria-label="Previous"
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={next}
-            aria-label="Next"
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                aria-label={`Go to image ${i + 1}`}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  i === current ? "bg-foreground w-6" : "bg-foreground/40"
-                }`}
-              />
-            ))}
+        <div className="px-6 md:px-12 lg:px-16 mb-24 md:mb-32">
+          <div className="relative mx-auto w-full lg:max-w-[62vw] aspect-[16/9] bg-muted overflow-hidden group">
+            {images.map((image, i) =>
+              image.src && image.isResolved ? (
+                <img
+                  key={image.renderKey}
+                  src={image.src}
+                  alt="A Vida no Elocuente"
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                    i === current ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ) : null
+            )}
+            <button
+              onClick={prev}
+              aria-label="Previous"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={next}
+              aria-label="Next"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  aria-label={`Go to image ${i + 1}`}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    i === current ? "bg-foreground w-6" : "bg-foreground/40"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </AnimatedSection>

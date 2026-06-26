@@ -50,52 +50,54 @@ const CondominiumSection = () => {
       </div>
 
       <AnimatedSection delay={0.1}>
-        <div className="relative w-full aspect-[16/10] bg-muted overflow-hidden mb-24 md:mb-32 group">
-          {images.map((img, i) =>
-            img.image.src && img.image.isResolved ? (
-              <img
-                key={img.image.renderKey}
-                src={img.image.src}
-                alt={img.alt}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                  i === current ? "opacity-100" : "opacity-0"
-                }`}
-                loading="lazy"
-              />
-            ) : null
-          )}
+        <div className="px-6 md:px-12 lg:px-16 mb-24 md:mb-32">
+          <div className="relative mx-auto w-full lg:max-w-[62vw] aspect-[16/10] bg-muted overflow-hidden group">
+            {images.map((img, i) =>
+              img.image.src && img.image.isResolved ? (
+                <img
+                  key={img.image.renderKey}
+                  src={img.image.src}
+                  alt={img.alt}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                    i === current ? "opacity-100" : "opacity-0"
+                  }`}
+                  loading="lazy"
+                />
+              ) : null
+            )}
 
-          <button
-            onClick={prev}
-            aria-label="Imagem anterior"
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-background/80 backdrop-blur-sm text-foreground hover:bg-background transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
+            <button
+              onClick={prev}
+              aria-label="Imagem anterior"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-background/80 backdrop-blur-sm text-foreground hover:bg-background transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
 
-          <button
-            onClick={next}
-            aria-label="Imagem seguinte"
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-background/80 backdrop-blur-sm text-foreground hover:bg-background transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
+            <button
+              onClick={next}
+              aria-label="Imagem seguinte"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-background/80 backdrop-blur-sm text-foreground hover:bg-background transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
 
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                aria-label={`Ir para imagem ${i + 1}`}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  i === current ? "bg-background w-6" : "bg-background/50"
-                }`}
-              />
-            ))}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  aria-label={`Ir para imagem ${i + 1}`}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    i === current ? "bg-background w-6" : "bg-background/50"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </AnimatedSection>

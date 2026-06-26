@@ -46,44 +46,46 @@ const ApartmentSection = () => {
       </div>
 
       <AnimatedSection delay={0.1}>
-        <div className="relative w-full aspect-[16/9] bg-muted overflow-hidden mb-24 md:mb-32 group">
-          {images.map((image, i) =>
-            image.src && image.isResolved ? (
-              <img
-                key={image.renderKey}
-                src={image.src}
-                alt={`Apartamento ${i + 1}`}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                  i === index ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            ) : null
-          )}
-          <button
-            onClick={prev}
-            aria-label="Anterior"
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-            <ChevronLeft className="w-5 h-5" strokeWidth={1.5} />
-          </button>
-          <button
-            onClick={next}
-            aria-label="Seguinte"
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
-          >
-            <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
-          </button>
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setIndex(i)}
-                aria-label={`Ir para imagem ${i + 1}`}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  i === index ? "bg-foreground" : "bg-foreground/30"
-                }`}
-              />
-            ))}
+        <div className="px-6 md:px-12 lg:px-16 mb-24 md:mb-32">
+          <div className="relative mx-auto w-full lg:max-w-[62vw] aspect-[16/9] bg-muted overflow-hidden group">
+            {images.map((image, i) =>
+              image.src && image.isResolved ? (
+                <img
+                  key={image.renderKey}
+                  src={image.src}
+                  alt={`Apartamento ${i + 1}`}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                    i === index ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ) : null
+            )}
+            <button
+              onClick={prev}
+              aria-label="Anterior"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronLeft className="w-5 h-5" strokeWidth={1.5} />
+            </button>
+            <button
+              onClick={next}
+              aria-label="Seguinte"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-background/70 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
+            </button>
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setIndex(i)}
+                  aria-label={`Ir para imagem ${i + 1}`}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    i === index ? "bg-foreground" : "bg-foreground/30"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </AnimatedSection>
