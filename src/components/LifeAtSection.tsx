@@ -4,6 +4,7 @@ import AnimatedSection from "./AnimatedSection";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
 import ParallaxImages from "./motion/ParallaxImages";
+import StickyStage from "./motion/StickyStage";
 import { useSiteImage } from "@/hooks/useSiteImages";
 import life1 from "@/assets/life-1.png.asset.json";
 import life2 from "@/assets/life-2.png.asset.json";
@@ -46,48 +47,50 @@ const LifeAtSection = () => {
 
       <AnimatedSection delay={0.1}>
         <div className="px-6 md:px-12 lg:px-16 mb-24 md:mb-32">
-          <div className="relative mx-auto w-full lg:max-w-[62vw] aspect-[16/9] bg-muted overflow-hidden group">
-            <ParallaxImages>
-              {images.map((image, i) =>
-                image.src && image.isResolved ? (
-                  <img
-                    key={image.renderKey}
-                    src={image.src}
-                    alt="A Vida no Elocuente"
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                      i === current ? "opacity-100" : "opacity-0"
+          <StickyStage>
+            <div className="relative mx-auto w-full lg:max-w-[62vw] aspect-[16/9] bg-muted overflow-hidden group">
+              <ParallaxImages>
+                {images.map((image, i) =>
+                  image.src && image.isResolved ? (
+                    <img
+                      key={image.renderKey}
+                      src={image.src}
+                      alt="A Vida no Elocuente"
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                        i === current ? "opacity-100" : "opacity-0"
+                      }`}
+                    />
+                  ) : null
+                )}
+              </ParallaxImages>
+              <button
+                onClick={prev}
+                aria-label="Previous"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={next}
+                aria-label="Next"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrent(i)}
+                    aria-label={`Go to image ${i + 1}`}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      i === current ? "bg-foreground w-6" : "bg-foreground/40"
                     }`}
                   />
-                ) : null
-              )}
-            </ParallaxImages>
-            <button
-              onClick={prev}
-              aria-label="Previous"
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={next}
-              aria-label="Next"
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/70 hover:bg-background text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-              {images.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  aria-label={`Go to image ${i + 1}`}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    i === current ? "bg-foreground w-6" : "bg-foreground/40"
-                  }`}
-                />
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          </StickyStage>
         </div>
       </AnimatedSection>
 
