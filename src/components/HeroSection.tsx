@@ -1,24 +1,19 @@
 import { ChevronDown } from "lucide-react";
 import heroAsset from "@/assets/hero-sketch.png.asset.json";
 import logoWhiteAsset from "@/assets/elocuente-261-logo-white.png.asset.json";
-import { useSiteImage } from "@/hooks/useSiteImages";
 
 const HeroSection = () => {
-  const heroImage = useSiteImage("hero.main", heroAsset.url);
-
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden bg-charcoal">
-      {heroImage.src && heroImage.isResolved && (
-        <img
-          key={heroImage.renderKey}
-          src={heroImage.src}
-          alt="Vista exterior do empreendimento Elocuente"
-          className="absolute inset-0 w-full h-full object-cover opacity-55"
-          width={1920}
-          height={1080}
-          fetchPriority="high"
-        />
-      )}
+      <img
+        src={heroAsset.url}
+        alt="Vista exterior do empreendimento Elocuente"
+        className="absolute inset-0 w-full h-full object-cover opacity-55"
+        width={1920}
+        height={1080}
+        fetchPriority="high"
+        decoding="async"
+      />
 
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-charcoal/85 via-charcoal/40 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-charcoal/85 via-charcoal/40 to-transparent" />
@@ -31,7 +26,6 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Scroll indicator */}
       <a
         href="#numeros"
         aria-label="Scroll down"
