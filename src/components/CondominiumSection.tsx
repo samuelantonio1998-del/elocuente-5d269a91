@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
+import ParallaxImages from "./motion/ParallaxImages";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useSiteImage } from "@/hooks/useSiteImages";
