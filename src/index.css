@@ -183,3 +183,17 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+/* Sticky-stage: desktop-only pointwise sticky moment. Never traps scroll. */
+.sticky-stage { position: relative; }
+.sticky-stage__inner { position: relative; }
+@media (min-width: 1024px) {
+  .sticky-stage { height: 160vh; }
+  .sticky-stage__inner {
+    position: sticky;
+    top: 8vh;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sticky-stage { height: auto; }
+  .sticky-stage__inner { position: relative; top: 0; }
+}
