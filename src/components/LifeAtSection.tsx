@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
+import ParallaxImages from "./motion/ParallaxImages";
 import { useSiteImage } from "@/hooks/useSiteImages";
 import life1 from "@/assets/life-1.png.asset.json";
 import life2 from "@/assets/life-2.png.asset.json";
@@ -46,18 +47,20 @@ const LifeAtSection = () => {
       <AnimatedSection delay={0.1}>
         <div className="px-6 md:px-12 lg:px-16 mb-24 md:mb-32">
           <div className="relative mx-auto w-full lg:max-w-[62vw] aspect-[16/9] bg-muted overflow-hidden group">
-            {images.map((image, i) =>
-              image.src && image.isResolved ? (
-                <img
-                  key={image.renderKey}
-                  src={image.src}
-                  alt="A Vida no Elocuente"
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    i === current ? "opacity-100" : "opacity-0"
-                  }`}
-                />
-              ) : null
-            )}
+            <ParallaxImages>
+              {images.map((image, i) =>
+                image.src && image.isResolved ? (
+                  <img
+                    key={image.renderKey}
+                    src={image.src}
+                    alt="A Vida no Elocuente"
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                      i === current ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
+                ) : null
+              )}
+            </ParallaxImages>
             <button
               onClick={prev}
               aria-label="Previous"

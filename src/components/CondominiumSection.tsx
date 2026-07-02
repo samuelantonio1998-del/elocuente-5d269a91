@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
+import ParallaxImages from "./motion/ParallaxImages";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useSiteImage } from "@/hooks/useSiteImages";
@@ -52,19 +53,21 @@ const CondominiumSection = () => {
       <AnimatedSection delay={0.1}>
         <div className="px-6 md:px-12 lg:px-16 mb-24 md:mb-32">
           <div className="relative mx-auto w-full lg:max-w-[62vw] aspect-[16/10] bg-muted overflow-hidden group">
-            {images.map((img, i) =>
-              img.image.src && img.image.isResolved ? (
-                <img
-                  key={img.image.renderKey}
-                  src={img.image.src}
-                  alt={img.alt}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    i === current ? "opacity-100" : "opacity-0"
-                  }`}
-                  loading="lazy"
-                />
-              ) : null
-            )}
+            <ParallaxImages>
+              {images.map((img, i) =>
+                img.image.src && img.image.isResolved ? (
+                  <img
+                    key={img.image.renderKey}
+                    src={img.image.src}
+                    alt={img.alt}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                      i === current ? "opacity-100" : "opacity-0"
+                    }`}
+                    loading="lazy"
+                  />
+                ) : null
+              )}
+            </ParallaxImages>
 
             <button
               onClick={prev}

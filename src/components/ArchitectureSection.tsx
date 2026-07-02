@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Reveal from "./motion/Reveal";
+import ParallaxImages from "./motion/ParallaxImages";
 import render1 from "@/assets/render-1.png.asset.json";
 import render2 from "@/assets/render-2.png.asset.json";
 import render3 from "@/assets/render-3.png.asset.json";
@@ -54,19 +55,21 @@ const ArchitectureSection = () => {
           duration={1.1}
           className="relative mx-auto w-full lg:max-w-[62vw] aspect-[4/3] overflow-hidden"
         >
-          {renders.map((image, i) =>
-            image.src && image.isResolved ? (
-              <img
-                key={image.renderKey}
-                src={image.src}
-                alt="Arquitetura do empreendimento Elocuente em Marinha Grande"
-                width={1600}
-                height={1200}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
-                loading="lazy"
-              />
-            ) : null
-          )}
+          <ParallaxImages>
+            {renders.map((image, i) =>
+              image.src && image.isResolved ? (
+                <img
+                  key={image.renderKey}
+                  src={image.src}
+                  alt="Arquitetura do empreendimento Elocuente em Marinha Grande"
+                  width={1600}
+                  height={1200}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === idx ? "opacity-100" : "opacity-0"}`}
+                  loading="lazy"
+                />
+              ) : null
+            )}
+          </ParallaxImages>
         </Reveal>
       </div>
     </section>

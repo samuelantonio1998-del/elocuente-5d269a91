@@ -1,6 +1,7 @@
 import { FileDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import AnimatedSection from "./AnimatedSection";
+import ParallaxImages from "./motion/ParallaxImages";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useSiteImage } from "@/hooks/useSiteImages";
@@ -48,18 +49,20 @@ const ApartmentSection = () => {
       <AnimatedSection delay={0.1}>
         <div className="px-6 md:px-12 lg:px-16 mb-24 md:mb-32">
           <div className="relative mx-auto w-full lg:max-w-[62vw] aspect-[16/9] bg-muted overflow-hidden group">
-            {images.map((image, i) =>
-              image.src && image.isResolved ? (
-                <img
-                  key={image.renderKey}
-                  src={image.src}
-                  alt={`Apartamento ${i + 1}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    i === index ? "opacity-100" : "opacity-0"
-                  }`}
-                />
-              ) : null
-            )}
+            <ParallaxImages>
+              {images.map((image, i) =>
+                image.src && image.isResolved ? (
+                  <img
+                    key={image.renderKey}
+                    src={image.src}
+                    alt={`Apartamento ${i + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                      i === index ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
+                ) : null
+              )}
+            </ParallaxImages>
             <button
               onClick={prev}
               aria-label="Anterior"
