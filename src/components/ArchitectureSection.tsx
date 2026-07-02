@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Reveal from "./motion/Reveal";
+import ParallaxImages from "./motion/ParallaxImages";
 import render1 from "@/assets/render-1.png.asset.json";
 import render2 from "@/assets/render-2.png.asset.json";
 import render3 from "@/assets/render-3.png.asset.json";
