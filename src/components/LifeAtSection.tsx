@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { StaggerGroup, StaggerItem } from "./motion/Stagger";
 import { useLanguage } from "@/i18n/LanguageContext";
+import ParallaxImages from "./motion/ParallaxImages";
 import { useSiteImage } from "@/hooks/useSiteImages";
 import life1 from "@/assets/life-1.png.asset.json";
 import life2 from "@/assets/life-2.png.asset.json";
