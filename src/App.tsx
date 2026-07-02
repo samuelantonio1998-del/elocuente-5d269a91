@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { SiteImagesProvider } from "@/hooks/useSiteImages";
+import SmoothScroll from "@/components/motion/SmoothScroll";
 import Index from "./pages/Index.tsx";
 import Privacy from "./pages/Privacy.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -20,6 +21,7 @@ const App = () => (
     <LanguageProvider>
       <SiteImagesProvider>
       <TooltipProvider>
+        <SmoothScroll />
         <Toaster />
         <Sonner />
         <BrowserRouter>
